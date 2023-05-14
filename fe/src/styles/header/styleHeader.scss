@@ -1,0 +1,38 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../../../public/assets/fonts/Roboto.ttf);
+}
+
+@font-face {
+    font-family: Source Serif Pro;
+    src: url(../../../public/assets/fonts/SourceSerifPro.ttf);
+}
+
+.header {
+    font-family: Roboto;
+}
+
+.header-tags {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 30px;
+}
+
+.logo {
+    height: auto;
+    width: 12rem;
+}
+
+.button {
+    height: auto;
+    width: 3rem;
+    display: flex;
+    justify-content: left;
+}
+
+.header-text {
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
