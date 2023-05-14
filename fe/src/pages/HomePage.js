@@ -1,7 +1,12 @@
 import React from "react";
+import Service from "../views/service/Service";
 
 const HomePage = () => {
-  return <div>HomePage</div>;
+  return (
+    <>
+      <Service />
+    </>
+  );
 };
 
 export default HomePage;

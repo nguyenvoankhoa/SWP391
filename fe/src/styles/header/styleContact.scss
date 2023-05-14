@@ -1,37 +1,25 @@
-@font-face {
-    font-family: Roboto;
-    src: url(../../../public/assets/fonts/Roboto.ttf);
-}
-
-@font-face {
-    font-family: Source Serif Pro;
-    src: url(../../../public/assets/fonts/SourceSerifPro.ttf);
-}
-
 .contact-infor {
-    font-family: Roboto;
-    display: flex;
-    background-color: #749EB1;
-    color: white;
-    font-family: sans-serif;
-    padding: 0 30px;
-}
-
-.contact-infor .comp {
+  font-family: Roboto;
+  display: flex;
+  background-color: #749eb1;
+  color: white;
+  font-family: sans-serif;
+  padding: 0 30px;
+  && .comp {
     display: flex;
     border: 0 20px;
     text-align: center;
+  }
 }
 
 .contact-infor img {
-    height: auto;
-    width: 40px;
+  height: auto;
+  width: 40px;
 }
 
 .contact-infor p {
-    position: absolute;
-    top: 50%;
-    left: 5rem;
-    transform: translate(0, -50%);
+  position: absolute;
+  top: 50%;
+  left: 5rem;
+  transform: translate(0, -50%);
 }
-

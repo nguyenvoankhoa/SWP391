@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import ContactInfoComponent from "./ContactInfoComponent";
 import HeaderComponent from "./HeaderComponent";
-import "../../styles/bootstrap.css";
-import "../../styles/header/styleHeader.scss";
 import { Link } from "react-router-dom";
 export default class Header extends Component {
   state = {
@@ -21,7 +19,7 @@ export default class Header extends Component {
         <ContactInfoComponent />
         <div className="header-tags">
           <div className="">
-            <img className="logo" src="assets/img/LOGO.png" />
+            <img className="logo" src="assets/img/LOGO.png" alt="img" />
           </div>
           <Link className="header-text">
             <HeaderComponent
@@ -42,10 +40,10 @@ export default class Header extends Component {
             <HeaderComponent content="CHÍNH SÁCH BẢO HÀNH" />
           </Link>
           <Link className="">
-            <img className="button" src="assets/img/user.png" />
+            <img className="button" src="assets/img/user.png" alt="img" />
           </Link>
           <Link className="">
-            <img className="button" src="assets/img/cart.png" />
+            <img className="button" src="assets/img/cart.png" alt="img" />
           </Link>
         </div>
       </div>
