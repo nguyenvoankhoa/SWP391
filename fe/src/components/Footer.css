@@ -1,0 +1,45 @@
+.footer {
+    background-color: #D9D9D9;
+    padding-top: 10px;
+    width: 100%;
+    display: flex;
+    
+  }
+  
+  .footer .footer-heading {
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  .footer p {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 1rem; 
+    font-size: 20px;
+    font-style: normal;
+  }
+  .footer .text-muted {
+    margin-top: 0rem;
+    color: #999;
+  }
+  .mb-2{
+    padding-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 24px;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  .footer .address p {
+    margin-bottom: 1rem;
+  }
+  .footer .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .footer .row.justify-content-around {
+    justify-content: space-around;
+  }
+  
+  
