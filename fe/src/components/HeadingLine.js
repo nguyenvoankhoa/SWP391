@@ -2,26 +2,28 @@ import React from "react";
 
 const TopHeader = () => {
   return (
-    <nav className="row">
-      <div className="col-6">
-        <a class="navbar-brand" href="#">
-          <img
-            src="/docs/4.1/assets/brand/bootstrap-solid.svg"
-            width="30"
-            height="30"
-            alt=""
-          />
-        </a>
+    <nav className="head-line">
+      <div className="service">
+        <img
+          src="assets/images/247.png"
+          alt=""
+        />
         <span>Dịch vụ 24/7</span>
       </div>
 
-      <div className="col-3">
-        <img />
-        <span>mail text</span>
+      <div className="mail">
+        <img
+          src="assets/images/mail.png"
+          alt=""
+        />
+        <span>cleanshine@gmail.com</span>
       </div>
-      <div className="col-3">
-        <img />
-        <span>phone text</span>
+      <div className="phone">
+        <img
+          src="assets/images/phone.png"
+          alt=""
+        />
+        <span>0977.54.54.50</span>
       </div>
     </nav>
   );

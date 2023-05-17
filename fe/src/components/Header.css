@@ -1,0 +1,78 @@
+.head-line {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center !important;
+    background-color: #749EB1;
+    color: white !important;
+    font-size: 16px;
+    padding: 3px 10px;
+    transition-delay: 0.5s;
+}
+
+.head-line img {
+    height: auto;
+    width: 30px;
+}
+
+.head-line span {
+    padding: 0 1rem;
+    text-align: center;
+}
+
+.mail {
+    margin-left: 10vw;
+    display: inline;
+}
+
+@media screen and (min-width: 1400px) {
+    .head-line {
+        padding: 0.3vw 2vw !important;
+        font-size: 1.1vw !important;
+    }
+
+    .head-line img {
+        height: auto;
+        width: 2vw;
+    }
+    
+    .head-line span {
+        padding: 0 1.5rem;
+    }
+    
+    .mail {
+        margin-left: 50vw !important;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .head-line {
+        font-size: 16px !important;
+        padding: 3px 10px !important;
+    }
+
+    .head-line img {
+        width: 20px !important ;
+    }
+
+    .mail {
+        margin-left: 0 !important;
+        min-width: 225px !important;
+    }
+
+    .service {
+        min-width: 152px !important;
+    }
+
+    .phone {
+        min-width: 160px !important;
+    }
+}
+
+
+
+
+
+
+
+
+
