@@ -8,6 +8,7 @@
   align-items: center;
   justify-content: center;
   margin: 0 auto;
+  margin-top: -100px;
 }
 
 .dot img {
@@ -20,21 +21,39 @@
 }
 
 .container-fluid {
-  display: flex;
+  display: contents;
   justify-content: center;
 }
-
 .card {
-  border-radius: 5px;
   margin-top: 7rem;
   text-align: center;
   position: relative;
-  /* transition: all 0.3s ease-in;
-  -webkit-transition: all 0.3s ease-in;
-  -moz-transition: all 0.3s ease-in; */
+  border-radius: 100%;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  border: 1px solid; 
+  border-radius: -100px;
+  padding: 0px;
+  
+}
+.card-body {
+  background-color: #90B6C7;
+  padding: 0px;
 }
 
 .card-title {
+  font-family: 'Roboto', sans-serif;
   padding-top: 1rem;
   text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.05rem;
+}
+.card p {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-size: 18px;
+  text-align: justify;
+  justify-content: center; 
+  margin-top: 0.5rem;
+  padding-inline: 2rem;
+
 }
