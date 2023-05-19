@@ -10,7 +10,6 @@ const TopHeader = () => {
         />
         <span>Dịch vụ 24/7</span>
       </div>
-
       <div className="mail">
         <img
           src="assets/images/mail.svg"

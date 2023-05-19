@@ -13,14 +13,16 @@
 }
 
 .head-line {
+    width: 200vw;
     display: flex !important;
-    justify-content: space-between;
+    justify-content: normal;
     align-items: center !important;
     background-color: #749EB1;
     color: white !important;
     font-size: 16px;
     padding: 3px 10px;
     transition-delay: 0.5s;
+    box-sizing: border-box;
 }
 
 .head-line img {
@@ -34,7 +36,7 @@
 }
 
 .mail {
-    margin-left: 10vw;
+    margin-left: 50vw;
     display: inline;
 }
 
@@ -58,32 +60,27 @@
     }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 740px) {
     .head-line {
-        font-size: 16px !important;
-        padding: 3px 10px !important;
+        font-size: 3.1vw !important;
+        padding: 3px 1vw !important;
+    }
+
+    .head-line span {
+        padding: 0 0.5vw;
     }
 
     .head-line img {
-        width: 20px !important ;
+        width: 5vw !important ;
     }
 
     .mail {
-        margin-left: 0 !important;
-        min-width: 225px !important;
-    }
-
-    .service {
-        min-width: 152px !important;
-    }
-
-    .phone {
-        min-width: 160px !important;
+        margin-left: 10vw !important;
     }
 }
 
 .container-fluid {
-    padding-top: 15px;
+    width: 100vw !important;
     display: flex;
     justify-content: space-around;
     font-size: 15px !important;
@@ -180,29 +177,39 @@
     }
 }
 
-@media screen and (max-width: 1100px) {image.png
+@media screen and (max-width: 740px) {
 
     .container-fluid {
-        padding: 0 !important;
-        margin: 0 !important;
+        width: 200vw !important;
+        padding: 0px !important;
+        margin: 0px !important;
+    }
+
+    .logo {
+        width: fit-content !important;
+        height: auto !important;
     }
 
     .logo img {
         position: absolute !important;
-        top: 6%;
+        top: 5%;
         left: 3%;
-        width: 90px !important;
+        width: 20vw !important;
         height: auto;
         z-index: 1;
     }
 
     .login {
         position: absolute;
-        top: 6.5%;
+        top: 2%;
         left: 50%;
-        transform: translate(-100%, -15%);
+        transform: translate(-50%, 0);
         padding: 0;
         margin: 0;
+    }
+
+    .login img {
+        width: 12vw !important;
     }
 
     .login .user {
@@ -217,7 +224,8 @@
     }
 
     .nav-btn img {
-        width: 65px;
+        width: 10vw;
+        height: auto;
     }
 
 
@@ -226,8 +234,8 @@
         width: fit-content;
         height: auto;
         position: absolute;
-        top: 7%;
-        right: 5%;
+        top: 7.5%;
+        right: -20%;
         box-sizing: border-box;
         z-index: -1;
     } 
@@ -240,10 +248,9 @@
     .heading-bar {
         opacity: 0;
         background-color: #e7f6ff;
-        padding-top: 90px !important;
-        margin-left: 80%;
+        margin-top: 5vw;
         width: 20%;
-        height: 100px;
+        height: 60px;
     }
 
     .heading-bar .nav-btn {
@@ -252,26 +259,27 @@
 
     .navbar-nav ul li {
         display: flex !important;
-        justify-content: right !important;
-        text-align: right !important;
-        padding-right: 5.5% !important;
+        justify-content: center !important;
+        text-align: center !important;
     }
 
-    .heading-bar:hover , .heading-bar:active {
+    .heading-bar:hover, .heading-bar:active {
         opacity: 1;
         height: auto !important;
         width: 100%;
-        margin: 0 !important;
+        padding-top: 60px !important;
+        margin: 0;
+        margin-right: 50vw;
     }
 }
 
 .service-dropdown {
     visibility: hidden !important;
-    width: 200px !important;
+    width: 250px !important;
     height: auto;
     position: absolute;
     top: 95%;
-    right: 0;
+    right: -40%;
     background-color: #ffffff;
     border-top: solid 2px #cbe7f4;
     border-radius: 10px;
@@ -288,10 +296,10 @@
 
 .service-dropdown ul li {
     text-decoration: none !important;
-    text-align: right !important;
+    text-align: left !important;
     border-radius: 5px;
     padding: 5px !important;
-    padding-right: 20px !important; 
+    padding-left: 30px !important; 
 }
 
 .service-dropdown ul li:hover {
