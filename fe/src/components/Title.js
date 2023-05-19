@@ -1,5 +1,4 @@
 import React from "react";
-
 const Title = (props) => {
   const color = props.color;
   const fontSize = props.fontSize;
