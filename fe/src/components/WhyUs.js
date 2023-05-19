@@ -29,7 +29,7 @@ const WhyUs = () => {
       </div>
       <div className="col-md-6">
         <Benefit
-          image="assets/images/cleaning.svg"
+          image="assets/images/cleaning-service.svg"
           title="Đa dạng dịch vụ"
           content="Chúng tôi cung cấp đa dạng các dịch vụ vệ sinh như tạp vụ vệ sinh thường xuyên, theo giờ, theo ngày. Chúng tôi tự tin có thể đáp ứng mọi yêu cầu của khách hàng."
         />

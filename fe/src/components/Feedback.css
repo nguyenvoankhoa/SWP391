@@ -9,11 +9,13 @@
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-size: 18px;
-    padding-top: 2rem;
     line-height: 1.5;
     text-align: justify;
     justify-content: center; 
     display: block;
+    letter-spacing: 0.05rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
   }
   
   .row-justify.text-center {

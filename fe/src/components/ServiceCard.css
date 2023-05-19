@@ -1,0 +1,40 @@
+.dot {
+  height: 10rem;
+  width: 10rem;
+  background-color: #FFB99D;
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.dot img {
+  max-width: 65%;
+  height: auto;
+}
+
+.dot-content {
+  text-align: center;
+}
+
+.container-fluid {
+  display: flex;
+  justify-content: center;
+}
+
+.card {
+  border-radius: 5px;
+  margin-top: 7rem;
+  text-align: center;
+  position: relative;
+  /* transition: all 0.3s ease-in;
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in; */
+}
+
+.card-title {
+  padding-top: 1rem;
+  text-align: center;
+}
