@@ -16,7 +16,18 @@ const Feedback = () => {
         <div className="row-justify-content-center">
           <div className="col-md-12">
           <p>Mình là khách hàng thường xuyên của dịch vụ bên CleanShine. Vì tính chất công việc bận rộn, mình không có nhiều thời gian sắp xếp, dọn dẹp, vệ sinh nhà cửa nên chỉ cần nhấc điện thoại lên gọi đặt lịch buổi lẻ. Các bạn nhân viên làm việc rất sạch sẽ, gọn gàng và nhiệt tình. Mình rất hài lòng về dịch vụ của CleanShine, cũng như có thể thanh toán online qua các ứng dụng khác như ví MoMo rất tiện lợi. Mình đã recommend dich vụ với bạn bè và người thân. Chúc công ty ngày càng phát triển.</p>          
-          <p className="feedback text-center">Chị An Thư <br/> Thành phố Hồ Chí Minh</p>
+          <p className="feedback-text text-center">Chị An Thư <br/> Thành phố Hồ Chí Minh</p>
+          <div className="user">
+            <img src="assets/images/dancer.svg" alt=""></img>
+            <img src="assets/images/student.svg" alt=""></img>
+            <img src="assets/images/delivery.svg" alt=""></img>
+            <img src="assets/images/gamer.svg" alt=""></img>
+            <img src="assets/images/woman.svg" alt=""></img>
+            <img src="assets/images/lover.svg" alt=""></img>
+            <img src="assets/images/mother.svg" alt=""></img>
+            <img src="assets/images/customer.svg" alt=""></img>
+            <img src="assets/images/ceo.svg" alt=""></img>
+          </div>
           </div>
         </div>
       </div>

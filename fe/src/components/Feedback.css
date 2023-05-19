@@ -9,7 +9,7 @@
     font-family: 'Roboto', sans-serif;
     font-style: normal;
     font-size: 18px;
-  padding-top: 2rem;
+    padding-top: 2rem;
     line-height: 1.5;
     text-align: justify;
     justify-content: center; 
@@ -19,9 +19,11 @@
   .row-justify.text-center {
     justify-content: center;
   }
-  .feedback-text-center {
+  .feedback-text.text-center {
     text-align: center;
-    color: #999999;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
   }
   
   .feedback-text-center br {
@@ -29,4 +31,12 @@
     content: "";
     margin: 5px 0;
   }
-  
+  .user img {
+    width: 70px;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    justify-content: space-between;
+    /* display: block; */
+    text-align: center;
+  }
