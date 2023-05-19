@@ -1,0 +1,33 @@
+/* Benefit.css */
+
+.benefit-container {
+  text-align: center;
+   padding-bottom: 30px;
+}
+
+.container img {
+  width: 200px;
+}
+
+.benefit-container p {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-size: 18px;
+  line-height: 33px;
+  text-align: justify;
+  justify-content: center; 
+  display: block;
+  padding-inline: 7rem;
+  padding-block-end: 0px;
+  margin-bottom: 0px;
+}
+.text-center {
+  color: #749EB1;
+  font-family: 'Roboto', sans-serif;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.05em;
+  font-size: 32px;
+  font-weight: bold;
+  padding-bottom: 4px;
+}

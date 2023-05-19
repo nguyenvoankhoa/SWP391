@@ -1,5 +1,5 @@
 import React from "react";
-
+import './Feedback.css';
 const Title = (props) => {
   const color = props.color;
   const fontSize = props.fontSize;

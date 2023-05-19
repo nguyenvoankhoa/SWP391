@@ -1,0 +1,32 @@
+/* Feedback.css */
+  
+  .feedback-container {
+    margin: 0 auto;
+    max-width: 60rem;
+  }
+  
+  .feedback-container p {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-size: 18px;
+  padding-top: 2rem;
+    line-height: 1.5;
+    text-align: justify;
+    justify-content: center; 
+    display: block;
+  }
+  
+  .row-justify.text-center {
+    justify-content: center;
+  }
+  .feedback-text-center {
+    text-align: center;
+    color: #999999;
+  }
+  
+  .feedback-text-center br {
+    display: block;
+    content: "";
+    margin: 5px 0;
+  }
+  
