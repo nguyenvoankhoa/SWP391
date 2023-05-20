@@ -1,16 +1,16 @@
 import React from "react";
-import Title from "./Title";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/scrollbar";
+import "./Carousel.css";
 
 const Carousel = () => {
   return (
     <div className="container">
-      <Title
-        color="#000000"
-        title="SỨ MỆNH CỦA CHÚNG TÔI"
-        fontSize="60px"
-        fontWeight="700"
-      />
-      <h1>CAROUSEL</h1>
+
     </div>
   );
 };
