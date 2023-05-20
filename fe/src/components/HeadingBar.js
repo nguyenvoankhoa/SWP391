@@ -4,41 +4,50 @@ import { Link } from "react-router-dom";
 const HeadingBar = () => {
 
   return (
-    <div className="container-fluid">
+    <nav className="custom-navbar navbar navbar navbar-expand-md" arial-label="CleanShine navigation bar">
+      <div className="container-fluid">
+        {/* LOGO */}
+        <a class="navbar-brand" href="index.html"> <img src="assets/images/LOGO.svg" alt="" /></a>
 
-      {/* LOGO */}
-      <a className="navbar-brand logo" href="index.html">
-        <img src="assets/images/LOGO.svg" alt="" />
-      </a>
-
-      {/* Services */}
-      <nav
-        className="custom-navbar navbar navbar navbar-expand-md heading-bar"
-        type="button"
-      >
-        <div
-          className="navbar-nav"
+        {/* NAVIGATION BUTTON */}
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarsCleanShine"
+          aria-controls="navbarsCleanShine"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        {/* NAVIGATION BAR */}
+        <div className="collapse navbar-collapse" id="navbarsCleanShine">
           <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0 service-list">
-            <li>
-              <Link
-                className="nav-link otp-service service-options"
-                type="button"
-                href="shop.html"
-                style={{ position: 'relative' }}
-              >
-                DỊCH VỤ
-                <div className="arrow"></div>
-                <div className="service-dropdown">
-                  <ul>
-                    <li src>Service 1</li>
-                    <li>Service 2</li>
-                    <li>Service 3</li>
-                    <li>Service 4</li>
-                    <li>Service 5</li>
-                  </ul>
-                </div>
-              </Link>
+            <li class="nav-item">
+              <div className="opt-services">
+                <Link
+                  className="nav-link btn btn-secondary dropdown-btn"
+                  role="button"
+                  id="dropdownMenuLink"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  href="shop.html"
+                  style={{ position: 'relative' }}
+                >
+                  DỊCH VỤ
+                  <div className="arrow"></div>
+                </Link>
+
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <li><a class="dropdown-item" href="#">Vệ sinh định kỳ</a></li>
+                  <li><a class="dropdown-item" href="#">Tổng dọn vệ sinh</a></li>
+                  <li><a class="dropdown-item" href="#">Vệ sinh điều hòa</a></li>
+                  <li><a class="dropdown-item" href="#">Nấu ăn</a></li>
+                  <li><a class="dropdown-item" href="#">Sửa chữa</a></li>
+                </ul>
+              </div>
             </li>
             <li>
               <Link className="nav-link otp-service" href="shop.html">
@@ -61,22 +70,18 @@ const HeadingBar = () => {
               </Link>
             </li>
           </ul>
+
+          {/* Login */}
+          <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5 login">
+            <li>
+              <Link className="nav-link user" href="#">
+                <img src="assets/images/user.svg" alt=""></img>
+              </Link>
+            </li>
+          </ul>
         </div>
-      </nav>
-
-      {/* Login */}
-      <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5 login">
-        <li>
-          <Link className="nav-link user" href="#">
-            <img src="assets/images/user.svg" alt=""></img>
-          </Link>
-        </li>
-      </ul>
-      <button className="nav-btn show-btn">
-        <img src="assets/images/menu.svg" alt="" />
-      </button>
-    </div>
-
+      </div>
+    </nav >
   );
 };
 
