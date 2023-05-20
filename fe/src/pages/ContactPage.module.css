@@ -1,0 +1,27 @@
+.contactText {
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 29px;
+}
+.contactTitle {
+  font-family: "Source Serif Pro";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 45px;
+  line-height: 56px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.05em;
+  color: #000000;
+  justify-content: center;
+}
+.contactImage {
+  border-radius: 20px;
+  width: 553px !important;
+  height: 307px !important;
+}
+.map {
+  width: 100vw;
+  height: 756px;
+  background-image: url("https://saigonrealestate.vn/wp-content/uploads/2020/05/Vinhomes-Grand-Park-tr%C3%AAn-Google-Maps.jpg");
+}

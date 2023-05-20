@@ -2,12 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const HeadingBar = () => {
-
   return (
-    <nav className="custom-navbar navbar navbar navbar-expand-md" arial-label="CleanShine navigation bar">
+    <nav
+      className="custom-navbar navbar navbar navbar-expand-md"
+      arial-label="CleanShine navigation bar"
+    >
       <div className="container-fluid">
         {/* LOGO */}
-        <a class="navbar-brand" href="index.html"> <img src="assets/images/LOGO.svg" alt="" /></a>
+        <a class="navbar-brand" href="index.html">
+          {" "}
+          <img src="assets/images/LOGO.svg" alt="" />
+        </a>
 
         {/* NAVIGATION BUTTON */}
         <button
@@ -33,39 +38,54 @@ const HeadingBar = () => {
                   id="dropdownMenuLink"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  href="shop.html"
-                  style={{ position: 'relative' }}
+                  to="services"
+                  style={{ position: "relative" }}
                 >
                   DỊCH VỤ
                   <div className="arrow"></div>
                 </Link>
 
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                  <li><a class="dropdown-item" href="#">Vệ sinh định kỳ</a></li>
-                  <li><a class="dropdown-item" href="#">Tổng dọn vệ sinh</a></li>
-                  <li><a class="dropdown-item" href="#">Vệ sinh điều hòa</a></li>
-                  <li><a class="dropdown-item" href="#">Nấu ăn</a></li>
-                  <li><a class="dropdown-item" href="#">Sửa chữa</a></li>
+                  <li>
+                    <Link class="dropdown-item" href="#">
+                      Vệ sinh định kỳ
+                    </Link>
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" href="#">
+                      Tổng dọn vệ sinh
+                    </Link>
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" href="#">
+                      Vệ sinh điều hòa
+                    </Link>
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" href="#">
+                      Nấu ăn
+                    </Link>
+                  </li>
+                  <li>
+                    <Link class="dropdown-item" href="#">
+                      Sửa chữa
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </li>
             <li>
-              <Link className="nav-link otp-service" href="shop.html">
-                GIỚI THIỆU
-              </Link>
-            </li>
-            <li>
-              <Link className="nav-link otp-service" href="about.html">
+              <Link className="nav-link otp-service" to="contact">
                 LIÊN HỆ
               </Link>
             </li>
             <li>
-              <Link className="nav-link otp-service" href="services.html">
+              <Link className="nav-link otp-service" to="news">
                 TIN TỨC
               </Link>
             </li>
             <li>
-              <Link className="nav-link otp-service" href="blog.html">
+              <Link className="nav-link otp-service" to="guarantee">
                 CHÍNH SÁCH BẢO HÀNH
               </Link>
             </li>
@@ -81,7 +101,7 @@ const HeadingBar = () => {
           </ul>
         </div>
       </div>
-    </nav >
+    </nav>
   );
 };
 
