@@ -4,7 +4,7 @@ import "./Carousel.css";
 const CarouselBar = () => {
   return (
     <div className="container">
-      <h1 className="text-center c-title">SỨ MỆNH CỦA CHÚNG TÔI</h1>
+      <h1 className="text-center c-title text-dark">SỨ MỆNH CỦA CHÚNG TÔI</h1>
       <div id="carouselBar" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-indicators">
           <button
@@ -59,10 +59,6 @@ const CarouselBar = () => {
           data-bs-target="#carouselBar"
           data-bs-slide="prev"
         >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
           <span className="visually-hidden">Previous</span>
         </button>
 
@@ -72,10 +68,6 @@ const CarouselBar = () => {
           data-bs-target="#carouselBar"
           data-bs-slide="next"
         >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
           <span className="visually-hidden">Next</span>
         </button>
       </div>
