@@ -4,15 +4,15 @@ import { Link } from "react-router-dom";
 const HeadingBar = () => {
   return (
     <nav
-      className="custom-navbar navbar navbar navbar-expand-md"
+      className="custom-navbar navbar navbar navbar-expand-md my-3"
       arial-label="CleanShine navigation bar"
     >
       <div className="container-fluid">
         {/* LOGO */}
-        <a class="navbar-brand" href="index.html">
+        <Link class="navbar-brand" to="">
           {" "}
           <img src="assets/images/LOGO.svg" alt="" />
-        </a>
+        </Link>
 
         {/* NAVIGATION BUTTON */}
         <button
@@ -48,12 +48,12 @@ const HeadingBar = () => {
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <li>
                     <Link class="dropdown-item" href="#">
-                      Vệ sinh định kỳ
+                      Giúp việc theo giờ
                     </Link>
                   </li>
                   <li>
                     <Link class="dropdown-item" href="#">
-                      Tổng dọn vệ sinh
+                      Tổng vệ sinh
                     </Link>
                   </li>
                   <li>
@@ -63,12 +63,7 @@ const HeadingBar = () => {
                   </li>
                   <li>
                     <Link class="dropdown-item" href="#">
-                      Nấu ăn
-                    </Link>
-                  </li>
-                  <li>
-                    <Link class="dropdown-item" href="#">
-                      Sửa chữa
+                      Vệ sinh sofa
                     </Link>
                   </li>
                 </ul>
@@ -94,7 +89,7 @@ const HeadingBar = () => {
           {/* Login */}
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5 login">
             <li>
-              <Link className="nav-link user" href="#">
+              <Link className="nav-link user" to="signin">
                 <img src="assets/images/user.svg" alt=""></img>
               </Link>
             </li>
