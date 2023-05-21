@@ -31,3 +31,25 @@
   font-weight: bold;
   padding-bottom: 4px;
 }
+@media (max-width: 768px) {
+  .text-center {
+    font-size: 4vh !important;
+  }
+  .benefit-container p {
+    font-size: 2vh !important;
+    padding-inline: 3vw !important;
+  }
+  .container img {
+    width: 9rem !important;
+  }
+}
+@media (max-width: 992px) {
+  .benefit-container p {
+    font-size: 2vh !important;
+    padding-inline: 3.5vw !important;
+  }
+  .text-center {
+    font-size: 4vh !important;
+  }
+  
+}

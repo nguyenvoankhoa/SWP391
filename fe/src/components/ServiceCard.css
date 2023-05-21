@@ -55,9 +55,38 @@
   justify-content: center; 
   margin-top: 0.5rem;
   padding-inline: 2rem;
+  line-height: 33px;
 
 }
 
 .container-fluid .col .row .card {
   border-radius: 50px !important;
+}
+@media (max-width: 768px) {
+.card-title {
+ font-size: 3vh !important;
+}
+.card p {
+  font-size: 2vh !important;
+  padding-inline: 1rem !important;
+
+}
+.dot {
+  height: 8rem;
+  width: 8rem;
+}
+}
+@media (max-width: 992px) {
+  .card-title {
+    font-size: 2vh !important;
+  }
+  .card p {
+    font-size: 2vh !important;
+    padding-inline: 1rem !important;
+  }
+  .dot {
+    height: 8rem !important;
+    width: 8rem !important;
+  }
+
 }
