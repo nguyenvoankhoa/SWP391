@@ -8,7 +8,7 @@ const Seperator = () => {
         style={{
           height: "2.5px",
           backgroundColor: "#000",
-          borderRadius: "5px"
+          borderRadius: "5px",
         }}
       ></div>
     </div>

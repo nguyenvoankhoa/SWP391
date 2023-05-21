@@ -51,7 +51,7 @@ const UserHeadingBar = () => {
           </ul>
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5 login">
             <li>
-              <Link className="nav-link user" to="/logout">
+              <Link className="nav-link user" to="/">
                 <img src="assets/images/logout.svg" alt=""></img>
               </Link>
             </li>

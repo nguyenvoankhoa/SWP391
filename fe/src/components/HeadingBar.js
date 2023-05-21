@@ -9,13 +9,13 @@ const HeadingBar = () => {
     >
       <div className="container-fluid">
         {/* LOGO */}
-        <a class="navbar-brand" href="index.html">
-          <Link to="/"><img src="assets/images/LOGO.svg" alt="" /></Link>
-        </a>
+        <Link className="navbar-brand" to="/">
+          <img src="assets/images/LOGO.svg" alt="" />
+        </Link>
 
         {/* NAVIGATION BUTTON */}
         <button
-          class="navbar-toggler"
+          className="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarsCleanShine"
@@ -23,13 +23,13 @@ const HeadingBar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+          <span className="navbar-toggler-icon"></span>
         </button>
 
         {/* NAVIGATION BAR */}
         <div className="collapse navbar-collapse" id="navbarsCleanShine">
           <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0 service-list">
-            <li class="nav-item">
+            <li className="nav-item">
               <div className="opt-services">
                 <Link
                   className="nav-link btn btn-secondary dropdown-btn"
@@ -44,24 +44,27 @@ const HeadingBar = () => {
                   <div className="arrow"></div>
                 </Link>
 
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuLink"
+                >
                   <li>
-                    <Link class="dropdown-item" href="#">
+                    <Link className="dropdown-item" href="#">
                       Giúp việc theo giờ
                     </Link>
                   </li>
                   <li>
-                    <Link class="dropdown-item" href="#">
+                    <Link className="dropdown-item" href="#">
                       Tổng vệ sinh
                     </Link>
                   </li>
                   <li>
-                    <Link class="dropdown-item" href="#">
+                    <Link className="dropdown-item" href="#">
                       Vệ sinh điều hòa
                     </Link>
                   </li>
                   <li>
-                    <Link class="dropdown-item" href="#">
+                    <Link className="dropdown-item" href="#">
                       Vệ sinh sofa
                     </Link>
                   </li>
@@ -88,7 +91,7 @@ const HeadingBar = () => {
           {/* Login */}
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5 login">
             <li>
-              <Link to="/sign/in" className="nav-link user" href="#">
+              <Link to="sign-in" className="nav-link user" href="#">
                 <img src="assets/images/user.svg" alt=""></img>
               </Link>
             </li>
