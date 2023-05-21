@@ -1,0 +1,23 @@
+@font-face {
+    font-family: Roboto;
+    src: url(../../public/assets/fonts/Roboto.ttf);
+}
+
+@font-face {
+    font-family: SourceSerifPro;
+    src: url(../../public/assets/fonts/SourceSerifPro.ttf);
+}
+
+.signin-bg {
+    height: 100vh;
+}
+
+.login-title {
+    font-family: SourceSerifPro !important;
+    color: black;
+    padding: 5vh;
+}
+
+.logo-area {
+    background-color: #c0d6f7;
+}
