@@ -17,7 +17,6 @@ import HourlyHelp from "./pages/User/HourlyHelp";
 import TotalSanitation from "./pages/User/TotalSanitation";
 import FabricCleaning from "./pages/User/FabricCleaning";
 import ElectronicCleaning from "./pages/User/ElectronicCleaning";
-import SignInPageLayout from "./layouts/SignInPageLayout";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -44,6 +43,8 @@ const router = createBrowserRouter([
         path: "guarantee",
         element: <GuaranteePage />,
       },
+      { path: "sign-in", element: <SignInPage /> },
+      { path: "sign-up", element: <SignUpPage /> },
     ],
   },
   {
@@ -58,14 +59,6 @@ const router = createBrowserRouter([
       { path: "total-senitation", element: <TotalSanitation /> },
       { path: "fabric-cleaning", element: <FabricCleaning /> },
       { path: "electronic-cleaning", element: <ElectronicCleaning /> },
-    ],
-  },
-  {
-    path: "/sign",
-    element: <SignInPageLayout />,
-    children: [
-      { path: "in", element: <SignInPage /> },
-      { path: "up", element: <SignUpPage /> },
     ],
   },
 ]);
