@@ -34,7 +34,7 @@ const ContactPage = () => {
             <div className="container">
               <p className={classes.contactTitle}>THÔNG TIN LIÊN HỆ</p>
               <p className={classes.contactText}>
-                Đội ngũ Tư vấn viên & Chăm sóc Khách hàng kinh nghiệm, chuyên
+                Đội ngũ Tư vấn viên và Chăm sóc Khách hàng kinh nghiệm, chuyên
                 nghiệp, tận tâm. Chúng tôi cam kết bảo hành dịch vụ khi Khách
                 hàng chưa hài lòng. Người giúp việc nhà tiêu chuẩn, đáng tin
                 cậy, có đầy đủ hồ sơ. Công ty chúng tôi chịu trách nhiệm tuyển
