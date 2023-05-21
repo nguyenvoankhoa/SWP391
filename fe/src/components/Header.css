@@ -1,3 +1,4 @@
+/* HEADING LINE */
 @font-face {
   font-family: Roboto;
   src: url(../../public/assets/fonts/Roboto.ttf);
@@ -58,13 +59,14 @@
   }
 }
 
+/* HEADING BAR */
 .custom-navbar {
   background: #ffffff !important;
   padding-top: 20px;
 }
 
 .custom-navbar .navbar-brand img {
-  width: 5vw;
+  width: 15vw;
   height: auto;
   margin-left: 3vw;
 }
@@ -142,8 +144,15 @@
 }
 
 @media (min-width: 768px) {
+
+  .custom-navbar .navbar-brand img {
+    width: 8vw;
+    height: auto;
+    margin-left: 3vw;
+  }
+
   .custom-navbar .custom-navbar-cta img {
-    width: 2vw !important;
+    width: 3vw !important;
   }
 
   .custom-navbar .custom-navbar-nav .dropdown-menu {

@@ -10,8 +10,7 @@ const HeadingBar = () => {
       <div className="container-fluid">
         {/* LOGO */}
         <a class="navbar-brand" href="index.html">
-          {" "}
-          <img src="assets/images/LOGO.svg" alt="" />
+          <Link to="/"><img src="assets/images/LOGO.svg" alt="" /></Link>
         </a>
 
         {/* NAVIGATION BUTTON */}
@@ -89,7 +88,7 @@ const HeadingBar = () => {
           {/* Login */}
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5 login">
             <li>
-              <Link className="nav-link user" href="#">
+              <Link to="signin" className="nav-link user" href="#">
                 <img src="assets/images/user.svg" alt=""></img>
               </Link>
             </li>

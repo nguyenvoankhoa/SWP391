@@ -4,7 +4,7 @@ import "./Carousel.css"
 const CarouselBar = () => {
   return (
     <div className="container">
-      <h1 className="text-center">SỨ MỆNH CỦA CHÚNG TÔI</h1>
+      <h1 className="text-center c-title">SỨ MỆNH CỦA CHÚNG TÔI</h1>
       <div id="carouselBar" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
 

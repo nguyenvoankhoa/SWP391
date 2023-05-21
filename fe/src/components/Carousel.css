@@ -8,7 +8,7 @@
     src: url(../../public/assets/fonts/SourceSerifPro.ttf);
 }
 
-.container .text-center {
+.c-title {
     font-family: SourceSerifPro !important;
     padding-bottom: 2%;
     font-size: 6vw;
@@ -21,8 +21,8 @@
 
 @media (min-width: 768px) {
     
-    .container .text-center {
-        font-size: 3.5vw;
+    .c-title {
+        font-size: 3.5vw !important;
     }
     .container .carousel .carousel-inner, .container .carousel img{
         border-radius: 40px;
