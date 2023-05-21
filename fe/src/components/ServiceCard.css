@@ -38,6 +38,7 @@
 .card-body {
   background-color: #90B6C7;
   padding: 0px;
+  border-radius: 5px;
 }
 
 .card-title {
