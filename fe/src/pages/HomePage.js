@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "../components/Carousel";
+import Carousel from "../components/CarouselBar";
 import Seperator from "../UI/Seperator";
 import Services from "../components/Services";
 import Feedback from "../components/Feedback";
