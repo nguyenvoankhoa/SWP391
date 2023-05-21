@@ -2,8 +2,8 @@ import React from "react";
 
 const TopHeader = () => {
   return (
-    <div className="container-fluid">
-      <nav className="row">
+    <div className="container-fluid hline-bg">
+      <nav className="row hline-content">
         <div className="col-md-4 service">
           <img
             src="assets/images/247.svg"

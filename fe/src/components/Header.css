@@ -13,12 +13,12 @@
   font-family: Roboto;
 }
 
-.container-fluid {
+.hline-bg {
   display: flex !important;
   justify-content: space-around;
 }
 
-.container-fluid .row {
+.hline-bg .hline-content {
   width: 100vw;
   justify-content: left;
   background-color: #749eb1;
@@ -27,33 +27,33 @@
   padding: 3px 10px;
 }
 
-.container-fluid .row img {
+.hline-bg .hline-content img {
   height: auto;
   width: 2vw;
 }
 
-.container-fluid .row span {
+.hline-bg .hline-content span {
   padding: 0 0.2rem;
   text-align: center;
 }
 
-.container-fluid .row div {
+.hline-bg .hline-content div {
   width: fit-content;
 }
 
-.container-fluid .row .mail {
+.hline-bg .hline-content .mail {
   padding-left: 15vw;
 }
 
 @media screen and (min-width: 768px) {
-  .container-fluid .row {
+  .hline-bg .hline-content {
     font-size: 1vw !important;
   }
-  .container-fluid .row img {
+  .hline-bg .hline-content img {
     height: auto;
     width: 1.6vw;
   }
-  .container-fluid .row .mail {
+  .hline-bg .hline-content .mail {
     padding-left: 50vw;
     padding-right: 10vw;
   }
@@ -135,7 +135,7 @@
 
 .custom-navbar .custom-navbar-cta {
   margin-left: 0 !important;
-  flex-direction: row;
+  flex-direction: hline-content;
   justify-content: center;
 }
 
