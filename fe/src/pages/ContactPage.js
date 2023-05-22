@@ -50,6 +50,7 @@ const ContactPage = () => {
         allowFullScreen=""
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
+        title="map"
       ></iframe>
       {/* <div className={classes.map}></div> */}
     </>

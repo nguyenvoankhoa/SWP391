@@ -6,7 +6,6 @@ import SignUpPage from "./pages/SignUpPage";
 import NewsPage from "./pages/NewsPage";
 import GuaranteePage from "./pages/GuaranteePage";
 import ErrorPage from "./pages/ErrorPage";
-import ServicesPage from "./pages/ServicesPage";
 import ContactPage from "./pages/ContactPage";
 import UserPageLayout from "./layouts/UserPageLayout";
 import HomeService from "./pages/User/HomeService";
@@ -17,34 +16,59 @@ import HourlyHelp from "./pages/User/HourlyHelp";
 import TotalSanitation from "./pages/User/TotalSanitation";
 import FabricCleaning from "./pages/User/FabricCleaning";
 import ElectronicCleaning from "./pages/User/ElectronicCleaning";
+import HourlyHelpPage from "./pages/HourlyHelpPage";
+import FabricCleaningPage from "./pages/FabricCleaningPage";
+import TotalSanitationPage from "./pages/TotalSanitationPage";
+import ElectronicCleaningPage from "./pages/ElectronicCleaningPage";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      {
-        index: true,
-        element: <HomePage />,
-      },
+      { index: true, element: <HomePage /> },
       {
         path: "services",
-        element: <ServicesPage />,
+        children: [
+          { path: "hourly-help", element: <HourlyHelpPage /> },
+          { path: "total-senitation", element: <TotalSanitationPage /> },
+          { path: "fabric-cleaning", element: <FabricCleaningPage /> },
+          { path: "electronic-cleaning", element: <ElectronicCleaningPage /> },
+        ],
       },
-      {
-        path: "contact",
-        element: <ContactPage />,
-      },
-      {
-        path: "news",
-        element: <NewsPage />,
-      },
-      {
-        path: "guarantee",
-        element: <GuaranteePage />,
-      },
+      { path: "contact", element: <ContactPage /> },
+      { path: "news", element: <NewsPage /> },
+      { path: "guarantee", element: <GuaranteePage /> },
       { path: "sign-in", element: <SignInPage /> },
       { path: "sign-up", element: <SignUpPage /> },
+    ],
+  },
+  {
+    path: "/user",
+    element: <UserPageLayout />,
+    children: [
+      { index: true, element: <HomeService /> },
+      { path: "history", element: <UserHistory /> },
+      { path: "notification", element: <UserNotification /> },
+      { path: "price", element: <ListPrice /> },
+      { path: "hourly-help", element: <HourlyHelp /> },
+      { path: "total-senitation", element: <TotalSanitation /> },
+      { path: "fabric-cleaning", element: <FabricCleaning /> },
+      { path: "electronic-cleaning", element: <ElectronicCleaning /> },
+    ],
+  },
+  {
+    path: "/user",
+    element: <UserPageLayout />,
+    children: [
+      { index: true, element: <HomeService /> },
+      { path: "history", element: <UserHistory /> },
+      { path: "notification", element: <UserNotification /> },
+      { path: "price", element: <ListPrice /> },
+      { path: "hourly-help", element: <HourlyHelp /> },
+      { path: "total-senitation", element: <TotalSanitation /> },
+      { path: "fabric-cleaning", element: <FabricCleaning /> },
+      { path: "electronic-cleaning", element: <ElectronicCleaning /> },
     ],
   },
   {

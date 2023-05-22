@@ -1,5 +1,4 @@
 import React from "react";
-import Card from "../UI/Card";
 import Title from "./Title";
 import Button from "../UI/Button";
 import { Link } from "react-router-dom";

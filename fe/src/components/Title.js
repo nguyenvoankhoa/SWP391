@@ -5,7 +5,11 @@ const Title = (props) => {
   const fontWeight = props.fontWeight;
   return (
     <div
-      style={{ color: color, fontSize: fontSize, fontWeight: fontWeight }}
+      style={{
+        color: color,
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+      }}
       className="text-center"
     >
       {props.title}

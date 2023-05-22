@@ -29,6 +29,11 @@ const HeadingBar = () => {
         {/* NAVIGATION BAR */}
         <div className="collapse navbar-collapse" id="navbarsCleanShine">
           <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0 service-list">
+            <li>
+              <Link className="nav-link otp-service" to="">
+                TRANG CHỦ
+              </Link>
+            </li>
             <li className="nav-item">
               <div className="opt-services">
                 <Link
@@ -37,7 +42,6 @@ const HeadingBar = () => {
                   id="dropdownMenuLink"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  to="services"
                   style={{ position: "relative" }}
                 >
                   DỊCH VỤ
@@ -49,28 +53,38 @@ const HeadingBar = () => {
                   aria-labelledby="dropdownMenuLink"
                 >
                   <li>
-                    <Link className="dropdown-item" href="#">
+                    <Link className="dropdown-item" to="services/hourly-help">
                       Giúp việc theo giờ
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" href="#">
+                    <Link
+                      className="dropdown-item"
+                      to="services/total-senitation"
+                    >
                       Tổng vệ sinh
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" href="#">
+                    <Link
+                      className="dropdown-item"
+                      to="services/electronic-cleaning"
+                    >
                       Vệ sinh điều hòa
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" href="#">
+                    <Link
+                      className="dropdown-item"
+                      to="services/fabric-cleaning"
+                    >
                       Vệ sinh sofa
                     </Link>
                   </li>
                 </ul>
               </div>
             </li>
+
             <li>
               <Link className="nav-link otp-service" to="contact">
                 LIÊN HỆ

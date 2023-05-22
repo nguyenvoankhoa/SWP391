@@ -42,6 +42,35 @@ const SignUpForm = () => {
             />
             <input type="password" className="mb-3 w-100" />
           </div>
+          <div className="row">
+            <div className="mt-3 col-4">
+              <Title
+                color="#000000"
+                title="Số tòa"
+                fontSize="20px"
+                fontWeight="400"
+              />
+              <input type="text" className="mb-3 w-100" />
+            </div>
+            <div className="mt-3 col-4">
+              <Title
+                color="#000000"
+                title="Số phòng"
+                fontSize="20px"
+                fontWeight="400"
+              />
+              <input type="text" className="mb-3 w-100" />
+            </div>
+            <div className="mt-3 col-4">
+              <Title
+                color="#000000"
+                title="Số điện thoại"
+                fontSize="20px"
+                fontWeight="400"
+              />
+              <input type="text" className="mb-3 w-100" />
+            </div>
+          </div>
 
           <div className="d-flex justify-content-center">
             <Title
