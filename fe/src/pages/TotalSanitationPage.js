@@ -6,7 +6,7 @@ const TotalSanitationPage = () => {
   return (
     <div className="container">
       <div className="row my-5">
-        <div className="col-6 d-flex justify-content-center align-items-center">
+        <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
           <div>
             <h1>Dịch Vụ Tổng Vệ Sinh</h1>
             <p>
@@ -16,7 +16,7 @@ const TotalSanitationPage = () => {
             </p>
           </div>
         </div>
-        <div className="col-6">
+        <div className="col-lg-6 col-sm-12">
           <img
             src="https://cdn.jupviec.vn/slider_f09a6abdbf.png"
             alt="img"
@@ -25,14 +25,14 @@ const TotalSanitationPage = () => {
         </div>
       </div>
       <div className="row my-5">
-        <div className="col-6">
+        <div className="col-lg-6 col-sm-12">
           <img
             src="https://cdn.jupviec.vn/tvs_mota_fa6100288b.png"
             alt="img"
             className="w-100"
           />
         </div>
-        <div className="col-6 d-flex justify-content-center align-items-center">
+        <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
           <div>
             <h1>Dịch Vụ Tổng Vệ Sinh Nhà Cửa JupViec Sẽ Bao Gồm:</h1>
             <p>
@@ -60,7 +60,7 @@ const TotalSanitationPage = () => {
         </div>
       </div>
       <div className="row my-5">
-        <div className="col-6 d-flex justify-content-center align-items-center">
+        <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
           <div>
             <h1>Tại Sao Cần Tổng Vệ Sinh Nhà Cửa Thường Xuyên?</h1>
             <ul>
@@ -70,7 +70,7 @@ const TotalSanitationPage = () => {
             </ul>
           </div>
         </div>
-        <div className="col-6">
+        <div className="col-lg-6 col-sm-12">
           <img
             src="https://chuyenvesinhnha.com/wp-content/uploads/2016/12/doi-ve-sinh-nha-cua-aplite.jpg"
             alt="img"

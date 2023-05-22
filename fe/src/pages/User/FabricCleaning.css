@@ -1,37 +1,51 @@
 .fabric-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
 }
-.fabric-container .fabric-nav{
-    width: 100vw;
-    background-color: #D9D9D9;
-    display: flex;
-    justify-content: center;
+.fabric-container .fabric-nav {
+  width: 100vw;
+  background-color: #d9d9d9;
+  display: flex;
+  justify-content: center;
 }
 .fabric-container .fabric-nav .fabric-title {
-    font-size: 20px;
-    padding: 0;
-    margin: 0;
-    color: black;
+  font-size: 20px;
+  padding: 0;
+  margin: 0;
+  color: black;
 }
-.fabric-container .input{
-    width: 60vw;
-    padding: 0 30px 30px 30px;
-    margin: 0;
+.fabric-container .input {
+  width: 60vw;
+  padding: 0 30px 30px 30px;
+  margin: 0;
 }
 .fabric-container .input input {
-    border: none;
-    background-color: #D9D9D9;
-    border-radius: 10px;
-    font-size: 18px;
-    padding: 10px;
-    color: black;
-  }  
-  .fabric-container .input label {
-    font-size: 20px;
-    font-weight: bold;
-  }
+  border: none;
+  background-color: #d9d9d9;
+  border-radius: 10px;
+  font-size: 18px;
+  padding: 10px;
+  color: black;
+}
+.fabric-container .input label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+select {
+  border: none;
+  padding: 10px;
+  margin: 0;
+  outline: none;
+}
+button {
+  margin: 0 20px;
+  padding: 10px 40px;
+  border-radius: 15px;
+  background-color: #749eb1;
+  border: none;
+}

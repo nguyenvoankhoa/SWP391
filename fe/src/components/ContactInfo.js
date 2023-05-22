@@ -4,7 +4,7 @@ const ContactInfo = (props) => {
   return (
     <div className="col-lg-4 col-sm-12 mb-4">
       <Card>
-        <div className="row">
+        <div className="row" style={{ minHeight: "100px" }}>
           <div className="col-4 d-flex justify-content-center align-items-center">
             <img src={props.image} alt="" className="w-100" />
           </div>

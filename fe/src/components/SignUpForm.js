@@ -64,7 +64,7 @@ const SignUpForm = () => {
             <div className="mt-3 col-4">
               <Title
                 color="#000000"
-                title="Số điện thoại"
+                title="Điện thoại"
                 fontSize="20px"
                 fontWeight="400"
               />

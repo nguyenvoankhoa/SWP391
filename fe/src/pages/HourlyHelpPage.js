@@ -6,7 +6,7 @@ const HourlyHelpPage = () => {
   return (
     <div className="container">
       <div className="row my-5">
-        <div className="col-6 d-flex justify-content-center align-items-center">
+        <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
           <div>
             <h1>Tìm Giúp Việc Theo Giờ Chuyên Nghiệp Singapore Cùng JupViec</h1>
             <p>
@@ -17,7 +17,7 @@ const HourlyHelpPage = () => {
             </p>
           </div>
         </div>
-        <div className="col-6">
+        <div className="col-lg-6 col-sm-12">
           <img
             src="https://cdn.jupviec.vn/slider_f09a6abdbf.png"
             alt="img"
@@ -26,14 +26,14 @@ const HourlyHelpPage = () => {
         </div>
       </div>
       <div className="row my-5">
-        <div className="col-6">
+        <div className="col-lg-6 col-sm-12">
           <img
             src="https://cdn.jupviec.vn/left1_7aa3497d36.png"
             alt="img"
             className="w-100"
           />
         </div>
-        <div className="col-6 d-flex justify-content-center align-items-center">
+        <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
           <div>
             <h1>Giới Thiệu</h1>
             <p>
@@ -45,7 +45,7 @@ const HourlyHelpPage = () => {
         </div>
       </div>
       <div className="row my-5">
-        <div className="col-6 d-flex justify-content-center align-items-center">
+        <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
           <div>
             <h1>Ưu Điểm Của Dịch Vụ Giúp Việc Theo Giờ:</h1>
             <ul>
@@ -70,7 +70,7 @@ const HourlyHelpPage = () => {
             </Button>
           </div>
         </div>
-        <div className="col-6">
+        <div className="col-lg-6 col-sm-12">
           <img
             src="https://cdn.jupviec.vn/right1_089c8c6a09.jpg"
             alt="img"

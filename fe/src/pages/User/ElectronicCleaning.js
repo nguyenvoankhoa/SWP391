@@ -1,7 +1,7 @@
 import React from "react";
-
+import ServiceForm from "./ServiceForm";
 const ElectronicCleaning = () => {
-  return <div>ElectronicCleaning</div>;
+  return <ServiceForm title="Vệ sinh điều hoà, điện máy" />;
 };
 
 export default ElectronicCleaning;

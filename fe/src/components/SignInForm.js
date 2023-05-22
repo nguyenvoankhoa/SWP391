@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import Card from "../UI/Card";
 import Title from "./Title";
-import "./SignComponent.css";
 import Button from "../UI/Button";
+import "./SignComponent.css";
+
 import { Link, useNavigate } from "react-router-dom";
-const user = {
-  email: "admin",
-  password: "1",
-};
+
 const SignInForm = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -22,8 +20,12 @@ const SignInForm = () => {
   const loginHandler = (e) => {
     e.preventDefault();
     if (email.length > 0 && password.length > 0) {
-      if (email === "admin" && password === "1") {
+      if (email === "user" && password === "1") {
         navigate("/user");
+      } else if (email === "employee" && password === "1") {
+        navigate("/employee");
+      } else if (email === "admin" && password === "1") {
+        navigate("/admin");
       }
     } else {
       setError("Sai email và mật khẩu rồi");

@@ -1,28 +1,22 @@
 import React from "react";
 import Card from "../UI/Card";
 import { Link } from "react-router-dom";
-const NewsItem = () => {
+const NewsItem = (props) => {
   return (
     <div className="my-5">
       <Card className>
         <div className="row">
-          <div className="col-4 d-flex ">
+          <div className="col-lg-4 col-sm-12 d-flex justify-content-center align-items-center">
             <img
               src="https://thptbinhthanh.edu.vn/wp-content/uploads/99-Hinh-Anh-MEO-CUTE-De-Thuong-CUNG-MUON-XIU.jpg"
               alt=""
               style={{ width: "80%" }}
-              className="justify-content-center align-items-sm-center"
             />
           </div>
-          <div className="col-8">
-            <h1>Bảng giá giúp việc tại CleanShine</h1>
-            <p>15/5/2023</p>
-            <Link
-              to="/services"
-              style={{ textDecoration: "none", color: "#535353" }}
-            >
-              Xem thêm {">>"}
-            </Link>
+          <div className="col-lg-8 col-sm-12">
+            <h1>{props.title}</h1>
+            <p>{props.date}</p>
+            <p>{props.content}</p>
           </div>
         </div>
       </Card>

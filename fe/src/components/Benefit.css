@@ -10,20 +10,20 @@
 }
 
 .benefit-container p {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-size: 18px;
   line-height: 33px;
   text-align: justify;
-  justify-content: center; 
+  justify-content: center;
   display: block;
   padding-inline: 7rem;
   padding-block-end: 0px;
   margin-bottom: 0px;
 }
 .text-center {
-  color: #749EB1;
-  font-family: 'Roboto', sans-serif;
+  color: #749eb1;
+  font-family: "Roboto", sans-serif;
   align-items: center;
   text-align: center;
   letter-spacing: 0.05em;
@@ -39,9 +39,6 @@
     font-size: 2vh !important;
     padding-inline: 3vw !important;
   }
-  .container img {
-    width: 9rem !important;
-  }
 }
 @media (max-width: 992px) {
   .benefit-container p {
@@ -51,5 +48,4 @@
   .text-center {
     font-size: 4vh !important;
   }
-  
 }

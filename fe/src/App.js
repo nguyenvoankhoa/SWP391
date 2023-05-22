@@ -26,6 +26,7 @@ import EditCustomer from "./pages/Admin/EditCustomer";
 import EditEmployee from "./pages/Admin/EditEmployee";
 import EditService from "./pages/Admin/EditService";
 import AdminLayout from "./layouts/AdminLayout";
+import EmployeeLayout from "./layouts/EmployeeLayout";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -75,7 +76,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/employee",
-    element: <EmployeePage />,
+    element: <EmployeeLayout />,
+    children: [{ index: true, element: <EmployeePage /> }],
   },
 ]);
 

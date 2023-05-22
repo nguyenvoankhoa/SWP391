@@ -6,7 +6,7 @@ const ElectronicCleaningPage = () => {
   return (
     <div className="container">
       <div className="row my-5">
-        <div className="col-6">
+        <div className="col-lg-6 col-sm-12">
           <h1>Dịch Vụ Vệ Sinh Điều Hòa Tại Nhà Chuyên Nghiệp, Uy Tín</h1>
           <p>
             Với đội ngũ kỹ thuật viên có trình độ chuyên môn cao, chúng tôi tự
@@ -17,7 +17,7 @@ const ElectronicCleaningPage = () => {
             Minh.
           </p>
         </div>
-        <div className="col-6">
+        <div className="col-lg-6 col-sm-12">
           <img
             src="https://cdn.jupviec.vn/sec1_1900_09eb73895b.jpg"
             alt="img"
@@ -26,14 +26,14 @@ const ElectronicCleaningPage = () => {
         </div>
       </div>
       <div className="row my-5">
-        <div className="col-6">
+        <div className="col-lg-6 col-sm-12">
           <img
             src="https://cdn.jupviec.vn/left1_7aa3497d36.png"
             alt="img"
             className="w-100"
           />
         </div>
-        <div className="col-6">
+        <div className="col-lg-6 col-sm-12">
           <h1>Giới Thiệu</h1>
           <p>
             Chỉ với một vài thao tác đơn giản trên ứng dụng, Khách hàng đã tìm
@@ -57,7 +57,7 @@ const ElectronicCleaningPage = () => {
         </div>
       </div>
       <div className="row my-5">
-        <div className="col-6">
+        <div className="col-lg-6 col-sm-12">
           <h1>Tại Sao Cần Vệ Sinh Điều Hòa Thường Xuyên?</h1>
           <ul>
             <li>Loại bỏ các loại vi khuẩn gây bệnh tích tụ lâu ngày</li>
@@ -66,7 +66,7 @@ const ElectronicCleaningPage = () => {
             <li>Bảo vệ sức khỏe gia đình</li>
           </ul>
         </div>
-        <div className="col-6">
+        <div className="col-lg-6 col-sm-12">
           <img
             src="https://dienlanhbaouyen.vn/uploads/products/die-hoa-panasonic-treo-tuong-inverter.jpg"
             alt="img"

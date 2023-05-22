@@ -13,13 +13,13 @@ const ContactPage = () => {
           />
           <ContactInfo
             image="https://logowik.com/content/uploads/images/906_emailsymbol.jpg"
-            title="Địa chỉ"
-            content="Khu CNC, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Việt Nam"
+            title="Số điện thoại"
+            content="0977.54.54.50"
           />
           <ContactInfo
             image="https://logowik.com/content/uploads/images/906_emailsymbol.jpg"
-            title="Địa chỉ"
-            content="Khu CNC, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Việt Nam"
+            title="Email"
+            content="cleanshine@gmail.com"
           />
         </div>
         <div className="row mb-5">

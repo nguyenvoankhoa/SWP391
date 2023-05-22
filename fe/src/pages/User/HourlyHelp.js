@@ -1,7 +1,7 @@
 import React from "react";
 import "./HourlyHelp.css";
 import { Link } from "react-router-dom";
-
+import Title from "../../components/Title";
 const HourlyHelp = () => {
   return (
     <div className="container-fluid service-container">
@@ -41,6 +41,16 @@ const HourlyHelp = () => {
         </div>
         <div className="col-md-12 d-flex justify-content-center cont-area">
           <button className="cont-btn">Tiếp tục</button>
+          <button>
+            <Link style={{ textDecoration: "none" }} to="..">
+              <Title
+                color="#000000"
+                title="Quay lại"
+                fontSize="20px"
+                fontWeight="600"
+              />
+            </Link>
+          </button>
         </div>
       </div>
     </div>

@@ -1,7 +1,8 @@
 import React from "react";
+import ServiceForm from "./ServiceForm";
 
 const TotalSanitation = () => {
-  return <div>TotalSanitation</div>;
+  return <ServiceForm title="Tổng vệ sinh" />;
 };
 
 export default TotalSanitation;

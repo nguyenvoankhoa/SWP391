@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const HeadingBar = () => {
   return (
@@ -9,9 +9,9 @@ const HeadingBar = () => {
     >
       <div className="container-fluid">
         {/* LOGO */}
-        <Link className="navbar-brand" to="/">
-          <img src="assets/images/LOGO.svg" alt="" />
-        </Link>
+        <NavLink className="navbar-brand" to="/">
+          <img src="/assets/images/LOGO.svg" alt="" />
+        </NavLink>
 
         {/* NAVIGATION BUTTON */}
         <button
@@ -28,11 +28,22 @@ const HeadingBar = () => {
 
         {/* NAVIGATION BAR */}
         <div className="collapse navbar-collapse" id="navbarsCleanShine">
-          <ul className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0 service-list">
+          <ul
+            className="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0 service-list"
+            id="nav-link"
+          >
             <li>
-              <Link className="nav-link otp-service" to="">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "nav-link otp-service active"
+                    : "nav-link otp-service"
+                }
+                to=""
+                end
+              >
                 TRANG CHỦ
-              </Link>
+              </NavLink>
             </li>
             <li className="nav-item">
               <div className="opt-services">
@@ -86,28 +97,52 @@ const HeadingBar = () => {
             </li>
 
             <li>
-              <Link className="nav-link otp-service" to="contact">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "nav-link otp-service active"
+                    : "nav-link otp-service"
+                }
+                to="contact"
+                end
+              >
                 LIÊN HỆ
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className="nav-link otp-service" to="news">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "nav-link otp-service active"
+                    : "nav-link otp-service"
+                }
+                to="news"
+                end
+              >
                 TIN TỨC
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className="nav-link otp-service" to="guarantee">
+              <NavLink
+                className={({ isActive }) =>
+                  isActive
+                    ? "nav-link otp-service active"
+                    : "nav-link otp-service"
+                }
+                to="guarantee"
+                end
+              >
                 CHÍNH SÁCH BẢO HÀNH
-              </Link>
+              </NavLink>
             </li>
           </ul>
 
           {/* Login */}
           <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5 login">
-            <li>
-              <Link to="sign-in" className="nav-link user" href="#">
-                <img src="assets/images/user.svg" alt=""></img>
-              </Link>
+            <li className="text-center">
+              <NavLink to="sign-in" className="nav-link user" href="#">
+                <img src="/assets/images/user.svg" alt=""></img>
+              </NavLink>
             </li>
           </ul>
         </div>

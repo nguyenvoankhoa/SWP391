@@ -8,21 +8,21 @@ const SERVICE = [
     title: "TẠP VỤ VỆ SINH",
     content:
       "Là đơn vị hàng đầu chuyên cung cấp dịch vụ vệ sinh hàng ngày hoặc theo giờ chuyên nghiệp.",
-    link: "",
+    link: "/sign-in",
   },
   {
     image: "assets/images/globe.svg",
     title: "SỬA CHỮA THIẾT BỊ",
     content:
       "Đội ngũ kỹ thuật được đào tạo bài bản, có kinh nghiệm trong việc nắm bắt và sự lý sự cố.",
-    link: "",
+    link: "/sign-in",
   },
   {
     image: "assets/images/qualification.svg",
     title: "BẢO HÀNH DỌN DẸP",
     content:
       "Đảm bảo chính sách bảo hành đối với việc vệ sinh những thiết bị gia dụng thông minh.",
-    link: "",
+    link: "/sign-in",
   },
 ];
 const ServiceCard = () => {
