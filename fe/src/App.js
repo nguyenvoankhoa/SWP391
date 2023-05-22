@@ -20,6 +20,12 @@ import HourlyHelpPage from "./pages/HourlyHelpPage";
 import FabricCleaningPage from "./pages/FabricCleaningPage";
 import TotalSanitationPage from "./pages/TotalSanitationPage";
 import ElectronicCleaningPage from "./pages/ElectronicCleaningPage";
+import EmployeePage from "./pages/Employee/EmployeePage";
+import AdminHome from "./pages/Admin/AdminHome";
+import EditCustomer from "./pages/Admin/EditCustomer";
+import EditEmployee from "./pages/Admin/EditEmployee";
+import EditService from "./pages/Admin/EditService";
+import AdminLayout from "./layouts/AdminLayout";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -58,32 +64,18 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/user",
-    element: <UserPageLayout />,
+    path: "/admin",
+    element: <AdminLayout />,
     children: [
-      { index: true, element: <HomeService /> },
-      { path: "history", element: <UserHistory /> },
-      { path: "notification", element: <UserNotification /> },
-      { path: "price", element: <ListPrice /> },
-      { path: "hourly-help", element: <HourlyHelp /> },
-      { path: "total-senitation", element: <TotalSanitation /> },
-      { path: "fabric-cleaning", element: <FabricCleaning /> },
-      { path: "electronic-cleaning", element: <ElectronicCleaning /> },
+      { index: true, element: <AdminHome /> },
+      { path: "edit-customer", element: <EditCustomer /> },
+      { path: "edit-employee", element: <EditEmployee /> },
+      { path: "edit-service", element: <EditService /> },
     ],
   },
   {
-    path: "/user",
-    element: <UserPageLayout />,
-    children: [
-      { index: true, element: <HomeService /> },
-      { path: "history", element: <UserHistory /> },
-      { path: "notification", element: <UserNotification /> },
-      { path: "price", element: <ListPrice /> },
-      { path: "hourly-help", element: <HourlyHelp /> },
-      { path: "total-senitation", element: <TotalSanitation /> },
-      { path: "fabric-cleaning", element: <FabricCleaning /> },
-      { path: "electronic-cleaning", element: <ElectronicCleaning /> },
-    ],
+    path: "/employee",
+    element: <EmployeePage />,
   },
 ]);
 
