@@ -68,25 +68,29 @@ const ServiceForm = (props) => {
                 style={{ minHeight: "120px" }}
               />
             </div>
-            <div className="mb-4 text-center">
-              <button>
-                <Title
-                  color="#000000"
-                  title="Đăng ký"
-                  fontSize="20px"
-                  fontWeight="600"
-                />
-              </button>
-              <button>
-                <Link style={{ textDecoration: "none" }} to="..">
+            <div className="mb-4 row text-center">
+              <div className="col-sm-6 mb-3">
+                <button>
                   <Title
                     color="#000000"
-                    title="Quay lại"
+                    title="Đăng ký"
                     fontSize="20px"
                     fontWeight="600"
                   />
-                </Link>
-              </button>
+                </button>
+              </div>
+              <div className="col-sm-6 mb-3">
+                <button>
+                  <Link style={{ textDecoration: "none" }} to="..">
+                    <Title
+                      color="#000000"
+                      title="Quay lại"
+                      fontSize="20px"
+                      fontWeight="600"
+                    />
+                  </Link>
+                </button>
+              </div>
             </div>
           </div>
         </div>
