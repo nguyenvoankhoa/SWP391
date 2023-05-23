@@ -9,15 +9,15 @@ const ContactPage = () => {
           <ContactInfo
             title="Địa chỉ"
             content="Khu CNC, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Việt Nam"
-            image="https://logowik.com/content/uploads/images/906_emailsymbol.jpg"
+            image="assets/images/location-infor.svg"
           />
           <ContactInfo
-            image="https://logowik.com/content/uploads/images/906_emailsymbol.jpg"
+            image="assets/images/phone-infor.svg"
             title="Số điện thoại"
             content="0977.54.54.50"
           />
           <ContactInfo
-            image="https://logowik.com/content/uploads/images/906_emailsymbol.jpg"
+            image="assets/images/mail-infor.svg"
             title="Email"
             content="cleanshine@gmail.com"
           />

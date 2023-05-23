@@ -13,22 +13,22 @@ const HomeService = () => {
       <div className="container">
         <div className="row">
           <UserServiceCard
-            img="https://file.vfo.vn/hinh/2018/03/hinh-tron-2.jpg"
+            img="assets/images/hourly-help.svg"
             title="Giúp việc theo giờ"
             link="hourly-help"
           />
           <UserServiceCard
-            img="https://file.vfo.vn/hinh/2018/03/hinh-tron-2.jpg"
+            img="assets/images/deep-cleaning.svg"
             title="Tổng vệ sinh"
             link="total-senitation"
           />
           <UserServiceCard
-            img="https://file.vfo.vn/hinh/2018/03/hinh-tron-2.jpg"
+            img="assets/images/sofa.svg"
             title="Vệ sinh sofa, nệm, rèm, thảm"
             link="fabric-cleaning"
           />
           <UserServiceCard
-            img="https://file.vfo.vn/hinh/2018/03/hinh-tron-2.jpg"
+            img="assets/images/air-condition.svg"
             title="Vệ sinh điều hoà, điện máy"
             link="electronic-cleaning"
           />
