@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const ServiceItem = (props) => {
   return (
     <div className="col">
-      <div className="card">
+      <div className="card-service">
         <div className="card-item">
           <span className="dot">
             <img src={props.image} alt="img" />

@@ -20,13 +20,12 @@
   display: contents;
   justify-content: center;
 }
-.card {
+.card-service {
   margin-top: 7rem;
   text-align: center;
   position: relative;
   border-radius: 20px !important;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-  border: 1px solid;
   padding: 0px;
 }
 .card-body {
@@ -42,7 +41,7 @@
   font-weight: bold;
   letter-spacing: 0.05rem;
 }
-.card p {
+.card-service p {
   font-family: "Roboto", sans-serif;
   font-style: normal;
   font-size: 18px;
@@ -53,10 +52,10 @@
   line-height: 33px;
 }
 
-.container-fluid .col .row .card {
+.container-fluid .col .row .card-service {
   border-radius: 50px !important;
 }
-.col .card .card-item {
+.col .card-service .card-item {
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   background-color: #90b6c7;
@@ -66,7 +65,7 @@
 .card-title {
  font-size: 3vh !important;
 }
-.card p {
+.card-service p {
   font-size: 2vh !important;
   padding-inline: 1rem !important;
 
@@ -80,7 +79,7 @@
   .card-title {
     font-size: 2vh !important;
   }
-  .card p {
+  .card-service p {
     font-size: 2vh !important;
     padding-inline: 1rem !important;
   }
