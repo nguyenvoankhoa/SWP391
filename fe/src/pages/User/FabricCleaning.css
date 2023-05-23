@@ -18,8 +18,14 @@
   margin: 0;
   color: black;
 }
+@media (min-width: 768px) {
+  .fabric-container .input {
+    width: 60vw;
+    padding: 0 30px 30px 30px;
+    margin: 0;
+  }
+}
 .fabric-container .input {
-  width: 60vw;
   padding: 0 30px 30px 30px;
   margin: 0;
 }
