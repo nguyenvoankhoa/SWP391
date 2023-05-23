@@ -12,17 +12,25 @@
   border-radius: 30px;
   padding: 7%;
   padding-top: 25%;
+  padding-left: 9%;
   box-shadow: 0 3px 6px rgba(177, 195, 199, 0.2),
       3px 6px 9px rgba(177, 195, 199, 0.2),
       6px 9px 12px rgba(177, 195, 199, 0.2),
       9px 12px 15px rgba(177, 195, 199, 0.2);
   height: 50vh;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .fb-container .fb-content h3 {
-  font-size: 20px;
+  font-size: 2vw !important;
 }
 
 .fb-container .fb-content p {
   font-size: 16px;
+  height: 90%;
+  margin-bottom: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
