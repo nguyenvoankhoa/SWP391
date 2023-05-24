@@ -66,8 +66,8 @@ const Feedback = () => {
           >
             <div className="fb-content">
               <img src="assets/images/person1.svg" alt=""></img>
-              <h3 className="text-center">Chị Nguyễn Thị A</h3>
-              <p>"Mình không phải khách hàng thường xuyên của JupViec,
+              <h3 className="text-center">Chị An Thư</h3>
+              <p>"Mình không phải khách hàng thường xuyên của CleanShine,
                 chỉ thi thoảng bận bịu quá không dọn được nhà thì mới
                 nhấc điện thoại lên đặt buổi lẻ. Tóm lại là dùng được, có thể
                 recommend cho những người khác. Thanks!"</p>
@@ -87,7 +87,7 @@ const Feedback = () => {
           >
             <div className="fb-content">
               <img src="assets/images/person2.svg" alt=""></img>
-              <h3 className="text-center">Anh Nguyễn Văn B</h3>
+              <h3 className="text-center">Anh Kha</h3>
               <p>"I’ve been reading plenty of these short stories
                 in the past couple of weeks and found the lessons
                 behind them truly wonderful. So I’ve decided to write
@@ -109,7 +109,7 @@ const Feedback = () => {
           >
             <div className="fb-content">
               <img src="assets/images/person3.svg" alt=""></img>
-              <h3 className="text-center">Chị Nguyễn Thị A</h3>
+              <h3 className="text-center">Chị Gia Hân</h3>
               <p>“when they are very young and much smaller we
                 use the same size rope to tie them and, at that age,
                 it’s enough to hold them. As they grow up, they are
@@ -132,8 +132,8 @@ const Feedback = () => {
           >
             <div className="fb-content">
               <img src="assets/images/person4.svg" alt=""></img>
-              <h3 className="text-center">Chị Nguyễn Thị A</h3>
-              <p>Mình không phải khách hàng thường xuyên của JupViec,
+              <h3 className="text-center">Chị Tuyết Trâm</h3>
+              <p>Mình không phải khách hàng thường xuyên của CleanShine,
                 chỉ thi thoảng bận bịu quá không dọn được nhà thì mới
                 nhấc điện thoại lên đặt buổi lẻ. Tóm lại là dùng được, có thể
                 recommend cho những người khác. Thanks!</p>
@@ -153,7 +153,7 @@ const Feedback = () => {
           >
             <div className="fb-content">
               <img src="assets/images/person5.svg" alt=""></img>
-              <h3 className="text-center">Chị Nguyễn Thị A</h3>
+              <h3 className="text-center">Chị Ngọc Như </h3>
               <p>"People’s words can have a big effect on other’s
                 lives. Think about what you say before it comes
                 out of your mouth. It might just be the difference
@@ -174,7 +174,7 @@ const Feedback = () => {
           >
             <div className="fb-content">
               <img src="assets/images/person6.svg" alt=""></img>
-              <h3 className="text-center">Chị Nguyễn Thị A</h3>
+              <h3 className="text-center">Chị Trần Giao</h3>
               <p>“Your Honor, long before the baker started buying
                 butter from me, I have been buying a pound loaf of
                 bread from him. Every day when the baker brings the
