@@ -8,7 +8,13 @@ const UserServiceCard = (props) => {
       <Card>
         <Link style={{ textDecoration: "none" }} to={props.link}>
           <div className="d-flex justify-content-center">
-            <img src={props.img} alt="img" />
+            <img
+              src={props.img}
+              alt="img"
+              style={{
+                width: "30%",
+              }}
+            />
           </div>
 
           <Title

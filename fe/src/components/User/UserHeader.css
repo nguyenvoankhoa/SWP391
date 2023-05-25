@@ -1,0 +1,64 @@
+.nav-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 15vw;
+    min-width: 170px;
+    height: 100vh;
+    display: flex;
+    align-items: self-end;
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-container .nav-content {
+    width: 100%;
+    height: 85%;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 10%;
+    background-color: #FFFAFA;
+    border-top-right-radius: 30px;
+    box-shadow: 6px 4px 5px #4e4e4e46;
+}
+
+.nav-container .nav-content .nav-item {
+    margin: 2% 0;
+    font-weight: 550;
+    font-size: 1.2rem;
+    display: flex;
+}
+
+.nav-container .nav-content .nav-item .nav-avt {
+    margin: 0 auto;
+    width: 7vw;
+    min-width: 70px;
+}
+
+.nav-container .nav-content .nav-item .nav-icon {
+    width: 20px;
+}
+
+.nav-container .nav-content .nav-item a {
+    text-decoration: none;
+    width: 100%;
+    color: #2a5b55;
+}
+
+.nav-container .nav-content .nav-item span {
+    position: relative;
+    font-weight: 1000;
+    letter-spacing: 1px;
+    font-size: 1.6rem;
+    padding-bottom: 15%;
+}
+
+.nav-container .nav-content .nav-item .seperator {
+    position: absolute;
+    width: 60%;
+    height: 5px;
+    background-color: black;
+    left: 50%;
+    top: 100%;
+    transform: translate(-50%, -100%);
+    border-radius: 20px;
+}

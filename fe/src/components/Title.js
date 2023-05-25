@@ -3,12 +3,15 @@ const Title = (props) => {
   const color = props.color;
   const fontSize = props.fontSize;
   const fontWeight = props.fontWeight;
+  const padding = props.padding;
   return (
     <div
       style={{
         color: color,
         fontSize: fontSize,
         fontWeight: fontWeight,
+        fontFamily: 'Source Serif Pro',
+        padding: padding,
       }}
       className="text-center"
     >
