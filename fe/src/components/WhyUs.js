@@ -6,7 +6,7 @@ const WhyUs = () => {
   return (
     <>
       <Title
-        color="#DD6E42"
+        color="#015450"
         title="TẠI SAO CHỌN CHÚNG TÔI"
         fontSize="40px"
         fontWeight="700"

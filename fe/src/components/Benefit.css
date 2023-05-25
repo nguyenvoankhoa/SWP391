@@ -10,7 +10,7 @@
 }
 
 .benefit-container p {
-  font-family: "Roboto", sans-serif;
+  font-family: "Montserrat";
   font-style: normal;
   font-size: 18px;
   line-height: 33px;
@@ -21,12 +21,11 @@
   padding-block-end: 0px;
   margin-bottom: 0px;
 }
-.text-center {
-  color: #749eb1;
-  font-family: 'Roboto', sans-serif;
+.text-center{
+  color: #015450;
+  font-family: 'Work Sans';
   align-items: center;
   text-align: center;
-  letter-spacing: 0.05em;
   font-size: 32px;
   font-weight: bold;
   padding-bottom: 4px;

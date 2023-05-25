@@ -26,12 +26,11 @@ const Feedback = () => {
   return (
     <>
       <Title
-        color="#DD6E42"
+        color="#015450"
         title="PHẢN HỒI CỦA KHÁCH HÀNG"
         fontFamily="SourceSerifPro"
         fontSize="40px"
         fontWeight="700"
-        className="feedback-title"
       />
       <div className="container container-feedback">
         <Carousel
@@ -108,7 +107,7 @@ const Feedback = () => {
           >
             <div className="fb-content">
               <img src="assets/images/person3.svg" alt=""></img>
-              <h3 className="text-center">Chị Gia Hân</h3>
+              <h3 className="text-center">Chị Mèo Nhỏ</h3>
               <p>“when they are very young and much smaller we
                 use the same size rope to tie them and, at that age,
                 it’s enough to hold them. As they grow up, they are
