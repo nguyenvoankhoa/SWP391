@@ -1,6 +1,5 @@
 import React from "react";
 import Title from "./Title";
-import Seperator from "../UI/Seperator";
 import "./Feedback.css";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -186,8 +185,6 @@ const Feedback = () => {
 
         </Carousel>
       </div>
-
-      <Seperator />
     </>
   );
 };

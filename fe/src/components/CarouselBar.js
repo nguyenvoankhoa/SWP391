@@ -5,7 +5,6 @@ const CarouselBar = () => {
   return (
     <>
       <div className="container">
-        <h1 className="text-center c-title text-dark">SỨ MỆNH CỦA CHÚNG TÔI</h1>
         <div
           id="carouselBar"
           className="carousel slide"
@@ -37,7 +36,7 @@ const CarouselBar = () => {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img
-                src="assets/images/slide1.jpg"
+                src="assets/images/kinn-living.svg"
                 className="d-block w-100"
                 alt="Services"
               />

@@ -10,7 +10,7 @@ const Title = (props) => {
         color: color,
         fontSize: fontSize,
         fontWeight: fontWeight,
-        fontFamily: 'Source Serif Pro',
+        fontFamily: "Work Sans",
         padding: padding,
       }}
       className="text-center"
