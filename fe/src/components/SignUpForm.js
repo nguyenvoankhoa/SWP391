@@ -10,7 +10,7 @@ const SignUpForm = () => {
       <Card>
         <form className="px-lg-5 px-sm-0">
           <Title
-            color="#2B8EB4"
+            color="#015450"
             title="ĐĂNG KÝ"
             fontSize="50px"
             fontWeight="600"
@@ -91,12 +91,12 @@ const SignUpForm = () => {
 
           <div className="d-flex justify-content-center my-5">
             <Button
-              backgroundColor="#BFE3F2"
+              backgroundColor="#397F77"
               borderRadius="15px"
               padding="16px 41px"
             >
               <Title
-                color="#000000"
+                color="#ffffff"
                 title="Đăng ký"
                 fontSize="20px"
                 fontWeight="600"
