@@ -18,7 +18,8 @@ const TotalSanitationPage = () => {
         </div>
         <div className="col-lg-6 col-sm-12">
           <img
-            src="https://cdn.jupviec.vn/slider_f09a6abdbf.png"
+            src="/assets/images/sanitation.svg"
+            
             alt="img"
             className="w-100"
           />

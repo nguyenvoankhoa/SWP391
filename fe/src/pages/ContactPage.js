@@ -8,7 +8,7 @@ const ContactPage = () => {
         <div className="row mb-4 " id={classes.inforTitle}>
           <ContactInfo
             title="Địa chỉ"
-            content="Vinhomes Grand Park, TP Thủ Đức"
+            content="Vinhomes Grand Park"
             image="assets/images/location-infor.svg"
           />
           <ContactInfo

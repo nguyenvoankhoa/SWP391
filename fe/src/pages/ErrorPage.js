@@ -12,6 +12,7 @@ const ErrorPage = () => {
             Trang hiện đang lỗi, chúng tôi sẽ cố gắng khắc phục trong thời gian
             nhanh nhất!
           </p>
+          <img src="/assets/images/404-error.svg" alt="error"></img>
         </p>
         <p className="text-dark">Xin lỗi bạn vì sự bất tiện này.</p>
         <Link to="">

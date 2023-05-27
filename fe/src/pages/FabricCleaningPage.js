@@ -74,7 +74,7 @@ const FabricCleaningPage = () => {
         </div>
         <div className="col-lg-6 col-sm-12">
           <img
-            src="https://www.cleanipedia.com/images/5iwkm8ckyw6v/YveLeZqFh1UsF81NhijNn/839da3c8fbace4de03101f5c8f34c9db/dmUtc2luaC1zb2ZhLW5pLW5odW5nLXZhaS10YWktbmhhLWR1bmctY2FjaC1sdXUteS1raGktbGFtLXNhY2guanBn/650w-433h/c%C3%A1ch-l%C3%A0m-s%E1%BA%A1ch-gh%E1%BA%BF-sofa-nhung.jpg"
+            src="/assets/images/living-room-animate.svg"
             alt="img"
             className="w-100"
           />
