@@ -63,8 +63,8 @@ const Feedback = () => {
             }}
           >
             <div className="fb-content">
-              <img src="assets/images/person1.svg" alt=""></img>
-              <h3 className="text-center">Chị An Thư</h3>
+              <img src="assets/images/person4.svg" alt=""></img>
+              <h3 className="text-center">An Khoa</h3>
               <p>"Mình không phải khách hàng thường xuyên của CleanShine,
                 chỉ thi thoảng bận bịu quá không dọn được nhà thì mới
                 nhấc điện thoại lên đặt buổi lẻ. Tóm lại là dùng được, có thể
@@ -84,13 +84,11 @@ const Feedback = () => {
             }}
           >
             <div className="fb-content">
-              <img src="assets/images/person2.svg" alt=""></img>
-              <h3 className="text-center">Anh Kha</h3>
-              <p>"I’ve been reading plenty of these short stories
-                in the past couple of weeks and found the lessons
-                behind them truly wonderful. So I’ve decided to write
-                out this article highlighting the 10 most inspirational
-                short stories I’ve heard."</p>
+              <img src="assets/images/person4.svg" alt=""></img>
+              <h3 className="text-center">Thiên An</h3>
+              <p>Có hề gì đâu bao nhiêu là hắt hủi, đánh mắng, vì Zezé đã có một người bạn đặc biệt để trút nỗi lòng: 
+                 cây cam ngọt nơi vườn sau. Và cả một người bạn nữa, bằng xương bằng thịt, một ngày kia xuất hiện, 
+                 cho cậu bé nhạy cảm khôn sớm biết thế nào là trìu mến, thế nào là nỗi đau, và mãi mãi thay đổi cuộc đời cậu.</p>
             </div>
           </div>
 
@@ -106,14 +104,14 @@ const Feedback = () => {
             }}
           >
             <div className="fb-content">
-              <img src="assets/images/person3.svg" alt=""></img>
-              <h3 className="text-center">Chị Mèo Nhỏ</h3>
-              <p>“when they are very young and much smaller we
+              <img src="assets/images/person7.svg" alt=""></img>
+              <h3 className="text-center">Thanh Mai</h3>
+              <p>When they are very young and much smaller we
                 use the same size rope to tie them and, at that age,
                 it’s enough to hold them. As they grow up, they are
                 conditioned to believe they cannot break away. They
                 believe the rope can still hold them, so they never
-                try to break free.”</p>
+                try to break free.</p>
             </div>
           </div>
 
@@ -130,7 +128,7 @@ const Feedback = () => {
           >
             <div className="fb-content">
               <img src="assets/images/person4.svg" alt=""></img>
-              <h3 className="text-center">Chị Tuyết Trâm</h3>
+              <h3 className="text-center">Hoàng Anh</h3>
               <p>Mình không phải khách hàng thường xuyên của CleanShine,
                 chỉ thi thoảng bận bịu quá không dọn được nhà thì mới
                 nhấc điện thoại lên đặt buổi lẻ. Tóm lại là dùng được, có thể
@@ -151,7 +149,7 @@ const Feedback = () => {
           >
             <div className="fb-content">
               <img src="assets/images/person5.svg" alt=""></img>
-              <h3 className="text-center">Chị Ngọc Như </h3>
+              <h3 className="text-center">Ngọc Như </h3>
               <p>"People’s words can have a big effect on other’s
                 lives. Think about what you say before it comes
                 out of your mouth. It might just be the difference
@@ -172,7 +170,7 @@ const Feedback = () => {
           >
             <div className="fb-content">
               <img src="assets/images/person6.svg" alt=""></img>
-              <h3 className="text-center">Chị Trần Giao</h3>
+              <h3 className="text-center">Trần Giao</h3>
               <p>“Your Honor, long before the baker started buying
                 butter from me, I have been buying a pound loaf of
                 bread from him. Every day when the baker brings the

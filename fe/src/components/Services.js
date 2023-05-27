@@ -6,12 +6,6 @@ const Services = () => {
     <>
       <div className="service-container">
         <div className="container">
-          <Title   
-            color="#397F77"
-            title="CLEANSHINE"
-            fontSize="50px"
-            fontWeight="700"
-          />
           <Title
             color="#015450"
             title="NHỮNG DỊCH VỤ CỦA CHÚNG TÔI"

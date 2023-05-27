@@ -52,7 +52,9 @@
   padding-inline: 2rem;
   line-height: 33px;
 }
-
+.service-container .container .text-center {
+  padding-top: 2%;
+}
 .container-fluid .col .row .card-service {
   border-radius: 50px !important;
 }

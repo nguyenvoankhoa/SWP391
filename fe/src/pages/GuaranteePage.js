@@ -5,7 +5,7 @@ const GuaranteePage = () => {
   return (
     <div className="container">
       <Title
-        color="#DD6E42"
+        color="#015450"
         fontSize="50px"
         fontWeight="700"
         title="CHÍNH SÁCH BẢO HÀNH"

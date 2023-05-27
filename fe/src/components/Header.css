@@ -143,6 +143,8 @@
   margin-left: 0 !important;
   flex-direction: hline-content;
   justify-content: center;
+  width: 3vw !important;
+  opacity: 55%;
 }
 
 .custom-navbar .custom-navbar-cta img {
@@ -212,4 +214,11 @@
   width: fit-content;
   margin-top: 5px;
   margin-bottom: 5px;
+}
+.custom-navbar .custom-navbar-cta{
+  width: 3vw !important;
+  opacity: 55%;
+}
+.custom-navbar .custom-navbar-cta:hover{
+  opacity: 100%;
 }

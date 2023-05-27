@@ -8,12 +8,12 @@ const HourlyHelpPage = () => {
       <div className="row my-5">
         <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
           <div>
-            <h1>Tìm Giúp Việc Theo Giờ Chuyên Nghiệp Singapore Cùng JupViec</h1>
+            <h1>Tìm Giúp Việc Theo Giờ Chuyên Nghiệp Singapore Cùng CleanShine</h1>
             <p>
-              Bạn cần tìm người giúp việc theo giờ hỗ trợ việc nhà? Đặt JupViec
+              Bạn cần tìm người giúp việc theo giờ hỗ trợ việc nhà? Đặt CleanShine
               - Dịch vụ giúp việc theo giờ chuyên nghiệp theo tiêu chuẩn
-              Singapore. Đặt lịch giúp việc nhà đơn giản, nhanh chóng chỉ với
-              30s trên ứng dụng JupViec.
+              xanh, sạch, đẹp. Đặt lịch giúp việc nhà đơn giản, nhanh chóng chỉ với
+              30s trên ứng dụng CleanShine.
             </p>
           </div>
         </div>
@@ -37,7 +37,7 @@ const HourlyHelpPage = () => {
           <div>
             <h1>Giới Thiệu</h1>
             <p>
-              JupViec - Dịch vụ giúp việc theo giờ tại Hà Nội, Tp.Hồ Chí Minh,
+              CleanShine - Dịch vụ giúp việc theo giờ tại Hà Nội, Tp.Hồ Chí Minh,
               Bình Dương, Đà Nẵng, Hải Phòng. Trải nghiệm app giúp việc theo giờ
               uy tín và tận hưởng ngày dài thảnh thơi chỉ với một chạm.
             </p>

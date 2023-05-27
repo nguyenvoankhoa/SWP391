@@ -12,7 +12,7 @@ const TotalSanitationPage = () => {
             <p>
               Dịch vụ tổng vệ sinh dọn dẹp nhà cửa giúp Khách hàng có môi trường
               sống trong lành. Hơn 200.000 Khách hàng đã sử dụng và hài lòng về
-              dịch vụ tổng vệ sinh của JupViec.
+              dịch vụ tổng vệ sinh của CleanShine.
             </p>
           </div>
         </div>
@@ -34,7 +34,7 @@ const TotalSanitationPage = () => {
         </div>
         <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
           <div>
-            <h1>Dịch Vụ Tổng Vệ Sinh Nhà Cửa JupViec Sẽ Bao Gồm:</h1>
+            <h1>Dịch Vụ Tổng Vệ Sinh Nhà Cửa CleanShine Sẽ Bao Gồm:</h1>
             <p>
               Dọn dẹp toàn bộ nhà cửa kĩ càng các phòng bếp, khách, ngủ, nhà vệ
               sinh hoặc tổng vệ sinh dọn dẹp nhà cửa theo nhu cầu của Khách hàng
@@ -47,7 +47,7 @@ const TotalSanitationPage = () => {
               borderRadius="15px"
               padding="16px 41px"
             >
-              <Link to="/sign-in">
+              <Link to="/sign-in" style={{ textDecoration: "none", display: "none" }}>
                 <Title
                   color="#000000"
                   title="Đặt dịch vụ ngay"

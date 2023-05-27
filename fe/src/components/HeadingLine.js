@@ -23,7 +23,7 @@ const TopHeader = () => {
             src="assets/images/phone.svg"
             alt=""
           />
-          <span>0977.54.54.50</span>
+          <span>1800 1883</span>
         </div>
       </nav>
     </div>

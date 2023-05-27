@@ -8,13 +8,14 @@
     align-items: center; 
   }
   .footer p {
-    font-family: 'Montserrat';
+    font-family: "Montserrat";
     margin-top: 0.5rem; 
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     margin-bottom: 0px;
+    font-weight: lighter;
   }
-  .footer .text-muted {
+.text-muted .text-center {
     margin-top: 0.5rem;
     color: #999;
     margin-bottom: 0.2rem;

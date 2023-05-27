@@ -8,9 +8,9 @@ const Footer = () => {
           <div className="col-md-4">
             <h3 className="text-lg font-bold mb-2">ĐỊA CHỈ</h3>
             <p>
-              Lý Tự Trọng, Bến Nghé, Quận 1,
+              Vinhomes Grand Park,
               <br />
-              Thành phố Hồ Chí Minh, <br />
+              Thành phố Thủ Đức, <br />
               Việt Nam{" "}
             </p>
           </div>

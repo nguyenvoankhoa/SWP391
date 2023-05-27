@@ -5,16 +5,16 @@ const ContactPage = () => {
   return (
     <>
       <div className="container">
-        <div className="row mb-4">
+        <div className="row mb-4 " id={classes.inforTitle}>
           <ContactInfo
             title="Địa chỉ"
-            content="Khu CNC, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh, Việt Nam"
+            content="Vinhomes Grand Park, TP Thủ Đức"
             image="assets/images/location-infor.svg"
           />
           <ContactInfo
             image="assets/images/phone-infor.svg"
             title="Số điện thoại"
-            content="0977.54.54.50"
+            content="1800 188"
           />
           <ContactInfo
             image="assets/images/mail-infor.svg"
