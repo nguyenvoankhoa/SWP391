@@ -28,7 +28,7 @@ const ElectronicCleaningPage = () => {
       <div className="row my-5">
         <div className="col-lg-6 col-sm-12">
           <img
-            src="https://cdn.jupviec.vn/left1_7aa3497d36.png"
+            src="/assets/images/contentchung.svg"
             alt="img"
             className="w-100"
           />
@@ -41,13 +41,14 @@ const ElectronicCleaningPage = () => {
             hấp dẫn.
           </p>
           <Button
-            backgroundColor="#BFE3F2"
+            backgroundColor="#397F77"
             borderRadius="15px"
             padding="16px 41px"
           >
-            <Link to="/sign-in">
+            <Link to="/sign-in" style={
+              { textDecoration: "none", }}>
               <Title
-                color="#000000"
+                color="#FFFFFF"
                 title="Đặt dịch vụ ngay"
                 fontSize="20px"
                 fontWeight="600"
@@ -68,9 +69,12 @@ const ElectronicCleaningPage = () => {
         </div>
         <div className="col-lg-6 col-sm-12">
           <img
-            src="https://dienlanhbaouyen.vn/uploads/products/die-hoa-panasonic-treo-tuong-inverter.jpg"
+            src="/assets/images/suamaylanh.svg"
             alt="img"
-            className="w-100"
+            style={{
+              width: "500px",
+
+            }}
           />
         </div>
       </div>

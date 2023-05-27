@@ -8,7 +8,7 @@ const NewsItem = (props) => {
         <div className="row">
           <div className="col-lg-4 col-sm-12 d-flex justify-content-center align-items-center">
             <img
-              src="https://thptbinhthanh.edu.vn/wp-content/uploads/99-Hinh-Anh-MEO-CUTE-De-Thuong-CUNG-MUON-XIU.jpg"
+              src={props.image}
               alt=""
               style={{ width: "80%" }}
             />
