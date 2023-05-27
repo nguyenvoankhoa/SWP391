@@ -6,10 +6,12 @@ const HomeService = () => {
     <div
       className="container"
       style={{
+        marginLeft: "5%",
         paddingLeft: "20vw",
         paddingRight: "0",
         margin: "0",
-        height: "95vh"
+        height: "100vh",
+        marginLeft: "4.5vw"
       }}
     >
       <Title
@@ -23,7 +25,7 @@ const HomeService = () => {
         className="bg"
         style={{
           width: "100vw",
-          height: "55vh",
+          height: "53vh",
           position: "absolute",
           top: "0",
           left: "0",

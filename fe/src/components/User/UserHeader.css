@@ -12,13 +12,15 @@
 
 .nav-container .nav-content {
     width: 100%;
-    height: 85%;
+    height: 95%;
     justify-content: flex-start;
-    align-items: center;
+    align-items: left;
+    padding-left: 20%;
     padding-top: 10%;
     background-color: #FFFAFA;
     border-top-right-radius: 30px;
     box-shadow: 6px 4px 5px #4e4e4e46;
+    overflow: hidden;
 }
 
 .nav-container .nav-content .nav-item {

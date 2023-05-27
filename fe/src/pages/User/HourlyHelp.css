@@ -1,88 +1,199 @@
-.service-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
+.hh-content {
+  position: absolute; 
+  width: 65%;
+  height: 65vh;
+  margin-top: 2%;
+  background-color: white;
+  box-shadow: 0 5px 10px #65928a88;
+  border-radius: 20px;
 }
 
-.service-container .service-nav {
-  width: 100vw;
-  background-color: #dadada;
-  display: flex;
+.hh-content .row {
   justify-content: center;
 }
 
-.service-container .service-nav .service-title {
-  font-size: 20px;
+.hh-content .hh-options {
+  position: relative;
+  height: fit-content;
   padding: 0;
-  margin: 0;
-  color: black;
+  width: 30%;
 }
 
-.service-container .input-area {
-  width: 60vw;
-  padding: 0 30px 30px 30px;
-  margin: 0;
+.hh-arrow {
+  position: absolute;
+  top: 50%;
+  right: 15%;
+  transform: translate(-100%, 50%);
+  width: 17px;
+  height: 17px;
+  border-left: solid 3px #397F77;
+  border-bottom: solid 3px #397F77;
+  border-bottom-left-radius: 5px;
+  rotate: -45deg;
 }
 
-.service-container .input-area input {
-  border: none;
-  background-color: #dadada;
-  border-radius: 7px;
-  font-size: 18px;
-  padding: 5px 10px;
-  color: #acacac;
+.hh-content button {
+  width: 250px;
+  height: fit-content;
+  background: none;
+  border: solid 1.5px #c4efea6a;
+  border-radius: 12px;
+  box-shadow: 0 3px 3px #4e6e6a57;
+  font-weight: 500;
 }
 
-.service-container .input-area .service-location {
+.hh-content a {
+  text-decoration: none;
+  color: inherit;
+  letter-spacing: 1px;
+  font-weight: inherit;
   width: 100%;
-  margin: 0;
-  text-align: left;
+  height: 100%;
 }
 
-.service-container .input-area label {
-  font-size: 22px;
-  font-weight: 500;
+.hh-content button:hover,
+.hh-content button:active {
+  background-color: #397F77;
+  color: white;
+  font-weight: 600;
 }
 
-.service-container .input-area button {
-  border: none;
-  background-color: #dadada;
-  border-radius: 7px;
+.hh-content .hh-options label {
+  font-weight: 650;
+  padding: 5%;
+  margin-left: 3%;
   font-size: 18px;
-  padding: 5px 20px;
-  color: #000000;
-  text-align: left;
+}
+
+.hh-content .hh-function {
+  width: 90%;
+  height: fit-content;
+  justify-content: left;
   align-items: center;
-  font-size: 14px;
-}
-
-.service-container .input-area button p {
+  padding: 0 2%;
   margin: 0;
 }
 
-.service-container .input-area button h3 {
+.switch {
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 74px;
+  height: 37px;
+  margin-right: 5vw;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ffffff;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border: solid 2px #397F77;
+}
+
+.slider:before {
+  position: absolute;
+  top: 50%;
+  left: 3%;
+  transform: translate(0, -50%);
+  content: "";
+  height: 30px;
+  width: 30px;
+  background-color: #397F77;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #397F77;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #397F77;
+}
+
+input:checked + .slider:before {
+  left: 55%;
+  -webkit-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%, 0);
+  background-color: #ffffff;
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.switch h5 {
+  position: absolute;
+  width: 150px;
+  padding: 0 0 15% 3%;
+  top: 0;
+  left: 0;
+  transform: translate(0, -100%);
   font-size: 18px;
-  margin: 0;
+  font-weight: 700;
 }
 
-.service-container .cont-btn {
-  background-color: #749eb1 !important;
-  color: white !important;
-  font-size: 20px !important;
-  padding: 10px 40px !important;
-  font-weight: 500;
+.hh-function .f-content {
+  justify-content: left;
+  align-items: center;
 }
 
-.service-container .cont-area {
-  margin-top: 20px !important;
+.hh-function .f-price {
+  display: flex;
+  justify-content: space-between;
+  /* text-align: center; */
+  width: 20%;
+  height: 35px;
+  margin-left: 5vw;
+  border-bottom: solid 3px #397F77;
+  font-size: 18px;
+  font-weight: 600;
 }
 
-@media (max-width: 768px) {
-  .service-container .input-area {
-    width: 100vw;
-    padding: 0;
-  }
+.hh-content .hh-submit .hh-options {
+  width: fit-content;
+}
+
+
+
+.cont-btn button {
+  background-color: #397F77;
+  color: white;
+}
+
+.manual-service button {
+  position: relative;
+  padding: 5px 20px;
+  width: 230px;
+}
+
+.manual-service .hh-arrow {
+  top: 50%;
+  right: 2%;
+  transform: translate(0, -100%);
+}
+
+
+
+.hh-submit .hh-payment button {
+  width: 300px;
 }

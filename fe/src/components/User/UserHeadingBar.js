@@ -19,31 +19,31 @@ const UserHeadingBar = () => {
           </span>
         </li>
         <li class="nav-item">
-          <img className="nav-icon" src="assets/images/home.svg" alt="icon"></img>
+          <img className="nav-icon" src="/assets/images/home.svg" alt="icon"></img>
           <NavLink className="nav-link" to="">
             Trang chủ
           </NavLink>
         </li>
         <li class="nav-item">
-          <img className="nav-icon" src="assets/images/action.svg" alt="icon"></img>
+          <img className="nav-icon" src="/assets/images/action.svg" alt="icon"></img>
           <NavLink className="nav-link" to="">
             Hoạt động
           </NavLink>
         </li>
         <li class="nav-item">
-          <img className="nav-icon" src="assets/images/message.svg" alt="icon"></img>
+          <img className="nav-icon" src="/assets/images/message.svg" alt="icon"></img>
           <NavLink className="nav-link" to="">
             Tin nhắn
           </NavLink>
         </li>
         <li class="nav-item">
-          <img className="nav-icon" src="assets/images/user.svg" alt="icon"></img>
+          <img className="nav-icon" src="/assets/images/user.svg" alt="icon"></img>
           <NavLink className="nav-link" to="">
             Tài khoản
           </NavLink>
         </li>
         <li class="nav-item">
-          <img className="nav-icon" src="assets/images/exit.svg" alt="icon"></img>
+          <img className="nav-icon" src="/assets/images/exit.svg" alt="icon"></img>
           <NavLink className="nav-link" to="">
             Đăng xuất
           </NavLink>
