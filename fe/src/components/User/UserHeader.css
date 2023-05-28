@@ -6,21 +6,32 @@
     min-width: 170px;
     height: 100vh;
     display: flex;
+    justify-content: center;
     align-items: self-end;
     font-family: 'Roboto', sans-serif;
 }
 
 .nav-container .nav-content {
-    width: 100%;
+    width: 120%;
     height: 95%;
     justify-content: flex-start;
     align-items: left;
-    padding-left: 20%;
+    /* padding-left: 20%; */
     padding-top: 10%;
     background-color: #FFFAFA;
     border-top-right-radius: 30px;
     box-shadow: 6px 4px 5px #4e4e4e46;
     overflow: hidden;
+}
+
+.nav-container .nav-content li {
+    width: 100%;
+    justify-content: left;
+    padding-left: 20%;
+}
+
+.nav-container .nav-content li:hover:not(.user-hb-name) {
+    background-color: #9dcec8;
 }
 
 .nav-container .nav-content .nav-item {
@@ -42,7 +53,6 @@
 
 .nav-container .nav-content .nav-item a {
     text-decoration: none;
-    width: 100%;
     color: #2a5b55;
 }
 

@@ -5,44 +5,44 @@ const UserHeadingBar = () => {
   return (
     <div className="nav-container">
       <ul class="nav flex-column nav-content">
-        <li class="nav-item">
-          <NavLink className="nav-link" to="">
+        <li class="nav-item" type="button">
+          <NavLink className="nav-link d-flex" to="">
             {" "}
             <img className="nav-avt" src="/assets/images/person1.svg" alt="" />
 
           </NavLink>
         </li>
-        <li class="nav-item d-flex">
+        <li class="nav-item user-hb-name" type="button">
           <span className="nav-text">
             UserName
             <div className="seperator"></div>
           </span>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-flex" type="button">
           <img className="nav-icon" src="/assets/images/home.svg" alt="icon"></img>
           <NavLink className="nav-link" to="">
             Trang chủ
           </NavLink>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-flex" type="button">
           <img className="nav-icon" src="/assets/images/action.svg" alt="icon"></img>
           <NavLink className="nav-link" to="">
             Hoạt động
           </NavLink>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-flex" type="button">
           <img className="nav-icon" src="/assets/images/message.svg" alt="icon"></img>
           <NavLink className="nav-link" to="">
             Tin nhắn
           </NavLink>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-flex" type="button">
           <img className="nav-icon" src="/assets/images/user.svg" alt="icon"></img>
           <NavLink className="nav-link" to="">
             Tài khoản
           </NavLink>
         </li>
-        <li class="nav-item">
+        <li class="nav-item d-flex" type="button">
           <img className="nav-icon" src="/assets/images/exit.svg" alt="icon"></img>
           <NavLink className="nav-link" to="">
             Đăng xuất

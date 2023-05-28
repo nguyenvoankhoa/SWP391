@@ -23,16 +23,16 @@
   position: absolute;
   top: 50%;
   right: 15%;
-  transform: translate(-100%, 50%);
-  width: 17px;
-  height: 17px;
+  transform: translate(-100%, 100%);
+  width: 13px;
+  height: 13px;
   border-left: solid 3px #397F77;
   border-bottom: solid 3px #397F77;
-  border-bottom-left-radius: 5px;
+  border-bottom-left-radius: 3px;
   rotate: -45deg;
 }
 
-.hh-content button {
+.hh-content button:not(.date-btn button) {
   width: 250px;
   height: fit-content;
   background: none;
@@ -51,8 +51,8 @@
   height: 100%;
 }
 
-.hh-content button:hover,
-.hh-content button:active {
+.hh-content button:not(.date-btn button):hover,
+.hh-content button:not(.date-btn button):active {
   background-color: #397F77;
   color: white;
   font-weight: 600;
@@ -176,7 +176,7 @@ input:checked + .slider:before {
 
 
 .cont-btn button {
-  background-color: #397F77;
+  background-color: #397F77 !important;
   color: white;
 }
 
@@ -184,6 +184,19 @@ input:checked + .slider:before {
   position: relative;
   padding: 5px 20px;
   width: 230px;
+  color: black;
+}
+
+.manual-service span {
+  font-size: 17px;
+}
+
+.manual-service button:hover .hh-arrow,
+.manual-service button:active .hh-arrow {
+  transform: rotate(180deg);
+  border-color: white;
+  top: 37%;
+  right: 5%;
 }
 
 .manual-service .hh-arrow {
@@ -192,8 +205,46 @@ input:checked + .slider:before {
   transform: translate(0, -100%);
 }
 
-
-
 .hh-submit .hh-payment button {
-  width: 300px;
+  width: 300px !important;
+}
+
+.date-btn .date-picker {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0; 
+  margin: 0;
+  font-size: 18px;
+}
+
+.date-btn .date-picker:active {
+  border: none;
+}
+
+.manual-service button .manual-dropdown {
+  visibility: hidden;
+  display: none;
+}
+
+.manual-service button .manual-dropdown .manual-item {
+  padding: 2% 0;
+}
+
+.manual-service button:hover .manual-dropdown,
+.manual-service button:active .manual-dropdown {  
+  display: unset;
+  visibility: visible;
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  width: 100%;
+  top: 105%;
+  left: 0;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
 }

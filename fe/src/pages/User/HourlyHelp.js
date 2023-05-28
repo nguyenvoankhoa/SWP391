@@ -3,10 +3,20 @@ import "./HourlyHelp.css";
 import { Link } from "react-router-dom";
 import Title from "../../components/Title";
 import UserHeadingBar from "../../components/User/UserHeadingBar";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 const HourlyHelp = () => {
 
+  const [startDate, setStartDate] = useState(new Date());
+
   const [display, setDisplay] = useState(false);
+
+  const cleanFreq = ["Hàng ngày", "Hàng tuần", "Hàng tháng"];
+
+  const [chosenService, setChosenService] = useState("Hàng tuần");
+
+  const [displayManual, setDisplayManual] = useState(false);
 
   return (
     <>
@@ -57,17 +67,22 @@ const HourlyHelp = () => {
                 <Link>4h(105m2/4 phòng)</Link>
               </button>
             </div>
-            <div className="col-md-4 hh-options dropdown">
+            <div className="col-md-4 date-btn hh-options">
               <label>Chọn ngày</label>
-              <button className="btn btn-secondary" type="button" id="day-picker" data-bs-toggle="dropdown" aria-expanded="false">
-                <span style={{ opacity: "0" }}>4h(105m2/4 phòng)</span>
-                <div className="hh-arrow"></div>
+              <button
+                style={{
+                  backgroundColor: "white",
+                  boxShadow: "0 3px 3px #4e6e6a57",
+                }}
+              >
+                <DatePicker
+                  className="date-picker"
+                  selected={startDate}
+                  minDate={new Date()}
+                  onChange={(date) => setStartDate(date)}
+                  dateFormat="dd/MM/yyyy"
+                />
               </button>
-              <ul className="dropdown-menu" aria-labelledby="day-picker">
-                <li></li>
-                <li></li>
-                <li></li>
-              </ul>
             </div>
             <div className="col-md-4 hh-options">
               <label>Chọn giờ</label>
@@ -93,10 +108,23 @@ const HourlyHelp = () => {
                 </label>
                 {
                   display &&
-                  <div className="col-md-4 manual-service">
-                    <button>
-                      <span style={{ opacity: "0" }}>###########</span>
+                  <div className="col-md-4 manual-service dropdown">
+                    <button onClick={() => { setDisplayManual(displayManual => !displayManual) }}>
+                      <span>{chosenService}</span>
                       <div className="hh-arrow"></div>
+                      <div className="manual-dropdown">
+                        {
+                          cleanFreq.map((service) =>
+                            <div
+                              type="button"
+                              className="manual-item"
+                              onClick={() => setChosenService(service)}
+                            >
+                              {service}
+                            </div>
+                          )
+                        }
+                      </div>
                     </button>
                   </div>
                 }
@@ -131,7 +159,6 @@ const HourlyHelp = () => {
             </div>
           </div>
         </div>
-
       </div>
     </>
 
