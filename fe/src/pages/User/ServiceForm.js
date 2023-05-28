@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "./FabricCleaning.css";
-import "./DatePicker.css";
 import Title from "../../components/Title";
 import { Link } from "react-router-dom";
 const ServiceForm = (props) => {
@@ -24,7 +23,7 @@ const ServiceForm = (props) => {
         <h1 className="text-center fabric-title">{props.title}</h1>
       </nav>
       <form onSubmit={fetchEvent}>
-        <div className="gy-lg-5 input">
+        <div className="gy-lg-5 input service-form">
           <div className="col-lg-12">
             <label className="schedule-input">Ngày làm việc</label>
             <DatePicker

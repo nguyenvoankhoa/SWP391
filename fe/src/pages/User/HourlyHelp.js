@@ -12,11 +12,9 @@ const HourlyHelp = () => {
 
   const [display, setDisplay] = useState(false);
 
-  const cleanFreq = ["Hàng ngày", "Hàng tuần", "Hàng tháng"];
+  const cleanFreq = ["Hàng ngày", "Hàng tuần", "Hàng tháng", "Hàng năm"];
 
   const [chosenService, setChosenService] = useState("Hàng tuần");
-
-  const [displayManual, setDisplayManual] = useState(false);
 
   return (
     <>
@@ -109,7 +107,7 @@ const HourlyHelp = () => {
                 {
                   display &&
                   <div className="col-md-4 manual-service dropdown">
-                    <button onClick={() => { setDisplayManual(displayManual => !displayManual) }}>
+                    <button>
                       <span>{chosenService}</span>
                       <div className="hh-arrow"></div>
                       <div className="manual-dropdown">
@@ -150,7 +148,7 @@ const HourlyHelp = () => {
           <div className="row mt-5 pt-4 d-flex justify-content-center navigate-btn">
             <div className="col-md-4 pt-2 pb-2 d-flex justify-content-center cont-btn">
               <button>
-                <Link>Tiếp tục</Link>
+                <Link to="">Tiếp tục</Link>
               </button>
             </div><div className="col-md-4 pt-2 pb-2 d-flex justify-content-center back-btn">
               <button>
