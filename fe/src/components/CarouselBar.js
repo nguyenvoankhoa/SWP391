@@ -36,21 +36,21 @@ const CarouselBar = () => {
           <div className="carousel-inner">
             <div className="carousel-item active">
               <img
-                src="assets/images/kinn-living.svg"
+                src="assets/images/carose1.svg"
                 className="d-block w-100"
                 alt="Services"
               />
             </div>
             <div className="carousel-item">
               <img
-                src="assets/images/slide2.jpg"
+                src="assets/images/carose2.svg"
                 className="d-block w-100"
                 alt="Services"
               />
             </div>
             <div className="carousel-item">
               <img
-                src="assets/images/slide3.jpg"
+                src="assets/images/carose3.svg"
                 className="d-block w-100"
                 alt="Services"
               />

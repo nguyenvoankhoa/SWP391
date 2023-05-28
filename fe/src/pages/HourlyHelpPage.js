@@ -22,14 +22,16 @@ const HourlyHelpPage = () => {
           <img
             src="/assets/images/staff-cleaning.svg"
             alt="img"
-            className="w-100"
+            style={{
+              width: "550px"
+            }}
           />
         </div>
       </div>
       <div className="row my-5">
         <div className="col-lg-6 col-sm-12">
           <img
-            src="/assets/images/map.svg"
+            src="/assets/images/contentchung.svg"
             alt="img"
             className="w-100"
           />
@@ -38,9 +40,10 @@ const HourlyHelpPage = () => {
           <div>
             <h3 className="title">Giới Thiệu</h3>
             <p className="text-detail">
-              CleanShine - Dịch vụ giúp việc theo giờ tại Hà Nội, Tp.Hồ Chí Minh,
-              Bình Dương, Đà Nẵng, Hải Phòng. Trải nghiệm app giúp việc theo giờ
-              uy tín và tận hưởng ngày dài thảnh thơi chỉ với một chạm.
+              CleanShine - Với nhiều năm kinh nghiệm trong lĩnh vực vệ sinh công nghiệp,
+              chúng tôi tự tin là đơn vị cung cấp các giải pháp vệ sinh đa dạng phù hợp vói mọi nhu cầu của
+              Quý khách hàng từ dịch vụ vệ sinh theo ngày, giờ, hàng ngày cho đến các dịch vụ vệ sinh định kỳ
+              như giặt thảm, ghế sofa,...
             </p>
           </div>
         </div>
@@ -56,13 +59,14 @@ const HourlyHelpPage = () => {
               <li>Có ký kết Hợp đồng, Bảo hành dịch vụ & Bảo hiểm tài sản</li>
             </ul>
             <Button
-              backgroundColor="#BFE3F2"
+              backgroundColor="#397F77"
               borderRadius="15px"
               padding="16px 41px"
             >
-              <Link to="/sign-in">
+              <Link to="/sign-in" style={
+                { textDecoration: "none", }}>
                 <Title
-                  color="#000000"
+                  color="#FFFFFF"
                   title="Đặt dịch vụ ngay"
                   fontSize="20px"
                   fontWeight="600"
@@ -75,7 +79,9 @@ const HourlyHelpPage = () => {
           <img
             src="/assets/images/call center.svg"
             alt="img"
-            className="w-100"
+            style={{
+              width: "500px"
+            }}
           />
         </div>
       </div>

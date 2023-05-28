@@ -19,9 +19,11 @@ const TotalSanitationPage = () => {
         <div className="col-lg-6 col-sm-12">
           <img
             src="/assets/images/sanitation.svg"
-            
+            style={{
+              width: "450px"
+            }}
             alt="img"
-            className="w-100"
+
           />
         </div>
       </div>
@@ -30,7 +32,9 @@ const TotalSanitationPage = () => {
           <img
             src="https://cdn.jupviec.vn/tvs_mota_fa6100288b.png"
             alt="img"
-            className="w-100"
+            style={{
+              width: "450px"
+            }}
           />
         </div>
         <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
@@ -44,13 +48,13 @@ const TotalSanitationPage = () => {
               <br /> Sử dụng các loại hóa chất làm sạch & thiết bị chuyên dụng
             </p>
             <Button
-              backgroundColor="#BFE3F2"
+              backgroundColor="#397F77"
               borderRadius="15px"
               padding="16px 41px"
             >
-              <Link to="/sign-in" style={{ textDecoration: "none", display: "none" }}>
+              <Link to="/sign-in" style={{ textDecoration: "none", }}>
                 <Title
-                  color="#000000"
+                  color="#FFFFFF"
                   title="Đặt dịch vụ ngay"
                   fontSize="20px"
                   fontWeight="600"
@@ -75,7 +79,9 @@ const TotalSanitationPage = () => {
           <img
             src="https://chuyenvesinhnha.com/wp-content/uploads/2016/12/doi-ve-sinh-nha-cua-aplite.jpg"
             alt="img"
-            className="w-100"
+            style={{
+              width: "600px"
+            }}
           />
         </div>
       </div>

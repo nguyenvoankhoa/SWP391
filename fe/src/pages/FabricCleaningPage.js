@@ -25,7 +25,7 @@ const FabricCleaningPage = () => {
       <div className="row my-5">
         <div className="col-lg-6 col-sm-12">
           <img
-            src="https://cdn.jupviec.vn/left1_7aa3497d36.png"
+            src="/assets/images/contentchung.svg"
             alt="img"
             className="w-100"
           />
@@ -35,23 +35,24 @@ const FabricCleaningPage = () => {
             {" "}
             <h1>Giới Thiệu</h1>
             <p>
-              JupSofa - Dịch vụ vệ sinh Sofa, đệm, rèm, thảm sử dụng công nghệ
+              CleanShine - Dịch vụ vệ sinh Sofa, đệm, rèm, thảm sử dụng công nghệ
               tiên tiến từ Đức được Khách hàng tin tưởng và sử dụng trong suốt
               thời gian qua.
               <br /> Chỉ với một vài thao tác đơn giản trên ứng dụng, Khách hàng
               đã tìm được Dịch vụ Vệ sinh Sofa uy tín, chuyên nghiệp với nhiều
               ưu đãi hấp dẫn.
-              <br /> Hiện tại JupSofa - Dịch vụ Sofa cung cấp dịch vụ tại Hà
+              <br /> Hiện tại CleanShine - Dịch vụ Sofa cung cấp dịch vụ tại Hà
               Nội, Tp.Hồ Chí Minh, Hải Phòng.
             </p>
             <Button
-              backgroundColor="#BFE3F2"
+              backgroundColor="#397F77"
               borderRadius="15px"
               padding="16px 41px"
             >
-              <Link to="/sign-in">
+              <Link to="/sign-in" style={
+                { textDecoration: "none", }}>
                 <Title
-                  color="#000000"
+                  color="#FFFFFF"
                   title="Đặt dịch vụ ngay"
                   fontSize="20px"
                   fontWeight="600"

@@ -33,7 +33,9 @@ const HeadingBar = () => {
             id="nav-link"
           >
             <li>
-              <NavLink
+              <NavLink style={{
+                fontWeight: "1200",
+              }}
                 className={({ isActive }) =>
                   isActive
                     ? "nav-link otp-service active"
@@ -53,7 +55,7 @@ const HeadingBar = () => {
                   id="dropdownMenuLink"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  style={{ position: "relative" }}
+                  style={{ position: "relative", fontWeight: "1200", }}
                 >
                   DỊCH VỤ
                   <div className="arrow"></div>
@@ -97,7 +99,9 @@ const HeadingBar = () => {
             </li>
 
             <li>
-              <NavLink
+              <NavLink style={{
+                fontWeight: "1200",
+              }}
                 className={({ isActive }) =>
                   isActive
                     ? "nav-link otp-service active"
@@ -110,7 +114,9 @@ const HeadingBar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink
+              <NavLink style={{
+                fontWeight: "1200",
+              }}
                 className={({ isActive }) =>
                   isActive
                     ? "nav-link otp-service active"
@@ -123,7 +129,9 @@ const HeadingBar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink
+              <NavLink style={{
+                fontWeight: "1200",
+              }}
                 className={({ isActive }) =>
                   isActive
                     ? "nav-link otp-service active"
