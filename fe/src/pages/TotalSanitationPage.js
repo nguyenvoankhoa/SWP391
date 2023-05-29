@@ -2,7 +2,23 @@ import React from "react";
 import Button from "../UI/Button";
 import Title from "../components/Title";
 import { Link } from "react-router-dom";
+import Price from "../components/Price";
 const TotalSanitationPage = () => {
+  const product1 = [
+    {
+      type: "Tổng vệ sinh",
+      name: "Tối đa 80m2(2 người/4 giờ)",
+      price: "650.000",
+      id: "1",
+    },
+    {
+      type: "Tổng vệ sinh",
+      name: "Tối đa 100m2(3 người/4 giờ)",
+      price: "720.000",
+      id: "2",
+    },
+    { type: "Tổng vệ sinh", name: "Tối đa 150m2(3 người/4 giờ)", price: "960.000", id: "3" },
+  ];
   return (
     <div className="container">
       <div className="row my-5">
@@ -87,6 +103,7 @@ const TotalSanitationPage = () => {
       </div>
       <div className="row my-5">
         <h1 className="text-center">Bảng giá dịch vụ</h1>
+        <Price product1={product1} />
       </div>
     </div>
   );

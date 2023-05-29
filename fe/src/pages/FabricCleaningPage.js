@@ -2,7 +2,28 @@ import React from "react";
 import Button from "../UI/Button";
 import Title from "../components/Title";
 import { Link } from "react-router-dom";
+import Price from "../components/Price";
 const FabricCleaningPage = () => {
+
+  const product1 = [
+    {
+      type: "Sofa",
+      name: "Một ghế",
+      price: "360.000",
+      id: "1",
+    },
+    {
+      type: "Sofa",
+      name: "Hai ghế",
+      price: "450.000",
+      id: "2",
+    },
+    { type: "Nệm", name: "Nhỏ hơn 2m", price: "300.000", id: "3" },
+    { type: "Nệm", name: "Lớn hơn 2m", price: "430.000", id: "4" },
+    { type: "Thảm", name: "Nhỏ hơn 1.5m", price: "300.000", id: "5" },
+    { type: "Thảm", name: "Từ 1.5m đến 2m", price: "350.000", id: "6" },
+    { type: "Thảm", name: "Lớn hơn 2m", price: "450.000", id: "7" },
+  ];
   return (
     <div className="container">
       <div className="row my-5">
@@ -83,6 +104,7 @@ const FabricCleaningPage = () => {
       </div>
       <div className="row my-5">
         <h1 className="text-center">Bảng giá dịch vụ</h1>
+        <Price product1={product1} />
       </div>
     </div>
   );
