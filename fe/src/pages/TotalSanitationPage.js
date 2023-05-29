@@ -3,7 +3,13 @@ import Button from "../UI/Button";
 import Title from "../components/Title";
 import { Link } from "react-router-dom";
 import './AllServices.css'
+import { Link, useLoaderData } from "react-router-dom";
+import Price from "../components/Price";
 const TotalSanitationPage = () => {
+  const data = useLoaderData();
+  const TOTAL_CLEANING = data.filter((item) => {
+    return item.name === "Tổng vệ sinh";
+  });
   return (
     <div className="container">
       <div className="row my-5">
@@ -20,11 +26,8 @@ const TotalSanitationPage = () => {
         <div className="col-lg-6 col-sm-12">
           <img
             src="/assets/images/sanitation.svg"
-            style={{
-              width: "450px"
-            }}
+            className="w-100"
             alt="img"
-
           />
         </div>
       </div>
@@ -33,9 +36,7 @@ const TotalSanitationPage = () => {
           <img
             src="/assets/images/sanitation cleaning.svg"
             alt="img"
-            style={{
-              width: "450px"
-            }}
+            className="w-100"
           />
         </div>
         <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
@@ -53,7 +54,7 @@ const TotalSanitationPage = () => {
               borderRadius="15px"
               padding="16px 41px"
             >
-              <Link to="/sign-in" style={{ textDecoration: "none", }}>
+              <Link to="/sign-in" style={{ textDecoration: "none" }}>
                 <Title
                   color="#FFFFFF"
                   title="Đặt dịch vụ ngay"
@@ -88,6 +89,7 @@ const TotalSanitationPage = () => {
       </div>
       <div className="row my-5">
         <h1 className="text-center">Bảng giá dịch vụ</h1>
+        <Price services={TOTAL_CLEANING} />
       </div>
     </div>
   );

@@ -3,18 +3,27 @@ import Button from "../UI/Button";
 import Title from "../components/Title";
 import { Link } from "react-router-dom";
 import './AllServices.css'
+import { Link, json, useLoaderData } from "react-router-dom";
+import "./HourlyHelpPage.css";
+import Price from "../components/Price";
 const HourlyHelpPage = () => {
+  const data = useLoaderData();
+  const HOURLY_HELP = data.filter((item) => {
+    return item.name === "Giúp việc theo giờ";
+  });
   return (
     <div className="container help-page-container">
       <div className="row my-5">
         <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
           <div>
-            <h3 className="title">Tìm Giúp Việc Theo Giờ Chuyên Nghiệp Cùng CleanShine</h3>
+            <h3 className="title">
+              Tìm Giúp Việc Theo Giờ Chuyên Nghiệp Cùng CleanShine
+            </h3>
             <p className="text-detail">
-              Bạn cần tìm người giúp việc theo giờ hỗ trợ việc nhà? Đặt CleanShine
-              - Dịch vụ giúp việc theo giờ chuyên nghiệp theo tiêu chuẩn
-              xanh, sạch, đẹp. Đặt lịch giúp việc nhà đơn giản, nhanh chóng chỉ với
-              30s trên ứng dụng CleanShine.
+              Bạn cần tìm người giúp việc theo giờ hỗ trợ việc nhà? Đặt
+              CleanShine - Dịch vụ giúp việc theo giờ chuyên nghiệp theo tiêu
+              chuẩn xanh, sạch, đẹp. Đặt lịch giúp việc nhà đơn giản, nhanh
+              chóng chỉ với 30s trên ứng dụng CleanShine.
             </p>
           </div>
         </div>
@@ -22,9 +31,7 @@ const HourlyHelpPage = () => {
           <img
             src="/assets/images/staff-cleaning.svg"
             alt="img"
-            style={{
-              width: "550px"
-            }}
+            className="w-100"
           />
         </div>
       </div>
@@ -40,9 +47,10 @@ const HourlyHelpPage = () => {
           <div>
             <h3 className="title">Giới Thiệu</h3>
             <p className="text-detail">
-              CleanShine - Với nhiều năm kinh nghiệm trong lĩnh vực vệ sinh công nghiệp,
-              chúng tôi tự tin là đơn vị cung cấp các giải pháp vệ sinh đa dạng phù hợp vói mọi nhu cầu của
-              Quý khách hàng từ dịch vụ vệ sinh theo ngày, giờ, hàng ngày cho đến các dịch vụ vệ sinh định kỳ
+              CleanShine - Với nhiều năm kinh nghiệm trong lĩnh vực vệ sinh công
+              nghiệp, chúng tôi tự tin là đơn vị cung cấp các giải pháp vệ sinh
+              đa dạng phù hợp vói mọi nhu cầu của Quý khách hàng từ dịch vụ vệ
+              sinh theo ngày, giờ, hàng ngày cho đến các dịch vụ vệ sinh định kỳ
               như giặt thảm, ghế sofa,...
             </p>
           </div>
@@ -63,8 +71,7 @@ const HourlyHelpPage = () => {
               borderRadius="15px"
               padding="16px 41px"
             >
-              <Link to="/sign-in" style={
-                { textDecoration: "none", }}>
+              <Link to="/sign-in" style={{ textDecoration: "none" }}>
                 <Title
                   color="#FFFFFF"
                   title="Đặt dịch vụ ngay"
@@ -79,17 +86,26 @@ const HourlyHelpPage = () => {
           <img
             src="/assets/images/call center.svg"
             alt="img"
-            style={{
-              width: "500px"
-            }}
+            className="w-100"
           />
         </div>
       </div>
       <div className="row my-5">
         <h1 className="text-center">Bảng giá dịch vụ</h1>
+        <Price services={HOURLY_HELP} />
       </div>
     </div>
   );
 };
 
 export default HourlyHelpPage;
+
+export async function loader() {
+  const res = await fetch("http://localhost:8080/electronic-cleaning");
+  if (!res.ok) {
+    throw json({ message: "can not load item" }, { status: 500 });
+  } else {
+    const data = await res.json();
+    return data;
+  }
+}

@@ -3,7 +3,13 @@ import Button from "../UI/Button";
 import Title from "../components/Title";
 import { Link } from "react-router-dom";
 import './AllServices.css'
+import { Link, useLoaderData } from "react-router-dom";
+import Price from "../components/Price";
 const ElectronicCleaningPage = () => {
+  const data = useLoaderData();
+  const ELECTRONIC_CLEANING = data.filter((item) => {
+    return item.name === "Vệ sinh máy lạnh";
+  });
   return (
     <div className="container">
       <div className="row my-5">
@@ -46,8 +52,7 @@ const ElectronicCleaningPage = () => {
             borderRadius="15px"
             padding="16px 41px"
           >
-            <Link to="/sign-in" style={
-              { textDecoration: "none", }}>
+            <Link to="/sign-in" style={{ textDecoration: "none" }}>
               <Title
                 color="#FFFFFF"
                 title="Đặt dịch vụ ngay"
@@ -72,15 +77,13 @@ const ElectronicCleaningPage = () => {
           <img
             src="/assets/images/suamaylanh.svg"
             alt="img"
-            style={{
-              width: "500px",
-
-            }}
+            className="w-100"
           />
         </div>
       </div>
       <div className="row my-5">
         <h1 className="text-center">Bảng giá dịch vụ</h1>
+        <Price services={ELECTRONIC_CLEANING} />
       </div>
     </div>
   );

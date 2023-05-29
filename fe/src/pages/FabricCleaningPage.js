@@ -3,7 +3,13 @@ import Button from "../UI/Button";
 import Title from "../components/Title";
 import { Link } from "react-router-dom";
 import './AllServices.css'
+import { Link, useLoaderData } from "react-router-dom";
+import Price from "../components/Price";
 const FabricCleaningPage = () => {
+  const data = useLoaderData();
+  const FABRIC_CLEANING = data.filter((item) => {
+    return item.name === "Vệ sinh nệm, sofa, thảm";
+  });
   return (
     <div className="container">
       <div className="row my-5">
@@ -50,8 +56,7 @@ const FabricCleaningPage = () => {
               borderRadius="15px"
               padding="16px 41px"
             >
-              <Link to="/sign-in" style={
-                { textDecoration: "none", }}>
+              <Link to="/sign-in" style={{ textDecoration: "none" }}>
                 <Title
                   color="#FFFFFF"
                   title="Đặt dịch vụ ngay"
@@ -84,6 +89,7 @@ const FabricCleaningPage = () => {
       </div>
       <div className="row my-5">
         <h1 className="text-center">Bảng giá dịch vụ</h1>
+        <Price services={FABRIC_CLEANING} />
       </div>
     </div>
   );

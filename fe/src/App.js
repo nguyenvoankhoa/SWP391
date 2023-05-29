@@ -16,7 +16,7 @@ import HourlyHelp from "./pages/User/HourlyHelp";
 import TotalSanitation from "./pages/User/TotalSanitation";
 import FabricCleaning from "./pages/User/FabricCleaning";
 import ElectronicCleaning from "./pages/User/ElectronicCleaning";
-import HourlyHelpPage from "./pages/HourlyHelpPage";
+import HourlyHelpPage, { loader as PriceLoader } from "./pages/HourlyHelpPage";
 import FabricCleaningPage from "./pages/FabricCleaningPage";
 import TotalSanitationPage from "./pages/TotalSanitationPage";
 import ElectronicCleaningPage from "./pages/ElectronicCleaningPage";
@@ -27,6 +27,8 @@ import EditEmployee from "./pages/Admin/EditEmployee";
 import EditService from "./pages/Admin/EditService";
 import AdminLayout from "./layouts/AdminLayout";
 import EmployeeLayout from "./layouts/EmployeeLayout";
+import OrderSumation from "./pages/User/OrderSumation";
+import OrderCompleted from "./pages/User/OrderCompleted";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,13 +37,24 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: "services",
-        children: [
-          { path: "hourly-help", element: <HourlyHelpPage /> },
-          { path: "total-senitation", element: <TotalSanitationPage /> },
-          { path: "fabric-cleaning", element: <FabricCleaningPage /> },
-          { path: "electronic-cleaning", element: <ElectronicCleaningPage /> },
-        ],
+        path: "hourly-help",
+        element: <HourlyHelpPage />,
+        loader: PriceLoader,
+      },
+      {
+        path: "total-senitation",
+        element: <TotalSanitationPage />,
+        loader: PriceLoader,
+      },
+      {
+        path: "fabric-cleaning",
+        element: <FabricCleaningPage />,
+        loader: PriceLoader,
+      },
+      {
+        path: "electronic-cleaning",
+        element: <ElectronicCleaningPage />,
+        loader: PriceLoader,
       },
       { path: "contact", element: <ContactPage /> },
       { path: "news", element: <NewsPage /> },
@@ -62,6 +75,8 @@ const router = createBrowserRouter([
       { path: "total-senitation", element: <TotalSanitation /> },
       { path: "fabric-cleaning", element: <FabricCleaning /> },
       { path: "electronic-cleaning", element: <ElectronicCleaning /> },
+      { path: "order-sumation", element: <OrderSumation /> },
+      { path: "order-completed", element: <OrderCompleted /> },
     ],
   },
   {

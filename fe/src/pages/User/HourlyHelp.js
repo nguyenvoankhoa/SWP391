@@ -1,24 +1,27 @@
 import React, { useState } from "react";
 import "./HourlyHelp.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import Title from "../../components/Title";
-import UserHeadingBar from "../../components/User/UserHeadingBar";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+
+React.state = {
+  cleanFreq: ["Hàng ngày", "Hàng tuần", "Hàng tháng", "Hàng năm"],
+  payMethod: ["PayPal", "Tiền mặt"]
+}
+
 const HourlyHelp = () => {
 
-  const [startDate, setStartDate] = useState(new Date());
+  const [selectedDate, setselectedDate] = useState(new Date());
 
   const [display, setDisplay] = useState(false);
 
-  const cleanFreq = ["Hàng ngày", "Hàng tuần", "Hàng tháng", "Hàng năm"];
-
   const [chosenService, setChosenService] = useState("Hàng tuần");
 
+  const [selectedPayment, setSelectedPayment] = useState("");
   return (
     <>
-      <UserHeadingBar />
       <div
         className="bg"
         style={{
@@ -34,7 +37,7 @@ const HourlyHelp = () => {
       <div
         className="container"
         style={{
-          paddingLeft: "20vw",
+          paddingLeft: "21.5vw",
           paddingRight: "0",
           margin: "0",
           height: "100vh",
@@ -77,9 +80,9 @@ const HourlyHelp = () => {
               >
                 <DatePicker
                   className="date-picker"
-                  selected={startDate}
+                  selected={selectedDate}
                   minDate={new Date()}
-                  onChange={(date) => setStartDate(date)}
+                  onChange={(date) => setselectedDate(date)}
                   dateFormat="dd/MM/yyyy"
                 />
               </button>
@@ -96,10 +99,10 @@ const HourlyHelp = () => {
               >
                 <DatePicker
                   className="date-picker"
-                  selected={startDate}
+                  selected={selectedDate}
                   showTimeSelect
                   minDate={new Date()}
-                  onChange={(date) => setStartDate(date)}
+                  onChange={(date) => setselectedDate(date)}
                   dateFormat="HH:mm "
                 />
               </button>
@@ -127,7 +130,7 @@ const HourlyHelp = () => {
                       <div className="hh-arrow"></div>
                       <div className="manual-dropdown">
                         {
-                          cleanFreq.map((service) =>
+                          React.state.cleanFreq.map((service) =>
                             <div
                               type="button"
                               className="manual-item"
@@ -148,22 +151,28 @@ const HourlyHelp = () => {
               </div>
             </div>
             <div className="row hh-submit">
-              <div className="col-md-5 d-flex justify-content-center hh-payment">
-                <button>
-                  <Link>Thanh toán bằng tiền mặt</Link>
-                </button>
-              </div>
-              <div className="col-md-5 d-flex justify-content-center hh-payment">
-                <button>
-                  <Link>Thanh toán bằng PayPal</Link>
-                </button>
-              </div>
+              {
+                React.state.payMethod.map((method) =>
+                  <div className="col-md-5 d-flex justify-content-center hh-payment">
+                    <button onClick={() => setSelectedPayment(method)}>
+                      <NavLink>Thanh toán bằng {method}</NavLink>
+                    </button>
+                  </div>
+                )
+              }
             </div>
           </div>
           <div className="row d-flex justify-content-center navigate-btn">
             <div className="col-md-4 pt-2 pb-2 d-flex justify-content-center cont-btn">
               <button>
-                <Link to="">Tiếp tục</Link>
+                <Link
+                  to="/user/order-sumation"
+                  state={{
+                    startDate: new Date(),
+                    date: selectedDate,
+                    payment: selectedPayment,
+                  }}
+                >Tiếp tục</Link>
               </button>
             </div><div className="col-md-4 pt-2 pb-2 d-flex justify-content-center back-btn">
               <button>
