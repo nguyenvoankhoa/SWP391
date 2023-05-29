@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../UI/Card";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 const NewsItem = (props) => {
   return (
     <div className="my-5">

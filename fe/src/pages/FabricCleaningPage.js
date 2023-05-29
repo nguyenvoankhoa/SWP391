@@ -2,21 +2,22 @@ import React from "react";
 import Button from "../UI/Button";
 import Title from "../components/Title";
 import { Link } from "react-router-dom";
+import './AllServices.css'
 const FabricCleaningPage = () => {
   return (
     <div className="container">
       <div className="row my-5">
         <div className="col-lg-6 col-sm-12">
-          <h1>Dịch Vụ Vệ Sinh Sofa Tại Nhà Chuyên Nghiệp</h1>
-          <p>
-            JupSofa - Dịch vụ vệ sinh Sofa, đệm, rèm, thảm sử dụng công nghệ
+          <h3 className="title">Dịch Vụ Vệ Sinh Sofa Tại Nhà Chuyên Nghiệp</h3>
+          <p className="text-detail">
+            CleanShine - Dịch vụ vệ sinh Sofa, đệm, rèm, thảm sử dụng công nghệ
             tiên tiến từ Đức giúp làm sạch sâu các vết ố bẩn, nấm mốc, ố vàng.
             Hơn 2.000 Khách hàng đã tin tưởng và sử dụng dịch vụ của chúng tôi.
           </p>
         </div>
         <div className="col-lg-6 col-sm-12">
           <img
-            src="https://cdn.jupviec.vn/sec1_1900_09eb73895b.jpg"
+            src="/assets/images/done-animate.svg"
             alt="img"
             className="w-100"
           />
@@ -33,8 +34,8 @@ const FabricCleaningPage = () => {
         <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
           <div>
             {" "}
-            <h1>Giới Thiệu</h1>
-            <p>
+            <h3 className="title">Giới Thiệu</h3>
+            <p className="text-detail">
               CleanShine - Dịch vụ vệ sinh Sofa, đệm, rèm, thảm sử dụng công nghệ
               tiên tiến từ Đức được Khách hàng tin tưởng và sử dụng trong suốt
               thời gian qua.
@@ -65,8 +66,8 @@ const FabricCleaningPage = () => {
       <div className="row my-5">
         <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
           <div>
-            <h1>Tại Sao Cần Vệ Sinh Sofa Thường Xuyên?</h1>
-            <ul>
+            <h3 className="title">Tại Sao Cần Vệ Sinh Sofa Thường Xuyên?</h3>
+            <ul className="text-detail">
               <li>Loại bỏ các loại vi khuẩn gây bệnh tích tụ lâu ngày</li>
               <li>Giữ cho ghế Sofa luôn mới</li>
               <li>Nâng cao tuổi thọ Sofa, tiết kiệm chi phí thay đổi</li>

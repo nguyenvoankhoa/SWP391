@@ -1,0 +1,77 @@
+.rectangle {
+  width: 400px;
+  height: 50px;
+  background-color: white;
+  display: flex;
+  border-radius: 15px;
+}
+/* .ec-content {
+  position: absolute; 
+  width: 30%;
+  height: 65vh;
+  margin-top: 2%;
+  background-color: white;
+  box-shadow: 0 5px 10px #65928a88;
+  border-radius: 20px;
+} */
+
+/* .rectangle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 15px;
+  width: 20rem;
+  box-shadow: 0 4px 5px #00000040;
+  margin-top: -40px;
+} */
+
+.ec-title {
+  font-size: 20px;
+  font-family: 'Work Sans';
+  font-weight: bold;
+  color: #000000;
+  padding-top: 7px;
+
+}
+.ec-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.rectangle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c6d2d0;
+  color: #ffffff;
+  border-radius: 15px;
+  width: 20rem;
+  margin-top: -40px;
+}
+.ec-card-content button {
+  /* width: 200px;
+  height: fit-content; */
+  background: none;
+  border: solid 1.5px #c4efea6a;
+  border-radius: 5px;
+  box-shadow: 0 3px 3px #4e6e6a57;
+  font-weight: 500;
+  margin-top: 20px;
+}
+.ec-card-content a {
+  text-decoration: none;
+  font-family: 'Work Sans';
+}
+.ec-content .row {
+  justify-content: center;
+}

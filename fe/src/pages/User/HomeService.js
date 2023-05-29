@@ -6,7 +6,7 @@ const HomeService = () => {
     <div
       className="container"
       style={{
-        marginLeft: "5%",
+        // marginLeft: "5%",
         paddingLeft: "20vw",
         paddingRight: "0",
         margin: "0",

@@ -2,7 +2,7 @@ import React from "react";
 import Button from "../UI/Button";
 import Title from "../components/Title";
 import { Link } from "react-router-dom";
-import "./HourlyHelpPage.css"
+import './AllServices.css'
 const HourlyHelpPage = () => {
   return (
     <div className="container help-page-container">

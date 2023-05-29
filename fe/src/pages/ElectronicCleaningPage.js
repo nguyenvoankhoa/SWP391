@@ -2,17 +2,18 @@ import React from "react";
 import Button from "../UI/Button";
 import Title from "../components/Title";
 import { Link } from "react-router-dom";
+import './AllServices.css'
 const ElectronicCleaningPage = () => {
   return (
     <div className="container">
       <div className="row my-5">
         <div className="col-lg-6 col-sm-12">
-          <h1>Dịch Vụ Vệ Sinh Điều Hòa Tại Nhà Chuyên Nghiệp, Uy Tín</h1>
-          <p>
+          <h3 className="title">Dịch Vụ Vệ Sinh Điều Hòa Tại Nhà Chuyên Nghiệp, Uy Tín</h3>
+          <p className="text-detail">
             Với đội ngũ kỹ thuật viên có trình độ chuyên môn cao, chúng tôi tự
             tin sẽ giúp bạn vệ sinh điều hòa tại nhà nhanh chóng, dễ dàng.
           </p>
-          <p>
+          <p className="text-detail">
             Hiện tại, dịch vụ vệ sinh Điện máy chỉ phục vụ tại Hà Nội, Tp.Hồ Chí
             Minh.
           </p>
@@ -34,8 +35,8 @@ const ElectronicCleaningPage = () => {
           />
         </div>
         <div className="col-lg-6 col-sm-12">
-          <h1>Giới Thiệu</h1>
-          <p>
+          <h3 className="title">Giới Thiệu</h3>
+          <p className="text-detail">
             Chỉ với một vài thao tác đơn giản trên ứng dụng, Khách hàng đã tìm
             được Dịch vụ Vệ sinh điều hòa uy tín, chuyên nghiệp với nhiều ưu đãi
             hấp dẫn.
@@ -59,8 +60,8 @@ const ElectronicCleaningPage = () => {
       </div>
       <div className="row my-5">
         <div className="col-lg-6 col-sm-12">
-          <h1>Tại Sao Cần Vệ Sinh Điều Hòa Thường Xuyên?</h1>
-          <ul>
+          <h3 className="title">Tại Sao Cần Vệ Sinh Điều Hòa Thường Xuyên?</h3>
+          <ul className="text-detail">
             <li>Loại bỏ các loại vi khuẩn gây bệnh tích tụ lâu ngày</li>
             <li>Tiết kiệm điện năng</li>
             <li>Kéo dài tuổi thọ, công suất sử dụng của máy</li>

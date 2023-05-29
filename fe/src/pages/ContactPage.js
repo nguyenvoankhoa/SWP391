@@ -25,8 +25,8 @@ const ContactPage = () => {
         <div className="row mb-5">
           <div className="col-lg-6 d-none d-sm-block">
             <img
-              src="https://bizflyportal.mediacdn.vn/bizflyportal/1200/2428/2021/02/26/04/07/ky-16142656389784.jpg"
-              alt=""
+              src="/assets/images/contact us.svg"
+              alt="img"
               className={classes.contactImage}
             />
           </div>
