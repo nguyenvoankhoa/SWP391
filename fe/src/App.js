@@ -16,7 +16,7 @@ import HourlyHelp from "./pages/User/HourlyHelp";
 import TotalSanitation from "./pages/User/TotalSanitation";
 import FabricCleaning from "./pages/User/FabricCleaning";
 import ElectronicCleaning from "./pages/User/ElectronicCleaning";
-import HourlyHelpPage from "./pages/HourlyHelpPage";
+import HourlyHelpPage, { loader as PriceLoader } from "./pages/HourlyHelpPage";
 import FabricCleaningPage from "./pages/FabricCleaningPage";
 import TotalSanitationPage from "./pages/TotalSanitationPage";
 import ElectronicCleaningPage from "./pages/ElectronicCleaningPage";
@@ -37,10 +37,22 @@ const router = createBrowserRouter([
       {
         path: "services",
         children: [
-          { path: "hourly-help", element: <HourlyHelpPage /> },
+          {
+            path: "hourly-help",
+            element: <HourlyHelpPage />,
+            loader: PriceLoader,
+          },
           { path: "total-senitation", element: <TotalSanitationPage /> },
-          { path: "fabric-cleaning", element: <FabricCleaningPage /> },
-          { path: "electronic-cleaning", element: <ElectronicCleaningPage /> },
+          {
+            path: "fabric-cleaning",
+            element: <FabricCleaningPage />,
+            loader: PriceLoader,
+          },
+          {
+            path: "electronic-cleaning",
+            element: <ElectronicCleaningPage />,
+            loader: PriceLoader,
+          },
         ],
       },
       { path: "contact", element: <ContactPage /> },

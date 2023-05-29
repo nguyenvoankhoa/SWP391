@@ -17,9 +17,9 @@ const Price = (props) => {
           </thead>
           <tbody>
             {props.product1.map((product) => (
-              <tr key={product.id}>
-                <td>{product.type}</td>
+              <tr key={product.serviceId}>
                 <td>{product.name}</td>
+                <td>{product.type}</td>
                 <td>{product.price}</td>
               </tr>
             ))}
