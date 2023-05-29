@@ -1,30 +1,14 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Button from "../UI/Button";
 import Title from "../components/Title";
-import { Link, useLoaderData, json } from "react-router-dom";
+import { Link, json, useLoaderData } from "react-router-dom";
 import "./HourlyHelpPage.css";
 import Price from "../components/Price";
 const HourlyHelpPage = () => {
-  const product1 = [
-    {
-      type: "Dịch vụ dọn dẹp",
-      name: "2h(55m2/2 phòng)",
-      price: "150.000",
-      id: "1",
-    },
-    {
-      type: "Dịch vụ dọn dẹp",
-      name: "3h(85m2/3 phòng)",
-      price: "200.000",
-      id: "2",
-    },
-    {
-      type: "Dịch vụ dọn dẹp",
-      name: "4h(105m2/4 phòng)",
-      price: "250.000",
-      id: "3",
-    },
-  ];
+  const data = useLoaderData();
+  const HOURLY_HELP = data.filter((item) => {
+    return item.name === "Giúp việc theo giờ";
+  });
   return (
     <div className="container help-page-container">
       <div className="row my-5">
@@ -45,9 +29,7 @@ const HourlyHelpPage = () => {
           <img
             src="/assets/images/staff-cleaning.svg"
             alt="img"
-            style={{
-              width: "550px",
-            }}
+            className="w-100"
           />
         </div>
       </div>
@@ -102,15 +84,13 @@ const HourlyHelpPage = () => {
           <img
             src="/assets/images/call center.svg"
             alt="img"
-            style={{
-              width: "500px",
-            }}
+            className="w-100"
           />
         </div>
       </div>
       <div className="row my-5">
         <h1 className="text-center">Bảng giá dịch vụ</h1>
-        <Price product1={product1} />
+        <Price services={HOURLY_HELP} />
       </div>
     </div>
   );

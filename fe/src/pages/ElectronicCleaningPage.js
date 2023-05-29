@@ -75,15 +75,13 @@ const ElectronicCleaningPage = () => {
           <img
             src="/assets/images/suamaylanh.svg"
             alt="img"
-            style={{
-              width: "100%",
-            }}
+            className="w-100"
           />
         </div>
       </div>
       <div className="row my-5">
         <h1 className="text-center">Bảng giá dịch vụ</h1>
-        <Price product1={ELECTRONIC_CLEANING} />
+        <Price services={ELECTRONIC_CLEANING} />
       </div>
     </div>
   );

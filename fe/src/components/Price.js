@@ -2,8 +2,8 @@ import React from "react";
 const Price = (props) => {
   return (
     <div className="row d-flex justify-content-center">
-      <div className="col-lg-3"></div>
-      <div className="col-lg-6 table-responsive ">
+      <div className="col-lg-3 col-sm-0"></div>
+      <div className="col-lg-6 table-responsive col-sm-12">
         <table
           className="table table-bordered table-striped text-center"
           style={{ fontSize: "18px", fontWeight: "400" }}
@@ -16,17 +16,19 @@ const Price = (props) => {
             </tr>
           </thead>
           <tbody>
-            {props.product1.map((product) => (
+            {props.services.map((product) => (
               <tr key={product.serviceId}>
-                <td>{product.name}</td>
                 <td>{product.type}</td>
-                <td>{product.price}</td>
+                <td>{product.detail}</td>
+                <td>
+                  {product.price}/{product.unit}
+                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-      <div className="col-lg-3"></div>
+      <div className="col-lg-3 col-sm-0"></div>
     </div>
   );
 };

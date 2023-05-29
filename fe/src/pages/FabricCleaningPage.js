@@ -5,7 +5,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import Price from "../components/Price";
 const FabricCleaningPage = () => {
   const data = useLoaderData();
-  const ELECTRONIC_CLEANING = data.filter((item) => {
+  const FABRIC_CLEANING = data.filter((item) => {
     return item.name === "Vệ sinh nệm, sofa, thảm";
   });
   return (
@@ -87,7 +87,7 @@ const FabricCleaningPage = () => {
       </div>
       <div className="row my-5">
         <h1 className="text-center">Bảng giá dịch vụ</h1>
-        <Price product1={ELECTRONIC_CLEANING} />
+        <Price services={FABRIC_CLEANING} />
       </div>
     </div>
   );

@@ -37,25 +37,24 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       {
-        path: "services",
-        children: [
-          {
-            path: "hourly-help",
-            element: <HourlyHelpPage />,
-            loader: PriceLoader,
-          },
-          { path: "total-senitation", element: <TotalSanitationPage /> },
-          {
-            path: "fabric-cleaning",
-            element: <FabricCleaningPage />,
-            loader: PriceLoader,
-          },
-          {
-            path: "electronic-cleaning",
-            element: <ElectronicCleaningPage />,
-            loader: PriceLoader,
-          },
-        ],
+        path: "hourly-help",
+        element: <HourlyHelpPage />,
+        loader: PriceLoader,
+      },
+      {
+        path: "total-senitation",
+        element: <TotalSanitationPage />,
+        loader: PriceLoader,
+      },
+      {
+        path: "fabric-cleaning",
+        element: <FabricCleaningPage />,
+        loader: PriceLoader,
+      },
+      {
+        path: "electronic-cleaning",
+        element: <ElectronicCleaningPage />,
+        loader: PriceLoader,
       },
       { path: "contact", element: <ContactPage /> },
       { path: "news", element: <NewsPage /> },

@@ -1,24 +1,13 @@
 import React from "react";
 import Button from "../UI/Button";
 import Title from "../components/Title";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Price from "../components/Price";
 const TotalSanitationPage = () => {
-  const product1 = [
-    {
-      type: "Tổng vệ sinh",
-      name: "Tối đa 80m2(2 người/4 giờ)",
-      price: "650.000",
-      id: "1",
-    },
-    {
-      type: "Tổng vệ sinh",
-      name: "Tối đa 100m2(3 người/4 giờ)",
-      price: "720.000",
-      id: "2",
-    },
-    { type: "Tổng vệ sinh", name: "Tối đa 150m2(3 người/4 giờ)", price: "960.000", id: "3" },
-  ];
+  const data = useLoaderData();
+  const TOTAL_CLEANING = data.filter((item) => {
+    return item.name === "Tổng vệ sinh";
+  });
   return (
     <div className="container">
       <div className="row my-5">
@@ -35,11 +24,8 @@ const TotalSanitationPage = () => {
         <div className="col-lg-6 col-sm-12">
           <img
             src="/assets/images/sanitation.svg"
-            style={{
-              width: "450px"
-            }}
+            className="w-100"
             alt="img"
-
           />
         </div>
       </div>
@@ -48,9 +34,7 @@ const TotalSanitationPage = () => {
           <img
             src="https://cdn.jupviec.vn/tvs_mota_fa6100288b.png"
             alt="img"
-            style={{
-              width: "450px"
-            }}
+            className="w-100"
           />
         </div>
         <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
@@ -68,7 +52,7 @@ const TotalSanitationPage = () => {
               borderRadius="15px"
               padding="16px 41px"
             >
-              <Link to="/sign-in" style={{ textDecoration: "none", }}>
+              <Link to="/sign-in" style={{ textDecoration: "none" }}>
                 <Title
                   color="#FFFFFF"
                   title="Đặt dịch vụ ngay"
@@ -95,15 +79,13 @@ const TotalSanitationPage = () => {
           <img
             src="https://chuyenvesinhnha.com/wp-content/uploads/2016/12/doi-ve-sinh-nha-cua-aplite.jpg"
             alt="img"
-            style={{
-              width: "600px"
-            }}
+            className="w-100"
           />
         </div>
       </div>
       <div className="row my-5">
         <h1 className="text-center">Bảng giá dịch vụ</h1>
-        <Price product1={product1} />
+        <Price services={TOTAL_CLEANING} />
       </div>
     </div>
   );

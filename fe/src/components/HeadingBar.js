@@ -33,9 +33,10 @@ const HeadingBar = () => {
             id="nav-link"
           >
             <li>
-              <NavLink style={{
-                fontWeight: "1200",
-              }}
+              <NavLink
+                style={{
+                  fontWeight: "1200",
+                }}
                 className={({ isActive }) =>
                   isActive
                     ? "nav-link otp-service active"
@@ -55,7 +56,7 @@ const HeadingBar = () => {
                   id="dropdownMenuLink"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  style={{ position: "relative", fontWeight: "1200", }}
+                  style={{ position: "relative", fontWeight: "1200" }}
                 >
                   DỊCH VỤ
                   <div className="arrow"></div>
@@ -66,31 +67,22 @@ const HeadingBar = () => {
                   aria-labelledby="dropdownMenuLink"
                 >
                   <li>
-                    <Link className="dropdown-item" to="services/hourly-help">
+                    <Link className="dropdown-item" to="hourly-help">
                       Giúp việc theo giờ
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      className="dropdown-item"
-                      to="services/total-senitation"
-                    >
+                    <Link className="dropdown-item" to="total-senitation">
                       Tổng vệ sinh
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      className="dropdown-item"
-                      to="services/electronic-cleaning"
-                    >
+                    <Link className="dropdown-item" to="electronic-cleaning">
                       Vệ sinh điều hòa
                     </Link>
                   </li>
                   <li>
-                    <Link
-                      className="dropdown-item"
-                      to="services/fabric-cleaning"
-                    >
+                    <Link className="dropdown-item" to="fabric-cleaning">
                       Vệ sinh sofa
                     </Link>
                   </li>
@@ -99,9 +91,10 @@ const HeadingBar = () => {
             </li>
 
             <li>
-              <NavLink style={{
-                fontWeight: "1200",
-              }}
+              <NavLink
+                style={{
+                  fontWeight: "1200",
+                }}
                 className={({ isActive }) =>
                   isActive
                     ? "nav-link otp-service active"
@@ -114,9 +107,10 @@ const HeadingBar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink style={{
-                fontWeight: "1200",
-              }}
+              <NavLink
+                style={{
+                  fontWeight: "1200",
+                }}
                 className={({ isActive }) =>
                   isActive
                     ? "nav-link otp-service active"
@@ -129,9 +123,10 @@ const HeadingBar = () => {
               </NavLink>
             </li>
             <li>
-              <NavLink style={{
-                fontWeight: "1200",
-              }}
+              <NavLink
+                style={{
+                  fontWeight: "1200",
+                }}
                 className={({ isActive }) =>
                   isActive
                     ? "nav-link otp-service active"
