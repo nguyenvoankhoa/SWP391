@@ -1,0 +1,41 @@
+.os-content {
+    position: absolute; 
+    width: 65%;
+    height: 70vh;
+    margin-top: 2%;
+    background-color: white;
+    box-shadow: 0 5px 10px #65928a88;
+    border-radius: 20px;
+    padding: 1% 0 1% 4%;
+    overflow: hidden;
+}
+
+.os-content p {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.os-content button {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #ffffff88;
+    border: solid 1px #37574e;
+}
+
+.os-content a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.os-content .accept {
+    background-color: #397F77;
+}
+
+.os-content .accept a {
+    color: white !important;
+}
+
+.os-content .nav-btn {
+    margin-top: 3vh;
+}

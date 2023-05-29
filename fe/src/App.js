@@ -27,6 +27,8 @@ import EditEmployee from "./pages/Admin/EditEmployee";
 import EditService from "./pages/Admin/EditService";
 import AdminLayout from "./layouts/AdminLayout";
 import EmployeeLayout from "./layouts/EmployeeLayout";
+import OrderSumation from "./pages/User/OrderSumation";
+import OrderCompleted from "./pages/User/OrderCompleted";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -62,6 +64,8 @@ const router = createBrowserRouter([
       { path: "total-senitation", element: <TotalSanitation /> },
       { path: "fabric-cleaning", element: <FabricCleaning /> },
       { path: "electronic-cleaning", element: <ElectronicCleaning /> },
+      { path: "order-sumation", element: <OrderSumation /> },
+      { path: "order-completed", element: <OrderCompleted /> },
     ],
   },
   {
