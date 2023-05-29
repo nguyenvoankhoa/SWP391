@@ -37,7 +37,7 @@
   height: fit-content;
   background: none;
   border: solid 1.5px #c4efea6a;
-  border-radius: 12px;
+  border-radius: 5px;
   box-shadow: 0 3px 3px #4e6e6a57;
   font-weight: 500;
 }
@@ -169,11 +169,13 @@ input:checked + .slider:before {
   font-weight: 600;
 }
 
+.hh-content .hh-submit {
+  margin-top: 5vh;
+}
+
 .hh-content .hh-submit .hh-options {
   width: fit-content;
 }
-
-
 
 .cont-btn button {
   background-color: #397F77 !important;
@@ -216,6 +218,7 @@ input:checked + .slider:before {
   padding: 0; 
   margin: 0;
   font-size: 18px;
+  letter-spacing: 3px;
 }
 
 .date-btn .date-picker:active {
@@ -247,4 +250,12 @@ input:checked + .slider:before {
   font-size: 17px;
   font-weight: 500;
   letter-spacing: 1px;
+}
+
+.navigate-btn {
+  position: absolute;
+  width: 100%;
+  top: 105%;
+  left: 50%;
+  transform: translate(-48.5%, 0);
 }

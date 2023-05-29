@@ -71,6 +71,8 @@ const HourlyHelp = () => {
                 style={{
                   backgroundColor: "white",
                   boxShadow: "0 3px 3px #4e6e6a57",
+                  borderRadius: "5px",
+                  width: "250px",
                 }}
               >
                 <DatePicker
@@ -82,11 +84,24 @@ const HourlyHelp = () => {
                 />
               </button>
             </div>
-            <div className="col-md-4 hh-options">
+            <div className="col-md-4 date-btn hh-options">
               <label>Chọn giờ</label>
-              <button>
-                <span style={{ opacity: "0" }}>#################</span>
-                <div className="hh-arrow"></div>
+              <button
+                style={{
+                  backgroundColor: "white",
+                  boxShadow: "0 3px 3px #4e6e6a57",
+                  borderRadius: "5px",
+                  width: "250px",
+                }}
+              >
+                <DatePicker
+                  className="date-picker"
+                  selected={startDate}
+                  showTimeSelect
+                  minDate={new Date()}
+                  onChange={(date) => setStartDate(date)}
+                  dateFormat="HH:mm "
+                />
               </button>
             </div>
             <div className="col-md-4 hh-options" style={{ opacity: "0" }}>
@@ -132,7 +147,7 @@ const HourlyHelp = () => {
                 </div>
               </div>
             </div>
-            <div className="row mt-5 pt-2 hh-submit">
+            <div className="row hh-submit">
               <div className="col-md-5 d-flex justify-content-center hh-payment">
                 <button>
                   <Link>Thanh toán bằng tiền mặt</Link>
@@ -145,7 +160,7 @@ const HourlyHelp = () => {
               </div>
             </div>
           </div>
-          <div className="row mt-5 pt-4 d-flex justify-content-center navigate-btn">
+          <div className="row d-flex justify-content-center navigate-btn">
             <div className="col-md-4 pt-2 pb-2 d-flex justify-content-center cont-btn">
               <button>
                 <Link to="">Tiếp tục</Link>
