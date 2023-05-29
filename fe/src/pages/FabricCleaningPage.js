@@ -1,8 +1,13 @@
 import React from "react";
 import Button from "../UI/Button";
 import Title from "../components/Title";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import Price from "../components/Price";
 const FabricCleaningPage = () => {
+  const data = useLoaderData();
+  const ELECTRONIC_CLEANING = data.filter((item) => {
+    return item.name === "Vệ sinh nệm, sofa, thảm";
+  });
   return (
     <div className="container">
       <div className="row my-5">
@@ -35,9 +40,9 @@ const FabricCleaningPage = () => {
             {" "}
             <h1>Giới Thiệu</h1>
             <p>
-              CleanShine - Dịch vụ vệ sinh Sofa, đệm, rèm, thảm sử dụng công nghệ
-              tiên tiến từ Đức được Khách hàng tin tưởng và sử dụng trong suốt
-              thời gian qua.
+              CleanShine - Dịch vụ vệ sinh Sofa, đệm, rèm, thảm sử dụng công
+              nghệ tiên tiến từ Đức được Khách hàng tin tưởng và sử dụng trong
+              suốt thời gian qua.
               <br /> Chỉ với một vài thao tác đơn giản trên ứng dụng, Khách hàng
               đã tìm được Dịch vụ Vệ sinh Sofa uy tín, chuyên nghiệp với nhiều
               ưu đãi hấp dẫn.
@@ -49,8 +54,7 @@ const FabricCleaningPage = () => {
               borderRadius="15px"
               padding="16px 41px"
             >
-              <Link to="/sign-in" style={
-                { textDecoration: "none", }}>
+              <Link to="/sign-in" style={{ textDecoration: "none" }}>
                 <Title
                   color="#FFFFFF"
                   title="Đặt dịch vụ ngay"
@@ -83,6 +87,7 @@ const FabricCleaningPage = () => {
       </div>
       <div className="row my-5">
         <h1 className="text-center">Bảng giá dịch vụ</h1>
+        <Price product1={ELECTRONIC_CLEANING} />
       </div>
     </div>
   );
