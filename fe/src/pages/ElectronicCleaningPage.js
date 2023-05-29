@@ -2,7 +2,24 @@ import React from "react";
 import Button from "../UI/Button";
 import Title from "../components/Title";
 import { Link } from "react-router-dom";
+import Price from "../components/Price";
 const ElectronicCleaningPage = () => {
+  const product1 = [
+    {
+      type: "Máy lạnh Treo Tường",
+      name: "Dưới 2hp",
+      price: "200.000",
+      id: "1",
+    },
+    {
+      type: "Máy lạnh Treo Tường",
+      name: "Trên 2hp",
+      price: "240.000",
+      id: "2",
+    },
+    { type: "Máy Lạnh Âm Trần", name: "Dưới 3hp", price: "420.000", id: "3" },
+    { type: "Máy Lạnh Âm Trần", name: "Trên 3hp", price: "600.000", id: "4" },
+  ];
   return (
     <div className="container">
       <div className="row my-5">
@@ -45,8 +62,7 @@ const ElectronicCleaningPage = () => {
             borderRadius="15px"
             padding="16px 41px"
           >
-            <Link to="/sign-in" style={
-              { textDecoration: "none", }}>
+            <Link to="/sign-in" style={{ textDecoration: "none" }}>
               <Title
                 color="#FFFFFF"
                 title="Đặt dịch vụ ngay"
@@ -72,14 +88,14 @@ const ElectronicCleaningPage = () => {
             src="/assets/images/suamaylanh.svg"
             alt="img"
             style={{
-              width: "500px",
-
+              width: "100%",
             }}
           />
         </div>
       </div>
       <div className="row my-5">
         <h1 className="text-center">Bảng giá dịch vụ</h1>
+        <Price product1={product1} />
       </div>
     </div>
   );
