@@ -44,7 +44,7 @@ const UserHeadingBar = () => {
             alt="icon"
           ></img>
           <NavLink className="nav-link" to="">
-            Tin nhắn
+            Thông báo
           </NavLink>
         </li>
         <li className="nav-item d-flex" type="button">

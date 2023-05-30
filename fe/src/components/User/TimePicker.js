@@ -15,7 +15,13 @@ const TimePicker = (props) => {
     props.onAddTime(time);
   };
   return (
-    <>
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "left",
+        marginLeft: "12%"
+      }}
+    >
       <div className="col-md-4 date-btn hh-options">
         <label>Chọn ngày</label>
         <div className="selectTime">
@@ -49,7 +55,7 @@ const TimePicker = (props) => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
