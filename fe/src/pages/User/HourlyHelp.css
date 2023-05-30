@@ -1,11 +1,20 @@
 .hh-content {
-  position: absolute; 
+  position: absolute;
   width: 65%;
   height: 65vh;
   margin-top: 2%;
   background-color: white;
   box-shadow: 0 5px 10px #65928a88;
   border-radius: 20px;
+}
+.user-navbar {
+  width: 100vw;
+  height: 53vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #397f77;
+  z-index: -1;
 }
 
 .hh-content .row {
@@ -26,8 +35,8 @@
   transform: translate(-100%, 100%);
   width: 13px;
   height: 13px;
-  border-left: solid 3px #397F77;
-  border-bottom: solid 3px #397F77;
+  border-left: solid 3px #397f77;
+  border-bottom: solid 3px #397f77;
   border-bottom-left-radius: 3px;
   rotate: -45deg;
 }
@@ -53,7 +62,7 @@
 
 .hh-content button:not(.date-btn button):hover,
 .hh-content button:not(.date-btn button):active {
-  background-color: #397F77;
+  background-color: #397f77;
   color: white;
   font-weight: 600;
 }
@@ -98,9 +107,9 @@
   right: 0;
   bottom: 0;
   background-color: #ffffff;
-  -webkit-transition: .4s;
-  transition: .4s;
-  border: solid 2px #397F77;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border: solid 2px #397f77;
 }
 
 .slider:before {
@@ -111,17 +120,17 @@
   content: "";
   height: 30px;
   width: 30px;
-  background-color: #397F77;
-  -webkit-transition: .4s;
-  transition: .4s;
+  background-color: #397f77;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 
 input:checked + .slider {
-  background-color: #397F77;
+  background-color: #397f77;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #397F77;
+  box-shadow: 0 0 1px #397f77;
 }
 
 input:checked + .slider:before {
@@ -164,7 +173,7 @@ input:checked + .slider:before {
   width: 20%;
   height: 35px;
   margin-left: 5vw;
-  border-bottom: solid 3px #397F77;
+  border-bottom: solid 3px #397f77;
   font-size: 18px;
   font-weight: 600;
 }
@@ -178,7 +187,7 @@ input:checked + .slider:before {
 }
 
 .cont-btn button {
-  background-color: #397F77 !important;
+  background-color: #397f77 !important;
   color: white;
 }
 
@@ -215,7 +224,7 @@ input:checked + .slider:before {
   width: 100%;
   background: none;
   border: none;
-  padding: 0; 
+  padding: 0;
   margin: 0;
   font-size: 18px;
   letter-spacing: 3px;
@@ -235,7 +244,7 @@ input:checked + .slider:before {
 }
 
 .manual-service button:hover .manual-dropdown,
-.manual-service button:active .manual-dropdown {  
+.manual-service button:active .manual-dropdown {
   display: unset;
   visibility: visible;
   position: absolute;
@@ -258,4 +267,11 @@ input:checked + .slider:before {
   top: 105%;
   left: 50%;
   transform: translate(-48.5%, 0);
+}
+.selectTime {
+  background-color: white;
+  box-shadow: rgba(78, 110, 106, 0.34) 0px 3px 3px;
+  border-radius: 5px;
+  width: 250px;
+  padding: 11px 0 !important;
 }

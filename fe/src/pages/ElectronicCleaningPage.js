@@ -1,8 +1,7 @@
 import React from "react";
 import Button from "../UI/Button";
 import Title from "../components/Title";
-import { Link } from "react-router-dom";
-import './AllServices.css'
+import "./AllServices.css";
 import { Link, useLoaderData } from "react-router-dom";
 import Price from "../components/Price";
 const ElectronicCleaningPage = () => {
@@ -14,7 +13,9 @@ const ElectronicCleaningPage = () => {
     <div className="container">
       <div className="row my-5">
         <div className="col-lg-6 col-sm-12">
-          <h3 className="title">Dịch Vụ Vệ Sinh Điều Hòa Tại Nhà Chuyên Nghiệp, Uy Tín</h3>
+          <h3 className="title">
+            Dịch Vụ Vệ Sinh Điều Hòa Tại Nhà Chuyên Nghiệp, Uy Tín
+          </h3>
           <p className="text-detail">
             Với đội ngũ kỹ thuật viên có trình độ chuyên môn cao, chúng tôi tự
             tin sẽ giúp bạn vệ sinh điều hòa tại nhà nhanh chóng, dễ dàng.

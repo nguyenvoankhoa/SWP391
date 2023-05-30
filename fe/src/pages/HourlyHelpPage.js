@@ -1,10 +1,8 @@
 import React from "react";
 import Button from "../UI/Button";
 import Title from "../components/Title";
-import { Link } from "react-router-dom";
-import './AllServices.css'
+import "./AllServices.css";
 import { Link, json, useLoaderData } from "react-router-dom";
-import "./HourlyHelpPage.css";
 import Price from "../components/Price";
 const HourlyHelpPage = () => {
   const data = useLoaderData();
@@ -101,7 +99,9 @@ const HourlyHelpPage = () => {
 export default HourlyHelpPage;
 
 export async function loader() {
-  const res = await fetch("http://localhost:8080/electronic-cleaning");
+  const res = await fetch(
+    "https://swp-production.up.railway.app/electronic-cleaning"
+  );
   if (!res.ok) {
     throw json({ message: "can not load item" }, { status: 500 });
   } else {

@@ -1,8 +1,7 @@
 import React from "react";
 import Button from "../UI/Button";
 import Title from "../components/Title";
-import { Link } from "react-router-dom";
-import './AllServices.css'
+import "./AllServices.css";
 import { Link, useLoaderData } from "react-router-dom";
 import Price from "../components/Price";
 const FabricCleaningPage = () => {
@@ -42,9 +41,9 @@ const FabricCleaningPage = () => {
             {" "}
             <h3 className="title">Giới Thiệu</h3>
             <p className="text-detail">
-              CleanShine - Dịch vụ vệ sinh Sofa, đệm, rèm, thảm sử dụng công nghệ
-              tiên tiến từ Đức được Khách hàng tin tưởng và sử dụng trong suốt
-              thời gian qua.
+              CleanShine - Dịch vụ vệ sinh Sofa, đệm, rèm, thảm sử dụng công
+              nghệ tiên tiến từ Đức được Khách hàng tin tưởng và sử dụng trong
+              suốt thời gian qua.
               <br /> Chỉ với một vài thao tác đơn giản trên ứng dụng, Khách hàng
               đã tìm được Dịch vụ Vệ sinh Sofa uy tín, chuyên nghiệp với nhiều
               ưu đãi hấp dẫn.

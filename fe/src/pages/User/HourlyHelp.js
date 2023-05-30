@@ -1,39 +1,70 @@
 import React, { useState } from "react";
 import "./HourlyHelp.css";
-import { Link, NavLink } from "react-router-dom";
+import { json, useLoaderData, Link, useNavigate } from "react-router-dom";
 import Title from "../../components/Title";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
-
+import { useDispatch, useSelector } from "react-redux";
+import TimePicker from "../../components/User/TimePicker";
+import PaymentPicker from "../../components/User/PaymentPicker";
+import ServiceNavigation from "../../components/User/ServiceNavigation";
+import { orderItemAction } from "../../redux/order";
 React.state = {
-  cleanFreq: ["Hàng ngày", "Hàng tuần", "Hàng tháng", "Hàng năm"],
-  payMethod: ["PayPal", "Tiền mặt"]
-}
+  cleanFreq: ["Hàng ngày", "Hàng tuần", "Hàng tháng"],
+  payMethod: ["PayPal", "Tiền mặt"],
+  timePicker: ["Sáng", "Chiều", "Tối"],
+};
 
 const HourlyHelp = () => {
-
+  const totalAmount = useSelector((state) => state.order.totalAmount);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [selectedDate, setselectedDate] = useState(new Date());
-
+  const [selectedTime, setSelectedTime] = useState("Sáng");
+  const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
   const [display, setDisplay] = useState(false);
+  const [chosenService, setChosenService] = useState(null);
+  const [detail, setDetail] = useState(null);
+  const data = useLoaderData();
+  const HOURLY_HELP = data.filter((item) => {
+    return item.name === "Giúp việc theo giờ";
+  });
+  const addServiceHandler = () => {
+    if (detail === null) {
+      alert("Chọn dịch vụ !");
+      return;
+    }
+    const bill = {
+      id: detail.id,
+      name: detail.name,
+      type: detail.type,
+      price: detail.price,
+      detail: detail.detail,
+      unit: detail.unit,
+      date: selectedDate.getDate(),
+      time: selectedTime,
+      payment: selectedPayment,
+      frequence: display,
+      timeRepeat: chosenService,
+    };
+    dispatch(orderItemAction.addItem(bill));
+    navigate("/user/order-sumation");
+  };
+  const addDetailHandler = (detail) => {
+    setDetail(detail);
+  };
 
-  const [chosenService, setChosenService] = useState("Hàng tuần");
-
-  const [selectedPayment, setSelectedPayment] = useState("");
+  const addTimeHandler = (time) => {
+    setSelectedTime(time);
+  };
+  const addDateHandler = (date) => {
+    setselectedDate(date);
+  };
+  const paymentHandler = (payment) => {
+    setSelectedPayment(payment);
+  };
   return (
     <>
-      <div
-        className="bg"
-        style={{
-          width: "100vw",
-          height: "53vh",
-          position: "absolute",
-          top: "0",
-          left: "0",
-          backgroundColor: "#397F77",
-          zIndex: "-1"
-        }}
-      />
+      <div className="bg user-navbar" />
       <div
         className="container"
         style={{
@@ -41,7 +72,7 @@ const HourlyHelp = () => {
           paddingRight: "0",
           margin: "0",
           height: "100vh",
-          marginLeft: "4vw"
+          marginLeft: "4vw",
         }}
       >
         <Title
@@ -53,138 +84,91 @@ const HourlyHelp = () => {
         />
         <div className="hh-content">
           <div className="row gy-4 pt-5 d-flex">
-            <div className="col-md-4 hh-options">
-              <button>
-                <Link>2h(50m2/2 phòng)</Link>
-              </button>
-            </div>
-            <div className="col-md-4 hh-options">
-              <button>
-                <Link>3h(85m2/3 phòng)</Link>
-              </button>
-            </div>
-            <div className="col-md-4 hh-options">
-              <button>
-                <Link>4h(105m2/4 phòng)</Link>
-              </button>
-            </div>
-            <div className="col-md-4 date-btn hh-options">
-              <label>Chọn ngày</label>
-              <button
-                style={{
-                  backgroundColor: "white",
-                  boxShadow: "0 3px 3px #4e6e6a57",
-                  borderRadius: "5px",
-                  width: "250px",
-                }}
+            {HOURLY_HELP.map((item) => (
+              <div
+                className="col-md-4 hh-options"
+                key={Math.random()}
+                onClick={() =>
+                  addDetailHandler({
+                    id: item.serviceId,
+                    name: item.name,
+                    detail: item.detail,
+                    unit: item.unit,
+                    price: item.price,
+                    type: item.type,
+                  })
+                }
               >
-                <DatePicker
-                  className="date-picker"
-                  selected={selectedDate}
-                  minDate={new Date()}
-                  onChange={(date) => setselectedDate(date)}
-                  dateFormat="dd/MM/yyyy"
-                />
-              </button>
-            </div>
-            <div className="col-md-4 date-btn hh-options">
-              <label>Chọn giờ</label>
-              <button
-                style={{
-                  backgroundColor: "white",
-                  boxShadow: "0 3px 3px #4e6e6a57",
-                  borderRadius: "5px",
-                  width: "250px",
-                }}
-              >
-                <DatePicker
-                  className="date-picker"
-                  selected={selectedDate}
-                  showTimeSelect
-                  minDate={new Date()}
-                  onChange={(date) => setselectedDate(date)}
-                  dateFormat="HH:mm "
-                />
-              </button>
-            </div>
-            <div className="col-md-4 hh-options" style={{ opacity: "0" }}>
-              <span>
-                <Link>################</Link>
-              </span>
-            </div>
+                <button>
+                  {item.detail}/{item.unit}({item.type})
+                </button>
+              </div>
+            ))}
+
+            <TimePicker onAddTime={addTimeHandler} onAddDate={addDateHandler} />
+
             <div className="row gy-5 mt-4 d-flex hh-function">
               <div className="col-md-12 d-flex f-content">
-                <label class="switch">
+                <label className="switch">
                   <h5>Vệ sinh định kỳ</h5>
                   <input
                     type="checkbox"
-                    onClick={() => { setDisplay(display => !display) }}
+                    onClick={() => {
+                      setDisplay((display) => !display);
+                    }}
                   />
-                  <span class="slider round"></span>
+                  <span className="slider round"></span>
                 </label>
-                {
-                  display &&
+                {display && (
                   <div className="col-md-4 manual-service dropdown">
                     <button>
-                      <span>{chosenService}</span>
+                      {chosenService === null ? (
+                        <span>Chọn thời gian</span>
+                      ) : (
+                        <span>{chosenService}</span>
+                      )}
+
                       <div className="hh-arrow"></div>
                       <div className="manual-dropdown">
-                        {
-                          React.state.cleanFreq.map((service) =>
-                            <div
-                              type="button"
-                              className="manual-item"
-                              onClick={() => setChosenService(service)}
-                            >
-                              {service}
-                            </div>
-                          )
-                        }
+                        {React.state.cleanFreq.map((service) => (
+                          <div
+                            type="button"
+                            className="manual-item"
+                            onClick={() => setChosenService(service)}
+                          >
+                            {service}
+                          </div>
+                        ))}
                       </div>
                     </button>
                   </div>
-                }
+                )}
                 <div className="f-price">
                   <p>Giá:</p>
-                  <p>100.000 VNĐ</p>
+                  <p>{totalAmount} VND</p>
                 </div>
               </div>
             </div>
-            <div className="row hh-submit">
-              {
-                React.state.payMethod.map((method) =>
-                  <div className="col-md-5 d-flex justify-content-center hh-payment">
-                    <button onClick={() => setSelectedPayment(method)}>
-                      <NavLink>Thanh toán bằng {method}</NavLink>
-                    </button>
-                  </div>
-                )
-              }
-            </div>
+            <PaymentPicker onAddPayment={paymentHandler} />
           </div>
-          <div className="row d-flex justify-content-center navigate-btn">
-            <div className="col-md-4 pt-2 pb-2 d-flex justify-content-center cont-btn">
-              <button>
-                <Link
-                  to="/user/order-sumation"
-                  state={{
-                    startDate: new Date(),
-                    date: selectedDate,
-                    payment: selectedPayment,
-                  }}
-                >Tiếp tục</Link>
-              </button>
-            </div><div className="col-md-4 pt-2 pb-2 d-flex justify-content-center back-btn">
-              <button>
-                <Link>Quay lại</Link>
-              </button>
-            </div>
-          </div>
+
+          <ServiceNavigation payHandler={addServiceHandler} />
         </div>
       </div>
     </>
-
   );
 };
 
 export default HourlyHelp;
+
+export async function loader() {
+  const res = await fetch(
+    "https://swp-production.up.railway.app/electronic-cleaning"
+  );
+  if (!res.ok) {
+    throw json({ message: "can not load item" }, { status: 500 });
+  } else {
+    const data = await res.json();
+    return data;
+  }
+}

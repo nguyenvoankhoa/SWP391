@@ -1,8 +1,7 @@
 import React from "react";
 import Button from "../UI/Button";
 import Title from "../components/Title";
-import { Link } from "react-router-dom";
-import './AllServices.css'
+import "./AllServices.css";
 import { Link, useLoaderData } from "react-router-dom";
 import Price from "../components/Price";
 const TotalSanitationPage = () => {
@@ -41,10 +40,13 @@ const TotalSanitationPage = () => {
         </div>
         <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
           <div>
-            <h3 className="title">Dịch Vụ Tổng Vệ Sinh Nhà Cửa CleanShine Sẽ Bao Gồm:</h3>
+            <h3 className="title">
+              Dịch Vụ Tổng Vệ Sinh Nhà Cửa CleanShine Sẽ Bao Gồm:
+            </h3>
             <p className="text-detail">
               Dọn dẹp toàn bộ nhà cửa kĩ càng các phòng bếp, khách, ngủ, nhà vệ
-              sinh hoặc tổng vệ sinh dọn dẹp nhà cửa theo nhu cầu của Khách hàng.
+              sinh hoặc tổng vệ sinh dọn dẹp nhà cửa theo nhu cầu của Khách
+              hàng.
               <br /> Mỗi gói gồm 02 nhân viên làm trong 4h + 01 giám sát nghiệm
               thu
               <br /> Sử dụng các loại hóa chất làm sạch & thiết bị chuyên dụng
@@ -69,7 +71,9 @@ const TotalSanitationPage = () => {
       <div className="row my-5">
         <div className="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center">
           <div>
-            <h3 className="title">Tại Sao Cần Tổng Vệ Sinh Nhà Cửa Thường Xuyên?</h3>
+            <h3 className="title">
+              Tại Sao Cần Tổng Vệ Sinh Nhà Cửa Thường Xuyên?
+            </h3>
             <ul className="text-detail">
               <li>Đảm bảo môi trường sống trong lành, sạch sẽ</li>
               <li>Loại bỏ các loại bụi bẩn bám lâu ngày trong nhà</li>
@@ -82,7 +86,7 @@ const TotalSanitationPage = () => {
             src="/assets/images/dust allergy.svg"
             alt="img"
             style={{
-              width: "500px"
+              width: "500px",
             }}
           />
         </div>
