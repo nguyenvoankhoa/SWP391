@@ -1,53 +1,3 @@
-.fabric-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-}
-.fabric-container .fabric-nav {
-  width: 100vw;
-  background-color: #d9d9d9;
-  display: flex;
-  justify-content: center;
-}
-.fabric-container .fabric-nav .fabric-title {
-  font-size: 20px;
-  padding: 0;
-  margin: 0;
-  color: black;
-}
-@media (min-width: 768px) {
-  .fabric-container .input {
-    width: 60vw;
-    padding: 0 30px 30px 30px;
-    margin: 0;
-  }
-}
-.fabric-container .input {
-  padding: 0 30px 30px 30px;
-  margin: 0;
-}
-.fabric-container .input input {
-  border: none;
-  background-color: #d9d9d9;
-  border-radius: 10px;
-  font-size: 18px;
-  padding: 10px;
-  color: black;
-}
-.fabric-container .input label {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-select {
-  border: none;
-  padding: 10px;
-  margin: 0;
-  outline: none;
-}
 button {
   margin: 0 20px;
   padding: 10px 40px;
@@ -55,3 +5,59 @@ button {
   background-color: #749eb1;
   border: none;
 }
+.fc-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 22rem;
+  
+}
+.fc-title {
+  font-size: 20px;
+  font-family: 'Work Sans';
+  font-weight: bold;
+  color: #000000;
+  padding-top: 7px;
+
+}
+.fc-rectangle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FAFCF8;
+  box-shadow: 0 3px 3px #4e6e6a57;
+  border: solid 1.5px #c4efea6a;
+  color: #ffffff;
+  border-radius: 15px;
+  width: 15rem;
+
+}
+.button-row {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  
+}
+.button-row button {
+  margin: 20px 20px 10px 20px ;
+}
+.button-row button:hover {
+  background-color: #397F77;
+}
+.fc-card-content button {
+  background: none;
+  border: solid 1.5px #c4efea6a;
+  border-radius: 5px;
+  box-shadow: 0 3px 3px #4e6e6a57;
+  font-weight: 500;
+  margin-top: 20px;
+}
+.button-row button a {
+  text-decoration: none;
+  color: black;
+ }
