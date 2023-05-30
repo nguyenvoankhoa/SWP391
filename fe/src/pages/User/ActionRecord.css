@@ -1,0 +1,31 @@
+.ar-content {
+  position: absolute;
+  width: 65%;
+  height: 75vh;
+  margin-top: 2%;
+  background-color: white;
+  box-shadow: 0 5px 10px #65928a88;
+  border-radius: 20px;
+  padding: 2%;
+}
+
+.ar-content .ar-nav {
+  display: flex;
+  justify-content: space-between;
+  height: 10%;
+  margin-bottom: 2vh;
+}
+
+.ar-content .ar-nav button {
+  background-color: white;
+  border: solid 1px #496360;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 10px;
+}
+
+.ar-content .ar-list {
+  border: solid 1px #496360;
+  height: 85%;
+  border-radius: 10px;
+}

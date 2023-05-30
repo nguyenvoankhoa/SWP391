@@ -29,6 +29,8 @@ import AdminLayout from "./layouts/AdminLayout";
 import EmployeeLayout from "./layouts/EmployeeLayout";
 import OrderSumation from "./pages/User/OrderSumation";
 import OrderCompleted from "./pages/User/OrderCompleted";
+import ActionRecord from "./pages/User/ActionRecord";
+import AccountInfor from "./pages/User/AccountInfor"
 const router = createBrowserRouter([
   {
     path: "/",
@@ -89,6 +91,8 @@ const router = createBrowserRouter([
       },
       { path: "order-sumation", element: <OrderSumation /> },
       { path: "order-completed", element: <OrderCompleted /> },
+      { path: "action-record", element: <ActionRecord /> },
+      { path: "account-infor", element: <AccountInfor /> },
     ],
   },
   {

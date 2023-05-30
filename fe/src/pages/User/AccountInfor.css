@@ -1,0 +1,10 @@
+.ai-content {
+  position: absolute;
+  width: 65%;
+  height: 75vh;
+  margin-top: 2%;
+  background-color: white;
+  box-shadow: 0 5px 10px #65928a88;
+  border-radius: 20px;
+  padding: 2%;
+}

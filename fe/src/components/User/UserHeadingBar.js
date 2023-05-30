@@ -33,7 +33,7 @@ const UserHeadingBar = () => {
             src="/assets/images/action.svg"
             alt="icon"
           ></img>
-          <NavLink className="nav-link" to="">
+          <NavLink className="nav-link" to="action-record">
             Hoạt động
           </NavLink>
         </li>
@@ -53,7 +53,7 @@ const UserHeadingBar = () => {
             src="/assets/images/user.svg"
             alt="icon"
           ></img>
-          <NavLink className="nav-link" to="">
+          <NavLink className="nav-link" to="account-infor">
             Tài khoản
           </NavLink>
         </li>
