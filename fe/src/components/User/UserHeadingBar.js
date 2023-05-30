@@ -37,7 +37,7 @@ const UserHeadingBar = () => {
             Hoạt động
           </NavLink>
         </li>
-        <li className="nav-item d-flex" type="button">
+        {/* <li className="nav-item d-flex" type="button">
           <img
             className="nav-icon"
             src="/assets/images/message.svg"
@@ -46,7 +46,7 @@ const UserHeadingBar = () => {
           <NavLink className="nav-link" to="">
             Thông báo
           </NavLink>
-        </li>
+        </li> */}
         <li className="nav-item d-flex" type="button">
           <img
             className="nav-icon"
