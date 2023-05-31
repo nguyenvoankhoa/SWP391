@@ -5,45 +5,72 @@ import "./AdminNavigation.css";
 const AdminNavigation = () => {
   return (
     <>
-      <div className="container-fluid sb-container">
-        <ul class="nav flex-column pt-5 sidebar-nav">
-          <li class="nav-item pt-2 pb-2">
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "nav-link sidebar-item active"
-                  : "nav-link sidebar-item"
-              }
-              to="edit-customer"
-              end
-            >
-              Khách hàng
+      <div className="nav-container">
+        <ul className="nav flex-column nav-content">
+          <li className="nav-item" type="button">
+            <NavLink className="nav-link d-flex" to="">
+              {" "}
+              <img
+                className="nav-avt"
+                src="/assets/images/person1.svg"
+                alt=""
+              />
             </NavLink>
           </li>
-          <li class="nav-item pt-2 pb-2">
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "nav-link sidebar-item active"
-                  : "nav-link sidebar-item"
-              }
-              to="edit-employee"
-              end
-            >
-              Nhân viên
+          <li className="nav-item user-hb-name" type="button">
+            <span className="nav-text">
+              UserName
+              <div className="seperator"></div>
+            </span>
+          </li>
+          <li className="nav-item d-flex" type="button">
+            <img
+              className="nav-icon"
+              src="/assets/images/home.svg"
+              alt="icon"
+            ></img>
+            <NavLink className="nav-link" to="">
+              Trang chủ
             </NavLink>
           </li>
-          <li class="nav-item pt-2 pb-2">
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "nav-link sidebar-item active"
-                  : "nav-link sidebar-item"
-              }
-              to="edit-service"
-              end
-            >
-              Dịch vụ
+          <li className="nav-item d-flex" type="button">
+            <img
+              className="nav-icon"
+              src="/assets/images/action.svg"
+              alt="icon"
+            ></img>
+            <NavLink className="nav-link" to="">
+              Hoạt động
+            </NavLink>
+          </li>
+          {/* <li className="nav-item d-flex" type="button">
+          <img
+            className="nav-icon"
+            src="/assets/images/message.svg"
+            alt="icon"
+          ></img>
+          <NavLink className="nav-link" to="">
+            Thông báo
+          </NavLink>
+        </li> */}
+          <li className="nav-item d-flex" type="button">
+            <img
+              className="nav-icon"
+              src="/assets/images/user.svg"
+              alt="icon"
+            ></img>
+            <NavLink className="nav-link" to="">
+              Tài khoản
+            </NavLink>
+          </li>
+          <li className="nav-item d-flex" type="button">
+            <img
+              className="nav-icon"
+              src="/assets/images/exit.svg"
+              alt="icon"
+            ></img>
+            <NavLink className="nav-link" to="">
+              Đăng xuất
             </NavLink>
           </li>
         </ul>
