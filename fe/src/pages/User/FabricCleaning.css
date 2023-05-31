@@ -1,10 +1,12 @@
 button {
   margin: 0 20px;
   padding: 10px 40px;
-  border-radius: 15px;
-  background-color: #749eb1;
-  border: none;
 }
+
+.fc-content button {
+  padding: 10px;
+}
+
 .fc-card {
   background-color: #ffffff;
   border-radius: 10px;
@@ -15,6 +17,7 @@ button {
   justify-content: center;
   text-align: center;
   height: 22rem;
+  width: 17rem;
   
 }
 .fc-title {
@@ -34,19 +37,22 @@ button {
   border: solid 1.5px #c4efea6a;
   color: #ffffff;
   border-radius: 15px;
-  width: 15rem;
+  width: 12rem;
+  margin-top: -50px;
 
 }
-.button-row {
+.button-row-fc {
   display: flex;
   justify-content: center;
   margin: 20px 0;
-  
 }
-.button-row button {
+.button-row-fc button {
+  padding: 0 10px;
   margin: 20px 20px 10px 20px ;
+  width: 50%;
+  height: fit-content;
 }
-.button-row button:hover {
+.button-row-fc button:hover {
   background-color: #397F77;
 }
 .fc-card-content button {
@@ -57,7 +63,33 @@ button {
   font-weight: 500;
   margin-top: 20px;
 }
-.button-row button a {
+.fc-card-content a {
   text-decoration: none;
   color: black;
+  font-family: 'Work Sans';
+  font-size: 14px;
  }
+.quantity-fc {
+  height: 50px;
+  font-family: 'Work Sans';
+}
+.fc-price {
+  font-family: 'Work Sans';
+}
+.fc-price:hover {
+  background-color: #397F77;
+}
+.navigate-btn-fc {
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  top: 83%;
+  transform: translate(-60%, 0);
+}
+.cont-btn-fc button:hover {
+  background-color: #397F77 !important;
+}
+.back-btn-fc button:hover {
+  background-color: #397F77 !important;
+}

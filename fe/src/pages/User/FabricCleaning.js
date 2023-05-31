@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import ServiceForm from "./ServiceForm";
 import Title from "../../components/Title";
-import './FabricCleaning.css';
+import'./FabricCleaning.css';
 const FabricCleaning = () => {
   const [quantity, setQuantity] = useState(0);
 
@@ -54,7 +54,7 @@ const FabricCleaning = () => {
                   <h3 className="fc-title">SOFA</h3>
                 </div>
                 <div className="fc-card-content">
-                  <div className="button-row">
+                  <div className="button-row-fc">
                     <button>
                       <Link>Sofa một ghế</Link>
                     </button>
@@ -63,7 +63,7 @@ const FabricCleaning = () => {
                     </button>
                   </div>
                   <div className="button-row fc">
-                    <button className="quantity">Số lượng</button>
+                    <button className="quantity-fc">Số lượng</button>
                     <button className=" button-quantity d-flex justify-content-center">
                       <span
                         type="button-fc"
@@ -88,7 +88,7 @@ const FabricCleaning = () => {
                   <h3 className="fc-title">NỆM</h3>
                 </div>
                 <div className="fc-card-content">
-                  <div className="button-row">
+                  <div className="button-row-fc">
                     <button>
                       <Link>Nhỏ hơn 2m</Link>
                     </button>
@@ -97,7 +97,7 @@ const FabricCleaning = () => {
                     </button>
                   </div>
                   <div className="button-row fc">
-                    <button className="quantity">Số lượng</button>
+                    <button className="quantity-fc">Số lượng</button>
                     <button className=" button-quantity d-flex justify-content-center">
                       <span
                         type="button"
@@ -122,7 +122,7 @@ const FabricCleaning = () => {
                   <h3 className="fc-title">THẢM</h3>
                 </div>
                 <div className="fc-card-content">
-                  <div className="button-row">
+                  <div className="button-row-fc">
                     <button>
                       <Link>Thảm nhỏ</Link>
                     </button>
@@ -134,7 +134,7 @@ const FabricCleaning = () => {
                     </button>
                   </div>
                   <div className="button-row fc">
-                    <button className="quantity">Số lượng</button>
+                    <button className="quantity-fc">Số lượng</button>
                     <button className=" button-quantity d-flex justify-content-center">
                       <span
                         type="button"
@@ -147,9 +147,20 @@ const FabricCleaning = () => {
                       <span className="quanity-btn" onClick={incrementQuantity}>+</span>
                     </button>
                   </div>
-                  <button className="ec-price">
+                  <button className="fc-price">
                     Giá: <span className="price">360.000</span>
                   </button>
+                  <div className="row d-flex justify-content-center navigate-btn-fc">
+            <div className="col-md-4 pt-2 pb-2 d-flex justify-content-center cont-btn-fc">
+            <button>
+              <Link to="/user">Quay lại</Link>
+            </button>
+            </div><div className="col-md-4 pt-2 pb-2 d-flex justify-content-center back-btn-fc">
+              <button>
+                <Link to="/user/electronic-order">Tiếp tục</Link>
+              </button>
+            </div>
+          </div>
                 </div>
               </div>
             </div>
