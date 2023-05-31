@@ -1,15 +1,15 @@
 import React from "react";
 import AdminNavigation from "../components/Admin/AdminNavigation";
 import { Outlet } from "react-router-dom";
-import AdminHeadingLine from "../components/Admin/AdminHeadingLine";
-import classes from "./AdminLayout.module.css";
 const AdminLayout = () => {
   return (
     <>
-      <AdminHeadingLine />
-      <div className={classes.content}>
-        <AdminNavigation />
-        <div className={classes.outlet}>
+      <div className="row">
+        <div className="col-2" style={{ padding: 0 }}>
+          <AdminNavigation />
+        </div>
+
+        <div className="col-10">
           <Outlet />
         </div>
       </div>
