@@ -1,55 +1,63 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./AdminNavigation.css";
 
 const AdminNavigation = () => {
   return (
-    <>
-      <div className="container-fluid sb-container">
-        <ul class="nav flex-column pt-5 sidebar-nav">
-          <li class="nav-item pt-2 pb-2">
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "nav-link sidebar-item active"
-                  : "nav-link sidebar-item"
-              }
-              to="edit-customer"
-              end
-            >
-              Khách hàng
-            </NavLink>
-          </li>
-          <li class="nav-item pt-2 pb-2">
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "nav-link sidebar-item active"
-                  : "nav-link sidebar-item"
-              }
-              to="edit-employee"
-              end
-            >
-              Nhân viên
-            </NavLink>
-          </li>
-          <li class="nav-item pt-2 pb-2">
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "nav-link sidebar-item active"
-                  : "nav-link sidebar-item"
-              }
-              to="edit-service"
-              end
-            >
-              Dịch vụ
-            </NavLink>
-          </li>
-        </ul>
-      </div>
-    </>
-  );
+    <div className="nav-container">
+      <ul className="nav flex-column nav-content">
+        <li className="nav-item" type="button">
+          <NavLink className="nav-link d-flex" to="">
+            {" "}
+            <img className="nav-avt" src="/assets/images/person1.svg" alt="" />
+          </NavLink>
+        </li>
+        <li className="nav-item user-hb-name" type="button"
+          style={{
+            paddingLeft: "70px"
+          }}
+        >
+          <span className="nav-text">
+            Admin
+            <div className="seperator"
+              style={{
+                width: "120px"
+              }}
+            ></div>
+          </span>
+        </li>
+        <li className="nav-item d-flex" type="button">
+          <NavLink className="nav-link" to="">
+            Trang chủ
+          </NavLink>
+        </li>
+        <li className="nav-item d-flex" type="button">
+          <NavLink className="nav-link" to="edit-customer">
+            Khách Hàng
+          </NavLink>
+        </li>
+        <li className="nav-item d-flex" type="button">
+          <NavLink className="nav-link" to="edit-employee">
+            Nhân viên
+          </NavLink>
+        </li>
+        <li className="nav-item d-flex" type="button">
+          <NavLink className="nav-link" to="edit-service">
+            Dịch vụ
+          </NavLink>
+        </li>
+        <li className="nav-item d-flex" type="button">
+          <NavLink className="nav-link" to="order-service">
+            Đơn hàng
+          </NavLink>
+        </li>
+        <li className="nav-item d-flex" type="button">
+          <NavLink className="nav-link" to="sign-in">
+            Đăng xuất
+          </NavLink>
+        </li>
+      </ul>
+    </div>
+  )
 };
 
 export default AdminNavigation;
