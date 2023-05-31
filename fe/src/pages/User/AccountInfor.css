@@ -7,4 +7,58 @@
   box-shadow: 0 5px 10px #65928a88;
   border-radius: 20px;
   padding: 2%;
+  justify-content: space-around;
 }
+
+.ai-content .ai-username {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+
+.ai-content .ai-username button {
+  height: fit-content;
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
+  width: 70%;
+  background-color: white;
+  border: solid 1px #65928a46;
+  color: black;
+  margin: 10px 0  ;
+}
+
+.ai-content .ai-username h3 {
+  margin: 10px 0;
+}
+.ai-content .u-infor {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+}
+
+.ai-content .u-infor .inputter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: fit-content;
+  font-size: 20px;
+}
+
+.ai-content .u-infor input {
+  padding: 5px 30px;
+  border-radius: 5px;
+  border: none;
+  margin: 10px 0;
+  box-shadow: 0 4px 3px #65928a46;
+  width: 100%;
+}
+
+.ai-content .u-infor label {
+  font-weight: 600;
+  margin-left: 30px;
+}
+

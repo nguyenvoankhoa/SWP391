@@ -23,6 +23,7 @@ import ElectronicCleaningPage from "./pages/ElectronicCleaningPage";
 import EmployeePage from "./pages/Employee/EmployeePage";
 import AdminHome from "./pages/Admin/AdminHome";
 import EditCustomer from "./pages/Admin/EditCustomer";
+import OrderService from "./pages/Admin/OrderService";
 import EditEmployee from "./pages/Admin/EditEmployee";
 import EditService from "./pages/Admin/EditService";
 import AdminLayout from "./layouts/AdminLayout";
@@ -31,6 +32,7 @@ import OrderSumation from "./pages/User/OrderSumation";
 import OrderCompleted from "./pages/User/OrderCompleted";
 import ActionRecord from "./pages/User/ActionRecord";
 import AccountInfor from "./pages/User/AccountInfor"
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -103,6 +105,7 @@ const router = createBrowserRouter([
       { path: "edit-customer", element: <EditCustomer /> },
       { path: "edit-employee", element: <EditEmployee /> },
       { path: "edit-service", element: <EditService /> },
+      { path: "order-service", element: <OrderService /> },
     ],
   },
   {

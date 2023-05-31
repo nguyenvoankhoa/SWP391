@@ -4,15 +4,15 @@ import { Outlet } from "react-router-dom";
 const AdminLayout = () => {
   return (
     <>
-      <div className="row">
-        <div className="col-2" style={{ padding: 0 }}>
+      <div className="d-flex">
+        <div>
           <AdminNavigation />
-        </div>
-
-        <div className="col-10">
-          <Outlet />
+          <div>
+            <Outlet />
+          </div>
         </div>
       </div>
+
     </>
   );
 };
