@@ -109,40 +109,6 @@ const HourlyHelp = () => {
 
             <div className="row gy-5 mt-4 d-flex hh-function">
               <div className="col-md-12 d-flex f-content">
-                <label className="switch">
-                  <h5>Vệ sinh định kỳ</h5>
-                  <input
-                    type="checkbox"
-                    onClick={() => {
-                      setDisplay((display) => !display);
-                    }}
-                  />
-                  <span className="slider round"></span>
-                </label>
-                {display && (
-                  <div className="col-md-4 manual-service dropdown">
-                    <button>
-                      {chosenService === null ? (
-                        <span>Chọn thời gian</span>
-                      ) : (
-                        <span>{chosenService}</span>
-                      )}
-
-                      <div className="hh-arrow"></div>
-                      <div className="manual-dropdown">
-                        {React.state.cleanFreq.map((service) => (
-                          <div
-                            type="button"
-                            className="manual-item"
-                            onClick={() => setChosenService(service)}
-                          >
-                            {service}
-                          </div>
-                        ))}
-                      </div>
-                    </button>
-                  </div>
-                )}
                 <div className="f-price">
                   <p>Giá:</p>
                   <p>{totalAmount} VND</p>
