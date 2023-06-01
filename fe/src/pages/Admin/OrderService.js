@@ -2,113 +2,110 @@ import React from "react";
 import Card from "../../UI/Card";
 import "./EditCus.css";
 import Title from "../../components/Title";
+import { useLoaderData } from "react-router-dom";
 const OrderService = () => {
-    return (
-        <>
-            <div className="bg user-navbar d-flex" />
-            <Title
-                title="ĐƠN HÀNG"
-                color="white"
-                fontSize="35px"
-                fontWeight="700"
-                padding="2% 0 0 13vw"
-            />
-            <div className="table-cus table-responsive ">
-                <Card>
-                    <table class="table table-bordered table-striped text-center"
-                        style={{ fontSize: "18px", fontWeight: "400" }}
-                    >
-                        <thead>
-                            <tr>
-                                <th scope="col">STT</th>
-                                <th scope="col">Công việc</th>
-                                <th scope="col">Ngày làm</th>
-                                <th scope="col">Khách hàng</th>
-                                <th scope="col">Số điện thoại</th>
-                                <th scope="col">Giao dịch</th>
-                                <th scope="col">Trạng thái</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Vệ sinh máy lạnh [Treo tường] dưới 2hp</td>
-                                <td>19:00, 25/05/555</td>
-                                <td>An Khoa</td>
-                                <td>23456789JQKA</td>
-                                <td>Tiền mặt</td>
-                                <td><button type="button" class="btn btn-outline-success">Xác nhận</button></td>
-
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>Vệ sinh máy lạnh [Treo tường] dưới 2hp</td>
-                                <td>19:00, 25/05/555</td>
-                                <td>An Khoa</td>
-                                <td>23456789JQKA</td>
-                                <td>Chuyển khoản</td>
-                                <td><button type="button" class="btn btn-outline-success" disabled>Đã hoàn tất</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>Vệ sinh máy lạnh [Treo tường] dưới 2hp</td>
-                                <td>19:00, 25/05/555</td>
-                                <td>An Khoa</td>
-                                <td>23456789JQKA</td>
-                                <td>Tiền mặt</td>
-                                <td><button type="button" class="btn btn-outline-success" disabled>Đã hoàn tất</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">4</th>
-                                <td>Vệ sinh máy lạnh [Treo tường] dưới 2hp</td>
-                                <td>19:00, 25/05/555</td>
-                                <td>An Khoa</td>
-                                <td>23456789JQKA</td>
-                                <td>Tiền mặt</td>
-                                <td><button type="button" class="btn btn-outline-success" disabled>Đã hoàn tất</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">5</th>
-                                <td>Vệ sinh máy lạnh [Treo tường] dưới 2hp</td>
-                                <td>19:00, 25/05/555</td>
-                                <td>An Khoa</td>
-                                <td>23456789JQKA</td>
-                                <td>Tiền mặt</td>
-                                <td><button type="button" class="btn btn-outline-success" disabled>Đã hoàn tất</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">6</th>
-                                <td>Vệ sinh máy lạnh [Treo tường] dưới 2hp</td>
-                                <td>19:00, 25/05/555</td>
-                                <td>An Khoa</td>
-                                <td>23456789JQKA</td>
-                                <td>Tiền mặt</td>
-                                <td><button type="button" class="btn btn-outline-success" disabled>Đã hoàn tất</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">7</th>
-                                <td>Vệ sinh máy lạnh [Treo tường] dưới 2hp</td>
-                                <td>19:00, 25/05/555</td>
-                                <td>An Khoa</td>
-                                <td>23456789JQKA</td>
-                                <td>Tiền mặt</td>
-                                <td><button type="button" class="btn btn-outline-success" disabled>Đã hoàn tất</button></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">8</th>
-                                <td>Vệ sinh máy lạnh [Treo tường] dưới 2hp</td>
-                                <td>19:00, 25/05/555</td>
-                                <td>An Khoa</td>
-                                <td>23456789JQKA</td>
-                                <td>Tiền mặt</td>
-                                <td><button type="button" class="btn btn-outline-success" disabled>Đã hoàn tất</button></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </Card>
-            </div>
-        </>
-    );
+  const data = useLoaderData();
+  console.log(data.data);
+  return (
+    <>
+      <div className="bg user-navbar d-flex" />
+      <Title
+        title="ĐƠN HÀNG"
+        color="white"
+        fontSize="35px"
+        fontWeight="700"
+        padding="2% 0 0 13vw"
+      />
+      <div className="table-cus table-responsive ">
+        <Card>
+          <table
+            className="table table-bordered table-striped text-center"
+            style={{ fontSize: "18px", fontWeight: "400" }}
+          >
+            <thead>
+              <tr>
+                <th scope="col">STT</th>
+                <th scope="col">Công việc</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Ngày làm</th>
+                <th scope="col">Khách hàng</th>
+                <th scope="col">Số tòa</th>
+                <th scope="col">Số phòng</th>
+                <th scope="col">Nhân viên</th>
+                <th scope="col">Số điện thoại</th>
+                <th scope="col">Giao dịch</th>
+                <th scope="col">Tổng cộng</th>
+                <th scope="col">Thanh toán</th>
+                <th scope="col">Trạng thái</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((bill) => (
+                <tr key={bill.id}>
+                  <th scope="row">{bill.id}</th>
+                  <td>{bill.name}</td>
+                  <td>{bill.quantity}</td>
+                  <td>{bill.date}</td>
+                  <td>{bill.customerName}</td>
+                  <td>{bill.departmentNumber}</td>
+                  <td>{bill.roomNumber}</td>
+                  <td>{bill.employeeName}</td>
+                  <td>{bill.customerPhone}</td>
+                  <td>{bill.payment}</td>
+                  <td>{bill.total}</td>
+                  {bill.payStatus ? (
+                    <td>Đã thanh toán</td>
+                  ) : (
+                    <td>
+                      <button type="button" className="btn btn-outline-success">
+                        Xác nhận thanh toán
+                      </button>
+                    </td>
+                  )}
+                  {bill.completeStatus ? (
+                    <td>
+                      <button
+                        type="button"
+                        class="btn btn-outline-success"
+                        disabled
+                      >
+                        Đã hoàn tất
+                      </button>
+                    </td>
+                  ) : (
+                    <td>
+                      <button type="button" className="btn btn-outline-success">
+                        Xác nhận
+                      </button>
+                    </td>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </Card>
+      </div>
+    </>
+  );
 };
 
 export default OrderService;
+export async function orderLoader() {
+  const token = sessionStorage.getItem("jwtToken");
+  const res = await fetch(
+    "https://swp391-production.up.railway.app/admin/orders",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  if (!res.ok) {
+    throw new Error("error");
+  } else {
+    const data = await res.json();
+    return data;
+  }
+}

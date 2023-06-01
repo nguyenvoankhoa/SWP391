@@ -2,7 +2,9 @@ import React from "react";
 import Card from "../../UI/Card";
 import "./EditCus.css";
 import Title from "../../components/Title";
+import { useLoaderData } from "react-router-dom";
 const EditCustomer = () => {
+  const data = useLoaderData();
   return (
     <>
       <div className="bg user-navbar d-flex" />
@@ -15,8 +17,9 @@ const EditCustomer = () => {
       />
       <div className="table-cus table-responsive ">
         <Card>
-          <table class="table table-bordered table-striped text-center"
-            style={{ fontSize: "18px", fontWeight: "400", }}
+          <table
+            className="table table-bordered table-striped text-center"
+            style={{ fontSize: "18px", fontWeight: "400" }}
           >
             <thead>
               <tr>
@@ -26,89 +29,40 @@ const EditCustomer = () => {
                 <th scope="col">Số toà</th>
                 <th scope="col">Số phòng</th>
                 <th scope="col">Số điện thoại</th>
-                <th scope="col">Số đơn đã đặt</th>
-                <th scope="col" style={{ opacity: 0, }}>1</th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Thiên An</td>
-                <td>Andy@gmail.com</td>
-                <td>S303</td>
-                <td>333</td>
-                <td>23456789JQKA</td>
-                <td>1000</td>
-                <td className="d-flex justify-content-around">
-                  <div className="item-icon">
-                    <img src="/assets/images/iconTrash.svg"
-                      alt="img"
-                      style={{
-                        width: "22px"
-                      }} />
-                  </div>
-                  <div>
-                    <img src="/assets/images/edit.png"
-                      alt="img"
-                      style={{
-                        width: "20px"
-                      }} />
-                  </div>
-
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Thiên An</td>
-                <td>Andy@gmail.com</td>
-                <td>S303</td>
-                <td>333</td>
-                <td>23456789JQKA</td>
-                <td>1000</td>
-                <td className="d-flex justify-content-around">
-                  <div className="item-icon">
-                    <img src="/assets/images/iconTrash.svg"
-                      alt="img"
-                      style={{
-                        width: "22px"
-                      }} />
-                  </div>
-                  <div>
-                    <img src="/assets/images/edit.png"
-                      alt="img"
-                      style={{
-                        width: "20px"
-                      }} />
-                  </div>
-
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Thiên An</td>
-                <td>Andy@gmail.com</td>
-                <td>S303</td>
-                <td>333</td>
-                <td>23456789JQKA</td>
-                <td>1000</td>
-                <td className="d-flex justify-content-around">
-                  <div className="item-icon">
-                    <img src="/assets/images/iconTrash.svg"
-                      alt="img"
-                      style={{
-                        width: "22px"
-                      }} />
-                  </div>
-                  <div>
-                    <img src="/assets/images/edit.png"
-                      alt="img"
-                      style={{
-                        width: "20px"
-                      }} />
-                  </div>
-
-                </td>
-              </tr>
+              {data.map((customer) => (
+                <tr key={customer.id}>
+                  <th scope="row">{customer.id}</th>
+                  <td>{customer.name}</td>
+                  <td>{customer.email}</td>
+                  <td>{customer.departmemtNumber}</td>
+                  <td>{customer.roomNumber}</td>
+                  <td>{customer.phone}</td>
+                  <td className="d-flex justify-content-around">
+                    <div className="item-icon">
+                      <img
+                        src="/assets/images/iconTrash.svg"
+                        alt="img"
+                        style={{
+                          width: "22px",
+                        }}
+                      />
+                    </div>
+                    <div>
+                      <img
+                        src="/assets/images/edit.png"
+                        alt="img"
+                        style={{
+                          width: "20px",
+                        }}
+                      />
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </Card>
@@ -118,3 +72,22 @@ const EditCustomer = () => {
 };
 
 export default EditCustomer;
+export async function customerLoader() {
+  const token = sessionStorage.getItem("jwtToken");
+  const res = await fetch(
+    "https://swp391-production.up.railway.app/admin/customers",
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+  if (!res.ok) {
+    throw new Error("error");
+  } else {
+    const data = await res.json();
+    return data;
+  }
+}

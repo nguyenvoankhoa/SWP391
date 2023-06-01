@@ -17,15 +17,43 @@ const SignInForm = () => {
   const passwordHandler = (e) => {
     setPassword(e.target.value);
   };
-  const loginHandler = (e) => {
+  const loginHandler = async (e) => {
     e.preventDefault();
     if (email.length > 0 && password.length > 0) {
-      if (email === "user" && password === "1") {
-        navigate("/user");
-      } else if (email === "employee" && password === "1") {
-        navigate("/employee");
-      } else if (email === "admin" && password === "1") {
+      const loginData = {
+        email: email,
+        password: password,
+      };
+      const response = await fetch(
+        "https://swp391-production.up.railway.app/authenticate",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(loginData),
+        }
+      );
+      if (response.status === 403) {
+        setError("Sai tài khoản hoặc mật khẩu");
+        return;
+      }
+      if (!response.ok) {
+        setError("Server đang có lỗi");
+        return;
+      }
+      const data = await response.json();
+      const user = data.userDTO;
+      const jwtToken = data.token;
+      sessionStorage.setItem("jwtToken", jwtToken);
+      sessionStorage.setItem("user", JSON.stringify(user));
+      sessionStorage.setItem("id", JSON.stringify(user.id));
+      if (user.role === "ADMIN") {
         navigate("/admin");
+      } else if (user.role === "CUSTOMER") {
+        navigate("/user");
+      } else if (user.role === "EMPLOYEE") {
+        navigate("/employee");
       }
     } else {
       setError("Sai email và mật khẩu rồi");
@@ -92,7 +120,7 @@ const SignInForm = () => {
 
           <div className="d-flex justify-content-center my-5">
             <Button
-              backgroundColor= " #397F77 "
+              backgroundColor=" #397F77 "
               borderRadius="15px"
               padding="16px 41px"
             >

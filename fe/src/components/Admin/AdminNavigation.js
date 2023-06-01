@@ -11,16 +11,19 @@ const AdminNavigation = () => {
             <img className="nav-avt" src="/assets/images/person1.svg" alt="" />
           </NavLink>
         </li>
-        <li className="nav-item user-hb-name" type="button"
+        <li
+          className="nav-item user-hb-name"
+          type="button"
           style={{
-            paddingLeft: "70px"
+            paddingLeft: "70px",
           }}
         >
           <span className="nav-text">
             Admin
-            <div className="seperator"
+            <div
+              className="seperator"
               style={{
-                width: "120px"
+                width: "120px",
               }}
             ></div>
           </span>
@@ -51,13 +54,13 @@ const AdminNavigation = () => {
           </NavLink>
         </li>
         <li className="nav-item d-flex" type="button">
-          <NavLink className="nav-link" to="sign-in">
+          <NavLink className="nav-link" to="/">
             Đăng xuất
           </NavLink>
         </li>
       </ul>
     </div>
-  )
+  );
 };
 
 export default AdminNavigation;

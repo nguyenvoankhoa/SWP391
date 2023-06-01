@@ -20,18 +20,20 @@ import HourlyHelpPage, { loader as PriceLoader } from "./pages/HourlyHelpPage";
 import FabricCleaningPage from "./pages/FabricCleaningPage";
 import TotalSanitationPage from "./pages/TotalSanitationPage";
 import ElectronicCleaningPage from "./pages/ElectronicCleaningPage";
-import EmployeePage from "./pages/Employee/EmployeePage";
+import EmployeePage, {
+  employeePageLoader,
+} from "./pages/Employee/EmployeePage";
 import AdminHome from "./pages/Admin/AdminHome";
-import EditCustomer from "./pages/Admin/EditCustomer";
-import OrderService from "./pages/Admin/OrderService";
-import EditEmployee from "./pages/Admin/EditEmployee";
-import EditService from "./pages/Admin/EditService";
+import EditCustomer, { customerLoader } from "./pages/Admin/EditCustomer";
+import OrderService, { orderLoader } from "./pages/Admin/OrderService";
+import EditEmployee, { employeeLoader } from "./pages/Admin/EditEmployee";
+import EditService, { serviceLoader } from "./pages/Admin/EditService";
 import AdminLayout from "./layouts/AdminLayout";
 import EmployeeLayout from "./layouts/EmployeeLayout";
 import OrderSumation from "./pages/User/OrderSumation";
 import OrderCompleted from "./pages/User/OrderCompleted";
-import ActionRecord from "./pages/User/ActionRecord";
-import AccountInfor from "./pages/User/AccountInfor"
+import ActionRecord, { billLoader } from "./pages/User/ActionRecord";
+import AccountInfor, { customerInfoLoader } from "./pages/User/AccountInfor";
 
 const router = createBrowserRouter([
   {
@@ -93,8 +95,12 @@ const router = createBrowserRouter([
       },
       { path: "order-sumation", element: <OrderSumation /> },
       { path: "order-completed", element: <OrderCompleted /> },
-      { path: "action-record", element: <ActionRecord /> },
-      { path: "account-infor", element: <AccountInfor /> },
+      { path: "action-record", element: <ActionRecord />, loader: billLoader },
+      {
+        path: "account-infor",
+        element: <AccountInfor />,
+        loader: customerInfoLoader,
+      },
     ],
   },
   {
@@ -102,16 +108,26 @@ const router = createBrowserRouter([
     element: <AdminLayout />,
     children: [
       { index: true, element: <AdminHome /> },
-      { path: "edit-customer", element: <EditCustomer /> },
-      { path: "edit-employee", element: <EditEmployee /> },
-      { path: "edit-service", element: <EditService /> },
-      { path: "order-service", element: <OrderService /> },
+      {
+        path: "edit-customer",
+        element: <EditCustomer />,
+        loader: customerLoader,
+      },
+      {
+        path: "edit-employee",
+        element: <EditEmployee />,
+        loader: employeeLoader,
+      },
+      { path: "edit-service", element: <EditService />, loader: serviceLoader },
+      { path: "order-service", element: <OrderService />, loader: orderLoader },
     ],
   },
   {
     path: "/employee",
     element: <EmployeeLayout />,
-    children: [{ index: true, element: <EmployeePage /> }],
+    children: [
+      { index: true, element: <EmployeePage />, loader: employeePageLoader },
+    ],
   },
 ]);
 
