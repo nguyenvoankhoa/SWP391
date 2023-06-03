@@ -1,7 +1,18 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const AdminNavigation = () => {
+  const nav = useNavigate();
+  async function logoutHandler() {
+    const res = await fetch("https://swp391-production.up.railway.app/logout");
+    if (!res.ok) {
+      throw new Error("error");
+    } else {
+      sessionStorage.removeItem("user");
+      sessionStorage.removeItem("jwtToken");
+      nav("/");
+    }
+  }
   return (
     <div className="nav-container">
       <ul className="nav flex-column nav-content">
@@ -50,10 +61,8 @@ const AdminNavigation = () => {
             Đơn hàng
           </NavLink>
         </li>
-        <li className="nav-item d-flex" type="button">
-          <NavLink className="nav-link" to="/">
-            Đăng xuất
-          </NavLink>
+        <li className="nav-item d-flex" type="button" onClick={logoutHandler}>
+          <NavLink className="nav-link">Đăng xuất</NavLink>
         </li>
       </ul>
     </div>

@@ -5,7 +5,7 @@ import Title from "../../components/Title";
 import { useLoaderData } from "react-router-dom";
 const OrderService = () => {
   const data = useLoaderData();
-  console.log(data.data);
+  console.log(data);
   return (
     <>
       <div className="bg user-navbar d-flex" />
@@ -29,8 +29,6 @@ const OrderService = () => {
                 <th scope="col">Số lượng</th>
                 <th scope="col">Ngày làm</th>
                 <th scope="col">Khách hàng</th>
-                <th scope="col">Số tòa</th>
-                <th scope="col">Số phòng</th>
                 <th scope="col">Nhân viên</th>
                 <th scope="col">Số điện thoại</th>
                 <th scope="col">Giao dịch</th>
@@ -43,14 +41,16 @@ const OrderService = () => {
               {data.map((bill) => (
                 <tr key={bill.id}>
                   <th scope="row">{bill.id}</th>
-                  <td>{bill.name}</td>
+                  <td>{bill.business.name}</td>
                   <td>{bill.quantity}</td>
-                  <td>{bill.date}</td>
-                  <td>{bill.customerName}</td>
-                  <td>{bill.departmentNumber}</td>
-                  <td>{bill.roomNumber}</td>
-                  <td>{bill.employeeName}</td>
-                  <td>{bill.customerPhone}</td>
+                  <td>{bill.timeBooking}</td>
+                  <td>{bill.customer.name}</td>
+                  {bill.employee ? (
+                    <td>{bill.employee.name}</td>
+                  ) : (
+                    <td>Chưa đăng ký</td>
+                  )}
+                  <td>{bill.customer.phone}</td>
                   <td>{bill.payment}</td>
                   <td>{bill.total}</td>
                   {bill.payStatus ? (

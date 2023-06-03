@@ -3,7 +3,6 @@ import { useLoaderData } from "react-router-dom";
 
 const EmployeePage = () => {
   const data = useLoaderData();
-  console.log(data);
   return (
     <>
       <div className="container-fluid fabric-container">
@@ -18,6 +17,7 @@ const EmployeePage = () => {
               <th>Số toà</th>
               <th>Số phòng</th>
               <th>Số điện thoại</th>
+              <th>Số lượng</th>
               <th>Thanh toán</th>
               <th>Trạng thái</th>
             </tr>
@@ -25,11 +25,12 @@ const EmployeePage = () => {
           <tbody>
             {data.map((work) => (
               <tr key={Math.random()}>
-                <th scope="row">{work.work}</th>
+                <th scope="row">{work.workType}</th>
                 <td>{work.time}</td>
                 <td>{work.departmentNumber}</td>
                 <td>{work.roomNumber}</td>
-                <td>{work.phone}</td>
+                <td>{work.customerPhone}</td>
+                <td>{work.quantity}</td>
                 {work.payStatus ? (
                   <td>Đã thanh toán</td>
                 ) : (
@@ -48,9 +49,9 @@ const EmployeePage = () => {
 export default EmployeePage;
 export async function employeePageLoader() {
   const token = sessionStorage.getItem("jwtToken");
-  const userId = sessionStorage.getItem("id");
+  const user = JSON.parse(sessionStorage.getItem("user"));
   const request = {
-    id: userId,
+    id: user.id,
   };
   const res = await fetch(
     "https://swp391-production.up.railway.app/employee/info",

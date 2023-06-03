@@ -1,8 +1,19 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./UserHeader.css";
 const UserHeadingBar = () => {
   const user = JSON.parse(sessionStorage.getItem("user"));
+  const nav = useNavigate();
+  async function logoutHandler() {
+    const res = await fetch("https://swp391-production.up.railway.app/logout");
+    if (!res.ok) {
+      throw new Error("error");
+    } else {
+      sessionStorage.removeItem("user");
+      sessionStorage.removeItem("jwtToken");
+      nav("/");
+    }
+  }
   return (
     <div className="nav-container">
       <ul className="nav flex-column nav-content">
@@ -48,7 +59,7 @@ const UserHeadingBar = () => {
             Tài khoản
           </NavLink>
         </li>
-        <li className="nav-item d-flex" type="button">
+        <li className="nav-item d-flex" type="button" onClick={logoutHandler}>
           <img
             className="nav-icon"
             src="/assets/images/exit.svg"

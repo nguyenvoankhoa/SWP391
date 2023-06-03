@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router-dom";
 
 const AccountInfor = () => {
   const data = useLoaderData();
+  console.log(data);
   return (
     <>
       <div className="bg user-navbar" />
@@ -45,7 +46,7 @@ const AccountInfor = () => {
             </div>
             <div className="col-md-12">
               <h4>Số tòa</h4>
-              <p className="text-center">{data.departmemtNumber}</p>
+              <p className="text-center">{data.departmentNumber}</p>
             </div>
             <div className="col-md-12">
               <h4>Số phòng</h4>
@@ -66,9 +67,9 @@ export default AccountInfor;
 
 export async function customerInfoLoader() {
   const token = sessionStorage.getItem("jwtToken");
-  const userId = sessionStorage.getItem("id");
+  const user = JSON.parse(sessionStorage.getItem("user"));
   const request = {
-    id: userId,
+    id: user.id,
   };
   const res = await fetch(
     "https://swp391-production.up.railway.app/customer/info",

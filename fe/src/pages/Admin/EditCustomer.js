@@ -5,6 +5,7 @@ import Title from "../../components/Title";
 import { useLoaderData } from "react-router-dom";
 const EditCustomer = () => {
   const data = useLoaderData();
+
   return (
     <>
       <div className="bg user-navbar d-flex" />
@@ -36,11 +37,11 @@ const EditCustomer = () => {
               {data.map((customer) => (
                 <tr key={customer.id}>
                   <th scope="row">{customer.id}</th>
-                  <td>{customer.name}</td>
-                  <td>{customer.email}</td>
-                  <td>{customer.departmemtNumber}</td>
+                  <td>{customer.customerInfo.name}</td>
+                  <td>{customer.customerInfo.email}</td>
+                  <td>{customer.departmentNumber}</td>
                   <td>{customer.roomNumber}</td>
-                  <td>{customer.phone}</td>
+                  <td>{customer.customerInfo.phone}</td>
                   <td className="d-flex justify-content-around">
                     <div className="item-icon">
                       <img

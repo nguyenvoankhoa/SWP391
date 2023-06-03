@@ -43,11 +43,10 @@ const SignInForm = () => {
         return;
       }
       const data = await response.json();
-      const user = data.userDTO;
+      const user = data.user;
       const jwtToken = data.token;
       sessionStorage.setItem("jwtToken", jwtToken);
       sessionStorage.setItem("user", JSON.stringify(user));
-      sessionStorage.setItem("id", JSON.stringify(user.id));
       if (user.role === "ADMIN") {
         navigate("/admin");
       } else if (user.role === "CUSTOMER") {
