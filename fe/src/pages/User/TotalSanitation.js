@@ -106,7 +106,7 @@ const TotalSanitation = () => {
 
             <TimePicker onAddTime={addTimeHandler} onAddDate={addDateHandler} />
 
-            <div className="row gy-5 mt-4 d-flex hh-function">
+            <div className="row gy-5 mt-2 d-flex hh-function">
               <div className="col-md-12 d-flex f-content">
                 <div className="f-price">
                   <p>Giá:</p>

@@ -14,6 +14,7 @@
   justify-content: space-between;
   height: 10%;
   margin-bottom: 2vh;
+  padding: 0;
 }
 
 .ar-content .ar-nav button {
@@ -22,6 +23,7 @@
   font-weight: 600;
   font-size: 18px;
   border-radius: 10px;
+  margin: 0;
 }
 
 .ar-content .ar-list {
