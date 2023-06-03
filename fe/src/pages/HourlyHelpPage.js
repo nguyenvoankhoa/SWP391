@@ -99,9 +99,7 @@ const HourlyHelpPage = () => {
 export default HourlyHelpPage;
 
 export async function loader() {
-  const res = await fetch(
-    "https://swp-production.up.railway.app/electronic-cleaning"
-  );
+  const res = await fetch("https://swp391-production.up.railway.app/services");
   if (!res.ok) {
     throw json({ message: "can not load item" }, { status: 500 });
   } else {

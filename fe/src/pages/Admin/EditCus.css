@@ -1,12 +1,11 @@
-.table-cus{
- padding-left: 17vw;
- padding-top: 3vw;
- width: 1455px;
+.table-cus {
+  padding-left: 20vw;
+  padding-top: 3vw;
+  width: 1455px;
 }
-.item-icon{
-   margin: 0;
+.item-icon {
+  margin: 0;
 }
-.item-icon img:hover{
-    opacity: 40%;
-
+.item-icon img:hover {
+  opacity: 40%;
 }

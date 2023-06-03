@@ -21,8 +21,6 @@ const HourlyHelp = () => {
   const [selectedDate, setselectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState("Sáng");
   const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
-  const [display, setDisplay] = useState(false);
-  const [chosenService, setChosenService] = useState(null);
   const [detail, setDetail] = useState(null);
   const data = useLoaderData();
   const HOURLY_HELP = data.filter((item) => {
@@ -43,8 +41,6 @@ const HourlyHelp = () => {
       date: selectedDate.getDate(),
       time: selectedTime,
       payment: selectedPayment,
-      frequence: display,
-      timeRepeat: chosenService,
     };
     dispatch(orderItemAction.addItem(bill));
     navigate("/user/order-sumation");
@@ -128,9 +124,7 @@ const HourlyHelp = () => {
 export default HourlyHelp;
 
 export async function loader() {
-  const res = await fetch(
-    "https://swp-production.up.railway.app/electronic-cleaning"
-  );
+  const res = await fetch("https://swp391-production.up.railway.app/services");
   if (!res.ok) {
     throw json({ message: "can not load item" }, { status: 500 });
   } else {

@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./UserHeader.css";
 const UserHeadingBar = () => {
+  const user = JSON.parse(sessionStorage.getItem("user"));
   return (
     <div className="nav-container">
       <ul className="nav flex-column nav-content">
@@ -13,7 +14,7 @@ const UserHeadingBar = () => {
         </li>
         <li className="nav-item user-hb-name" type="button">
           <span className="nav-text">
-            UserName
+            {user.name}
             <div className="seperator"></div>
           </span>
         </li>
@@ -63,7 +64,7 @@ const UserHeadingBar = () => {
             src="/assets/images/exit.svg"
             alt="icon"
           ></img>
-          <NavLink className="nav-link" to="">
+          <NavLink className="nav-link" to="/">
             Đăng xuất
           </NavLink>
         </li>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { json, useLoaderData, Link, useNavigate } from "react-router-dom";
+import { json, useLoaderData, useNavigate } from "react-router-dom";
 import Title from "../../components/Title";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,8 +20,6 @@ const TotalSanitation = () => {
   const [selectedDate, setselectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState("Sáng");
   const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
-  const [display, setDisplay] = useState(false);
-  const [chosenService, setChosenService] = useState(null);
   const [detail, setDetail] = useState(null);
   const data = useLoaderData();
   const TOTAL_SANITATION = data.filter((item) => {
@@ -42,8 +40,6 @@ const TotalSanitation = () => {
       date: selectedDate.getDate(),
       time: selectedTime,
       payment: selectedPayment,
-      frequence: display,
-      timeRepeat: chosenService,
     };
     dispatch(orderItemAction.addItem(bill));
     navigate("/user/order-sumation");
@@ -99,7 +95,8 @@ const TotalSanitation = () => {
                 }
               >
                 <button>
-                  {item.type}<br />({item.detail}/{item.unit})
+                  {item.type}
+                  <br />({item.detail}/{item.unit})
                 </button>
               </div>
             ))}
@@ -127,9 +124,7 @@ const TotalSanitation = () => {
 export default TotalSanitation;
 
 export async function loader() {
-  const res = await fetch(
-    "https://swp-production.up.railway.app/electronic-cleaning"
-  );
+  const res = await fetch("https://swp391-production.up.railway.app/services");
   if (!res.ok) {
     throw json({ message: "can not load item" }, { status: 500 });
   } else {
