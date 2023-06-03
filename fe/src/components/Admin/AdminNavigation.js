@@ -14,9 +14,6 @@ const AdminNavigation = () => {
         <li
           className="nav-item user-hb-name"
           type="button"
-          style={{
-            paddingLeft: "70px",
-          }}
         >
           <span className="nav-text">
             Admin

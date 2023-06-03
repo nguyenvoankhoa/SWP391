@@ -6,8 +6,8 @@ const UserHeadingBar = () => {
   return (
     <div className="nav-container">
       <ul className="nav flex-column nav-content">
-        <li className="nav-item" type="button">
-          <NavLink className="nav-link d-flex" to="">
+        <li className="nav-item user-hb-avt" type="button">
+          <NavLink className="nav-link d-flex" to="account-infor">
             {" "}
             <img className="nav-avt" src="/assets/images/person1.svg" alt="" />
           </NavLink>
@@ -38,16 +38,6 @@ const UserHeadingBar = () => {
             Hoạt động
           </NavLink>
         </li>
-        {/* <li className="nav-item d-flex" type="button">
-          <img
-            className="nav-icon"
-            src="/assets/images/message.svg"
-            alt="icon"
-          ></img>
-          <NavLink className="nav-link" to="">
-            Thông báo
-          </NavLink>
-        </li> */}
         <li className="nav-item d-flex" type="button">
           <img
             className="nav-icon"

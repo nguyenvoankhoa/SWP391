@@ -30,7 +30,7 @@
     padding-left: 20%;
 }
 
-.nav-container .nav-content li:hover:not(.user-hb-name) {
+.nav-container .nav-content li:hover:not(.user-hb-name):not(.user-hb-avt) {
     background-color: #9dcec8;
 }
 
@@ -73,4 +73,16 @@
     top: 100%;
     transform: translate(-50%, -100%);
     border-radius: 20px;
+}
+
+.nav-container .nav-content .user-hb-name {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-container .nav-content .user-hb-name span {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 10%;
 }
