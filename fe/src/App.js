@@ -37,6 +37,7 @@ import AccountInfor, { customerInfoLoader } from "./pages/User/AccountInfor";
 import EditCustomerItem from "./pages/Admin/EditCustomerItem";
 import EditEmpItem from "./pages/Admin/EditEmpItems";
 import EditSerItem from "./pages/Admin/EditSerItem";
+import EmployeePageHistory from "./pages/Employee/EmployeePageHistory"
 
 
 const router = createBrowserRouter([
@@ -121,6 +122,7 @@ const router = createBrowserRouter([
         path: "edit-employee",
         element: <EditEmployee />,
         loader: employeeLoader,
+
       },
       { path: "edit-service", element: <EditService />, loader: serviceLoader },
       { path: "order-service", element: <OrderService />, loader: orderLoader },
@@ -134,6 +136,7 @@ const router = createBrowserRouter([
     element: <EmployeeLayout />,
     children: [
       { index: true, element: <EmployeePage />, loader: employeePageLoader },
+      { path: "history-emp", element: <EmployeePageHistory /> },
     ],
   },
 ]);

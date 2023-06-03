@@ -1,15 +1,18 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Overlays from "./Overlays";
-import EmployeeHeader from "../components/Employee/EmployeeHeader";
+import EmployeeNavigation from "../components/Employee/EmployeeNavigation";
 
 const EmployeeLayout = () => {
   return (
     <>
-      <EmployeeHeader />
-      <Overlays>
-        <Outlet />
-      </Overlays>
+      <div className="d-flex">
+        <div>
+          <EmployeeNavigation />
+          <div>
+            <Outlet />
+          </div>
+        </div>
+      </div>
     </>
   );
 };

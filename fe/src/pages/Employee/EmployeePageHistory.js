@@ -8,7 +8,7 @@ const EmployeePage = () => {
     <>
       <div className="bg user-navbar" />
       <Title
-        title="HÔM NAY"
+        title="LỊCH SỬ"
         color="white"
         fontSize="35px"
         fontWeight="700"
@@ -28,7 +28,7 @@ const EmployeePage = () => {
                 <th scope="col">Số toà </th>
                 <th scope="col">Số phòng</th>
                 <th scope="col">Thanh toán</th>
-                <th scope="col">Trạng thái</th>
+
               </tr>
             </thead>
             <tbody>
@@ -39,7 +39,7 @@ const EmployeePage = () => {
                 <th scope="col">S333 </th>
                 <th scope="col">333</th>
                 <th scope="col">PayPal</th>
-                <th scope="col">Rồi</th>
+
               </tr>
               <tr>
                 <th scope="col">2</th>
@@ -48,7 +48,6 @@ const EmployeePage = () => {
                 <th scope="col">S666 </th>
                 <th scope="col">666</th>
                 <th scope="col">Tiền mặt</th>
-                <th scope="col">Chưa</th>
               </tr>
             </tbody>
           </table>
