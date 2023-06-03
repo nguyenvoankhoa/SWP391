@@ -1,0 +1,16 @@
+.form-cus{
+    padding-left: 20vw;
+    padding-top: 3vw;
+    width: 1450px;
+}
+.form-cus .form-cus-item{
+    padding-left: 14vw;
+    width: 900px;
+}
+.update-cus{
+    padding: 15px 0 5px 0;
+}
+.update-cus button{
+    width: 150px;
+    height: 45px;
+}

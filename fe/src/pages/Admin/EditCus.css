@@ -1,11 +1,27 @@
 .table-cus {
+  padding-left: 17vw;
+  padding-top: 3vw;
+  width: 1510px;
+}
+.table-ser{
   padding-left: 20vw;
   padding-top: 3vw;
-  width: 1455px;
+  width: 1450px;
+}
+.table-ord{
+  padding-left: 17vw;
+  padding-top: 3vw;
+  width: 1510px;
 }
 .item-icon {
   margin: 0;
 }
 .item-icon img:hover {
   opacity: 40%;
+}
+.find-employ{
+  padding-right: 700px;
+}
+.find-employ-item{
+  width: 900px;
 }

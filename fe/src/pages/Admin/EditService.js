@@ -16,7 +16,7 @@ const EditService = () => {
         fontWeight="700"
         padding="2% 0 0 13vw"
       />
-      <div className="table-cus table-responsive ">
+      <div className="table-ser table-responsive ">
         <Card>
           <table
             className="table table-bordered table-striped text-center"
