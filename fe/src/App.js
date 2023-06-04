@@ -34,9 +34,6 @@ import OrderSumation from "./pages/User/OrderSumation";
 import OrderCompleted from "./pages/User/OrderCompleted";
 import ActionRecord, { billLoader } from "./pages/User/ActionRecord";
 import AccountInfor, { customerInfoLoader } from "./pages/User/AccountInfor";
-import EditCustomerItem from "./pages/Admin/EditCustomerItem";
-import EditEmpItem from "./pages/Admin/EditEmpItems";
-import EditSerItem from "./pages/Admin/EditSerItem";
 import EmployeePageHistory from "./pages/Employee/EmployeePageHistory"
 
 
@@ -126,9 +123,6 @@ const router = createBrowserRouter([
       },
       { path: "edit-service", element: <EditService />, loader: serviceLoader },
       { path: "order-service", element: <OrderService />, loader: orderLoader },
-      { path: "items-edit-customer", element: <EditCustomerItem /> },
-      { path: "items-edit-employ", element: <EditEmpItem /> },
-      { path: "items-edit-serv", element: <EditSerItem /> },
     ],
   },
   {

@@ -1,7 +1,7 @@
 .table-cus {
   padding-left: 17vw;
   padding-top: 3vw;
-  width: 1510px;
+  width: 1450px;
 }
 .table-ser{
   padding-left: 20vw;
@@ -20,6 +20,9 @@
 }
 .item-icon {
   margin: 0;
+}
+.item-icon img{
+  width: 30px;
 }
 .item-icon img:hover {
   opacity: 40%;
