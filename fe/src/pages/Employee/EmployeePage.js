@@ -22,40 +22,41 @@ const EmployeePage = () => {
           >
             <thead>
               <tr>
-                <th scope="col">STT</th>
                 <th scope="col">Công việc</th>
                 <th scope="col">Thời gian</th>
                 <th scope="col">Số toà </th>
                 <th scope="col">Số phòng</th>
                 <th scope="col">Thanh toán</th>
                 <th scope="col">Trạng thái</th>
+                <th scope="col">Số lượng</th>
+                <th scope="col">Tổng cộng</th>
+                <th scope="col">SĐT khách hàng</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="col">1</th>
-                <th scope="col">Vệ sinh máy lạnh</th>
-                <th scope="col">19h30, ngày 20/11/1999</th>
-                <th scope="col">S333 </th>
-                <th scope="col">333</th>
-                <th scope="col">PayPal</th>
-                <th scope="col">Rồi</th>
-              </tr>
-              <tr>
-                <th scope="col">2</th>
-                <th scope="col">Vệ sinh Sofa</th>
-                <th scope="col">15h30, ngày 20/11/1999</th>
-                <th scope="col">S666 </th>
-                <th scope="col">666</th>
-                <th scope="col">Tiền mặt</th>
-                <th scope="col">Chưa</th>
-              </tr>
+              {data.map((bill) => (
+                <tr key={Math.random()}>
+                  <th scope="col">{bill.workType}</th>
+                  <th scope="col">{bill.time}</th>
+                  <th scope="col">{bill.departmentNumber}</th>
+                  <th scope="col">{bill.roomNumber}</th>
+                  {bill.payStatus ? (
+                    <th>Đã thanh toán</th>
+                  ) : (
+                    <th>Chưa thanh toán</th>
+                  )}
+                  {bill.completedStatus ? <th>Đã xong</th> : <th>Chưa xong</th>}
+
+                  <th scope="col">{bill.quantity}</th>
+                  <th scope="col">{bill.total}</th>
+                  <th scope="col">{bill.customerPhone}</th>
+                </tr>
+              ))}
             </tbody>
           </table>
         </Card>
       </div>
     </>
-
   );
 };
 

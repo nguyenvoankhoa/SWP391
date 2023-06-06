@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../../UI/Card";
 import "./EditCus.css";
 import Title from "../../components/Title";
 import { useLoaderData } from "react-router-dom";
+import EditCustomerForm from "../../components/Admin/EditCustomerForm";
 const EditCustomer = () => {
   const data = useLoaderData();
-
+  const [customer, setCustomer] = useState([]);
+  const editCustomerHandler = (customer) => {
+    setCustomer(customer);
+  };
   return (
     <>
       <div className="bg user-navbar d-flex" />
@@ -47,79 +51,22 @@ const EditCustomer = () => {
                       <img src="../assets/images/iconTrash.svg" />
                     </div>
                     <div className="item-icon">
-                      <img src="../assets/images/edit.png" className="" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
+                      <img
+                        src="../assets/images/edit.png"
+                        className=""
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                        onClick={() => editCustomerHandler(customer)}
+                      />
                     </div>
-
-
-                    <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                      <div class="modal-dialog find-employ">
-                        <div class="modal-content find-employ-item">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5 " id="staticBackdropLabel">Thay đổi thông tin</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <div className="">
-                              <div className="">
-                                <Card>
-                                  <div class="container">
-
-
-                                    <div class="row">
-                                      <div class="">
-                                        <h6 class="mb-2 text-primary">Thông tin khách hàng</h6>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-group">
-                                          <label for="fullName"> Tên</label>
-                                          <input type="text" class="form-control" value="An" />
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-group">
-                                          <label for="eMail">Email</label>
-                                          <input type="text" class="form-control" value="andy@gmail.com" />
-                                        </div>
-                                      </div>
-                                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                        <div class="form-group">
-                                          <label for="phone">Số điện thoại</label>
-                                          <input type="text" class="form-control" id="phone" value="23456789JQK" />
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div className="row d-flex">
-                                          <div class="form-group col-md-6">
-                                            <label for="website">Số Toà</label>
-                                            <input type="text" class="form-control" id="website" value="S202" />
-                                          </div>
-                                          <div class="form-group col-md-6">
-                                            <label for="website">Số Phòng</label>
-                                            <input type="text" class="form-control" id="website" value="202" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </Card >
-                              </div>
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Xác nhận</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
         </Card>
-      </div >
+      </div>
+      <EditCustomerForm customer={customer} />
     </>
   );
 };

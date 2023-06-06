@@ -22,10 +22,7 @@ const AdminNavigation = () => {
             <img className="nav-avt" src="/assets/images/person1.svg" alt="" />
           </NavLink>
         </li>
-        <li
-          className="nav-item user-hb-name"
-          type="button"
-        >
+        <li className="nav-item user-hb-name" type="button">
           <span className="nav-text">
             Admin
             <div

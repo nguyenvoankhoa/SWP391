@@ -34,8 +34,7 @@ import OrderSumation from "./pages/User/OrderSumation";
 import OrderCompleted from "./pages/User/OrderCompleted";
 import ActionRecord, { billLoader } from "./pages/User/ActionRecord";
 import AccountInfor, { customerInfoLoader } from "./pages/User/AccountInfor";
-import EmployeePageHistory from "./pages/Employee/EmployeePageHistory"
-
+import EmployeePageHistory from "./pages/Employee/EmployeePageHistory";
 
 const router = createBrowserRouter([
   {
@@ -119,10 +118,13 @@ const router = createBrowserRouter([
         path: "edit-employee",
         element: <EditEmployee />,
         loader: employeeLoader,
-
       },
       { path: "edit-service", element: <EditService />, loader: serviceLoader },
-      { path: "order-service", element: <OrderService />, loader: orderLoader },
+      {
+        path: "order-service",
+        element: <OrderService />,
+        loader: orderLoader,
+      },
     ],
   },
   {

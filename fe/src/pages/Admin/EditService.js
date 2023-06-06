@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../../UI/Card";
 import "./EditCus.css";
 import Title from "../../components/Title";
 import { useLoaderData } from "react-router-dom";
+import EditServiceForm from "../../components/Admin/EditServiceForm";
 const EditService = () => {
   const data = useLoaderData();
-  console.log(data.data);
+  const [service, setService] = useState({});
+  const editPriceHandler = (service) => {
+    setService(service);
+  };
   return (
     <>
       <div className="bg user-navbar" />
@@ -40,66 +44,15 @@ const EditService = () => {
                   <td>{service.type}</td>
                   <td>{service.detail}</td>
                   <td>{service.price}</td>
-                  <td >
-
+                  <td>
                     <div className="item-icon">
-                      <img src="../assets/images/edit.png" className="" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
-                    </div>
-
-
-                    <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                      <div class="modal-dialog find-employ">
-                        <div class="modal-content find-employ-item">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5 " id="staticBackdropLabel">Chỉnh sửa dịch vụ</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <div className="">
-                              <div className="">
-                                <Card>
-                                  <div class="container">
-
-
-                                    <div class="row">
-                                      <div class="col-md-6">
-                                        <div class="form-group">
-                                          <label for="fullName"> Công việc</label>
-                                          <input type="text" class="form-control" value="Vệ sinh nệm, sofa, thảm" />
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div class="form-group">
-                                          <label for="eMail">Loại</label>
-                                          <input type="text" class="form-control" value="Sofa	" />
-                                        </div>
-                                      </div>
-                                      <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                        <div class="form-group">
-                                          <label for="phone">Chi tiết</label>
-                                          <input type="text" class="form-control" id="phone" value="23456789JQK" />
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6">
-                                        <div className="row ">
-                                          <div class="form-group col-md-12">
-                                            <label for="website">Giá</label>
-                                            <input type="text" class="form-control" id="website" value="360000" />
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </Card >
-                              </div>
-                            </div>
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Huỷ</button>
-                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Xác nhận</button>
-                          </div>
-                        </div>
-                      </div>
+                      <img
+                        src="../assets/images/edit.png"
+                        className=""
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                        onClick={() => editPriceHandler(service)}
+                      />
                     </div>
                   </td>
                 </tr>
@@ -107,6 +60,7 @@ const EditService = () => {
             </tbody>
           </table>
         </Card>
+        <EditServiceForm service={service} />
       </div>
     </>
   );
