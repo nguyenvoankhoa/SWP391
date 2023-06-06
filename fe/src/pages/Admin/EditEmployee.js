@@ -45,10 +45,10 @@ const EditEmployee = () => {
                   <td className="d-flex justify-content-around">
 
                     <div className="item-icon">
-                      <img src="../assets/images/iconTrash.svg" />
+                      <img src="../assets/images/iconTrash.svg" alt="#" data-bs-toggle="modal" data-bs-target="#exampleModal" />
                     </div>
                     <div className="item-icon">
-                      <img src="../assets/images/edit.png" className="" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
+                      <img src="../assets/images/edit.png" alt="#" data-bs-toggle="modal" data-bs-target="#staticBackdrop" />
                     </div>
 
 
@@ -109,7 +109,23 @@ const EditEmployee = () => {
                         </div>
                       </div>
                     </div>
-
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Thông báo</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body">
+                            Mày có chắc là cho nó cút không
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Không</button>
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Có</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </td>
                 </tr>
               ))}
