@@ -26,7 +26,7 @@ const AccountInfor = () => {
           fontWeight="1000"
           padding="3% 0 0  0"
         />
-        <div className="ai-content d-flex justify-content-center">
+        <div className="row ai-content d-flex justify-content-center">
           <div className="col-md-6 ai-username">
             <img src="/assets/images/person1.svg" alt="Avatar"></img>
             <h3></h3>
@@ -37,24 +37,24 @@ const AccountInfor = () => {
 
           <div className="row col-md-6 d-flex u-infor">
             <div className="col-md-12">
-              <h4>Tên</h4>
-              <p className="text-center">{data.name}</p>
+              <p>Tên</p>
+              <h5 className="">{data.name}</h5>
             </div>
             <div className="col-md-12">
-              <h4>Email</h4>
-              <p className="text-center">{data.email}</p>
+              <p>Email</p>
+              <h5 className="">{data.email}</h5>
             </div>
             <div className="col-md-12">
-              <h4>Số tòa</h4>
-              <p className="text-center">{data.departmentNumber}</p>
+              <p>Số tòa</p>
+              <h5 className="">{data.departmentNumber}</h5>
             </div>
             <div className="col-md-12">
-              <h4>Số phòng</h4>
-              <p className="text-center">{data.roomNumber}</p>
+              <p>Số phòng</p>
+              <h5 className="">{data.roomNumber}</h5>
             </div>
             <div className="col-md-12">
-              <h4>Số điện thoại</h4>
-              <p className="text-center">{data.phone}</p>
+              <p>Số điện thoại</p>
+              <h5 className="">{data.phone}</h5>
             </div>
           </div>
         </div>
