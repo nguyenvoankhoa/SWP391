@@ -6,13 +6,12 @@ import { useLoaderData } from "react-router-dom";
 import EditServiceForm from "../../components/Admin/EditServiceForm";
 const EditService = () => {
   const data = useLoaderData();
-  const [service, setService] = useState({});
-  const editPriceHandler = (service) => {
+  const [service, setService] = useState([]);
+  const handleServiceChange = (service) => {
     setService(service);
   };
   return (
     <>
-
       <div className="bg user-navbar" />
       <Title
         title="DỊCH VỤ"
@@ -24,46 +23,49 @@ const EditService = () => {
 
       <div className="table-ser table-responsive ">
         <Card>
-          <table
-            className="table table-bordered table-striped text-center"
-            style={{ fontSize: "18px", fontWeight: "400" }}
-          >
-            <thead>
-              <tr>
-                <th scope="col">STT</th>
-                <th scope="col">Công việc</th>
-                <th scope="col">Loại</th>
-                <th scope="col">Chi tiết</th>
-                <th scope="col">Giá</th>
-                <th scope="col">Chỉnh sửa</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((service) => (
-                <tr key={service.serviceId}>
-                  <th scope="row">{service.serviceId}</th>
-                  <td>{service.name}</td>
-                  <td>{service.type}</td>
-                  <td>{service.detail}</td>
-                  <td>{service.price}</td>
-                  <td>
-                    <div className="item-icon">
-                      <img
-                        src="../assets/images/edit.png"
-                        className=""
-                        data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop"
-                        onClick={() => editPriceHandler(service)}
-                      />
-                    </div>
-                  </td>
+          <div className="table-wrapper-scroll-y my-custom-scrollbar">
+            <table
+              className="table table-bordered table-striped text-center mb-0"
+              style={{ fontSize: "18px", fontWeight: "400" }}
+            >
+              <thead>
+                <tr>
+                  <th scope="col">STT</th>
+                  <th scope="col">Công việc</th>
+                  <th scope="col">Loại</th>
+                  <th scope="col">Chi tiết</th>
+                  <th scope="col">Giá</th>
+                  <th scope="col">Chỉnh sửa</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {data.map((service) => (
+                  <tr key={service.serviceId}>
+                    <th scope="row">{service.serviceId}</th>
+                    <td>{service.name}</td>
+                    <td>{service.type}</td>
+                    <td>{service.detail}</td>
+                    <td>{service.price}</td>
+                    <td>
+                      <div className="item-icon">
+                        <img
+                          src="../assets/images/edit.png"
+                          className=""
+                          data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop"
+                          onClick={() => handleServiceChange(service)}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </Card>
         <EditServiceForm service={service} />
       </div>
+      <EditServiceForm service={service} />
     </>
   );
 };

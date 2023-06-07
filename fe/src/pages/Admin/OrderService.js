@@ -1,15 +1,17 @@
-import React, { useState } from "react";
 import Card from "../../UI/Card";
 import "./EditCus.css";
 import Title from "../../components/Title";
 import { useLoaderData } from "react-router-dom";
-import EmployeeAssign from "../../components/Admin/EmployeeAssign";
+import EditOrderForm from "../../components/Admin/EditOrderForm";
+import React, { useState } from "react";
 const OrderService = () => {
   const data = useLoaderData();
-  const [business, setBusiness] = useState({});
-  const assignEmployeeHandler = (bill) => {
-    setBusiness(bill.business);
+  const [workType, setWorkType] = useState("");
+
+  const assignEmployee = (type) => {
+    setWorkType(type);
   };
+
   return (
     <>
       <div className="bg user-navbar d-flex" />
@@ -58,9 +60,9 @@ const OrderService = () => {
                         className="btn btn-outline-success"
                         data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop"
-                        onClick={() => assignEmployeeHandler(bill)}
+                        onClick={() => assignEmployee(bill.business.name)}
                       >
-                        Đăng ký nhân viên
+                        Đăng kí nhân viên
                       </button>
                     </td>
                   )}
@@ -99,13 +101,14 @@ const OrderService = () => {
             </tbody>
           </table>
         </Card>
-        <EmployeeAssign business={business} />
       </div>
+      <EditOrderForm workType={workType} />
     </>
   );
 };
 
 export default OrderService;
+
 export async function orderLoader() {
   const token = sessionStorage.getItem("jwtToken");
   const res = await fetch(

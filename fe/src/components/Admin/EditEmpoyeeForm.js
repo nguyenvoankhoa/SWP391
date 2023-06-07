@@ -1,32 +1,34 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
-const EditCustomerForm = (props) => {
+const EditEmployeeForm = (props) => {
+  const [workType, setWorkType] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [departmentNum, setDepartmentNum] = useState("");
-  const [roomNum, setRoomNum] = useState("");
+  const [password, setPassword] = useState("");
   useEffect(() => {
-    setRoomNum(props.customer.roomNumber || "");
-    setName(props.customer.customerInfo?.name || "");
-    setPhone(props.customer.customerInfo?.phone || "");
-    setDepartmentNum(props.customer.departmentNumber || "");
-  }, [props.customer]);
+    setWorkType(props.employee.workType || "");
+    setName(props.employee.employeeInfo?.name || "");
+    setPhone(props.employee.employeeInfo?.phone || "");
+  }, [props.employee]);
+
+  const handleWorkTypeChange = (e) => {
+    setWorkType(e.target.value);
+  };
+
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
-  const handleRoomNumChange = (e) => {
-    setRoomNum(e.target.value);
-  };
+
   const handlePhoneChange = (e) => {
     setPhone(e.target.value);
   };
-  const handleDepartmentNumChange = (e) => {
-    setDepartmentNum(e.target.value);
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
   };
   return (
     <>
       <div
-        className="modal fade "
+        className="modal fade"
         id="staticBackdrop"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
@@ -37,7 +39,7 @@ const EditCustomerForm = (props) => {
         <div className="modal-dialog find-employ">
           <div className="modal-content find-employ-item">
             <div className="modal-header">
-              <h1 className="modal-title fs-5 " id="staticBackdropLabel">
+              <h1 className="modal-title fs-5" id="staticBackdropLabel">
                 Thay đổi thông tin
               </h1>
               <button
@@ -50,12 +52,12 @@ const EditCustomerForm = (props) => {
             <div className="modal-body">
               <div className="container">
                 <div className="row">
-                  <div className>
-                    <h6 className="mb-2 text-primary">Thông tin khách hàng</h6>
+                  <div>
+                    <h6 className="mb-2 text-primary">Thông tin nhân viên</h6>
                   </div>
                   <div className="col-md-6">
                     <div className="form-group">
-                      <label htmlFor="fullName"> Tên</label>
+                      <label htmlFor="fullName">Tên</label>
                       <input
                         type="text"
                         className="form-control"
@@ -70,8 +72,25 @@ const EditCustomerForm = (props) => {
                       <input
                         type="text"
                         className="form-control"
-                        value={props.customer.customerInfo?.email || ""}
+                        value={
+                          props.employee.length === 0
+                            ? ""
+                            : props.employee.employeeInfo.email
+                        }
                         disabled
+                      />
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="form-group">
+                      <label htmlFor="password">
+                        Mật khẩu (Bỏ trống để giữ nguyên)
+                      </label>
+                      <input
+                        type="password"
+                        className="form-control"
+                        value={password}
+                        onChange={handlePasswordChange}
                       />
                     </div>
                   </div>
@@ -88,26 +107,26 @@ const EditCustomerForm = (props) => {
                     </div>
                   </div>
                   <div className="col-md-6">
-                    <div className="row d-flex">
-                      <div className="form-group col-md-6">
-                        <label htmlFor="website">Số Toà</label>
-                        <input
-                          type="text"
+                    <div className="row">
+                      <div className="form-group col-md-12">
+                        <label htmlFor="workType">Công việc</label>
+                        <select
                           className="form-control"
-                          id="website"
-                          value={departmentNum}
-                          onChange={handleDepartmentNumChange}
-                        />
-                      </div>
-                      <div className="form-group col-md-6">
-                        <label htmlFor="website">Số Phòng</label>
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="website"
-                          value={roomNum}
-                          onChange={handleRoomNumChange}
-                        />
+                          id="workType"
+                          value={workType}
+                          onChange={handleWorkTypeChange}
+                        >
+                          <option value="Vệ sinh nệm, sofa, thảm">
+                            Vệ sinh nệm, sofa, thảm
+                          </option>
+                          <option value="Vệ sinh máy lạnh">
+                            Vệ sinh máy lạnh
+                          </option>
+                          <option value="Giúp việc theo giờ">
+                            Giúp việc theo giờ
+                          </option>
+                          <option value="Tổng vệ sinh">Tổng vệ sinh</option>
+                        </select>
                       </div>
                     </div>
                   </div>
@@ -153,7 +172,7 @@ const EditCustomerForm = (props) => {
                 aria-label="Close"
               />
             </div>
-            <div className="modal-body">Xác nhận xóa khách hàng</div>
+            <div className="modal-body">Xác nhận xóa nhân viên</div>
             <div className="modal-footer">
               <button
                 type="button"
@@ -177,4 +196,4 @@ const EditCustomerForm = (props) => {
   );
 };
 
-export default EditCustomerForm;
+export default EditEmployeeForm;

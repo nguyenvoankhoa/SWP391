@@ -3,10 +3,10 @@ import Card from "../../UI/Card";
 import "./EditCus.css";
 import Title from "../../components/Title";
 import { useLoaderData } from "react-router-dom";
-import EditEmployeeForm from "../../components/Admin/EditEmployeeForm";
+import EditEmployeeForm from "../../components/Admin/EditEmpoyeeForm";
 const EditEmployee = () => {
   const data = useLoaderData();
-  const [employee, setEmployee] = useState({});
+  const [employee, setEmployee] = useState([]);
   const editEmployeeHandler = (employee) => {
     setEmployee(employee);
   };
@@ -48,13 +48,17 @@ const EditEmployee = () => {
                   <td>{employee.workType}</td>
                   <td className="d-flex justify-content-around">
                     <div className="item-icon">
-                      <img src="../assets/images/iconTrash.svg" alt="delete" />
+                      <img
+                        src="../assets/images/iconTrash.svg"
+                        alt="#"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                      />
                     </div>
                     <div className="item-icon">
                       <img
                         src="../assets/images/edit.png"
-                        alt="edit"
-                        className=""
+                        alt="#"
                         data-bs-toggle="modal"
                         data-bs-target="#staticBackdrop"
                         onClick={() => editEmployeeHandler(employee)}
@@ -67,6 +71,7 @@ const EditEmployee = () => {
           </table>
         </Card>
       </div>
+      <EditEmployeeForm employee={employee} />
       <EditEmployeeForm employee={employee} />
     </>
   );

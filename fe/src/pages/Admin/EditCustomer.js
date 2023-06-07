@@ -19,7 +19,6 @@ const EditCustomer = () => {
         fontSize="35px"
         fontWeight="700"
         padding="2% 0 0 13vw"
-
       />
       <div className="table-cus table-responsive ">
         <Card>
@@ -49,7 +48,12 @@ const EditCustomer = () => {
                   <td>{customer.customerInfo.phone}</td>
                   <td className="d-flex justify-content-around">
                     <div className="item-icon">
-                      <img src="../assets/images/iconTrash.svg" alt="#" data-bs-toggle="modal" data-bs-target="#exampleModal" />
+                      <img
+                        src="../assets/images/iconTrash.svg"
+                        alt="#"
+                        data-bs-toggle="modal"
+                        data-bs-target="#exampleModal"
+                      />
                     </div>
                     <div className="item-icon">
                       <img

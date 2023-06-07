@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 const EditServiceForm = (props) => {
+  const [price, setPrice] = useState("");
+  const [detail, setDetail] = useState("");
+  const [name, setName] = useState("");
+  const [serviceId, setServiceId] = useState("");
+  const [type, setType] = useState("");
+  useEffect(() => {
+    setPrice(props.service.price || "");
+    setDetail(props.service.detail || "");
+    setName(props.service.name || "");
+    setServiceId(props.service.serviceId || "");
+    setType(props.service.type || "");
+  }, [props.service]);
+  const handlePriceChange = (e) => {
+    setPrice(e.target.value);
+  };
   return (
     <div
-      className="modal fade"
+      className="modal fade "
       id="staticBackdrop"
       data-bs-backdrop="static"
       data-bs-keyboard="false"
@@ -32,7 +48,7 @@ const EditServiceForm = (props) => {
                     <input
                       type="text"
                       className="form-control"
-                      value={props.service.name}
+                      value={name}
                       disabled
                     />
                   </div>
@@ -43,7 +59,7 @@ const EditServiceForm = (props) => {
                     <input
                       type="text"
                       className="form-control"
-                      value={props.service.type}
+                      value={type}
                       disabled
                     />
                   </div>
@@ -55,7 +71,7 @@ const EditServiceForm = (props) => {
                       type="text"
                       className="form-control"
                       id="phone"
-                      value={props.service.detail}
+                      value={detail}
                       disabled
                     />
                   </div>
@@ -68,7 +84,8 @@ const EditServiceForm = (props) => {
                         type="text"
                         className="form-control"
                         id="website"
-                        value={props.service.price}
+                        value={price}
+                        onChange={handlePriceChange}
                       />
                     </div>
                   </div>
