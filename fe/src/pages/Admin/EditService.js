@@ -12,6 +12,7 @@ const EditService = () => {
   };
   return (
     <>
+
       <div className="bg user-navbar" />
       <Title
         title="DỊCH VỤ"
@@ -20,6 +21,7 @@ const EditService = () => {
         fontWeight="700"
         padding="2% 0 0 13vw"
       />
+
       <div className="table-ser table-responsive ">
         <Card>
           <table

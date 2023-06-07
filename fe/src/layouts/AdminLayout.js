@@ -4,13 +4,14 @@ import { Outlet } from "react-router-dom";
 const AdminLayout = () => {
   return (
     <>
-      <div className="d-flex">
-        <div>
+      <div className="row">
+        <div className="">
           <AdminNavigation />
-          <div>
-            <Outlet />
-          </div>
         </div>
+        <div className="">
+          <Outlet />
+        </div>
+
       </div>
 
     </>

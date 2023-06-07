@@ -14,12 +14,14 @@ const AdminNavigation = () => {
     }
   }
   return (
-    <div className="nav-container">
-      <ul className="nav flex-column nav-content">
-        <li className="nav-item" type="button">
-          <NavLink className="nav-link d-flex" to="">
+    <div className="nav-container" style={{
+      position: "fixed"
+    }}>
+      <ul className="nav flex-column nav-content ">
+        <li className="nav-item user-hb-avt" type="button">
+          <NavLink className="nav-link d-flex " to="">
             {" "}
-            <img className="nav-avt" src="/assets/images/person1.svg" alt="" />
+            <img className="nav-avt " src="/assets/images/person1.svg" alt="" />
           </NavLink>
         </li>
         <li className="nav-item user-hb-name" type="button">
@@ -33,7 +35,7 @@ const AdminNavigation = () => {
             ></div>
           </span>
         </li>
-        <li className="nav-item d-flex" type="button">
+        <li className="nav-item d-flex " type="button">
           <NavLink className="nav-link" to="">
             Trang chủ
           </NavLink>
