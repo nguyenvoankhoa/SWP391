@@ -43,9 +43,14 @@ const SignInForm = () => {
         return;
       }
       const data = await response.json();
+      console.log(data);
       const user = data.user;
-      const jwtToken = data.token;
+      const jwtToken = data.jwtToken;
+      const refreshToken = data.refreshToken;
+      const signinTime = Date.now();
+      sessionStorage.setItem("signinTime", signinTime);
       sessionStorage.setItem("jwtToken", jwtToken);
+      sessionStorage.setItem("refreshToken", refreshToken);
       sessionStorage.setItem("user", JSON.stringify(user));
       if (user.role === "ADMIN") {
         navigate("/admin");
