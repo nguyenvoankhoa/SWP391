@@ -3,14 +3,22 @@ import "./OrderSumation.css";
 import Title from "../../components/Title";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-
+import PaypalCheckoutButton from "../../components/User/PaypalCheckoutButton";
 const OrderSumation = () => {
   const order = useSelector((state) => state.order.items);
   const date = useSelector((state) => state.order.date);
   const payment = useSelector((state) => state.order.payment);
   const totalAmount = useSelector((state) => state.order.totalAmount);
-  console.log(date);
-  console.log(order);
+  const bill = {
+    order: order,
+    date: date,
+    payment: payment,
+    total: totalAmount,
+  };
+  const product = {
+    description: "Dich vu abc",
+    price: 20,
+  };
   return (
     <>
       <div
@@ -71,6 +79,9 @@ const OrderSumation = () => {
           <div className="row col-md-12 d-flex justify-content-center nav-btn">
             <button className="col-md-2 accept">
               <Link to="/user/order-completed">Xác nhận</Link>
+              <div className="paypal-button-container">
+                <PaypalCheckoutButton product={product} />
+              </div>
             </button>
             <button className="col-md-2">
               <Link to="..">Quay lại</Link>
