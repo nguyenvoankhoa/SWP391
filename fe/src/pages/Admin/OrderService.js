@@ -7,11 +7,12 @@ import React, { useState } from "react";
 const OrderService = () => {
   const data = useLoaderData();
   const [workType, setWorkType] = useState("");
-
-  const assignEmployee = (type) => {
+  const [hour, setHour] = useState("");
+  const assignEmployee = (type, hour) => {
     setWorkType(type);
+    setHour(hour);
   };
-
+  console.log(data);
   return (
     <>
       <div className="bg user-navbar d-flex" />
@@ -49,7 +50,9 @@ const OrderService = () => {
                   <th scope="row">{bill.id}</th>
                   <td>{bill.business.name}</td>
                   <td>{bill.quantity}</td>
-                  <td>{bill.timeBooking}</td>
+                  <td>
+                    {bill.date}, {bill.day}/{bill.month}
+                  </td>
                   <td>{bill.customer.name}</td>
                   {bill.employee ? (
                     <td>{bill.employee.name}</td>
@@ -91,9 +94,20 @@ const OrderService = () => {
                     </td>
                   ) : (
                     <td>
-                      <button type="button" className="btn btn-outline-success">
-                        Xác nhận
-                      </button>
+                      <div className="d-flex h-100">
+                        <button
+                          type="button"
+                          className="btn btn-outline-success"
+                        >
+                          Xác nhận
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-outline-danger"
+                        >
+                          Hủy đơn
+                        </button>
+                      </div>
                     </td>
                   )}
                 </tr>
@@ -102,7 +116,7 @@ const OrderService = () => {
           </table>
         </Card>
       </div>
-      <EditOrderForm workType={workType} />
+      <EditOrderForm workType={workType} hour={hour} />
     </>
   );
 };

@@ -1,20 +1,23 @@
 import React from "react";
 import "./OrderSumation.css";
 import Title from "../../components/Title";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { useSelector } from "react-redux";
 import PaypalCheckoutButton from "../../components/User/PaypalCheckoutButton";
 const OrderSumation = () => {
+  const user = useLoaderData();
   const order = useSelector((state) => state.order.items);
   const date = useSelector((state) => state.order.date);
   const payment = useSelector((state) => state.order.payment);
   const totalAmount = useSelector((state) => state.order.totalAmount);
-  const bill = {
-    order: order,
-    date: date,
-    payment: payment,
-    total: totalAmount,
-  };
+  // const bill = {order: order.name,
+  //   date: date,
+  //   payment: payment,
+  //   total: totalAmount}[
+
+  // ];
+  console.log(order);
+  console.log(user);
   const product = {
     description: "Dich vu abc",
     price: 20,
@@ -51,17 +54,17 @@ const OrderSumation = () => {
           padding="5% 0 0  0"
         />
         <div className="row os-content flex-column justify-content-center">
-          <p className="col-md-12">Anh/chị : Thiên An</p>
+          <p className="col-md-12">Anh/chị : {user.name}</p>
           <div className="row">
-            <p className="col-md-6">Số toà : S303 </p>
-            <p className="col-md-6">Số phòng : S999 </p>
+            <p className="col-md-6">Số toà : {user.departmentNumber} </p>
+            <p className="col-md-6">Số phòng : {user.roomNumber} </p>
           </div>
 
           {order.map((order) => (
             <div className="row">
               <p className="col-md-6">Đơn hàng : {order.name}</p>
               <p className="col-md-6">
-                Loại : {order.detail}/{order.unit}({order.type})
+                Loại : {order.detail}/{order.unit} ({order.type})
               </p>
               <p className="col-md-6">Thời gian làm việc : {order.time}</p>
               {order.frequence && (
@@ -70,7 +73,7 @@ const OrderSumation = () => {
             </div>
           ))}
           <p className="col-md-12">Ngày làm việc : {date}</p>
-          <p className="col-md-12">Số điện thoại : 23456789JQKA </p>
+          <p className="col-md-12">Số điện thoại : {user.phone} </p>
           <div className="row">
             <p className="col-md-6">Phương thức thanh toán : {payment}</p>
             <p className="col-md-6">Tổng cộng : {totalAmount}</p>

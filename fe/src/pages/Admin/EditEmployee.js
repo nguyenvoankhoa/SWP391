@@ -10,6 +10,7 @@ const EditEmployee = () => {
   const editEmployeeHandler = (employee) => {
     setEmployee(employee);
   };
+  console.log(data);
   return (
     <>
       <div className="bg user-navbar" />
@@ -71,7 +72,6 @@ const EditEmployee = () => {
           </table>
         </Card>
       </div>
-      <EditEmployeeForm employee={employee} />
       <EditEmployeeForm employee={employee} />
     </>
   );
