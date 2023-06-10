@@ -35,7 +35,7 @@ import OrderCompleted from "./pages/User/OrderCompleted";
 import ActionRecord, { billLoader } from "./pages/User/ActionRecord";
 import AccountInfor, { customerInfoLoader } from "./pages/User/AccountInfor";
 import EmployeePageHistory from "./pages/Employee/EmployeePageHistory";
-
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -94,7 +94,11 @@ const router = createBrowserRouter([
         element: <ElectronicCleaning />,
         loader: UserLoader,
       },
-      { path: "order-sumation", element: <OrderSumation /> },
+      {
+        path: "order-sumation",
+        element: <OrderSumation />,
+        loader: customerInfoLoader,
+      },
       { path: "order-completed", element: <OrderCompleted /> },
       { path: "action-record", element: <ActionRecord />, loader: billLoader },
       {
@@ -138,7 +142,16 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router}></RouterProvider>;
+  return (
+    <PayPalScriptProvider
+      options={{
+        "client-id":
+          "Afefs1EOTDIKKyThtWc_uRZAPmoJ5fW92WwTWcr0Ejk4vOtcRp_ixdZvcuTc-4BT_vwRNHpcS8CFiA5t",
+      }}
+    >
+      <RouterProvider router={router}></RouterProvider>
+    </PayPalScriptProvider>
+  );
 }
 
 export default App;

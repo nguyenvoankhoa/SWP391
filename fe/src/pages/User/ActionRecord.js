@@ -2,10 +2,9 @@ import React from "react";
 import Title from "../../components/Title";
 import "./ActionRecord.css";
 import { useLoaderData } from "react-router-dom";
-import Card from "../../UI/Card";
 const ActionRecord = () => {
   const data = useLoaderData();
-
+  console.log(data);
   return (
     <>
       <div className="bg user-navbar" />

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-const EditOrderForm = ({ workType }) => {
+const EditOrderForm = ({ workType, hour }) => {
   const [data, setData] = useState(null);
-
+  const [error, setError] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -25,6 +25,7 @@ const EditOrderForm = ({ workType }) => {
         }
 
         const responseData = await res.json();
+        console.log(responseData);
         setData(responseData);
       } catch (error) {
         console.error(error);
@@ -33,7 +34,17 @@ const EditOrderForm = ({ workType }) => {
 
     fetchData();
   }, [workType]);
-
+  const handleChooseEmployee = (hours) => {
+    for (const h in hours) {
+      if (h === hour) {
+        setError("Nhân viên đã bận");
+        break;
+      }
+    }
+  };
+  if (error) {
+    alert(error);
+  }
   return (
     <>
       <div
@@ -59,7 +70,7 @@ const EditOrderForm = ({ workType }) => {
               />
             </div>
             <div className="modal-body">
-              <table className="table table-striped table-bordered">
+              <table className="table table-bordered">
                 <thead>
                   <tr>
                     <th scope="col">Tên nhân viên</th>
@@ -74,8 +85,23 @@ const EditOrderForm = ({ workType }) => {
                       <tr key={employee.email}>
                         <td>{employee.name}</td>
                         <td>{workType}</td>
-                        <td>Đang làm</td>
-                        <td></td>
+                        <td>
+                          {employee.workHours.length === 0 ? (
+                            <span>Đang rảnh</span>
+                          ) : (
+                            employee.workHours.map((hour) => (
+                              <span key={hour}>{hour}h, </span>
+                            ))
+                          )}
+                        </td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            onChange={() =>
+                              handleChooseEmployee(employee.workHours)
+                            }
+                          />
+                        </td>
                       </tr>
                     ))}
                 </tbody>
