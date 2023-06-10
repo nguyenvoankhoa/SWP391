@@ -3,7 +3,6 @@ import { json, useLoaderData, useNavigate } from "react-router-dom";
 import Title from "../../components/Title";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
-import TimePicker from "../../components/User/TimePicker";
 import PaymentPicker from "../../components/User/PaymentPicker";
 import ServiceNavigation from "../../components/User/ServiceNavigation";
 import { orderItemAction } from "../../redux/order";
@@ -101,7 +100,6 @@ const TotalSanitation = () => {
               </div>
             ))}
 
-            <TimePicker onAddTime={addTimeHandler} onAddDate={addDateHandler} />
 
             <div className="row gy-5 mt-2 d-flex hh-function">
               <div className="col-md-12 d-flex f-content">

@@ -7,13 +7,13 @@ const PaymentPicker = (props) => {
     props.onAddPayment(method);
   };
   return (
-    <div className="row hh-submit">
+    <div className="row col-md-12 hh-submit">
       {React.state.payMethod.map((method) => (
         <div
           className="col-md-5 d-flex justify-content-center hh-payment"
           key={method}
         >
-          <button onClick={() => paymentHandler(method)}>
+          <button id="payment" onClick={() => paymentHandler(method)}>
             Thanh toán bằng {method}
           </button>
         </div>

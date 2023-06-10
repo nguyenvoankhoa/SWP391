@@ -1,277 +1,198 @@
 .hh-content {
   position: absolute;
-  width: 65%;
-  height: 65vh;
-  margin-top: 2%;
-  background-color: white;
-  box-shadow: 0 5px 10px #65928a88;
-  border-radius: 20px;
+  width: 75%;
+  height: 80vh;
+  margin-top: 1%;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-around;
 }
+
 .user-navbar {
   width: 100vw;
-  height: 53vh;
+  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
-  background-color: #397f77;
+  background-image: linear-gradient(180deg, #F8F5F5, #fff);
   z-index: -1;
 }
 
-.hh-content .row {
-  justify-content: center;
+.hh-services {
+  background-color: #fff;
+  padding: 2%;
+  border-radius: 10px;
+  
 }
 
-.hh-content .hh-options {
-  position: relative;
-  height: fit-content;
-  padding: 0;
-  width: 30%;
+.hh-services h5,
+.hh-total h5{
+  font-size: 20px;
+  font-weight: 600 !important;
 }
 
-.hh-arrow {
-  position: absolute;
-  top: 50%;
-  right: 15%;
-  transform: translate(-100%, 100%);
-  width: 13px;
-  height: 13px;
-  border-left: solid 3px #397f77;
-  border-bottom: solid 3px #397f77;
-  border-bottom-left-radius: 3px;
-  rotate: -45deg;
-}
-
-.hh-content button:not(.date-btn button) {
-  width: 250px;
-  height: fit-content;
-  background: none;
-  border: solid 1.5px #c4efea6a;
-  border-radius: 5px;
-  box-shadow: 0 3px 3px #4e6e6a57;
-  font-weight: 500;
-}
-
-.hh-content a {
-  text-decoration: none;
-  color: inherit;
-  letter-spacing: 1px;
-  font-weight: inherit;
-  width: 100%;
-  height: 100%;
-}
-
-.hh-content button:not(.date-btn button):hover,
-.hh-content button:not(.date-btn button):active {
-  background-color: #397f77;
-  color: white;
-  font-weight: 600;
-}
-
-.hh-content .hh-options label {
-  font-weight: 650;
-  padding: 5%;
-  margin-left: 3%;
-  font-size: 18px;
-}
-
-.hh-content .hh-function {
-  width: 90%;
-  height: fit-content;
-  justify-content: left;
-  align-items: center;
-  padding: 0 2%;
-  margin: 0;
-}
-
-.switch {
-  position: relative;
+.hh-services .services {
   display: flex;
-  justify-content: left;
-  align-items: center;
-  width: 74px;
-  height: 37px;
-  margin-right: 5vw;
+  justify-content: space-around;
 }
 
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+.hh-services .MuiAutocomplete-root {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ffffff;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-  border: solid 2px #397f77;
+.hh-services .MuiAutocomplete-root .MuiInputBase-root {
+  padding-top: 5px;
+  padding-bottom: 4px;
 }
 
-.slider:before {
-  position: absolute;
-  top: 50%;
-  left: 3%;
-  transform: translate(0, -50%);
-  content: "";
-  height: 30px;
-  width: 30px;
-  background-color: #397f77;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+.hh-services input {
+  background: none;
+  border: none;
+  font-size: 17px;
+  letter-spacing: 1px;
+  padding-top: 0;
+  padding-bottom: 0;
+  text-align: left;
 }
 
-input:checked + .slider {
-  background-color: #397f77;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #397f77;
-}
-
-input:checked + .slider:before {
-  left: 55%;
-  -webkit-transform: translateX(100%);
-  -ms-transform: translateX(100%);
-  transform: translateX(100%, 0);
-  background-color: #ffffff;
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-
-.switch h5 {
-  position: absolute;
-  width: 150px;
-  padding: 0 0 15% 3%;
-  top: 0;
-  left: 0;
-  transform: translate(0, -100%);
-  font-size: 18px;
-  font-weight: 700;
-}
-
-.hh-function .f-content {
-  justify-content: left;
-  align-items: center;
-}
-
-.hh-function .f-price {
+.hh-services .date-time {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  /* text-align: center; */
-  width: 20%;
-  height: 35px;
-  margin-left: 5vw;
-  border-bottom: solid 3px #397f77;
-  font-size: 18px;
+  padding-bottom: 7%;
+}
+
+.hh-services .date-time p {
+  font-size: 16px;
+  letter-spacing: 1px;
   font-weight: 600;
+  padding-left: 2%;
+  margin-bottom: 2%;
 }
 
-.hh-content .hh-submit {
-  margin-top: 5vh;
-}
-
-.hh-content .hh-submit .hh-options {
-  width: fit-content;
-}
-
-.cont-btn button {
-  background-color: #397f77 !important;
-  color: white;
-}
-
-.manual-service button {
-  position: relative;
-  padding: 5px 20px;
-  width: 230px;
-  color: black;
-}
-
-.manual-service span {
-  font-size: 17px;
-}
-
-.manual-service button:hover .hh-arrow,
-.manual-service button:active .hh-arrow {
-  transform: rotate(180deg);
-  border-color: white;
-  top: 37%;
-  right: 5%;
-}
-
-.manual-service .hh-arrow {
-  top: 50%;
-  right: 2%;
-  transform: translate(0, -100%);
-}
-
-.hh-submit .hh-payment button {
-  width: 300px !important;
-}
-
-.date-btn .date-picker {
-  width: 100%;
-  background: none;
-  border: none;
-  padding: 0;
-  margin: 0;
-  font-size: 18px;
-  letter-spacing: 3px;
-}
-
-.date-btn .date-picker:active {
-  border: none;
-}
-
-.manual-service button .manual-dropdown {
-  visibility: hidden;
+.MuiPaper-root .MuiList-root::-webkit-scrollbar {
   display: none;
 }
 
-.manual-service button .manual-dropdown .manual-item {
-  padding: 2% 0;
+.hh-total {
+  background-color: #fff;
+  padding: 2%;
+  border-radius: 10px;
 }
 
-.manual-service button:hover .manual-dropdown,
-.manual-service button:active .manual-dropdown {
-  display: unset;
-  visibility: visible;
-  position: absolute;
-  background-color: rgb(255, 255, 255);
+.hh-total p {
+  padding: 10px 0;
+  margin: 0;
+  font-weight: 600;
+  color: #909090;
+}
+
+.hh-total span {
+  font-weight: 600;
+  color: black !important;
+}
+
+.hh-content .total-cost p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hh-content .total-sumup {
+  padding: 5% 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hh-content .total-sumup h5 {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+.hh-content .total-sumup h5 span {
+  font-weight: 700 !important;
+  letter-spacing: 2px;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.hh-content .total-sumup h4 {
+  display: flex;
+  flex-direction: column;
+}
+
+.hh-content .total-sumup h4,
+.hh-content .total-sumup span {
+  font-weight: 700;
+  color: #397f77;
+  font-size: 35px;
+  text-align: right !important;
+}
+
+.hh-content .location {
+  margin: 0;
+}
+
+.hh-content .location p,
+.hh-content .payment p {
+  font-size: 18px !important;
+  margin: 0;
+  padding: 0;
   color: black;
+}
+
+.hh-content .payment {
+  padding-right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hh-content .payment .hh-submit {
   width: 100%;
-  top: 105%;
-  left: 0;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  font-size: 17px;
-  font-weight: 500;
+  margin: 0;
+  height: 85%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.payment .hh-submit, .hh-payment {
+  width: 100%;
+  padding: 0;
+}
+
+.hh-content .payment .hh-submit button {
+  margin: 0;
+  width: 100%;
+  border-radius: 5px;
+  border: solid 2px #dfdfdf;
+  background: none;
+}
+
+#finish button {
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  background-color: #397f77;
+  color: white;
+  border: none;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+  border-radius: 5px;
+  font-weight: 600;
   letter-spacing: 1px;
 }
 
-.navigate-btn {
-  position: absolute;
-  width: 100%;
-  top: 105%;
-  left: 50%;
-  transform: translate(-48.5%, 0);
-}
-.selectTime {
-  background-color: white;
-  box-shadow: rgba(78, 110, 106, 0.34) 0px 3px 3px;
-  border-radius: 5px;
-  width: 250px;
-  padding: 11px 0 !important;
+.hh-content .active, .hh-content .payment .hh-submit button:hover {
+  background-color: #397f77;
+  color: white;
 }
