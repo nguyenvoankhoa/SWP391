@@ -1,36 +1,25 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import useLogout from "../../hooks/useLogout";
 
 const AdminNavigation = () => {
-  const nav = useNavigate();
-  async function logoutHandler() {
-    const res = await fetch("https://swp391-production.up.railway.app/logout");
-    if (!res.ok) {
-      throw new Error("error");
-    } else {
-      sessionStorage.removeItem("user");
-      sessionStorage.removeItem("jwtToken");
-      nav("/");
-    }
-  }
+  const { logout } = useLogout(); // Call the useLogout hook
+
+  const logoutHandler = async () => {
+    await logout(); // Call the logout function from the useLogout hook
+  };
+
   return (
     <div className="nav-container">
       <ul className="nav flex-column nav-content ">
         <li className="nav-item user-hb-avt" type="button">
           <NavLink className="nav-link d-flex " to="">
-            {" "}
             <img className="nav-avt " src="/assets/images/person1.svg" alt="" />
           </NavLink>
         </li>
         <li className="nav-item user-hb-name" type="button">
           <span className="nav-text">
             Admin
-            <div
-              className="seperator"
-              style={{
-                width: "120px",
-              }}
-            ></div>
+            <div className="seperator" style={{ width: "120px" }}></div>
           </span>
         </li>
         <li className="nav-item d-flex " type="button">

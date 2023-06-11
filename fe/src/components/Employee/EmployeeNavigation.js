@@ -1,18 +1,13 @@
-import React from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import useLogout from "../../hooks/useLogout";
+import { NavLink } from "react-router-dom";
 
 const EmployeeNavigation = () => {
-  const nav = useNavigate();
-  async function logoutHandler() {
-    const res = await fetch("https://swp391-production.up.railway.app/logout");
-    if (!res.ok) {
-      throw new Error("error");
-    } else {
-      sessionStorage.removeItem("user");
-      sessionStorage.removeItem("jwtToken");
-      nav("/");
-    }
-  }
+  const { logout } = useLogout(); // Call the useLogout hook
+
+  const logoutHandler = async () => {
+    await logout(); // Call the logout function from the useLogout hook
+  };
+
   return (
     <div className="nav-container">
       <ul className="nav flex-column nav-content">
