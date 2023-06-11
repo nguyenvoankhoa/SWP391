@@ -29,17 +29,18 @@ const AirConditionerForm = ({ options }) => {
       autoComplete="off"
     >
       <div
-        className="col-md-6 offset-md-2"
+        className="col-md-6 "
         style={{
-          flexGrow: 1,
+          flexGrow: 22
         }}
       >
         <Grid
           container
           spacing={2}
           alignItems="center"
-          display="inline-flex"
-          justifyContent="center"
+          display="flex"
+          justifyContent="left"
+          marginLeft={3}
         >
           <Grid item>
             <TextField
@@ -72,6 +73,8 @@ const AirConditionerForm = ({ options }) => {
               alignItems: "center",
               display: "flex",
               justifyContent: "center",
+              marginRight: 2
+              
             }}
           >
             <DemoItem>
@@ -101,7 +104,7 @@ const AirConditionerForm = ({ options }) => {
 
       </div>
       <div
-        className="col-4"
+        className="col-5"
         style={{
           display: "flex",
           position: "initial",
