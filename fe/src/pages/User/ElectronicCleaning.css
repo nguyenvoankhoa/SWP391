@@ -1,4 +1,4 @@
-
+/* 
 .ec-title {
   font-size: 20px;
   font-family: 'Work Sans';
@@ -89,4 +89,40 @@ span.quantity-btn {
 }
 .back-btn-ec button:hover {
   background-color: #397F77 !important;
+} */
+
+.ec-content .ec-payment .hh-submit {
+  display: inline-flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+  flex-grow: 1;
+}
+.ec-content {
+  margin-top: 6%;
+}
+
+
+.payment button {
+  display: inline-block;
+  padding: 10px 30px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  font-size: 16px;
+  color: #555;
+  margin-inline: 7%;
+}
+.payment button:hover {
+  background-color: #397f77;
+  color: white;
+}
+
+.payment button:active {
+  background-color: #397f77;
+  color: white
+}
+.payment button:focus {
+  outline: none;
+  border-color: #f7f7f7;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
 }

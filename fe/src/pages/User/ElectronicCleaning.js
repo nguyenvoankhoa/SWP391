@@ -1,138 +1,107 @@
-import Title from "../../components/Title";
-import "./ElectronicCleaning.css";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { styled } from "@mui/material/styles";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Box from "@mui/material/Box";
+import AirConditionerForm from "./AirConditionerForm";
 
-const ElectronicCleaning = () => {
-  const [quantity, setQuantity] = useState(0);
 
-  const incrementQuantity = () => {
-    setQuantity(quantity + 1);
+const AntTabs = styled(Tabs)({
+  "& .MuiTabs-indicator": {
+    backgroundColor: "#1890ff",
+  },
+});
+
+const AntTab = styled((props) => <Tab disableRipple {...props} />)(
+  ({ theme }) => ({
+    textTransform: "none",
+    minWidth: 0,
+    [theme.breakpoints.up("sm")]: {
+      minWidth: 0,
+    },
+    fontWeight: theme.typography.fontWeightRegular,
+    marginRight: theme.spacing(2),
+    color: "rgba(0, 0, 0, 0.85)",
+    fontFamily: [
+      "-apple-system",
+      "BlinkMacSystemFont",
+      '"Segoe UI"',
+      "Roboto",
+      '"Helvetica Neue"',
+      "Arial",
+      "sans-serif",
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(","),
+    "&:hover": {
+      color: "#40a9ff",
+      opacity: 1,
+    },
+    "&.Mui-selected": {
+      color: "#1890ff",
+      fontWeight: theme.typography.fontWeightMedium,
+    },
+    "&.Mui-focusVisible": {
+      backgroundColor: "#d1eaff",
+    },
+  })
+);
+
+const optionalTreoTuong = [
+  { value: "option1", label: "Dưới 2HP" },
+  { value: "option2", label: "Trên 2HP" },
+];
+
+const optionalAmTran = [
+  { value: "option3", label: "Dưới 3HP" },
+  { value: "option4", label: "Trên 3HP" },
+];
+
+export default function ElectronicCleaning() {
+  const [value, setValue] = useState(0);
+  const [showForm, setShowForm] = useState(false);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    setShowForm(newValue === 0);
   };
 
-  const decrementQuantity = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-    }
-  };
+  React.useEffect(() => {
+    setShowForm(true);
+  }, []);
+
   return (
-    <>
-      <div
-        className="bg"
-        style={{
-          width: "100vw",
-          height: "53vh",
-          position: "absolute",
-          top: "0",
-          left: "0",
-          backgroundColor: "#397F77",
-          zIndex: "-1",
-        }}
-      />
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ bgcolor: "#fff", p: 2 }}>
+        <h1 style={{ textAlign: "center", marginTop: "1%" }}>Vệ Sinh Máy Lạnh</h1>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            textAlign: "center",
+          }}
+        >
+          <AntTabs
+            value={value}
+            onChange={handleChange}
+            aria-label="ant example"
+            style={{
+              marginTop: "1%"
+            }}
+          >
+            <AntTab label="Máy Lạnh Treo Tường" />
+            <AntTab label="Máy Lạnh Âm Trần" />
+          </AntTabs>
+        </Box>
+        {showForm && (
+          <AirConditionerForm options={optionalTreoTuong}/>
+        )}
 
-      <div
-        className="container"
-        style={{
-          paddingLeft: "20vw",
-          paddingRight: "0",
-          margin: "0",
-          height: "100vh",
-          marginLeft: "4vw",
-        }}
-      >
-        <Title
-          title="VỆ SINH MÁY LẠNH"
-          color="white"
-          fontSize="35px"
-          fontWeight="700"
-          padding="5% 0 0 0"
-        />
-        <div className="ec-content">
-          <div className="row gy-4 pt-5 d-flex">
-            <div className="col-sm-6">
-              <div className="ec-card">
-                <div className="rectangle">
-                  <h3 className="ec-title">MÁY LẠNH TREO TƯỜNG</h3>
-                </div>
-                <div className="ec-card-content">
-                  <div className="button-row">
-                    <button>
-                      <Link>Dưới 2HP</Link>
-                    </button>
-                    <button>
-                      <Link>Trên 2HP</Link>
-                    </button>
-                  </div>
-                  <div className="button-row ec">
-                    <button className="quantity">Số lượng</button>
-                    <button className=" button-quantity d-flex justify-content-center">
-                      <span
-                        type="button"
-                        className="quantity-btn"
-                        onClick={decrementQuantity}
-                      >
-                        -
-                      </span>
-                      <span className="quantity-btn d-flex">{quantity}</span>
-                      <span className="quanity-btn" onClick={incrementQuantity}>+</span>
-                    </button>
-                  </div>
-                  <button className="ec-price">
-                    Giá: <span className="price">200.000</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-6">
-              <div className="ec-card">
-                <div className="rectangle">
-                  <h3 className="ec-title">MÁY LẠNH ÂM TRẦN</h3>
-                </div>
-                <div className="ec-card-content">
-                  <div className="button-row">
-                    <button>
-                      <Link>Dưới 3HP</Link>
-                    </button>
-                    <button>
-                      <Link>Trên 3HP</Link>
-                    </button>
-                  </div>
-                  <div className="button-row ec">
-                    <button className="quantity">Số lượng</button>
-                    <button className=" button-quantity d-flex justify-content-center">
-                      <span
-                        type="button"
-                        className="quantity-btn"
-                        onClick={decrementQuantity}
-                      >
-                        -
-                      </span>
-                      <span className="quantity-btn d-flex">{quantity}</span>
-                      <span className="quanity-btn" onClick={incrementQuantity}>+</span>
-                    </button>
-                  </div>
-                  <button className="ec-price">
-                    Giá: <span className="price">420.000</span>
-                  </button>
-            <div className="row d-flex justify-content-center navigate-btn-ec">
-            <div className="col-md-4 pt-2 pb-2 d-flex justify-content-center cont-btn-ec">
-            <button>
-              <Link to="/user">Quay lại</Link>
-            </button>
-            </div><div className="col-md-4 pt-2 pb-2 d-flex justify-content-center back-btn-ec">
-              <button>
-                <Link to="/user/electronic-order">Tiếp tục</Link>
-              </button>
-            </div>
-          </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+        {value === 1 && (
+          <AirConditionerForm options={optionalAmTran}/>
+        )}
+      </Box>
+    </Box>
   );
-};
-
-export default ElectronicCleaning;
+}
