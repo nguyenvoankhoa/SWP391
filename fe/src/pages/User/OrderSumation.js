@@ -1,5 +1,6 @@
 import React from 'react';
 import { Divider } from '@mui/material';
+import "./OrderSumation.css";
 
 const OrderSumation = () => {
   return (
@@ -9,12 +10,33 @@ const OrderSumation = () => {
         <div className="total-infor">
           <p>
             <span>Vệ sinh định kỳ </span>
+            <img
+              type="button"
+              src='/assets/images/remove.svg' alt='remove'
+              style={{
+                width: "18px",
+              }}
+            />
           </p>
           <p>
             <span>xxm2 xx Phòng</span>
+            <img
+              type="button"
+              src='/assets/images/remove.svg' alt='remove'
+              style={{
+                width: "18px",
+              }}
+            />
           </p>
           <p>
             <span>06/05/2023 5:30 PM</span>
+            <img
+              type="button"
+              src='/assets/images/remove.svg' alt='remove'
+              style={{
+                width: "18px",
+              }}
+            />
           </p>
         </div>
         <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />

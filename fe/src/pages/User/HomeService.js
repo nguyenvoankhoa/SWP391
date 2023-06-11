@@ -11,7 +11,7 @@ const HomeService = () => {
     >
       <Title
         title="DỊCH VỤ VỆ SINH"
-        color="white"
+        color="black"
         fontSize="35px"
         fontWeight="2000"
         padding="3% 0 0  0"
