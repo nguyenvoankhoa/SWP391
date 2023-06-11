@@ -1,29 +1,14 @@
 /* HOME PAGE  */
 
-.table-cus {
-  padding-left: 17vw;
-  padding-top: 3vw;
-  width: 1450px;
-}
-.table-ser{
-  padding-left: 17vw;
-  padding-top: 3vw;
-  width: 1450px;
-}
-.table-ord{
-  padding-left: 17vw;
-  padding-top: 3vw;
-  width: 1450px;
-}
 .my-custom-scrollbar {
   position: relative;
   height: 550px;
   overflow: auto;
-  }
-  .table-wrapper-scroll-y {
+}
+.table-wrapper-scroll-y {
   display: block;
-  }
-.table-emp{
+}
+.table-emp {
   padding-left: 20vw;
   padding-top: 3vw;
   width: 1450px;
@@ -31,15 +16,21 @@
 .item-icon {
   margin: 0;
 }
-.item-icon img{
+.item-icon img {
   width: 30px;
 }
 .item-icon img:hover {
   opacity: 40%;
 }
-.find-employ{
+.find-employ {
   padding-right: 700px;
 }
-.find-employ-item{
+.find-employ-item {
   width: 900px;
+}
+.table-responsive {
+  font-size: 18px;
+  font-weight: 400;
+  text-align: center;
+  font-family: "Work Sans";
 }
