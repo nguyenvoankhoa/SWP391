@@ -1,88 +1,85 @@
 .nav-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 15vw;
-    min-width: 170px;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: self-end;
-    font-family: 'Roboto', sans-serif;
+  top: 0;
+  left: 0;
+  min-width: 170px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: self-end;
+  font-family: "Roboto", sans-serif;
 }
 
 .nav-container .nav-content {
-    width: 120%;
-    height: 95%;
-    justify-content: flex-start;
-    align-items: left;
-    /* padding-left: 20%; */
-    padding-top: 10%;
-    background-color: #FFFAFA;
-    border-top-right-radius: 30px;
-    box-shadow: 6px 4px 5px #4e4e4e46;
-    overflow: hidden;
+  width: 120%;
+  height: 95%;
+  justify-content: flex-start;
+  align-items: left;
+  padding-top: 10%;
+  background-color: #fffafa;
+  border-top-right-radius: 30px;
+  box-shadow: 6px 4px 5px #4e4e4e46;
+  overflow: hidden;
 }
 
 .nav-container .nav-content li {
-    width: 100%;
-    justify-content: left;
-    padding-left: 20%;
+  width: 100%;
+  justify-content: left;
+  padding-left: 20%;
 }
 
 .nav-container .nav-content li:hover:not(.user-hb-name):not(.user-hb-avt) {
-    background-color: #9dcec8;
+  background-color: #9dcec8;
 }
 
 .nav-container .nav-content .nav-item {
-    margin: 4% 0;
-    font-weight: 550;
-    font-size: 1.2rem;
-    display: flex;
+  margin: 4% 0;
+  font-weight: 550;
+  font-size: 1.2rem;
+  display: flex;
 }
 
 .nav-container .nav-content .nav-item .nav-avt {
-    margin: 0 auto;
-    width: 7vw;
-    min-width: 70px;
+  margin: 0 auto;
+  width: 7vw;
+  min-width: 70px;
 }
 
 .nav-container .nav-content .nav-item .nav-icon {
-    width: 20px;
+  width: 20px;
 }
 
 .nav-container .nav-content .nav-item a {
-    text-decoration: none;
-    color: #2a5b55;
+  text-decoration: none;
+  color: #2a5b55;
 }
 
 .nav-container .nav-content .nav-item span {
-    position: relative;
-    font-weight: 1000;
-    letter-spacing: 1px;
-    font-size: 1.6rem;
-    padding-bottom: 15%;
+  position: relative;
+  font-weight: 1000;
+  letter-spacing: 1px;
+  font-size: 1.6rem;
+  padding-bottom: 15%;
 }
 
 .nav-container .nav-content .nav-item .seperator {
-    position: absolute;
-    width: 60%;
-    height: 5px;
-    background-color: black;
-    left: 50%;
-    top: 100%;
-    transform: translate(-50%, -100%);
-    border-radius: 20px;
+  position: absolute;
+  width: 60%;
+  height: 5px;
+  background-color: black;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -100%);
+  border-radius: 20px;
 }
 
 .nav-container .nav-content .user-hb-name {
-    padding: 0;
-    display: flex;
-    justify-content: center;
+  padding: 0;
+  display: flex;
+  justify-content: center;
 }
 
 .nav-container .nav-content .user-hb-name span {
-    width: 100%;
-    text-align: center;
-    padding-bottom: 10%;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 10%;
 }

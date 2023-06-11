@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import "./HourlyHelp.css";
-import { json, useLoaderData, Link, useNavigate } from "react-router-dom";
+import { json, useLoaderData, useNavigate } from "react-router-dom";
 import Title from "../../components/Title";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
 // import TimePicker from "../../components/User/TimePicker";
 import PaymentPicker from "../../components/User/PaymentPicker";
-import ServiceNavigation from "../../components/User/ServiceNavigation";
-import { Autocomplete, Button, Divider, TextField } from "@mui/material";
+import { Autocomplete, Divider, TextField } from "@mui/material";
 import { orderItemAction } from "../../redux/order";
-import { DatePicker, TimePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { useUtils } from "@mui/x-date-pickers/internals";
+import {
+  DatePicker,
+  TimePicker,
+  LocalizationProvider,
+} from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 React.state = {
   cleanFreq: ["Hàng tuần", "Hàng tháng", "Một lần"],
@@ -52,7 +54,9 @@ const HourlyHelp = () => {
   };
   const listOFService = [];
   {
-    HOURLY_HELP.map((item) => listOFService.push(`${item.detail}/${item.unit}(${item.type})`))
+    HOURLY_HELP.map((item) =>
+      listOFService.push(`${item.detail}/${item.unit}(${item.type})`)
+    );
   }
   const addDetailHandler = (detail) => {
     setDetail(detail);
@@ -73,11 +77,7 @@ const HourlyHelp = () => {
       <div
         className="container"
         style={{
-          paddingLeft: "15vw",
-          paddingRight: "0",
-          margin: "0",
-          height: "100vh",
-          marginLeft: "4vw",
+          height: "auto",
         }}
       >
         <Title
@@ -96,14 +96,13 @@ const HourlyHelp = () => {
                   disablePortal
                   id="combo-box-demo"
                   options={listOFService}
-                  renderInput={(params) =>
+                  renderInput={(params) => (
                     <TextField
                       {...params}
                       label="Chọn loại dịch vụ"
-                      onChange={() =>
-                        addDetailHandler({})
-                      }
-                    />}
+                      onChange={() => addDetailHandler({})}
+                    />
+                  )}
                 />
               </div>
               <div className="col-md-6">
@@ -112,11 +111,9 @@ const HourlyHelp = () => {
                   id="combo-box-demo"
                   options={React.state.cleanFreq}
                   sx={{ width: 400 }}
-                  renderInput={(params) =>
-                    <TextField
-                      {...params}
-                      label="Chọn loại vệ sinh"
-                    />}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Chọn loại vệ sinh" />
+                  )}
                 />
               </div>
             </div>
@@ -148,7 +145,8 @@ const HourlyHelp = () => {
                   label="Số tòa"
                   defaultValue="S1.06"
                   margin="normal"
-                // onChange
+                  aria-readonly
+                  // onChange
                 />
                 <TextField
                   className="col-md-11"
@@ -156,7 +154,8 @@ const HourlyHelp = () => {
                   label="Số phòng"
                   defaultValue="1412"
                   margin="normal"
-                // onChange
+                  aria-readonly
+                  // onChange
                 />
                 <TextField
                   className="col-md-11"
@@ -164,7 +163,8 @@ const HourlyHelp = () => {
                   label="Số điện thoại"
                   defaultValue="0977545450"
                   margin="normal"
-                // onChange
+                  aria-readonly
+                  // onChange
                 />
               </div>
               <div className="col-md-6 row payment">
@@ -179,15 +179,27 @@ const HourlyHelp = () => {
           <div className="hh-total col-md-4">
             <h5 className="text-center">Thông tin đơn hàng</h5>
             <div className="total-infor">
-              <p><span>Vệ sinh định kỳ </span></p>
-              <p><span>xxm2 xx Phòng</span></p>
-              <p><span>06/05/2023 5:30 PM</span></p>
+              <p>
+                <span>Vệ sinh định kỳ </span>
+              </p>
+              <p>
+                <span>xxm2 xx Phòng</span>
+              </p>
+              <p>
+                <span>06/05/2023 5:30 PM</span>
+              </p>
             </div>
             <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
             <div className="total-cost">
-              <p>Đơn giá: <span>100.000 VNĐ</span></p>
-              <p>VAT: <span>10%</span></p>
-              <p>Thành tiền: <span>110.000 VNĐ</span></p>
+              <p>
+                Đơn giá: <span>100.000 VNĐ</span>
+              </p>
+              <p>
+                VAT: <span>10%</span>
+              </p>
+              <p>
+                Thành tiền: <span>110.000 VNĐ</span>
+              </p>
             </div>
             <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
             <div className="total-sumup">
@@ -196,7 +208,9 @@ const HourlyHelp = () => {
                 <span>Giá trị</span>
                 <span>Đơn hàng</span>
               </h5>
-              <h4>110.000<span>VNĐ</span></h4>
+              <h4>
+                110.000<span>VNĐ</span>
+              </h4>
             </div>
           </div>
         </div>

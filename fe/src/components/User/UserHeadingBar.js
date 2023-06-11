@@ -25,7 +25,7 @@ const UserHeadingBar = () => {
         </li>
         <li className="nav-item user-hb-name" type="button">
           <span className="nav-text">
-            {user.name}
+            Hi {user.name}
             <div className="seperator"></div>
           </span>
         </li>

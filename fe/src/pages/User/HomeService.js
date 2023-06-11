@@ -6,17 +6,12 @@ const HomeService = () => {
     <div
       className="container"
       style={{
-        // marginLeft: "5%",
-        paddingLeft: "20vw",
-        paddingRight: "0",
-        margin: "0",
-        height: "100vh",
-        marginLeft: "4.5vw"
+        height: "auto",
       }}
     >
       <Title
         title="DỊCH VỤ VỆ SINH"
-        color="black"
+        color="white"
         fontSize="35px"
         fontWeight="2000"
         padding="3% 0 0  0"
@@ -30,7 +25,7 @@ const HomeService = () => {
           top: "0",
           left: "0",
           zIndex: "-1",
-          backgroundImage: "linear-gradient(180deg,#F8F5F5, #fff)"
+          backgroundImage: "linear-gradient(180deg,#F8F5F5, #fff)",
         }}
       />
       <div className="container">

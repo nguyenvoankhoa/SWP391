@@ -1,21 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import Title from "../../components/Title";
 import "./ActionRecord.css";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import UserHistory from "./UserHistory";
+import UserOddShift from "./UserOddShift";
+import UserPeriodic from "./UserPeriodic";
 const ActionRecord = () => {
   const data = useLoaderData();
   console.log(data);
+  const [option, setOption] = useState("Ca lẻ");
+  const handleChangeOption = (option) => {
+    setOption(option);
+  };
+  const oodShift = data.filter(
+    (bill) => !bill.completeStatus && bill.frequency === ""
+  );
+  const periodic = data.filter(
+    (bill) => !bill.completeStatus && bill.frequency != ""
+  );
+  const history = data.filter((bill) => bill.completeStatus === true);
   return (
     <>
-      <div className="bg user-navbar" />
       <div
         className="container"
         style={{
-          paddingLeft: "21.5vw",
-          paddingRight: "0",
-          margin: "0",
-          height: "100vh",
-          marginLeft: "4vw",
+          height: "auto",
         }}
       >
         <Title
@@ -25,57 +34,33 @@ const ActionRecord = () => {
           fontWeight="1000"
           padding="3% 0 0  0"
         />
-        <div className="row d-flex justify-content-center ar-content">
-          <div className="row col-md-12 ar-nav">
-            <button className="col-md-5">Dịch vụ chờ làm</button>
-            <button className="col-md-5">Dịch vụ đã hoàn thành</button>
-          </div>
-          <div className="col-md-12 ar-list p-0">
-            <table
-              className="table table-bordered table-striped text-center"
-              style={{ fontSize: "18px", fontWeight: "400" }}
-            >
-              <thead>
-                <tr>
-                  <th scope="col">STT</th>
-                  <th scope="col">Dịch vụ</th>
-                  <th scope="col">Số lượng</th>
-                  <th scope="col">Ngày</th>
-                  <th scope="col">Tên nhân viên</th>
-                  <th scope="col">Giao dịch</th>
-                  <th scope="col">Thanh toán</th>
-                  <th scope="col">Trạng thái</th>
-                  <th scope="col">Tổng tiền</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.map((service) => (
-                  <tr key={service.id}>
-                    <th scope="row">{service.id}</th>
-                    <td>{service.business.name}</td>
-                    <td>{service.quantity}</td>
-                    <td>{service.timeBooking}</td>
-                    {service.employee ? (
-                      <td>{service.employee.name}</td>
-                    ) : (
-                      <td>Đang chờ xử lý</td>
-                    )}
-                    <td>{service.payment}</td>
-                    {service.payStatus ? (
-                      <td>Đã thanh toán</td>
-                    ) : (
-                      <td>Chưa thanh toán</td>
-                    )}
-                    {service.completeStatus ? (
-                      <td>Đã hoàn thành</td>
-                    ) : (
-                      <td>Chưa hoàn thành</td>
-                    )}
-                    <td>{service.total}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+        <div className="row justify-content-center">
+          <div className="row col-10 ar-content">
+            <div className="row ar-nav">
+              <Link
+                className="col-4 p-0 navigate"
+                onClick={() => handleChangeOption("Ca lẻ")}
+              >
+                Ca lẻ
+              </Link>
+              <Link
+                className="col-4 p-0 navigate"
+                onClick={() => handleChangeOption("Định kỳ")}
+              >
+                Định kỳ
+              </Link>
+              <Link
+                className="col-4 p-0 navigate"
+                onClick={() => handleChangeOption("Lịch sử")}
+              >
+                Lịch sử
+              </Link>
+            </div>
+            <div className="col-md-12 ar-list p-0">
+              {option === "Lịch sử" && <UserHistory list={history} />}
+              {option === "Ca lẻ" && <UserOddShift list={oodShift} />}
+              {option === "Định kỳ" && <UserPeriodic list={periodic} />}
+            </div>
           </div>
         </div>
       </div>

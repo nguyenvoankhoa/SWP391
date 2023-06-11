@@ -62,11 +62,7 @@ const TotalSanitation = () => {
       <div
         className="container"
         style={{
-          paddingLeft: "21.5vw",
-          paddingRight: "0",
-          margin: "0",
-          height: "100vh",
-          marginLeft: "4vw",
+          height: "auto",
         }}
       >
         <Title
@@ -99,7 +95,6 @@ const TotalSanitation = () => {
                 </button>
               </div>
             ))}
-
 
             <div className="row gy-5 mt-2 d-flex hh-function">
               <div className="col-md-12 d-flex f-content">

@@ -7,12 +7,16 @@ import useTokenRefresh from "../hooks/useTokenRefresh";
 const UserPageLayout = () => {
   // useTokenRefresh();
   return (
-    <>
-      <UserHeader />
-      <Overlays>
-        <Outlet />
-      </Overlays>
-    </>
+    <Overlays>
+      <div className="row">
+        <div className="col-lg-2 col-md-12">
+          <UserHeader />
+        </div>
+        <div className="col-lg-10 col-md-12">
+          <Outlet />
+        </div>
+      </div>
+    </Overlays>
   );
 };
 

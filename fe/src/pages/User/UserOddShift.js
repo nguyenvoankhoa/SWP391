@@ -1,10 +1,20 @@
 import React from "react";
-import "./UserHistory.css";
-const UserHistory = (props) => {
+import { Link } from "react-router-dom";
+
+const UserOddShift = (props) => {
   const data = props.list;
   return (
     <>
-      {data.length === 0 && <p className="text-center">Chưa có thông tin</p>}
+      {data.length === 0 && (
+        <div className="text-center">
+          <p>Ngôi nhà tươm tất sẽ khiến bạn thoải mái hơn</p>
+          <button className="btn btn-success">
+            <Link to=".." className="link">
+              Đặt lịch ngay
+            </Link>
+          </button>
+        </div>
+      )}
       {data.length > 0 && (
         <table
           className="table table-bordered table-striped text-center"
@@ -45,4 +55,4 @@ const UserHistory = (props) => {
   );
 };
 
-export default UserHistory;
+export default UserOddShift;

@@ -14,9 +14,7 @@ const AdminNavigation = () => {
     }
   }
   return (
-    <div className="nav-container" style={{
-      position: "fixed"
-    }}>
+    <div className="nav-container">
       <ul className="nav flex-column nav-content ">
         <li className="nav-item user-hb-avt" type="button">
           <NavLink className="nav-link d-flex " to="">

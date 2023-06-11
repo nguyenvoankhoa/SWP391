@@ -8,15 +8,10 @@ const AccountInfor = () => {
   console.log(data);
   return (
     <>
-      <div className="bg user-navbar" />
       <div
         className="container"
         style={{
-          paddingLeft: "21.5vw",
-          paddingRight: "0",
-          margin: "0",
-          height: "100vh",
-          marginLeft: "4vw",
+          height: "auto",
         }}
       >
         <Title
@@ -26,35 +21,35 @@ const AccountInfor = () => {
           fontWeight="1000"
           padding="3% 0 0  0"
         />
-        <div className="row ai-content d-flex justify-content-center">
-          <div className="col-md-6 ai-username">
-            <img src="/assets/images/person1.svg" alt="Avatar"></img>
-            <h3></h3>
-            <div className="col-md-12 d-flex justify-content-center">
-              <button className="col-md-5">Chỉnh sửa</button>
-            </div>
-          </div>
-
-          <div className="row col-md-6 d-flex u-infor">
-            <div className="col-md-12">
-              <p>Tên</p>
-              <h5 className="">{data.name}</h5>
-            </div>
-            <div className="col-md-12">
-              <p>Email</p>
-              <h5 className="">{data.email}</h5>
-            </div>
-            <div className="col-md-12">
-              <p>Số tòa</p>
-              <h5 className="">{data.departmentNumber}</h5>
-            </div>
-            <div className="col-md-12">
-              <p>Số phòng</p>
-              <h5 className="">{data.roomNumber}</h5>
-            </div>
-            <div className="col-md-12">
-              <p>Số điện thoại</p>
-              <h5 className="">{data.phone}</h5>
+        <div className="row justify-content-center">
+          <div className="row col-lg-10 col-sm-8 ai-content">
+            <div className="row col-lg-7 col-md-12 u-infor">
+              <div className="col-md-12">
+                <p>HỌ VÀ TÊN</p>
+                <input className="" value={data.name} />
+              </div>
+              <div className="col-md-12">
+                <p>EMAIL</p>
+                <input className="" value={data.email} disabled />
+              </div>
+              <div className="col-md-6">
+                <p>SỐ TÒA</p>
+                <input className="" value={data.departmentNumber} />
+              </div>
+              <div className="col-md-6">
+                <p>SỐ PHÒNG</p>
+                <input className="" value={data.roomNumber} />
+              </div>
+              <div className="col-md-12">
+                <p>SỐ ĐIỆN THOẠI</p>
+                <input className="" value={data.phone} />
+              </div>
+              <div
+                className="col-md-12 d-flex justify-content-center"
+                id="finish"
+              >
+                <button>Cập nhật</button>
+              </div>
             </div>
           </div>
         </div>

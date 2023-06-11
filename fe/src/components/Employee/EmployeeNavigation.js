@@ -22,10 +22,7 @@ const EmployeeNavigation = () => {
             <img className="nav-avt" src="/assets/images/person1.svg" alt="" />
           </NavLink>
         </li>
-        <li
-          className="nav-item user-hb-name"
-          type="button"
-        >
+        <li className="nav-item user-hb-name" type="button">
           <span className="nav-text">
             Tạ Phiền
             <div
@@ -38,12 +35,12 @@ const EmployeeNavigation = () => {
         </li>
         <li className="nav-item d-flex" type="button">
           <NavLink className="nav-link" to="">
-            Lịch làm việc hôm nay
+            Hôm nay
           </NavLink>
         </li>
         <li className="nav-item d-flex" type="button">
           <NavLink className="nav-link" to="history-emp">
-            Lịch sử làm việc trong tuần
+            Lịch sử
           </NavLink>
         </li>
         <li className="nav-item d-flex" type="button" onClick={logoutHandler}>

@@ -19,58 +19,60 @@ const EditEmployee = () => {
         color="white"
         fontSize="35px"
         fontWeight="700"
-        padding="2% 0 0 13vw"
+        padding="2% 0 0 0"
       />
-      <div className="table-cus table-responsive ">
-        <Card>
-          <table
-            className="table table-bordered table-striped text-center"
-            style={{ fontSize: "18px", fontWeight: "400" }}
-          >
-            <thead>
-              <tr>
-                <th scope="col">STT</th>
-                <th scope="col">Tên</th>
-                <th scope="col">Email</th>
-                <th scope="col">Số điện thoại</th>
-                <th scope="col">Công việc</th>
-                <th scope="col" style={{ opacity: 0 }}>
-                  Chỉnh sửa
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((employee) => (
-                <tr key={employee.id}>
-                  <th scope="row">{employee.id}</th>
-                  <td>{employee.employeeInfo.name}</td>
-                  <td>{employee.employeeInfo.email}</td>
-                  <td>{employee.employeeInfo.phone}</td>
-                  <td>{employee.workType}</td>
-                  <td className="d-flex justify-content-around">
-                    <div className="item-icon">
-                      <img
-                        src="../assets/images/iconTrash.svg"
-                        alt="#"
-                        data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
-                      />
-                    </div>
-                    <div className="item-icon">
-                      <img
-                        src="../assets/images/edit.png"
-                        alt="#"
-                        data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop"
-                        onClick={() => editEmployeeHandler(employee)}
-                      />
-                    </div>
-                  </td>
+      <div className="row justify-content-center">
+        <div className="col-10">
+          <Card>
+            <table
+              className="table table-bordered table-striped text-center"
+              style={{ fontSize: "18px", fontWeight: "400" }}
+            >
+              <thead>
+                <tr>
+                  <th scope="col">STT</th>
+                  <th scope="col">Tên</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Số điện thoại</th>
+                  <th scope="col">Công việc</th>
+                  <th scope="col" style={{ opacity: 0 }}>
+                    Chỉnh sửa
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </Card>
+              </thead>
+              <tbody>
+                {data.map((employee) => (
+                  <tr key={employee.id}>
+                    <th scope="row">{employee.id}</th>
+                    <td>{employee.employeeInfo.name}</td>
+                    <td>{employee.employeeInfo.email}</td>
+                    <td>{employee.employeeInfo.phone}</td>
+                    <td>{employee.workType}</td>
+                    <td className="d-flex justify-content-around">
+                      <div className="item-icon">
+                        <img
+                          src="../assets/images/iconTrash.svg"
+                          alt="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal"
+                        />
+                      </div>
+                      <div className="item-icon">
+                        <img
+                          src="../assets/images/edit.png"
+                          alt="#"
+                          data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop"
+                          onClick={() => editEmployeeHandler(employee)}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Card>
+        </div>
       </div>
       <EditEmployeeForm employee={employee} />
     </>

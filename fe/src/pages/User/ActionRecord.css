@@ -1,10 +1,8 @@
 .ar-content {
-  position: absolute;
-  width: 65%;
   height: 75vh;
   margin-top: 2%;
   background-color: white;
-  box-shadow: 0 5px 10px #65928a88;
+  border: 1px solid #65928a88;
   border-radius: 20px;
   padding: 2%;
 }
@@ -12,7 +10,6 @@
 .ar-content .ar-nav {
   display: flex;
   justify-content: space-between;
-  height: 10%;
   margin-bottom: 2vh;
   padding: 0;
 }
@@ -27,7 +24,27 @@
 }
 
 .ar-content .ar-list {
-  border: solid 1px #496360;
-  height: 85%;
+  height: 95%;
   border-radius: 10px;
+}
+.navigate {
+  font-family: "Work Sans";
+  text-align: center;
+  text-decoration: none;
+  color: #496360;
+  transition: 0.1s;
+  font-size: 22px;
+}
+.navigate:hover {
+  color: orange;
+}
+.link {
+  font-family: "Work Sans";
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 15px;
+}
+.link:hover {
+  color: white;
 }

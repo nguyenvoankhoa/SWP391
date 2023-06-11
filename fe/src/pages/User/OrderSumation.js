@@ -27,11 +27,7 @@ const OrderSumation = () => {
       <div
         className="container os-container"
         style={{
-          paddingLeft: "21.5vw",
-          paddingRight: "0",
-          margin: "0",
-          height: "100vh",
-          marginLeft: "4vw",
+          height: "auto",
         }}
       >
         <div

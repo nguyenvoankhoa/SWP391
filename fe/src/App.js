@@ -9,9 +9,6 @@ import ErrorPage from "./pages/ErrorPage";
 import ContactPage from "./pages/ContactPage";
 import UserPageLayout from "./layouts/UserPageLayout";
 import HomeService from "./pages/User/HomeService";
-import UserHistory from "./pages/User/UserHistory";
-import UserNotification from "./pages/User/UserNotification";
-import ListPrice from "./pages/User/ListPrice";
 import HourlyHelp, { loader as UserLoader } from "./pages/User/HourlyHelp";
 import TotalSanitation from "./pages/User/TotalSanitation";
 import FabricCleaning from "./pages/User/FabricCleaning";
@@ -75,9 +72,6 @@ const router = createBrowserRouter([
     element: <UserPageLayout />,
     children: [
       { index: true, element: <HomeService /> },
-      { path: "history", element: <UserHistory /> },
-      { path: "notification", element: <UserNotification /> },
-      { path: "price", element: <ListPrice /> },
       { path: "hourly-help", element: <HourlyHelp />, loader: UserLoader },
       {
         path: "total-senitation",
@@ -136,7 +130,11 @@ const router = createBrowserRouter([
     element: <EmployeeLayout />,
     children: [
       { index: true, element: <EmployeePage />, loader: employeePageLoader },
-      { path: "history-emp", element: <EmployeePageHistory /> },
+      {
+        path: "history-emp",
+        element: <EmployeePageHistory />,
+        loader: employeePageLoader,
+      },
     ],
   },
 ]);
