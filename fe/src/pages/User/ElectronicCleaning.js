@@ -4,8 +4,7 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import AirConditionerForm from "./AirConditionerForm";
-import { Paper } from "@mui/material";
-import zIndex from "@mui/material/styles/zIndex";
+
 
 const AntTabs = styled(Tabs)({
   "& .MuiTabs-indicator": {

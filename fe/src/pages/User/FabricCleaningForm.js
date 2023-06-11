@@ -11,7 +11,7 @@ import PaymentPicker from "../../components/User/PaymentPicker";
 import { styled } from "@mui/material/styles";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import classes from "./ElectronicCleaning.css";
+import "./ElectronicCleaning.css";
 
 
 const FabricCleaningForm = ({ selectedTab, onTabChange, options }) => {
@@ -167,7 +167,7 @@ const FabricCleaningForm = ({ selectedTab, onTabChange, options }) => {
           </DemoContainer>
         </LocalizationProvider>
         <div className="ec-content row payment">
-          <div className="col-md-6 offset-md-1 ec-payment" id={classes.button}>
+          <div className="col-md-12 ec-payment">
             <PaymentPicker onAddPayment={paymentHandler} />
           </div>
         </div>
