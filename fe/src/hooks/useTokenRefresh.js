@@ -3,35 +3,34 @@ import { useEffect } from "react";
 const useTokenRefresh = () => {
   useEffect(() => {
     const checkTokenExpiration = () => {
-      const signinTime = localStorage.getItem("signinTime");
-      const expirationTime = 86400000; // 24 hours in milliseconds
-      const currentTime = Date.now();
-      if (currentTime - signinTime >= expirationTime) {
-        refreshToken();
+      refreshToken();
+    };
+
+    const refreshToken = async () => {
+      const refreshToken = JSON.parse(sessionStorage.getItem("refreshToken"));
+      const response = await fetch(
+        "https://swp391-production.up.railway.app/refresh-token",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${refreshToken}`,
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("Error");
       }
+      const data = await response.json();
+      console.log(data);
+      sessionStorage.setItem("jwtToken", JSON.stringify(data.access_token));
+      sessionStorage.setItem(
+        "refreshToken",
+        JSON.stringify(data.refresh_token)
+      );
     };
 
-    const refreshToken = () => {
-      const refreshToken = localStorage.getItem("refreshToken");
-      fetch("https://swp391-production.up.railway.app/refreshToken", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${refreshToken}`,
-        },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          // Update the access token in local storage
-          localStorage.setItem("jwtToken", data.jwtToken);
-        })
-        .catch((error) => {
-          // Handle error
-          console.error("Error refreshing token:", error);
-        });
-    };
-
-    const interval = setInterval(checkTokenExpiration, 60000);
+    const interval = setInterval(checkTokenExpiration, 600000);
 
     return () => {
       clearInterval(interval);
