@@ -36,7 +36,7 @@ const NewsPage = () => {
           lựa chọn cho trẻ trang phục sáng màu, mát mẻ.
           Hạn chế cho ăn đồ ăn nhiều dầu mỡ."
         />
-        <nav aria-label="Page navigation">
+        {/* <nav aria-label="Page navigation">
           <ul class="pagination pg-blue justify-content-end">
             <li class="page-item disabled">
               <a class="page-link" href="#previous" tabindex="-1">Previous</a>
@@ -48,7 +48,7 @@ const NewsPage = () => {
               <a class="page-link" href="#next">Next</a>
             </li>
           </ul>
-        </nav>
+        </nav> */}
       </div>
     </>
   );

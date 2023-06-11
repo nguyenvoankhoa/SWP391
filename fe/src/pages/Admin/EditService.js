@@ -12,23 +12,14 @@ const EditService = () => {
   };
   return (
     <>
-      <div className="bg user-navbar" />
-      <Title
-        title="DỊCH VỤ"
-        color="white"
-        fontSize="35px"
-        fontWeight="700"
-        padding="2% 0 0 13vw"
-      />
+      <div className="mb-5" />
+      <Title title="DỊCH VỤ" color="white" fontSize="35px" fontWeight="700" />
 
       <div className="row justify-content-center">
         <div className="col-10">
           <Card>
-            <div className="table-wrapper-scroll-y my-custom-scrollbar">
-              <table
-                className="table table-bordered table-striped text-center mb-0"
-                style={{ fontSize: "18px", fontWeight: "400" }}
-              >
+            <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
+              <table className="table table-bordered table-striped mb-0">
                 <thead>
                   <tr>
                     <th scope="col">STT</th>
