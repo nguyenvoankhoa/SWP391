@@ -1,175 +1,72 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import ServiceForm from "./ServiceForm";
-import Title from "../../components/Title";
-import "./FabricCleaning.css";
-const FabricCleaning = () => {
-  const [quantity, setQuantity] = useState(0);
+import { styled } from "@mui/material/styles";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+import Box from "@mui/material/Box";
+import FabricCleaningForm from "./FabricCleaningForm";
 
-  const incrementQuantity = () => {
-    setQuantity(quantity + 1);
+const AntTabs = styled(Tabs)({
+  "& .MuiTabs-indicator": {
+    backgroundColor: "#1890ff",
+  },
+});
+
+const AntTab = styled((props) => <Tab disableRipple {...props} />)(
+  ({ theme }) => ({
+    textTransform: "none",
+    minWidth: 0,
+    [theme.breakpoints.up("sm")]: {
+      minWidth: 0,
+    },
+    fontWeight: theme.typography.fontWeightRegular,
+    marginRight: theme.spacing(2),
+    color: "rgba(0, 0, 0, 0.85)",
+    fontFamily: "Montserrat, sans-serif",
+    "&:hover": {
+      color: "#40a9ff",
+      opacity: 1,
+    },
+    "&.Mui-selected": {
+      color: "#1890ff",
+      fontWeight: theme.typography.fontWeightMedium,
+    },
+    "&.Mui-focusVisible": {
+      backgroundColor: "#d1eaff",
+    },
+  })
+);
+
+const optionalSofa = [
+  { value: "option1", label: "Sofa 1 ghế" },
+  { value: "option2", label: "Sofa 2 ghế" },
+];
+
+const optionalNem = [
+  { value: "option3", label: "Nhỏ hơn 2m" },
+  { value: "option4", label: "Lớn hơn 2m" },
+];
+
+const optionalTham = [
+  { value: "option5", label: "Thảm nhỏ ( < 1.5m )" },
+  { value: "option6", label: "Thảm vừa ( 1.5m - 2m )" },
+  { value: "option7", label: "Thảm lớn ( > 2m )" },
+];
+
+export default function FabricCleaning() {
+  const [value, setValue] = useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
   };
 
-  const decrementQuantity = () => {
-    if (quantity > 0) {
-      setQuantity(quantity - 1);
-    }
-  };
   return (
-    <>
-      <div
-        className="bg"
-        style={{
-          height: "auto",
-        }}
-      />
-      <div
-        className="container"
-        style={{
-          paddingLeft: "20vw",
-          paddingRight: "0",
-          margin: "0",
-          height: "100vh",
-          marginLeft: "4vw",
-        }}
-      >
-        <Title
-          title="VỆ SINH SOFA, NỆM THẢM"
-          color="white"
-          fontSize="35px"
-          fontWeight="700"
-          padding="5% 0 0 0"
-        />
-        <div className="fc-content">
-          <div className="row gy-4 pt-5 d-flex">
-            <div className="col-sm-4">
-              <div className="fc-card">
-                <div className="fc-rectangle">
-                  <h3 className="fc-title">SOFA</h3>
-                </div>
-                <div className="fc-card-content">
-                  <div className="button-row-fc">
-                    <button>
-                      <Link>Sofa một ghế</Link>
-                    </button>
-                    <button>
-                      <Link>Sofa hai ghế</Link>
-                    </button>
-                  </div>
-                  <div className="button-row fc">
-                    <button className="quantity-fc">Số lượng</button>
-                    <button className=" button-quantity d-flex justify-content-center">
-                      <span
-                        type="button-fc"
-                        className="quantity-btn"
-                        onClick={decrementQuantity}
-                      >
-                        -
-                      </span>
-                      <span className="quantity-btn d-flex">{quantity}</span>
-                      <span className="quanity-btn" onClick={incrementQuantity}>
-                        +
-                      </span>
-                    </button>
-                  </div>
-                  <button className="ec-price">
-                    Giá: <span className="price">360.000</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-4">
-              <div className="fc-card">
-                <div className="fc-rectangle">
-                  <h3 className="fc-title">NỆM</h3>
-                </div>
-                <div className="fc-card-content">
-                  <div className="button-row-fc">
-                    <button>
-                      <Link>Nhỏ hơn 2m</Link>
-                    </button>
-                    <button>
-                      <Link>Lớn hơn 2m</Link>
-                    </button>
-                  </div>
-                  <div className="button-row fc">
-                    <button className="quantity-fc">Số lượng</button>
-                    <button className=" button-quantity d-flex justify-content-center">
-                      <span
-                        type="button"
-                        className="quantity-btn"
-                        onClick={decrementQuantity}
-                      >
-                        -
-                      </span>
-                      <span className="quantity-btn d-flex">{quantity}</span>
-                      <span className="quanity-btn" onClick={incrementQuantity}>
-                        +
-                      </span>
-                    </button>
-                  </div>
-                  <button className="ec-price">
-                    Giá: <span className="price">360.000</span>
-                  </button>
-                </div>
-              </div>
-            </div>
-            <div className="col-sm-4">
-              <div className="fc-card">
-                <div className="fc-rectangle">
-                  <h3 className="fc-title">THẢM</h3>
-                </div>
-                <div className="fc-card-content">
-                  <div className="button-row-fc">
-                    <button>
-                      <Link>Thảm nhỏ</Link>
-                    </button>
-                    <button>
-                      <Link>Thảm vừa</Link>
-                    </button>
-                    <button>
-                      <Link>Thảm lớn</Link>
-                    </button>
-                  </div>
-                  <div className="button-row fc">
-                    <button className="quantity-fc">Số lượng</button>
-                    <button className=" button-quantity d-flex justify-content-center">
-                      <span
-                        type="button"
-                        className="quantity-btn"
-                        onClick={decrementQuantity}
-                      >
-                        -
-                      </span>
-                      <span className="quantity-btn d-flex">{quantity}</span>
-                      <span className="quanity-btn" onClick={incrementQuantity}>
-                        +
-                      </span>
-                    </button>
-                  </div>
-                  <button className="fc-price">
-                    Giá: <span className="price">360.000</span>
-                  </button>
-                  <div className="row d-flex justify-content-center navigate-btn-fc">
-                    <div className="col-md-4 pt-2 pb-2 d-flex justify-content-center cont-btn-fc">
-                      <button>
-                        <Link to="/user">Quay lại</Link>
-                      </button>
-                    </div>
-                    <div className="col-md-4 pt-2 pb-2 d-flex justify-content-center back-btn-fc">
-                      <button>
-                        <Link to="/user/electronic-order">Tiếp tục</Link>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+    <Box sx={{ width: "100%" }}>
+      <Box sx={{ bgcolor: "none", p: 2 }}>
+        <h1 style={{ textAlign: "center", marginTop: "1%", fontFamily: "Montserrat" }}>Vệ Sinh Sofa, Nệm, Thảm</h1>
+        {value === 0 && <FabricCleaningForm options={optionalSofa} />}
+        {value === 1 && <FabricCleaningForm options={optionalNem} />}
+        {value === 2 && <FabricCleaningForm options={optionalTham} />}
+      </Box>
+    </Box>
   );
-};
-
-export default FabricCleaning;
+}

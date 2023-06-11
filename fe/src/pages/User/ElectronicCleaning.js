@@ -4,10 +4,12 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import AirConditionerForm from "./AirConditionerForm";
+import { Paper } from "@mui/material";
+import zIndex from "@mui/material/styles/zIndex";
 
 const AntTabs = styled(Tabs)({
   "& .MuiTabs-indicator": {
-    backgroundColor: "#1890ff",
+    backgroundColor: "none",
   },
 });
 
@@ -72,29 +74,10 @@ export default function ElectronicCleaning() {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Box sx={{ bgcolor: "#fff", p: 2 }}>
+      <Box sx={{ bgcolor: "none", p: 2 }}>
         <h1 style={{ textAlign: "center", marginTop: "1%" }}>
           Vệ Sinh Máy Lạnh
         </h1>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            textAlign: "center",
-          }}
-        >
-          <AntTabs
-            value={value}
-            onChange={handleChange}
-            aria-label="ant example"
-            style={{
-              marginTop: "1%",
-            }}
-          >
-            <AntTab label="Máy Lạnh Treo Tường" />
-            <AntTab label="Máy Lạnh Âm Trần" />
-          </AntTabs>
-        </Box>
         {showForm && <AirConditionerForm options={optionalTreoTuong} />}
 
         {value === 1 && <AirConditionerForm options={optionalAmTran} />}
