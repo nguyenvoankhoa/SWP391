@@ -14,6 +14,7 @@ import {
   LocalizationProvider,
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import OrderSumation from "./OrderSumation";
 
 React.state = {
   cleanFreq: ["Hàng tuần", "Hàng tháng", "Một lần"],
@@ -146,7 +147,7 @@ const HourlyHelp = () => {
                   defaultValue="S1.06"
                   margin="normal"
                   aria-readonly
-                  // onChange
+                // onChange
                 />
                 <TextField
                   className="col-md-11"
@@ -155,7 +156,7 @@ const HourlyHelp = () => {
                   defaultValue="1412"
                   margin="normal"
                   aria-readonly
-                  // onChange
+                // onChange
                 />
                 <TextField
                   className="col-md-11"
@@ -164,7 +165,7 @@ const HourlyHelp = () => {
                   defaultValue="0977545450"
                   margin="normal"
                   aria-readonly
-                  // onChange
+                // onChange
                 />
               </div>
               <div className="col-md-6 row payment">
@@ -176,58 +177,12 @@ const HourlyHelp = () => {
               <button className="finish-btn">HOÀN THÀNH ĐƠN HÀNG</button>
             </div>
           </div>
-          <div className="hh-total col-md-4">
-            <h5 className="text-center">Thông tin đơn hàng</h5>
-            <div className="total-infor">
-              <p>
-                <span>Vệ sinh định kỳ </span>
-              </p>
-              <p>
-                <span>xxm2 xx Phòng</span>
-              </p>
-              <p>
-                <span>06/05/2023 5:30 PM</span>
-              </p>
-            </div>
-            <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
-            <div className="total-cost">
-              <p>
-                Đơn giá: <span>100.000 VNĐ</span>
-              </p>
-              <p>
-                VAT: <span>10%</span>
-              </p>
-              <p>
-                Thành tiền: <span>110.000 VNĐ</span>
-              </p>
-            </div>
-            <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
-            <div className="total-sumup">
-              <h5>
-                <span>Tổng</span>
-                <span>Giá trị</span>
-                <span>Đơn hàng</span>
-              </h5>
-              <h4>
-                110.000<span>VNĐ</span>
-              </h4>
-            </div>
-          </div>
+          <OrderSumation />
         </div>
       </div>
     </LocalizationProvider>
   );
 };
-
-// var buttonContainer = document.getElementsByClassName("hh-submit");
-// var activeButton = buttonContainer.getElementsByClassName("hh-payment");
-// for (var i = 0; i < activeButton.length; i++) {
-//   activeButton[i].getElementsById("payment").addEventListener("click", function () {
-//     var current = document.getElementsByClassName("active");
-//     current[0].className = current[0].className.replace(" active", "");
-//     this.className += " active";
-//   })
-// };
 
 export default HourlyHelp;
 

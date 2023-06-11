@@ -88,11 +88,6 @@ const router = createBrowserRouter([
         element: <ElectronicCleaning />,
         loader: UserLoader,
       },
-      {
-        path: "order-sumation",
-        element: <OrderSumation />,
-        loader: customerInfoLoader,
-      },
       { path: "order-completed", element: <OrderCompleted /> },
       { path: "action-record", element: <ActionRecord />, loader: billLoader },
       {

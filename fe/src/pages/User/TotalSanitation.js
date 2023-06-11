@@ -1,18 +1,27 @@
 import React, { useState } from "react";
+import "./HourlyHelp.css";
 import { json, useLoaderData, useNavigate } from "react-router-dom";
 import Title from "../../components/Title";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
 import PaymentPicker from "../../components/User/PaymentPicker";
-import ServiceNavigation from "../../components/User/ServiceNavigation";
+import { Autocomplete, Divider, TextField } from "@mui/material";
 import { orderItemAction } from "../../redux/order";
+import {
+  DatePicker,
+  TimePicker,
+  LocalizationProvider,
+} from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import OrderSumation from "./OrderSumation";
+
 React.state = {
-  cleanFreq: ["Hàng ngày", "Hàng tuần", "Hàng tháng"],
+  cleanFreq: ["Hàng tuần", "Hàng tháng", "Một lần"],
   payMethod: ["PayPal", "Tiền mặt"],
   timePicker: ["Sáng", "Chiều", "Tối"],
 };
 
-const TotalSanitation = () => {
+const HourlyHelp = () => {
   const totalAmount = useSelector((state) => state.order.totalAmount);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,7 +30,7 @@ const TotalSanitation = () => {
   const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
   const [detail, setDetail] = useState(null);
   const data = useLoaderData();
-  const TOTAL_SANITATION = data.filter((item) => {
+  const HOURLY_HELP = data.filter((item) => {
     return item.name === "Tổng vệ sinh";
   });
   const addServiceHandler = () => {
@@ -43,6 +52,12 @@ const TotalSanitation = () => {
     dispatch(orderItemAction.addItem(bill));
     navigate("/user/order-sumation");
   };
+  const listOFService = [];
+  {
+    HOURLY_HELP.map((item) =>
+      listOFService.push(`${item.type}(${item.detail}/${item.unit})`)
+    );
+  }
   const addDetailHandler = (detail) => {
     setDetail(detail);
   };
@@ -57,7 +72,7 @@ const TotalSanitation = () => {
     setSelectedPayment(payment);
   };
   return (
-    <>
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className="bg user-navbar" />
       <div
         className="container"
@@ -67,54 +82,118 @@ const TotalSanitation = () => {
       >
         <Title
           title="TỔNG VỆ SINH"
-          color="white"
+          color="black"
           fontSize="35px"
           fontWeight="1000"
-          padding="5% 0 0  0"
+          padding="3% 0 0  0"
         />
-        <div className="hh-content">
-          <div className="row gy-4 pt-5 d-flex">
-            {TOTAL_SANITATION.map((item) => (
-              <div
-                className="col-md-4 hh-options"
-                key={Math.random()}
-                onClick={() =>
-                  addDetailHandler({
-                    id: item.serviceId,
-                    name: item.name,
-                    detail: item.detail,
-                    unit: item.unit,
-                    price: item.price,
-                    type: item.type,
-                  })
-                }
-              >
-                <button>
-                  {item.type}
-                  <br />({item.detail}/{item.unit})
-                </button>
+        <div className="hh-content row">
+          <div className="hh-services col-md-7 flex-column">
+            <h5 className="text-center">Tùy chọn dịch vụ của bạn</h5>
+            <div className="col-md-12 row services mt-4">
+              <div className="col-md-6">
+                <Autocomplete
+                  disablePortal
+                  id="combo-box-demo"
+                  options={listOFService}
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Chọn loại dịch vụ"
+                      onChange={() => addDetailHandler({})}
+                    />
+                  )}
+                />
               </div>
-            ))}
-
-            <div className="row gy-5 mt-2 d-flex hh-function">
-              <div className="col-md-12 d-flex f-content">
-                <div className="f-price">
-                  <p>Giá:</p>
-                  <p>{totalAmount} VND</p>
-                </div>
+              <div className="col-md-6">
+                <Autocomplete
+                  disablePortal
+                  id="combo-box-demo"
+                  options={React.state.cleanFreq}
+                  sx={{ width: 400 }}
+                  renderInput={(params) => (
+                    <TextField {...params} label="Chọn loại vệ sinh" />
+                  )}
+                />
               </div>
             </div>
-            <PaymentPicker onAddPayment={paymentHandler} />
+            <div className="date-time col-md-12 row mt-4">
+              <div className="col-md-6">
+                <p>Chọn ngày</p>
+                <DatePicker
+                  onChange={(date) => addDateHandler(date)}
+                  disablePast="true"
+                  format="DD/MM/YYYY"
+                />
+              </div>
+              <div className="col-md-6">
+                <p>Chọn giờ</p>
+                <TimePicker
+                  onChange={(date) => addTimeHandler(date)}
+                  ampm={false}
+                  format="hh:mm"
+                />
+              </div>
+            </div>
+            <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
+            <div className="row d-flex mt-3">
+              <div className="col-md-6 d-flex row location">
+                <p className="text-center">Thông tin liên lạc</p>
+                <TextField
+                  className="col-md-11"
+                  variant="outlined"
+                  label="Số tòa"
+                  defaultValue="S1.06"
+                  margin="normal"
+                  aria-readonly
+                  // onChange
+                />
+                <TextField
+                  className="col-md-11"
+                  variant="outlined"
+                  label="Số phòng"
+                  defaultValue="1412"
+                  margin="normal"
+                  aria-readonly
+                  // onChange
+                />
+                <TextField
+                  className="col-md-11"
+                  variant="outlined"
+                  label="Số điện thoại"
+                  defaultValue="0977545450"
+                  margin="normal"
+                  aria-readonly
+                  // onChange
+                />
+              </div>
+              <div className="col-md-6 row payment">
+                <p className="text-center">Phương thức thanh toán</p>
+                <PaymentPicker onAddPayment={paymentHandler} />
+              </div>
+            </div>
+            <div className="col-md-12 mt-4" id="finish">
+              <button className="finish-btn">HOÀN THÀNH ĐƠN HÀNG</button>
+            </div>
           </div>
-
-          <ServiceNavigation payHandler={addServiceHandler} />
+          <OrderSumation />
         </div>
       </div>
-    </>
+    </LocalizationProvider>
   );
 };
 
-export default TotalSanitation;
+// var buttonContainer = document.getElementsByClassName("hh-submit");
+// var activeButton = buttonContainer.getElementsByClassName("hh-payment");
+// for (var i = 0; i < activeButton.length; i++) {
+//   activeButton[i].getElementsById("payment").addEventListener("click", function () {
+//     var current = document.getElementsByClassName("active");
+//     current[0].className = current[0].className.replace(" active", "");
+//     this.className += " active";
+//   })
+// };
+
+export default HourlyHelp;
 
 export async function loader() {
   const res = await fetch("https://swp391-production.up.railway.app/services");
