@@ -26,7 +26,7 @@ const HourlyHelp = () => {
   const totalAmount = useSelector((state) => state.order.totalAmount);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [selectedDate, setselectedDate] = useState(new Date());
+  const [selectedDate, setselectedDate] = useState();
   const [selectedTime, setSelectedTime] = useState("Sáng");
   const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
   const [selectedService, setSelectedService] = useState("");
@@ -62,6 +62,7 @@ const HourlyHelp = () => {
     );
   }
   const addDetailHandler = (detail) => {
+
     setDetail(detail);
   };
 
@@ -136,6 +137,7 @@ const HourlyHelp = () => {
               <div className="col-md-6 pickers">
                 <p>Chọn ngày</p>
                 <DatePicker
+                  value={selectedDate}
                   onChange={(date) => addDateHandler(date)}
                   disablePast="true"
                   format="DD/MM/YYYY"
@@ -144,7 +146,9 @@ const HourlyHelp = () => {
               <div className="col-md-6 pickers">
                 <p>Chọn giờ</p>
                 <TimePicker
-                  onChange={(date) => addTimeHandler(date)}
+                  disablePast
+                  value={selectedDate}
+                  onChange={(time) => addTimeHandler(time)}
                   ampm={false}
                   format="hh:mm"
                 />
@@ -161,7 +165,6 @@ const HourlyHelp = () => {
                   defaultValue="S1.06"
                   margin="normal"
                   aria-readonly
-                // onChange
                 />
                 <TextField
                   className="col-md-11"

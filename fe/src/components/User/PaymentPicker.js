@@ -19,6 +19,7 @@ const PaymentPicker = (props) => {
               style={{
                 color: selectedPayment === method ? "white" : "black",
                 backgroundColor: selectedPayment === method ? "#397f77" : "",
+                fontWeight: selectedPayment === method ? "600" : "normal",
               }}
             >
               Thanh toán bằng {method}

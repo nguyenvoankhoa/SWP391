@@ -1,63 +1,71 @@
 .hh-total {
-background-color: #fff;
-padding: 2%;
-padding-bottom: 0;
-border-radius: 10px;
-height: fit-content;
+    background-color: #fff;
+    padding: 3%;
+    padding-bottom: 0;
+    border-radius: 5px;
+    height: fit-content;
+    min-width: 26vw;
 }
 
 .hh-total p {
-padding: 10px 0;
-margin: 0;
-font-weight: 600;
-color: #909090;
-display: flex;
-justify-content: space-between;
+    padding: 10px 0;
+    margin: 0;
+    font-weight: 600;
+    color: #909090;
+    display: flex;
+    justify-content: space-between;
 }
 
 .hh-total span {
-font-weight: 600;
-color: black !important;
+    font-weight: 600;
+    color: black !important;
 }
 
 .hh-content .total-cost p {
-display: flex;
-justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .hh-content .total-sumup {
-padding: 5% 0;
-display: flex;
-justify-content: space-between;
-align-items: center;
+    padding: 5% 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.total-sumup {
+    display: flex;
+    justify-content: space-between;
 }
 
 .total-sumup h5 {
-display: flex;
-flex-direction: column;
-width: 45%;
-align-items: flex-start;
-justify-content: center;
-padding: 0;
-margin: 0;
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
 }
 
 .total-sumup h5 span {
-font-weight: 700 !important;
-letter-spacing: 2px;
-font-size: 18px;
-text-transform: uppercase;
+    font-weight: 700 !important;
+    letter-spacing: 2px;
+    font-size: 18px;
+    text-transform: uppercase;
 }
 
 .total-sumup h4 {
-display: flex;
-flex-direction: column;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 .total-sumup h4,
-.total-sumup span {
-font-weight: 700;
-color: #397f77;
-font-size: 35px;
-text-align: right !important;
+.total-sumup h4 span {
+    width: fit-content;
+    font-weight: 700;
+    color: #397f77;
+    font-size: 35px;
+    text-align: right !important;
 }
