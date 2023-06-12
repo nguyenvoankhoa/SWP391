@@ -47,8 +47,8 @@ const SignInForm = () => {
       const user = data.user;
       const jwtToken = data.jwtToken;
       const refreshToken = data.refreshToken;
-      sessionStorage.setItem("jwtToken", JSON.stringify(jwtToken));
-      sessionStorage.setItem("refreshToken", JSON.stringify(refreshToken));
+      sessionStorage.setItem("jwtToken", jwtToken);
+      sessionStorage.setItem("refreshToken", refreshToken);
       sessionStorage.setItem("user", JSON.stringify(user));
       if (user.role === "ADMIN") {
         navigate("/admin");

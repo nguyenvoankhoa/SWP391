@@ -14,17 +14,16 @@ const PaymentPicker = (props) => {
           className="col-md-5 d-flex justify-content-center hh-payment"
           key={method}
         >
-            <button
-              onClick={() => paymentHandler(method)}
-              style={{
-                color: selectedPayment === method ? "white" : "black",
-                backgroundColor: selectedPayment === method ? "#397f77" : "",
-              }}
-            >
-              Thanh toán bằng {method}
-            </button>
+          <button
+            onClick={() => paymentHandler(method)}
+            style={{
+              color: selectedPayment === method ? "white" : "black",
+              backgroundColor: selectedPayment === method ? "#397f77" : "",
+            }}
+          >
+            {method}
+          </button>
         </div>
-
       ))}
     </div>
   );

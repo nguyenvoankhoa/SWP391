@@ -7,7 +7,7 @@ const useTokenRefresh = () => {
     };
 
     const refreshToken = async () => {
-      const refreshToken = JSON.parse(sessionStorage.getItem("refreshToken"));
+      const refreshToken = sessionStorage.getItem("refreshToken");
       const response = await fetch(
         "https://swp391-production.up.railway.app/refresh-token",
         {
@@ -23,11 +23,8 @@ const useTokenRefresh = () => {
       }
       const data = await response.json();
       console.log(data);
-      sessionStorage.setItem("jwtToken", JSON.stringify(data.access_token));
-      sessionStorage.setItem(
-        "refreshToken",
-        JSON.stringify(data.refresh_token)
-      );
+      sessionStorage.setItem("jwtToken", data.access_token);
+      sessionStorage.setItem("refreshToken", data.refresh_token);
     };
 
     const interval = setInterval(checkTokenExpiration, 600000);

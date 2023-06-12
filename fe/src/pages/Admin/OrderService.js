@@ -122,7 +122,7 @@ const OrderService = () => {
 export default OrderService;
 
 export async function orderLoader() {
-  const token = JSON.parse(sessionStorage.getItem("jwtToken"));
+  const token = sessionStorage.getItem("jwtToken");
   const res = await fetch(
     "https://swp391-production.up.railway.app/admin/orders",
     {

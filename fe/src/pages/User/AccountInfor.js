@@ -61,7 +61,7 @@ const AccountInfor = () => {
 export default AccountInfor;
 
 export async function customerInfoLoader() {
-  const token = JSON.parse(sessionStorage.getItem("jwtToken"));
+  const token = sessionStorage.getItem("jwtToken");
   const user = JSON.parse(sessionStorage.getItem("user"));
   const request = {
     id: user.id,
