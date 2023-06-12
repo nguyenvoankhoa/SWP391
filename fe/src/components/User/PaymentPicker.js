@@ -25,7 +25,6 @@ const PaymentPicker = (props) => {
               Thanh toán bằng {method}
             </button>
         </div>
-
       ))}
     </div>
   );

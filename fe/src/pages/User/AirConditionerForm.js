@@ -16,7 +16,7 @@ import OrderSumation from "./OrderSumation";
 
 const AirConditionerForm = ({ options }) => {
   React.state = {
-    payMethod: ["PayPal", "Tiền mặt"]
+    payMethod: ["PayPal", "Tiền mặt"],
   };
   const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
   const paymentHandler = (payment) => {
@@ -27,7 +27,7 @@ const AirConditionerForm = ({ options }) => {
       backgroundColor: "none",
     },
   });
-  
+
   const AntTab = styled((props) => <Tab disableRipple {...props} />)(
     ({ theme }) => ({
       textTransform: "none",
@@ -66,8 +66,8 @@ const AirConditionerForm = ({ options }) => {
   const [value, setValue] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const handleChange = (event, newValue) => {
-    setValue (newValue);
-    setShowForm (newValue === 0);
+    setValue(newValue);
+    setShowForm(newValue === 0);
   };
   React.useEffect(() => {
     setShowForm(true);
@@ -75,7 +75,7 @@ const AirConditionerForm = ({ options }) => {
   
   return ( 
     <Box
-      component="form"
+      component="div"
       sx={{
         "& .MuiTextField-root": { mt: 5, width: "30ch", ml: 5 },
         display: "flex",
@@ -85,7 +85,6 @@ const AirConditionerForm = ({ options }) => {
       autoComplete="off"
     >
       <Paper
-      
         className="col-md-6 "
         sx={{
           flexGrow: 1,
@@ -94,30 +93,25 @@ const AirConditionerForm = ({ options }) => {
           mr: 2,
         }}
       >
-          <Box
-    sx={{
-      display: "flex",
-      justifyContent: "flex-start",
-      textAlign: "center",
-      marginLeft: 20,
-      marginTop: "1%"
-    }}
-  >
-    <AntTabs
-      value={value}
-      onChange={handleChange}
-      aria-label="ant example"
-    >
-      <AntTab label="Máy Lạnh Treo Tường" />
-      <AntTab label="Máy Lạnh Âm Trần" />
-    </AntTabs>
-  </Box>
-        <Grid
-          container
-          spacing={2}
-          justifyContent="left"
-          marginRight={1}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            textAlign: "center",
+            marginLeft: 20,
+            marginTop: "1%",
+          }}
         >
+          <AntTabs
+            value={value}
+            onChange={handleChange}
+            aria-label="ant example"
+          >
+            <AntTab label="Máy Lạnh Treo Tường" />
+            <AntTab label="Máy Lạnh Âm Trần" />
+          </AntTabs>
+        </Box>
+        <Grid container spacing={2} justifyContent="left" marginRight={1}>
           <Grid item>
             <TextField
               id="outlined-select-currency"
@@ -149,8 +143,7 @@ const AirConditionerForm = ({ options }) => {
               // alignItems: "center",
               // display: "flex",
               // justifyContent: "center",
-              marginRight: 1
-              
+              marginRight: 1,
             }}
           >
             <DemoItem>
@@ -173,7 +166,7 @@ const AirConditionerForm = ({ options }) => {
           </DemoContainer>
         </LocalizationProvider>
         <div className="ec-content row payment">
-          <div className="col-md-12 ec-payment" >
+          <div className="col-md-12 ec-payment">
             <PaymentPicker onAddPayment={paymentHandler} />
           </div>
         </div>

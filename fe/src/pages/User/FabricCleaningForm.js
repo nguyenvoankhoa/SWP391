@@ -14,7 +14,6 @@ import Tab from "@mui/material/Tab";
 import "./ElectronicCleaning.css";
 import OrderSumation from "./OrderSumation";
 
-
 const FabricCleaningForm = ({ selectedTab, onTabChange, options }) => {
   React.state = {
     payMethod: ["PayPal", "Tiền mặt"],
@@ -76,7 +75,7 @@ const FabricCleaningForm = ({ selectedTab, onTabChange, options }) => {
   };
   return (
     <Box
-      component="form"
+      component="div"
       sx={{
         "& .MuiTextField-root": { mt: 5, width: "30ch", ml: 5 },
         display: "flex",

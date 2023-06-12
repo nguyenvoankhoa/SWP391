@@ -33,34 +33,10 @@ const HourlyHelp = () => {
   const [selectedFreq, setSelectedFreq] = useState("");
   const [detail, setDetail] = useState(null);
   const data = useLoaderData();
-  const HOURLY_HELP = data.filter((item) => {
-    return item.name === "Giúp việc theo giờ";
-  });
-  const addServiceHandler = () => {
-    if (detail === null) {
-      alert("Chọn dịch vụ !");
-      return;
-    }
-    const bill = {
-      id: detail.id,
-      name: detail.name,
-      type: detail.type,
-      price: detail.price,
-      detail: detail.detail,
-      unit: detail.unit,
-      date: selectedDate.getDate(),
-      time: selectedTime,
-      payment: selectedPayment,
-    };
-    dispatch(orderItemAction.addItem(bill));
-    navigate("/user/order-sumation");
-  };
-  const listOFService = [];
-  {
-    HOURLY_HELP.map((item) =>
-      listOFService.push(`${item.detail}/${item.unit}(${item.type})`)
-    );
-  }
+  const HOURLY_HELP = data
+    .filter((item) => item.name === "Giúp việc theo giờ")
+    .map((item) => item.detail + "/" + item.type + "(" + item.unit + ")");
+
   const addDetailHandler = (detail) => {
 
     setDetail(detail);
@@ -77,10 +53,10 @@ const HourlyHelp = () => {
   };
   const serviceHandler = (event, service) => {
     setSelectedService(service);
-  }
+  };
   const freqHandler = (event, frequence) => {
     setSelectedFreq(frequence);
-  }
+  };
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className="bg user-navbar" />
@@ -108,7 +84,7 @@ const HourlyHelp = () => {
                   onChange={serviceHandler}
                   disablePortal
                   id="combo-box-demo"
-                  options={listOFService}
+                  options={HOURLY_HELP}
                   renderInput={(params) => (
                     <TextField
                       {...params}
@@ -116,7 +92,6 @@ const HourlyHelp = () => {
                       onChange={() => addDetailHandler({})}
                     />
                   )}
-                  
                 />
               </div>
               <div className="col-md-6 pickers">
@@ -173,7 +148,7 @@ const HourlyHelp = () => {
                   defaultValue="1412"
                   margin="normal"
                   aria-readonly
-                // onChange
+                  // onChange
                 />
                 <TextField
                   className="col-md-11"
@@ -182,7 +157,7 @@ const HourlyHelp = () => {
                   defaultValue="0977545450"
                   margin="normal"
                   aria-readonly
-                // onChange
+                  // onChange
                 />
               </div>
               <div className="col-md-6 row payment">

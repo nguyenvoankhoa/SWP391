@@ -71,11 +71,12 @@ const ActionRecord = () => {
 export default ActionRecord;
 
 export async function billLoader() {
-  const token = JSON.parse(sessionStorage.getItem("jwtToken"));
+  const token = sessionStorage.getItem("jwtToken");
   const user = JSON.parse(sessionStorage.getItem("user"));
   const request = {
     id: user.id,
   };
+  console.log(token);
   const res = await fetch(
     "https://swp391-production.up.railway.app/customer/orders",
     {
@@ -87,10 +88,12 @@ export async function billLoader() {
       body: JSON.stringify(request),
     }
   );
+  console.log(res);
   if (!res.ok) {
     throw new Error("error");
   } else {
     const data = await res.json();
+    console.log(data);
     return data;
   }
 }
