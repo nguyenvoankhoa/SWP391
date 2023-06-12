@@ -147,7 +147,7 @@ export default function ElectronicCleaning() {
                   display: "flex",
                   justifyContent: "flex-start",
                   textAlign: "center",
-                  marginLeft: 25,
+                  marginLeft: 20,
                   marginTop: "1%",
                 }}
               >
@@ -224,14 +224,17 @@ export default function ElectronicCleaning() {
                 Hoàn tất đơn hàng
               </Button>
             </Paper>
-            <div
+            <div className="col-5">
+              <div
               className="col-5"
               style={{
                 display: "flex",
-                position: "initial"
+                position: "initial", 
+                marginInlineStart: "8%"
               }}
             >
               <OrderSumation />
+            </div>
             </div>
           </Box>
         )}

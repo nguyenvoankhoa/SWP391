@@ -12,6 +12,7 @@ import { styled } from "@mui/material/styles";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import "./ElectronicCleaning.css";
+import OrderSumation from "./OrderSumation";
 
 const AntTabs = styled(Tabs)({
   "& .MuiTabs-indicator": {
@@ -121,6 +122,7 @@ export default function FabricCleaning() {
             sx={{
               "& .MuiTextField-root": { mt: 5, width: "30ch", ml: 5 },
               display: "flex",
+              mt: 5
             }}
             noValidate
             autoComplete="off"
@@ -131,8 +133,7 @@ export default function FabricCleaning() {
                 flexGrow: 1,
                 width: "50%",
                 ml: 4,
-                mr: 2,
-                mt: 5,
+                mr: 2
               }}
             >
               <Box
@@ -218,114 +219,17 @@ export default function FabricCleaning() {
                 Hoàn tất đơn hàng
               </Button>
             </Paper>
-            <div
+              <div className="col-5">
+              <div
               className="col-5"
               style={{
                 display: "flex",
-                position: "initial",
+                position: "initial", 
+                marginInlineStart: "8%"
               }}
             >
-              <Paper sx={{ p: 3, width: 400, mt: 5, ml: 6 }}>
-                <Typography
-                  variant="h6"
-                  sx={{
-                    color: "#397F77",
-                    fontFamily: "Montserrat",
-                    textAlign: "center",
-                  }}
-                >
-                  Thông tin đơn hàng
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{ color: "black", fontFamily: "Montserrat", mt: 2 }}
-                >
-                  Vệ sinh
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: "black",
-                    fontFamily: "Montserrat",
-                    mt: 2,
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <span>Số lượng:</span>
-                  <span>1</span>
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: "black",
-                    fontFamily: "Montserrat",
-                    mt: 2,
-                    display: "flex",
-                    justifyContent: "space-between",
-                  }}
-                >
-                  <span>Thời gian thợ đến:</span>
-                  <span>16:00</span>
-                </Typography>
-                <hr sx={{ borderTop: "1px solid lightgrey", my: 1 }} />
-                <Typography
-                  variant="body1"
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    color: "grey",
-                    fontFamily: "Montserrat",
-                    mt: 2,
-                  }}
-                >
-                  <span>Đơn giá:</span>
-                  <span>200.000 VNĐ</span>
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    color: "grey",
-                    fontFamily: "Montserrat",
-                    mt: 2,
-                  }}
-                >
-                  <span>VAT:</span>
-                  <span>10%</span>
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    color: "grey",
-                    fontFamily: "Montserrat",
-                    mt: 2,
-                  }}
-                >
-                  <span>Thành tiền:</span>
-                  <span>220.000 VNĐ</span>
-                </Typography>
-                <hr sx={{ borderTop: "1px solid lightgrey", my: 1 }} />
-                <Typography
-                  variant="body1"
-                  sx={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    color: "black",
-                    fontFamily: "Montserrat",
-                    mt: 2,
-                    fontWeight: "bolder",
-                  }}
-                >
-                  TỔNG <br /> GIÁ TRỊ <br /> ĐƠN HÀNG{" "}
-                  <span style={{ fontSize: "22px", color: "#397F77" }}>
-                    220.000 <br /> VNĐ
-                  </span>
-                </Typography>
-              </Paper>
+              <OrderSumation />
+            </div>
             </div>
           </Box>
         )}
