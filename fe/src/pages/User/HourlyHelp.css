@@ -136,7 +136,7 @@
   letter-spacing: 1px;
 }
 
-.hh-content .active, .hh-content .payment .hh-submit button:hover {
+.hh-submit button:hover {
   background-color: #397f77;
   color: white;
 }

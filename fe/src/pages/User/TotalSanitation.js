@@ -86,6 +86,7 @@ const HourlyHelp = () => {
         className="container"
         style={{
           height: "auto",
+          marginLeft: "3vw",
         }}
       >
         <Title
@@ -93,7 +94,7 @@ const HourlyHelp = () => {
           color="black"
           fontSize="35px"
           fontWeight="1000"
-          padding="1% 0 0  0"
+          padding="1% 0 1% 0"
         />
         <div className="hh-content row">
           <div className="hh-services col-md-7 flex-column">
