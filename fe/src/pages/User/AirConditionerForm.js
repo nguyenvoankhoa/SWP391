@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import { Grid, TextField, Paper, Typography } from "@mui/material";
+import { Grid, TextField, Paper, Typography, Button } from "@mui/material";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -168,6 +168,26 @@ const AirConditionerForm = ({ options }) => {
             <PaymentPicker onAddPayment={paymentHandler} />
           </div>
         </div>
+        <Button
+          variant="contained"
+          sx={{
+            width: "87%",
+            height: "10%",
+            mt: 6,
+            mb: 8,
+            ml: 5, 
+            backgroundColor: "#397F77",
+            color: "#ffffff",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            "&:hover": {
+              backgroundColor: "#397F77",
+            },
+          }}
+        >
+          Hoàn tất đơn hàng
+        </Button>
       </Paper>
       <div
         className="col-5"
