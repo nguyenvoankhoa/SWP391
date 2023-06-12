@@ -25,8 +25,8 @@ const HourlyHelp = () => {
   const totalAmount = useSelector((state) => state.order.totalAmount);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [selectedDate, setselectedDate] = useState(new Date());
-  const [selectedTime, setSelectedTime] = useState("Sáng");
+  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedTime, setSelectedTime] = useState("");
   const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
   const [selectedService, setSelectedService] = useState("");
   const [selectedFreq, setSelectedFreq] = useState("");
@@ -40,21 +40,6 @@ const HourlyHelp = () => {
     setDetail(detail);
   };
 
-  const addTimeHandler = (time) => {
-    setSelectedTime(time);
-  };
-  const addDateHandler = (date) => {
-    setselectedDate(date);
-  };
-  const paymentHandler = (payment) => {
-    setSelectedPayment(payment);
-  };
-  const serviceHandler = (event, service) => {
-    setSelectedService(service);
-  };
-  const freqHandler = (event, frequence) => {
-    setSelectedFreq(frequence);
-  };
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className="bg user-navbar" />
@@ -78,8 +63,8 @@ const HourlyHelp = () => {
             <div className="col-md-12 row services mt-3">
               <div className="col-md-6">
                 <Autocomplete
-                  value={selectedService}
-                  onChange={serviceHandler}
+                  value={selectedService === "" ? null : selectedService}
+                  onChange={(service) => setSelectedService(service)}
                   disablePortal
                   id="combo-box-demo"
                   options={TOTAL_SANITATION}
@@ -94,8 +79,8 @@ const HourlyHelp = () => {
               </div>
               <div className="col-md-6">
                 <Autocomplete
-                  value={selectedFreq}
-                  onChange={freqHandler}
+                  value={selectedFreq === "" ? null : selectedFreq}
+                  onChange={(freq) => setSelectedFreq(freq)}
                   disablePortal
                   id="combo-box-demo"
                   options={React.state.cleanFreq}
@@ -110,15 +95,15 @@ const HourlyHelp = () => {
               <div className="col-md-6">
                 <p>Chọn ngày</p>
                 <DatePicker
-                  onChange={(date) => addDateHandler(date)}
-                  disablePast="true"
+                  onChange={(date) => setSelectedDate(date)}
+                  disablePast={true}
                   format="DD/MM/YYYY"
                 />
               </div>
               <div className="col-md-6">
                 <p>Chọn giờ</p>
                 <TimePicker
-                  onChange={(date) => addTimeHandler(date)}
+                  onChange={(date) => setSelectedTime(date)}
                   ampm={false}
                   format="hh:mm"
                 />
@@ -158,7 +143,9 @@ const HourlyHelp = () => {
               </div>
               <div className="col-md-6 row payment">
                 <p className="text-center">Phương thức thanh toán</p>
-                <PaymentPicker onAddPayment={paymentHandler} />
+                <PaymentPicker
+                  onAddPayment={(payment) => setSelectedPayment(payment)}
+                />
               </div>
             </div>
             <div className="col-md-12 mt-4" id="finish">

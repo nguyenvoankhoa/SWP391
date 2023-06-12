@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./HourlyHelp.css";
-import { json, useLoaderData, useNavigate } from "react-router-dom";
+import { json, useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
@@ -25,7 +25,6 @@ React.state = {
 const HourlyHelp = () => {
   const totalAmount = useSelector((state) => state.order.totalAmount);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [selectedDate, setselectedDate] = useState();
   const [selectedTime, setSelectedTime] = useState("Sáng");
   const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
@@ -38,7 +37,6 @@ const HourlyHelp = () => {
     .map((item) => item.detail + "/" + item.type + "(" + item.unit + ")");
 
   const addDetailHandler = (detail) => {
-
     setDetail(detail);
   };
 
@@ -80,7 +78,7 @@ const HourlyHelp = () => {
             <div className="col-md-12 row services mt-3">
               <div className="col-md-6 pickers">
                 <Autocomplete
-                  value={selectedService}
+                  value={selectedService === "" ? null : selectedService}
                   onChange={serviceHandler}
                   disablePortal
                   id="combo-box-demo"
@@ -96,7 +94,7 @@ const HourlyHelp = () => {
               </div>
               <div className="col-md-6 pickers">
                 <Autocomplete
-                  value={selectedFreq}
+                  value={selectedFreq === "" ? null : selectedFreq}
                   onChange={freqHandler}
                   disablePortal
                   id="combo-box-demo"
@@ -114,7 +112,7 @@ const HourlyHelp = () => {
                 <DatePicker
                   value={selectedDate}
                   onChange={(date) => addDateHandler(date)}
-                  disablePast="true"
+                  disablePast={true}
                   format="DD/MM/YYYY"
                 />
               </div>
