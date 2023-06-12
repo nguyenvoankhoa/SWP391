@@ -1,0 +1,15 @@
+input[type="password"],
+input[type="text"],
+input[type="submit"] {
+  background-color: #f6f6f6;
+  border: 2px solid #f6f6f6;
+  border-radius: 5px 5px 5px 5px;
+  color: #0d0d0d;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+}
