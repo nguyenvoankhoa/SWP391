@@ -77,7 +77,7 @@ const EditEmployee = () => {
 export default EditEmployee;
 
 export async function employeeLoader() {
-  const token = sessionStorage.getItem("jwtToken");
+  const token = JSON.parse(sessionStorage.getItem("jwtToken"));
   const res = await fetch(
     "https://swp391-production.up.railway.app/admin/employees",
     {

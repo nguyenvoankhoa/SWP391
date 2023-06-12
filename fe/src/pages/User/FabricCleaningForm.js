@@ -11,22 +11,29 @@ import PaymentPicker from "../../components/User/PaymentPicker";
 import { styled } from "@mui/material/styles";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import './ElectronicCleaning.css'
+import "./ElectronicCleaning.css";
 
-const AirConditionerForm = ({ options }) => {
+
+const FabricCleaningForm = ({ selectedTab, onTabChange, options }) => {
   React.state = {
-    payMethod: ["PayPal", "Tiền mặt"]
+    payMethod: ["PayPal", "Tiền mặt"],
   };
   const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
   const paymentHandler = (payment) => {
     setSelectedPayment(payment);
   };
-  const AntTabs = styled(Tabs)({
+  const AntTabs = styled(Tabs)(({ theme }) => ({
     "& .MuiTabs-indicator": {
-      backgroundColor: "none",
+      backgroundColor: "#1890ff",
     },
-  });
-  
+    "& .MuiTab-root": {
+      minWidth: "auto",
+      [theme.breakpoints.up("sm")]: {
+        minWidth: "auto",
+      },
+    },
+  }));
+
   const AntTab = styled((props) => <Tab disableRipple {...props} />)(
     ({ theme }) => ({
       textTransform: "none",
@@ -63,15 +70,10 @@ const AirConditionerForm = ({ options }) => {
     })
   );
   const [value, setValue] = useState(0);
-  const [showForm, setShowForm] = useState(false);
   const handleChange = (event, newValue) => {
-    setValue (newValue);
-    setShowForm (newValue === 0);
+    setValue(newValue);
   };
-  React.useEffect(() => {
-    setShowForm(true);
-  }, []);
-  return ( 
+  return (
     <Box
       component="form"
       sx={{
@@ -82,40 +84,35 @@ const AirConditionerForm = ({ options }) => {
       autoComplete="off"
     >
       <Paper
-      
         className="col-md-6 "
         sx={{
           flexGrow: 1,
           width: "50%",
           ml: 4,
           mr: 2,
-          mt: 5
+          mt: 5,
         }}
       >
-          <Box
-    sx={{
-      display: "flex",
-      justifyContent: "flex-start",
-      textAlign: "center",
-      marginLeft: 20,
-      marginTop: "1%"
-    }}
-  >
-    <AntTabs
-      value={value}
-      onChange={handleChange}
-      aria-label="ant example"
-    >
-      <AntTab label="Máy Lạnh Treo Tường" />
-      <AntTab label="Máy Lạnh Âm Trần" />
-    </AntTabs>
-  </Box>
-        <Grid
-          container
-          spacing={2}
-          justifyContent="left"
-          marginRight={1}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "flex-start",
+            textAlign: "center",
+            marginLeft: 25,
+            marginTop: "1%",
+          }}
         >
+          <AntTabs
+            value={value}
+            onChange={handleChange}
+            aria-label="ant example"
+          >
+            <AntTab label="Sofa" />
+            <AntTab label="Nệm" />
+            <AntTab label="Thảm" />
+          </AntTabs>
+        </Box>
+        <Grid container spacing={2} justifyContent="left" marginRight={1}>
           <Grid item>
             <TextField
               id="outlined-select-currency"
@@ -147,8 +144,7 @@ const AirConditionerForm = ({ options }) => {
               // alignItems: "center",
               // display: "flex",
               // justifyContent: "center",
-              marginRight: 1
-              
+              marginRight: 1,
             }}
           >
             <DemoItem>
@@ -171,7 +167,7 @@ const AirConditionerForm = ({ options }) => {
           </DemoContainer>
         </LocalizationProvider>
         <div className="ec-content row payment">
-          <div className="col-md-12 ec-payment" >
+          <div className="col-md-12 ec-payment">
             <PaymentPicker onAddPayment={paymentHandler} />
           </div>
         </div>
@@ -198,7 +194,7 @@ const AirConditionerForm = ({ options }) => {
             variant="body1"
             sx={{ color: "black", fontFamily: "Montserrat", mt: 2 }}
           >
-            Vệ sinh máy lạnh treo tường
+            Vệ sinh 
           </Typography>
           <Typography
             variant="body1"
@@ -289,4 +285,4 @@ const AirConditionerForm = ({ options }) => {
   );
 };
 
-export default AirConditionerForm;
+export default FabricCleaningForm;

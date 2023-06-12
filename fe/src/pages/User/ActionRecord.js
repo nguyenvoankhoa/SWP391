@@ -71,7 +71,7 @@ const ActionRecord = () => {
 export default ActionRecord;
 
 export async function billLoader() {
-  const token = sessionStorage.getItem("jwtToken");
+  const token = JSON.parse(sessionStorage.getItem("jwtToken"));
   const user = JSON.parse(sessionStorage.getItem("user"));
   const request = {
     id: user.id,
