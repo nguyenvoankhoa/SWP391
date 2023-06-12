@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import { Grid, TextField, Paper, Typography, Button } from "@mui/material";
+import { Grid, TextField, Paper, Button } from "@mui/material";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -140,9 +140,6 @@ const AirConditionerForm = ({ options }) => {
           <DemoContainer
             components={["DatePicker"]}
             sx={{
-              // alignItems: "center",
-              // display: "flex",
-              // justifyContent: "center",
               marginRight: 1,
             }}
           >
@@ -192,7 +189,7 @@ const AirConditionerForm = ({ options }) => {
         </Button>
       </Paper>
       <div
-        className="col-5"
+        className="col-4 offset-md-2 mt-5"
         style={{
           display: "flex",
           position: "initial",

@@ -1,10 +1,18 @@
 import React, { useState } from "react";
+import Box from "@mui/material/Box";
+import { Grid, TextField, Paper, Typography, Button } from "@mui/material";
+import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+import MenuItem from "@mui/material/MenuItem";
+import PaymentPicker from "../../components/User/PaymentPicker";
 import { styled } from "@mui/material/styles";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import Box from "@mui/material/Box";
-import AirConditionerForm from "./AirConditionerForm";
-
+import "./ElectronicCleaning.css";
+import OrderSumation from "./OrderSumation";
 
 const AntTabs = styled(Tabs)({
   "& .MuiTabs-indicator": {
@@ -64,22 +72,169 @@ export default function ElectronicCleaning() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-    setShowForm(newValue === 0);
+    setShowForm(true);
   };
 
   React.useEffect(() => {
     setShowForm(true);
   }, []);
 
+  const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
+  const paymentHandler = (payment) => {
+    setSelectedPayment(payment);
+  };
+
+  const OptionalSelect = ({ options }) => (
+    <>
+      <Grid container spacing={2} justifyContent="left" marginRight={1}>
+        <Grid item>
+          <TextField label="Chọn dịch vụ" select>
+            {options.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </TextField>
+        </Grid>
+        <Grid item>
+          <TextField
+            label="Số lượng"
+            type="number"
+            inputProps={{
+              min: 0,
+            }}
+            defaultValue={0}
+          />
+        </Grid>
+      </Grid>
+    </>
+  );
+
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ bgcolor: "none", p: 2 }}>
-        <h1 style={{ textAlign: "center", marginTop: "1%" }}>
+        <h1
+          style={{
+            textAlign: "center",
+            marginTop: "1%",
+            fontFamily: "Montserrat",
+          }}
+        >
           Vệ Sinh Máy Lạnh
         </h1>
-        {showForm && <AirConditionerForm options={optionalTreoTuong} />}
+        {showForm && (
+          <Box
+            component="div"
+            sx={{
+              "& .MuiTextField-root": { mt: 5, width: "30ch", ml: 5 },
+              display: "flex",
+              mt: 5
+            }}
+            noValidate
+            autoComplete="off"
+          >
+            <Paper
+              className="col-md-6"
+              sx={{
+                flexGrow: 1,
+                width: "30%",
+                ml: 4,
+                mr: 2,
+              }}
+            >
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  textAlign: "center",
+                  marginLeft: 25,
+                  marginTop: "1%",
+                }}
+              >
+                <AntTabs
+                  value={value}
+                  onChange={handleChange}
+                  aria-label="ant example"
+                >
+                  <AntTab label="Máy lạnh treo tường" />
+                  <AntTab label="Máy lạnh âm trần" />
+                </AntTabs>
+              </Box>
+              {showForm && (
+                <OptionalSelect
+                  options={
+                    value === 0
+                      ? optionalTreoTuong
+                      : value === 1
+                      ? optionalAmTran
+                      : []
+                  }
+                />
+              )}
 
-        {value === 1 && <AirConditionerForm options={optionalAmTran} />}
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DemoContainer
+                  components={["DatePicker"]}
+                  sx={{
+                    marginRight: 1,
+                  }}
+                >
+                  <DemoItem>
+                    <DatePicker
+                      disablePast
+                      views={["year", "month", "day"]}
+                      label="Chọn ngày"
+                      format="DD/MM/YYYY"
+                    />
+                  </DemoItem>
+                  <DemoItem>
+                    <TimePicker
+                      disablePast
+                      views={["hours", "minutes"]}
+                      label="Chọn giờ"
+                      format="hh:mm"
+                      ampm={false}
+                    />
+                  </DemoItem>
+                </DemoContainer>
+              </LocalizationProvider>
+              <div className="ec-content row payment">
+                <div className="col-md-12 ec-payment">
+                  <PaymentPicker onAddPayment={paymentHandler} />
+                </div>
+              </div>
+              <Button
+                variant="contained"
+                sx={{
+                  width: "87%",
+                  height: "10%",
+                  mt: 6,
+                  mb: 8,
+                  ml: 5,
+                  backgroundColor: "#397F77",
+                  color: "#ffffff",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  "&:hover": {
+                    backgroundColor: "#397F77",
+                  },
+                }}
+              >
+                Hoàn tất đơn hàng
+              </Button>
+            </Paper>
+            <div
+              className="col-5"
+              style={{
+                display: "flex",
+                position: "initial"
+              }}
+            >
+              <OrderSumation />
+            </div>
+          </Box>
+        )}
       </Box>
     </Box>
   );
