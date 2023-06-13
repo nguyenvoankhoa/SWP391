@@ -211,6 +211,8 @@ export default function FabricCleaning() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  fontFamily: "Montserrat",
+                  letterSpacing: "0.1rem",
                   "&:hover": {
                     backgroundColor: "#397F77",
                   },
@@ -219,17 +221,15 @@ export default function FabricCleaning() {
                 Hoàn tất đơn hàng
               </Button>
             </Paper>
-              <div className="col-5">
               <div
               className="col-5"
               style={{
                 display: "flex",
                 position: "initial", 
-                marginInlineStart: "8%"
+                
               }}
             >
               <OrderSumation />
-            </div>
             </div>
           </Box>
         )}

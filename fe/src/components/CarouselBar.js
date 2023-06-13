@@ -4,7 +4,7 @@ import "./Carousel.css";
 const CarouselBar = () => {
   return (
     <>
-      <div className="container">
+      <div className="container-fluid">
         <div
           id="carouselBar"
           className="carousel slide"

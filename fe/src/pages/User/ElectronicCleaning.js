@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Box from "@mui/material/Box";
-import { Grid, TextField, Paper, Typography, Button } from "@mui/material";
+import { Grid, TextField, Paper, Button } from "@mui/material";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -216,6 +216,8 @@ export default function ElectronicCleaning() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
+                  fontFamily: "Montserrat",
+                  letterSpacing: "0.1rem",
                   "&:hover": {
                     backgroundColor: "#397F77",
                   },
@@ -224,17 +226,15 @@ export default function ElectronicCleaning() {
                 Hoàn tất đơn hàng
               </Button>
             </Paper>
-            <div className="col-5">
               <div
               className="col-5"
               style={{
                 display: "flex",
                 position: "initial", 
-                marginInlineStart: "8%"
+                // marginInlineStart: "8%"
               }}
             >
               <OrderSumation />
-            </div>
             </div>
           </Box>
         )}

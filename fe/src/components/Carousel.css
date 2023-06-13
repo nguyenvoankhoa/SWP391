@@ -16,7 +16,7 @@
 }
 
 .container .carousel .carousel-inner, .container .carousel img{
-    border-radius: 20px;
+    border-radius: 10px;
 }
 
 @media (min-width: 768px) {
@@ -24,7 +24,7 @@
     .c-title {
         font-size: 3.5vw !important;
     }
-    .container .carousel .carousel-inner, .container .carousel img{
+    /* .container .carousel .carousel-inner, .container .carousel img{
         border-radius: 40px;
-    }
+    } */
 }
