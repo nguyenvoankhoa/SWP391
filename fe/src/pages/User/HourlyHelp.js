@@ -15,6 +15,7 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import OrderSumation from "./OrderSumation";
+import Confirm from "../../components/User/Confirm";
 
 React.state = {
   cleanFreq: ["Hàng tuần", "Hàng tháng", "Một lần"],
@@ -27,47 +28,57 @@ const HourlyHelp = () => {
   const dispatch = useDispatch();
   const [selectedDate, setselectedDate] = useState();
   const [selectedTime, setSelectedTime] = useState("Sáng");
-  const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
-  const [selectedService, setSelectedService] = useState("");
+  const [selectedServiceId, setSelectedServiceId] = useState(null);
   const [selectedFreq, setSelectedFreq] = useState("");
   const [detail, setDetail] = useState(null);
   const data = useLoaderData();
   const HOURLY_HELP = data
     .filter((item) => item.name === "Giúp việc theo giờ")
-    .map((item) => item.detail + "/" + item.type + "(" + item.unit + ")");
+    .map((item) => ({
+      id: item.serviceId,
+      type: item.detail + "/" + item.type + "(" + item.unit + ")",
+      price: item.price,
+    }));
+  const selectedService = HOURLY_HELP.find(
+    (service) => service.id === selectedServiceId
+  );
 
-  const addDetailHandler = (detail) => {
-    setDetail(detail);
+  const addServiceHandler = () => {
+    const date = selectedDate.$D;
+    const dayParse = new Date(selectedDate.$d);
+    const day = dayParse.toLocaleDateString("en-US", { weekday: "long" });
+    const month = selectedDate.$M;
+    const timeParse = new Date(selectedTime.$d);
+    const hour = timeParse.getHours() + ":" + timeParse.getMinutes();
+    let frequency;
+    if (selectedFreq === "Hàng tuần") {
+      frequency = "Weekly";
+    } else if (selectedFreq === "Hàng tháng") {
+      frequency = "Monthly";
+    } else {
+      frequency = "Once";
+    }
+    let service = {
+      businessId: selectedService.id,
+      date: date,
+      month: month + 1,
+      day: day,
+      hour: hour,
+      frequency: frequency,
+      quantity: 1,
+      price: selectedService.price,
+      type: selectedService.type,
+    };
+    dispatch(orderItemAction.addItem(service));
   };
 
-  const addTimeHandler = (time) => {
-    setSelectedTime(time);
-  };
-  const addDateHandler = (date) => {
-    setselectedDate(date);
-  };
-  const paymentHandler = (payment) => {
-    setSelectedPayment(payment);
-  };
-  const serviceHandler = (event, service) => {
-    setSelectedService(service);
-  };
-  const freqHandler = (event, frequence) => {
-    setSelectedFreq(frequence);
-  };
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className="bg user-navbar" />
-      <div
-        className="container"
-        style={{
-          height: "auto",
-          marginLeft: "3vw",
-        }}
-      >
+      <div className="container">
         <Title
           title="DỊCH VỤ DỌN DẸP"
-          color="black"
+          color="white"
           fontSize="35px"
           fontWeight="1000"
           padding="1% 0 1% 0"
@@ -78,24 +89,23 @@ const HourlyHelp = () => {
             <div className="col-md-12 row services mt-3">
               <div className="col-md-6 pickers">
                 <Autocomplete
-                  value={selectedService === "" ? null : selectedService}
-                  onChange={serviceHandler}
+                  value={selectedService}
+                  onChange={(event, service) =>
+                    setSelectedServiceId(service?.id || null)
+                  }
                   disablePortal
                   id="combo-box-demo"
                   options={HOURLY_HELP}
+                  getOptionLabel={(option) => option.type}
                   renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      label="Chọn loại dịch vụ"
-                      onChange={() => addDetailHandler({})}
-                    />
+                    <TextField {...params} label="Chọn loại dịch vụ" />
                   )}
                 />
               </div>
               <div className="col-md-6 pickers">
                 <Autocomplete
                   value={selectedFreq === "" ? null : selectedFreq}
-                  onChange={freqHandler}
+                  onChange={(event, freq) => setSelectedFreq(freq)}
                   disablePortal
                   id="combo-box-demo"
                   options={React.state.cleanFreq}
@@ -111,7 +121,7 @@ const HourlyHelp = () => {
                 <p>Chọn ngày</p>
                 <DatePicker
                   value={selectedDate}
-                  onChange={(date) => addDateHandler(date)}
+                  onChange={(date) => setselectedDate(date)}
                   disablePast={true}
                   format="DD/MM/YYYY"
                 />
@@ -120,52 +130,16 @@ const HourlyHelp = () => {
                 <p>Chọn giờ</p>
                 <TimePicker
                   disablePast
-                  value={selectedDate}
-                  onChange={(time) => addTimeHandler(time)}
+                  value={selectedTime}
+                  onChange={(time) => setSelectedTime(time)}
                   ampm={false}
                   format="hh:mm"
                 />
               </div>
             </div>
             <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
-            <div className="row d-flex mt-3">
-              <div className="col-md-6 d-flex row location">
-                <p className="text-center">Thông tin liên lạc</p>
-                <TextField
-                  className="col-md-11"
-                  variant="outlined"
-                  label="Số tòa"
-                  defaultValue="S1.06"
-                  margin="normal"
-                  aria-readonly
-                />
-                <TextField
-                  className="col-md-11"
-                  variant="outlined"
-                  label="Số phòng"
-                  defaultValue="1412"
-                  margin="normal"
-                  aria-readonly
-                  // onChange
-                />
-                <TextField
-                  className="col-md-11"
-                  variant="outlined"
-                  label="Số điện thoại"
-                  defaultValue="0977545450"
-                  margin="normal"
-                  aria-readonly
-                  // onChange
-                />
-              </div>
-              <div className="col-md-6 row payment">
-                <p className="text-center">Phương thức thanh toán</p>
-                <PaymentPicker onAddPayment={paymentHandler} />
-              </div>
-            </div>
-            <div className="col-md-12 mt-4" id="finish">
-              <button className="finish-btn">HOÀN THÀNH ĐƠN HÀNG</button>
-            </div>
+            {/* <Confirm /> */}
+            <button onClick={addServiceHandler}>Thêm vào đơn hàng</button>
           </div>
           <OrderSumation />
         </div>

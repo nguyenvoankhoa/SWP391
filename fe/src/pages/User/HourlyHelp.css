@@ -13,7 +13,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  background-image: linear-gradient(180deg, #F8F5F5, #fff);
+  background-image: linear-gradient(180deg, #f8f5f5, #fff);
   z-index: -1;
 }
 
@@ -21,11 +21,10 @@
   background-color: #fff;
   padding: 2%;
   border-radius: 5px;
-  
 }
 
 .hh-services h5,
-.hh-total h5{
+.hh-total h5 {
   font-size: 20px;
   font-weight: 600 !important;
 }
@@ -107,7 +106,8 @@
   justify-content: space-around;
 }
 
-.payment .hh-submit, .hh-payment {
+.payment .hh-submit,
+.hh-payment {
   width: 100%;
   padding: 0;
 }
@@ -121,14 +121,12 @@
 }
 
 #finish button {
-  font-size: 20px;
   text-align: center;
-  width: 100%;
   background-color: #397f77;
   color: white;
   border: none;
-  padding: 1% 0;
-  margin: 0;
+  padding: 10px;
+  margin: 5px;
   border-radius: 5px;
   font-weight: 600;
   letter-spacing: 1px;
@@ -137,4 +135,8 @@
 .hh-submit button:hover {
   background-color: #397f77;
   color: white;
+}
+#finish button a {
+  text-decoration: none;
+  color: #fff;
 }

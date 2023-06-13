@@ -22,7 +22,6 @@ const useTokenRefresh = () => {
         throw new Error("Error");
       }
       const data = await response.json();
-      console.log(data);
       sessionStorage.setItem("jwtToken", data.access_token);
       sessionStorage.setItem("refreshToken", data.refresh_token);
     };

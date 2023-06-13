@@ -1,54 +1,64 @@
-import React from 'react';
-import { Divider } from '@mui/material';
+import React, { useState } from "react";
+import { Divider } from "@mui/material";
 import "./OrderSumation.css";
-
+import { useDispatch, useSelector } from "react-redux";
+import { orderItemAction } from "../../redux/order";
 const OrderSumation = () => {
+  const dispatch = useDispatch();
+  const cartItems = useSelector((state) => state.order.items);
+  const totalAmount = useSelector((state) => state.order.totalAmount);
+  const [discount, setDiscount] = useState(null);
+  const discountHandler = () => {
+    setDiscount(10);
+  };
+
   return (
     <>
       <div className="hh-total col-md-4">
         <h5 className="text-center">Thông tin đơn hàng</h5>
         <div className="total-infor">
-          <p>
-            <span>Vệ sinh định kỳ </span>
-            <img
-              type="button"
-              src='/assets/images/remove.svg' alt='remove'
-              style={{
-                width: "18px",
-              }}
-            />
-          </p>
-          <p>
-            <span>xxm2 xx Phòng</span>
-            <img
-              type="button"
-              src='/assets/images/remove.svg' alt='remove'
-              style={{
-                width: "18px",
-              }}
-            />
-          </p>
-          <p>
-            <span>06/05/2023 5:30 PM</span>
-            <img
-              type="button"
-              src='/assets/images/remove.svg' alt='remove'
-              style={{
-                width: "18px",
-              }}
-            />
-          </p>
+          {cartItems.length === 0 ? (
+            <p>Chưa có thông tin</p>
+          ) : (
+            cartItems.map((order) => (
+              <p key={order.type}>
+                <p>{order.type}</p>
+                <p>Số lượng: {order.quantity}</p>
+                <img
+                  type="button"
+                  src="/assets/images/remove.svg"
+                  alt="remove"
+                  style={{
+                    width: "18px",
+                  }}
+                  onClick={() =>
+                    dispatch(orderItemAction.removeItem(order.businessId))
+                  }
+                />
+              </p>
+            ))
+          )}
         </div>
         <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
         <div className="total-cost">
           <p>
-            Đơn giá: <span>100.000 VNĐ</span>
+            Đơn giá: <span>{totalAmount} VNĐ</span>
           </p>
+          <input
+            placeholder="Mã giảm giá"
+            className="inputDiscount"
+            name="email"
+            type="text"
+          />
+          <button className="apply-discount" onClick={discountHandler}>
+            Ap dung
+          </button>
+          {discount && <p>Giam gia : {discount}%</p>}
           <p>
-            VAT: <span>10%</span>
-          </p>
-          <p>
-            Thành tiền: <span>110.000 VNĐ</span>
+            Thành tiền:
+            {discount && (
+              <span>{totalAmount - (totalAmount * discount) / 100}</span>
+            )}
           </p>
         </div>
         <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
@@ -59,12 +69,15 @@ const OrderSumation = () => {
             <span>Đơn hàng</span>
           </h5>
           <h4>
-            110.000<span>VNĐ</span>
+            {discount
+              ? totalAmount
+              : totalAmount - (totalAmount * discount) / 100}{" "}
+            <span>VNĐ</span>
           </h4>
         </div>
       </div>
     </>
   );
-}
+};
 
 export default OrderSumation;
