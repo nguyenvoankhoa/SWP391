@@ -15,6 +15,7 @@ import OrderSumation from "./OrderSumation";
 import { useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
 import { useDispatch } from "react-redux";
+import { orderItemAction } from "../../redux/order";
 
 const AntTabs = styled(Tabs)({});
 
@@ -45,7 +46,7 @@ const AntTab = styled((props) => <Tab disableRipple {...props} />)(
 
 const CleanFreq = ["Hàng tuần", "Hàng tháng", "Một lần"];
 
-export default function FabricCleaning() {
+export default function ElectronicCleaning() {
   const [value, setValue] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ export default function FabricCleaning() {
   const [selectedServiceId, setSelectedServiceId] = useState("");
   const [selectedFreq, setSelectedFreq] = useState("");
   const data = useLoaderData();
-  const FABRIC_CLEANING = data
+  const DATA = data
     .filter((item) => item.name === "Vệ sinh máy lạnh")
     .map((item) => ({
       id: item.serviceId,
@@ -62,22 +63,22 @@ export default function FabricCleaning() {
       price: item.price,
       detail: item.detail,
     }));
-  const selectedService = FABRIC_CLEANING.find(
+  const selectedService = DATA.find(
     (service) => service.id === selectedServiceId
   );
-  const optionalTreoTuong = FABRIC_CLEANING.filter(
+  const optionalTreoTuong = DATA.filter(
     (item) => item.type === "Treo tường"
   ).map((item) => ({
     value: item.id,
     label: item.detail,
   }));
 
-  const optionalAmTran = FABRIC_CLEANING.filter(
-    (item) => item.type === "Âm trần"
-  ).map((item) => ({
-    value: item.id,
-    label: item.detail,
-  }));
+  const optionalAmTran = DATA.filter((item) => item.type === "Âm trần").map(
+    (item) => ({
+      value: item.id,
+      label: item.detail,
+    })
+  );
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setShowForm(true);
@@ -116,8 +117,7 @@ export default function FabricCleaning() {
       price: selectedService.price,
       type: selectedService.type,
     };
-    console.log(service);
-    // dispatch(orderItemAction.addItem(service));
+    dispatch(orderItemAction.addItem(service));
   };
 
   const OptionalSection = ({ options }) => (
@@ -156,7 +156,7 @@ export default function FabricCleaning() {
     <Box sx={{ width: "100%" }}>
       <Box sx={{ bgcolor: "none", p: 2 }}>
         <Title
-          title="Vệ sinh máy lạnh"
+          title="VỆ SINH MÁY LẠNH"
           color="white"
           fontSize="35px"
           fontWeight="1000"

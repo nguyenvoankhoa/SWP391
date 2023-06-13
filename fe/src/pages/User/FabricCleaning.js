@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import { Grid, TextField, Paper } from "@mui/material";
+import { Grid, TextField, Paper, Autocomplete } from "@mui/material";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -14,6 +14,8 @@ import "./ElectronicCleaning.css";
 import OrderSumation from "./OrderSumation";
 import { useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
+import { useDispatch } from "react-redux";
+import { orderItemAction } from "../../redux/order";
 
 const AntTabs = styled(Tabs)({});
 
@@ -42,11 +44,18 @@ const AntTab = styled((props) => <Tab disableRipple {...props} />)(
   })
 );
 
+const CleanFreq = ["Hàng tuần", "Hàng tháng", "Một lần"];
+
 export default function FabricCleaning() {
   const [value, setValue] = useState(0);
   const [showForm, setShowForm] = useState(false);
+  const dispatch = useDispatch();
+  const [selectedDate, setSelectedDate] = useState();
+  const [selectedTime, setSelectedTime] = useState();
+  const [selectedServiceId, setSelectedServiceId] = useState("");
+  const [selectedFreq, setSelectedFreq] = useState("");
   const data = useLoaderData();
-  const FABRIC_CLEANING = data
+  const DATA = data
     .filter((item) => item.name === "Vệ sinh nệm, sofa, thảm")
     .map((item) => ({
       id: item.serviceId,
@@ -54,66 +63,108 @@ export default function FabricCleaning() {
       price: item.price,
       detail: item.detail,
     }));
-  const optionalSofa = FABRIC_CLEANING.filter(
-    (item) => item.type === "Sofa"
-  ).map((item) => ({
-    value: item.id,
-    label: item.detail,
-  }));
-
-  const optionalNem = FABRIC_CLEANING.filter((item) => item.type === "Nệm").map(
+  const selectedService = DATA.find(
+    (service) => service.id === selectedServiceId
+  );
+  const optionalNem = DATA.filter((item) => item.type === "Nệm").map(
     (item) => ({
       value: item.id,
       label: item.detail,
     })
   );
 
-  const optionalTham = FABRIC_CLEANING.filter(
-    (item) => item.type === "Thảm"
-  ).map((item) => ({
-    value: item.id,
-    label: item.detail,
-  }));
+  const optionalTham = DATA.filter((item) => item.type === "Thảm").map(
+    (item) => ({
+      value: item.id,
+      label: item.detail,
+    })
+  );
+
+  const optionalSofa = DATA.filter((item) => item.type === "Sofa").map(
+    (item) => ({
+      value: item.id,
+      label: item.detail,
+    })
+  );
+  console.log(optionalSofa);
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setShowForm(true);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     setShowForm(true);
   }, []);
+  const handleServiceChange = (event) => {
+    setSelectedServiceId(() => event.target.value);
+  };
+
+  const addServiceHandler = () => {
+    const date = selectedDate.$D;
+    const dayParse = new Date(selectedDate.$d);
+    const day = dayParse.toLocaleDateString("en-US", { weekday: "long" });
+    const month = selectedDate.$M;
+    const timeParse = new Date(selectedTime.$d);
+    const hour = timeParse.getHours() + ":" + timeParse.getMinutes();
+    let frequency;
+    if (selectedFreq === "Hàng tuần") {
+      frequency = "Weekly";
+    } else if (selectedFreq === "Hàng tháng") {
+      frequency = "Monthly";
+    } else {
+      frequency = "Once";
+    }
+    let service = {
+      businessId: selectedService.id,
+      date: date,
+      month: month + 1,
+      day: day,
+      hour: hour,
+      frequency: frequency,
+      quantity: 1,
+      price: selectedService.price,
+      type: selectedService.type,
+    };
+    dispatch(orderItemAction.addItem(service));
+  };
 
   const OptionalSection = ({ options }) => (
-    <>
-      <Grid container spacing={2} justifyContent="left" marginRight={1}>
-        <Grid item>
-          <TextField label="Chọn dịch vụ" select>
-            {options.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid item>
-          <TextField
-            label="Số lượng"
-            type="number"
-            inputProps={{
-              min: 0,
-            }}
-            defaultValue={0}
-          />
-        </Grid>
+    <Grid container spacing={2} justifyContent="left" marginRight={1}>
+      <Grid item>
+        <TextField
+          label="Chọn dịch vụ"
+          select
+          value={selectedService ? selectedService.id : ""}
+          onChange={handleServiceChange}
+        >
+          {options.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
       </Grid>
-    </>
+      <Grid item>
+        <Autocomplete
+          value={selectedFreq === "" ? null : selectedFreq}
+          onChange={(event, freq) => setSelectedFreq(freq)}
+          disablePortal
+          id="combo-box-demo"
+          options={CleanFreq}
+          sx={{ width: 400 }}
+          renderInput={(params) => (
+            <TextField {...params} label="Chọn loại vệ sinh" />
+          )}
+        />
+      </Grid>
+    </Grid>
   );
 
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ bgcolor: "none", p: 2 }}>
         <Title
-          title="VỆ SINH SOFA, NỆM, THẢM"
+          title="VỆ SINH MÁY LẠNH"
           color="white"
           fontSize="35px"
           fontWeight="1000"
@@ -153,8 +204,8 @@ export default function FabricCleaning() {
                   onChange={handleChange}
                   aria-label="ant example"
                 >
-                  <AntTab label="Sofa" />
                   <AntTab label="Nệm" />
+                  <AntTab label="Sofa" />
                   <AntTab label="Thảm" />
                 </AntTabs>
               </Box>
@@ -162,33 +213,29 @@ export default function FabricCleaning() {
                 <OptionalSection
                   options={
                     value === 0
-                      ? optionalSofa
-                      : value === 1
                       ? optionalNem
+                      : value === 1
+                      ? optionalSofa
                       : optionalTham
                   }
                 />
               )}
 
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer
-                  components={["DatePicker"]}
-                  sx={{
-                    marginRight: 1,
-                  }}
-                >
+                <DemoContainer components={["DatePicker"]}>
                   <DemoItem>
                     <DatePicker
                       disablePast
-                      views={["year", "month", "day"]}
                       label="Chọn ngày"
                       format="DD/MM/YYYY"
+                      value={selectedDate}
+                      onChange={(date) => setSelectedDate(date)}
                     />
                   </DemoItem>
                   <DemoItem>
                     <TimePicker
-                      disablePast
-                      views={["hours", "minutes"]}
+                      value={selectedTime}
+                      onChange={(time) => setSelectedTime(time)}
                       label="Chọn giờ"
                       format="hh:mm"
                       ampm={false}
@@ -197,7 +244,7 @@ export default function FabricCleaning() {
                 </DemoContainer>
               </LocalizationProvider>
 
-              <button>Thêm vào giỏ hàng</button>
+              <button onClick={addServiceHandler}>Thêm vào giỏ hàng</button>
             </Paper>
             <div
               className="col-5"
