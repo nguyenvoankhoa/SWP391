@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
+import { RiAccountCircleLine } from 'react-icons/ri';
 
 const HeadingBar = () => {
   return (
@@ -138,16 +139,19 @@ const HeadingBar = () => {
                 CHÍNH SÁCH BẢO HÀNH
               </NavLink>
             </li>
+
           </ul>
 
           {/* Login */}
-          <ul className="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5 login">
-            <li className="text-center">
-              <NavLink to="sign-in" className="nav-link user" href="#">
-                <img src="/assets/images/user.svg" alt=""></img>
-              </NavLink>
-            </li>
-          </ul>
+          <NavLink to="sign-in" className="Btn" href="#">
+            <div class="sign">
+              <RiAccountCircleLine
+                color="white"
+                size={40}
+              />
+            </div>
+            <div class="text-login">Đăng nhập</div>
+          </NavLink>
         </div>
       </div>
     </nav>

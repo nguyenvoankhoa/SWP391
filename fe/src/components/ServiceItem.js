@@ -13,18 +13,14 @@ const ServiceItem = (props) => {
           <h5 className="card-title">{props.title}</h5>
           <p className="my-3">{props.content}</p>
           <Button
-            backgroundColor="#397F77"
-            borderRadius="15px"
-            padding="10px 50px"
+            backgroundColor="inherit"
+
           >
-            <Link to={props.link} style={{ textDecoration: "none" }}>
-              <Title
-                color="#ffffff"
-                title="Đặt ngay"
-                fontSize="20px"
-                fontWeight="400"
-              />
-            </Link>
+            <div className="button row">
+              <Link to={props.link} style={{ textDecoration: "none" }}>
+                <p >Đặt ngay</p>
+              </Link>
+            </div>
           </Button>
         </div>
       </div>

@@ -3,6 +3,7 @@ import Card from "../UI/Card";
 import Title from "./Title";
 import Button from "../UI/Button";
 import "./SignComponent.css";
+import { TextField } from '@mui/material';
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -70,36 +71,25 @@ const SignInForm = () => {
           <Title
             color="#015450"
             title="ĐĂNG NHẬP"
-            fontSize="50px"
+            fontSize="30px"
             fontWeight="600"
           />
           <div className="mt-3">
-            <Title
-              color="#000000"
-              title="Email"
-              fontSize="20px"
-              fontWeight="400"
-            />
-            <input
-              type="text"
-              className="mb-3 w-100"
-              value={email}
-              onChange={emailHandler}
-            />
+
+            <TextField
+              className="mb-3 w-100" id="outlined-basic" label="Email"
+              variant="outlined" value={email} onChange={emailHandler} />
+
+
           </div>
           <div className="mt-3">
-            <Title
-              color="#000000"
-              title="Mật khẩu"
-              fontSize="20px"
-              fontWeight="400"
-            />
-            <input
-              type="password"
-              className="mb-3 w-100"
-              value={password}
-              onChange={passwordHandler}
-            />
+
+            <TextField
+              className="mb-3 w-100" id="outlined-basic" label="Password"
+              variant="outlined" value={password}
+              onChange={passwordHandler} />
+
+
           </div>
           <p style={{ color: "red" }}>{error}</p>
 
@@ -107,14 +97,14 @@ const SignInForm = () => {
             <Title
               color="#000000"
               title="Chưa có tài khoản ? "
-              fontSize="20px"
+              fontSize="15px"
               fontWeight="400"
             />
             <Link to="/sign-up">
               <Title
                 color="#000000"
                 title=" Đăng ký ngay"
-                fontSize="20px"
+                fontSize="15px"
                 fontWeight="400"
               />
             </Link>
@@ -124,13 +114,13 @@ const SignInForm = () => {
             <Button
               backgroundColor=" #397F77 "
               borderRadius="15px"
-              padding="16px 41px"
+              padding="5px 30px"
             >
               <Title
                 color="#ffffff"
                 title="Đăng nhập"
-                fontSize="20px"
-                fontWeight="600"
+                fontSize="17px"
+                fontWeight="400"
               />
             </Button>
           </div>
