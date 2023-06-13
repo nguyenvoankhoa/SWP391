@@ -1,24 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import { Grid, TextField, Paper, Button } from "@mui/material";
+import { Grid, TextField, Paper, Autocomplete } from "@mui/material";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import MenuItem from "@mui/material/MenuItem";
-import PaymentPicker from "../../components/User/PaymentPicker";
 import { styled } from "@mui/material/styles";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import "./ElectronicCleaning.css";
 import OrderSumation from "./OrderSumation";
+import { useLoaderData } from "react-router-dom";
+import Title from "../../components/Title";
+import { useDispatch } from "react-redux";
 
-const AntTabs = styled(Tabs)({
-  "& .MuiTabs-indicator": {
-    backgroundColor: "none",
-  },
-});
+const AntTabs = styled(Tabs)({});
 
 const AntTab = styled((props) => <Tab disableRipple {...props} />)(
   ({ theme }) => ({
@@ -30,18 +28,7 @@ const AntTab = styled((props) => <Tab disableRipple {...props} />)(
     fontWeight: theme.typography.fontWeightRegular,
     marginRight: theme.spacing(2),
     color: "rgba(0, 0, 0, 0.85)",
-    fontFamily: [
-      "-apple-system",
-      "BlinkMacSystemFont",
-      '"Segoe UI"',
-      "Roboto",
-      '"Helvetica Neue"',
-      "Arial",
-      "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
-    ].join(","),
+    fontFamily: "Montserrat, sans-serif",
     "&:hover": {
       color: "#40a9ff",
       opacity: 1,
@@ -56,88 +43,141 @@ const AntTab = styled((props) => <Tab disableRipple {...props} />)(
   })
 );
 
-const optionalTreoTuong = [
-  { value: "option1", label: "Dưới 2HP" },
-  { value: "option2", label: "Trên 2HP" },
-];
+const CleanFreq = ["Hàng tuần", "Hàng tháng", "Một lần"];
 
-const optionalAmTran = [
-  { value: "option3", label: "Dưới 3HP" },
-  { value: "option4", label: "Trên 3HP" },
-];
-
-export default function ElectronicCleaning() {
+export default function FabricCleaning() {
   const [value, setValue] = useState(0);
   const [showForm, setShowForm] = useState(false);
+  const dispatch = useDispatch();
+  const [selectedDate, setSelectedDate] = useState();
+  const [selectedTime, setSelectedTime] = useState();
+  const [selectedServiceId, setSelectedServiceId] = useState("");
+  const [selectedFreq, setSelectedFreq] = useState("");
+  const data = useLoaderData();
+  const FABRIC_CLEANING = data
+    .filter((item) => item.name === "Vệ sinh máy lạnh")
+    .map((item) => ({
+      id: item.serviceId,
+      type: item.type,
+      price: item.price,
+      detail: item.detail,
+    }));
+  const selectedService = FABRIC_CLEANING.find(
+    (service) => service.id === selectedServiceId
+  );
+  const optionalTreoTuong = FABRIC_CLEANING.filter(
+    (item) => item.type === "Treo tường"
+  ).map((item) => ({
+    value: item.id,
+    label: item.detail,
+  }));
 
+  const optionalAmTran = FABRIC_CLEANING.filter(
+    (item) => item.type === "Âm trần"
+  ).map((item) => ({
+    value: item.id,
+    label: item.detail,
+  }));
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setShowForm(true);
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     setShowForm(true);
   }, []);
-
-  const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
-  const paymentHandler = (payment) => {
-    setSelectedPayment(payment);
+  const handleServiceChange = (event) => {
+    setSelectedServiceId(() => event.target.value);
   };
 
-  const OptionalSelect = ({ options }) => (
-    <>
-      <Grid container spacing={2} justifyContent="left" marginRight={1}>
-        <Grid item>
-          <TextField label="Chọn dịch vụ" select>
-            {options.map((option) => (
-              <MenuItem key={option.value} value={option.value}>
-                {option.label}
-              </MenuItem>
-            ))}
-          </TextField>
-        </Grid>
-        <Grid item>
-          <TextField
-            label="Số lượng"
-            type="number"
-            inputProps={{
-              min: 0,
-            }}
-            defaultValue={0}
-          />
-        </Grid>
+  const addServiceHandler = () => {
+    const date = selectedDate.$D;
+    const dayParse = new Date(selectedDate.$d);
+    const day = dayParse.toLocaleDateString("en-US", { weekday: "long" });
+    const month = selectedDate.$M;
+    const timeParse = new Date(selectedTime.$d);
+    const hour = timeParse.getHours() + ":" + timeParse.getMinutes();
+    let frequency;
+    if (selectedFreq === "Hàng tuần") {
+      frequency = "Weekly";
+    } else if (selectedFreq === "Hàng tháng") {
+      frequency = "Monthly";
+    } else {
+      frequency = "Once";
+    }
+    let service = {
+      businessId: selectedService.id,
+      date: date,
+      month: month + 1,
+      day: day,
+      hour: hour,
+      frequency: frequency,
+      quantity: 1,
+      price: selectedService.price,
+      type: selectedService.type,
+    };
+    console.log(service);
+    // dispatch(orderItemAction.addItem(service));
+  };
+
+  const OptionalSection = ({ options }) => (
+    <Grid container spacing={2} justifyContent="left" marginRight={1}>
+      <Grid item>
+        <TextField
+          label="Chọn dịch vụ"
+          select
+          value={selectedService ? selectedService.id : ""}
+          onChange={handleServiceChange}
+        >
+          {options.map((option) => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
+        </TextField>
       </Grid>
-    </>
+      <Grid item>
+        <Autocomplete
+          value={selectedFreq === "" ? null : selectedFreq}
+          onChange={(event, freq) => setSelectedFreq(freq)}
+          disablePortal
+          id="combo-box-demo"
+          options={CleanFreq}
+          sx={{ width: 400 }}
+          renderInput={(params) => (
+            <TextField {...params} label="Chọn loại vệ sinh" />
+          )}
+        />
+      </Grid>
+    </Grid>
   );
 
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ bgcolor: "none", p: 2 }}>
-        <h1
-          style={{
-            textAlign: "center",
-            marginTop: "1%",
-            fontFamily: "Montserrat",
-          }}
-        >
-          Vệ Sinh Máy Lạnh
-        </h1>
+        <Title
+          title="Vệ sinh máy lạnh"
+          color="white"
+          fontSize="35px"
+          fontWeight="1000"
+          padding="1% 0 1% 0"
+        />
         {showForm && (
           <Box
             component="div"
             sx={{
               "& .MuiTextField-root": { mt: 5, width: "30ch", ml: 5 },
               display: "flex",
-              mt: 5
+              mt: 5,
             }}
             noValidate
             autoComplete="off"
           >
             <Paper
-              className="col-md-6"
+              className="col-md-6 "
               sx={{
                 flexGrow: 1,
-                width: "30%",
+                width: "50%",
                 ml: 4,
                 mr: 2,
               }}
@@ -147,7 +187,7 @@ export default function ElectronicCleaning() {
                   display: "flex",
                   justifyContent: "flex-start",
                   textAlign: "center",
-                  marginLeft: 20,
+                  marginLeft: 25,
                   marginTop: "1%",
                 }}
               >
@@ -156,41 +196,31 @@ export default function ElectronicCleaning() {
                   onChange={handleChange}
                   aria-label="ant example"
                 >
-                  <AntTab label="Máy lạnh treo tường" />
-                  <AntTab label="Máy lạnh âm trần" />
+                  <AntTab label="Treo tường" />
+                  <AntTab label="Âm trần" />
                 </AntTabs>
               </Box>
               {showForm && (
-                <OptionalSelect
-                  options={
-                    value === 0
-                      ? optionalTreoTuong
-                      : value === 1
-                      ? optionalAmTran
-                      : []
-                  }
+                <OptionalSection
+                  options={value === 0 ? optionalTreoTuong : optionalAmTran}
                 />
               )}
 
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer
-                  components={["DatePicker"]}
-                  sx={{
-                    marginRight: 1,
-                  }}
-                >
+                <DemoContainer components={["DatePicker"]}>
                   <DemoItem>
                     <DatePicker
                       disablePast
-                      views={["year", "month", "day"]}
                       label="Chọn ngày"
                       format="DD/MM/YYYY"
+                      value={selectedDate}
+                      onChange={(date) => setSelectedDate(date)}
                     />
                   </DemoItem>
                   <DemoItem>
                     <TimePicker
-                      disablePast
-                      views={["hours", "minutes"]}
+                      value={selectedTime}
+                      onChange={(time) => setSelectedTime(time)}
                       label="Chọn giờ"
                       format="hh:mm"
                       ampm={false}
@@ -198,40 +228,14 @@ export default function ElectronicCleaning() {
                   </DemoItem>
                 </DemoContainer>
               </LocalizationProvider>
-              <div className="ec-content row payment">
-                <div className="col-md-12 ec-payment">
-                  <PaymentPicker onAddPayment={paymentHandler} />
-                </div>
-              </div>
-              <Button
-                variant="contained"
-                sx={{
-                  width: "87%",
-                  height: "10%",
-                  mt: 6,
-                  mb: 8,
-                  ml: 5,
-                  backgroundColor: "#397F77",
-                  color: "#ffffff",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  fontFamily: "Montserrat",
-                  letterSpacing: "0.1rem",
-                  "&:hover": {
-                    backgroundColor: "#397F77",
-                  },
-                }}
-              >
-                Hoàn tất đơn hàng
-              </Button>
+
+              <button onClick={addServiceHandler}>Thêm vào giỏ hàng</button>
             </Paper>
-              <div
+            <div
               className="col-5"
               style={{
                 display: "flex",
-                position: "initial", 
-                // marginInlineStart: "8%"
+                position: "initial",
               }}
             >
               <OrderSumation />

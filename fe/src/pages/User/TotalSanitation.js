@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./HourlyHelp.css";
-import { json, useLoaderData } from "react-router-dom";
+import { Link, json, useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch } from "react-redux";
@@ -13,7 +13,6 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import OrderSumation from "./OrderSumation";
-import Confirm from "../../components/User/Confirm";
 
 React.state = {
   cleanFreq: ["Hàng tuần", "Hàng tháng", "Một lần"],
@@ -23,8 +22,8 @@ React.state = {
 
 const TotalSanitation = () => {
   const dispatch = useDispatch();
-  const [selectedDate, setSelectedDate] = useState("");
-  const [selectedTime, setSelectedTime] = useState("");
+  const [selectedDate, setSelectedDate] = useState();
+  const [selectedTime, setSelectedTime] = useState();
   const [selectedServiceId, setSelectedServiceId] = useState("");
   const [selectedFreq, setSelectedFreq] = useState("");
   const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
@@ -76,7 +75,7 @@ const TotalSanitation = () => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className="bg user-navbar" />
-      <div className="container">
+      <div className="container mt-4">
         <Title
           title="TỔNG VỆ SINH"
           color="white"
@@ -119,7 +118,7 @@ const TotalSanitation = () => {
             </div>
             <div className="date-time col-md-12 row mt-3">
               <div className="col-md-6">
-                <p>Chọn ngày</p>
+                <p className="mb-3">Chọn ngày</p>
                 <DatePicker
                   value={selectedDate}
                   onChange={(date) => setSelectedDate(date)}
@@ -128,7 +127,7 @@ const TotalSanitation = () => {
                 />
               </div>
               <div className="col-md-6">
-                <p>Chọn giờ</p>
+                <p className="mb-3">Chọn giờ</p>
                 <TimePicker
                   value={selectedTime}
                   onChange={(time) => setSelectedTime(time)}
@@ -139,6 +138,9 @@ const TotalSanitation = () => {
             </div>
             <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
             {/* <Confirm onAddPayment={onAddPayment} /> */}
+            <button>
+              <Link to="..">Quay lai</Link>
+            </button>
             <button onClick={addServiceHandler}>Thêm vào đơn hàng</button>
           </div>
           <OrderSumation />

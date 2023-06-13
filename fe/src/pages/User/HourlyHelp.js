@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import "./HourlyHelp.css";
-import { json, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
 import "react-datepicker/dist/react-datepicker.css";
-import { useDispatch, useSelector } from "react-redux";
-// import TimePicker from "../../components/User/TimePicker";
-import PaymentPicker from "../../components/User/PaymentPicker";
+import { useDispatch } from "react-redux";
 import { Autocomplete, Divider, TextField } from "@mui/material";
 import { orderItemAction } from "../../redux/order";
 import {
@@ -15,22 +13,18 @@ import {
 } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import OrderSumation from "./OrderSumation";
-import Confirm from "../../components/User/Confirm";
 
 React.state = {
   cleanFreq: ["Hàng tuần", "Hàng tháng", "Một lần"],
   payMethod: ["PayPal", "Tiền mặt"],
-  timePicker: ["Sáng", "Chiều", "Tối"],
 };
 
 const HourlyHelp = () => {
-  const totalAmount = useSelector((state) => state.order.totalAmount);
   const dispatch = useDispatch();
-  const [selectedDate, setselectedDate] = useState();
-  const [selectedTime, setSelectedTime] = useState("Sáng");
+  const [selectedDate, setSelectedDate] = useState();
+  const [selectedTime, setSelectedTime] = useState();
   const [selectedServiceId, setSelectedServiceId] = useState(null);
   const [selectedFreq, setSelectedFreq] = useState("");
-  const [detail, setDetail] = useState(null);
   const data = useLoaderData();
   const HOURLY_HELP = data
     .filter((item) => item.name === "Giúp việc theo giờ")
@@ -121,7 +115,7 @@ const HourlyHelp = () => {
                 <p>Chọn ngày</p>
                 <DatePicker
                   value={selectedDate}
-                  onChange={(date) => setselectedDate(date)}
+                  onChange={(date) => setSelectedDate(date)}
                   disablePast={true}
                   format="DD/MM/YYYY"
                 />
@@ -138,7 +132,9 @@ const HourlyHelp = () => {
               </div>
             </div>
             <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
-            {/* <Confirm /> */}
+            <button>
+              <Link to="..">Quay lai</Link>
+            </button>
             <button onClick={addServiceHandler}>Thêm vào đơn hàng</button>
           </div>
           <OrderSumation />
@@ -153,7 +149,7 @@ export default HourlyHelp;
 export async function loader() {
   const res = await fetch("https://swp391-production.up.railway.app/services");
   if (!res.ok) {
-    throw json({ message: "can not load item" }, { status: 500 });
+    throw new Error("error");
   } else {
     const data = await res.json();
     return data;

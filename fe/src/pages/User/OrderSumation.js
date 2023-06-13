@@ -56,9 +56,7 @@ const OrderSumation = () => {
           {discount && <p>Giam gia : {discount}%</p>}
           <p>
             Thành tiền:
-            {discount && (
-              <span>{totalAmount - (totalAmount * discount) / 100}</span>
-            )}
+            <span>{totalAmount - (totalAmount * discount) / 100} VND</span>
           </p>
         </div>
         <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
@@ -69,9 +67,7 @@ const OrderSumation = () => {
             <span>Đơn hàng</span>
           </h5>
           <h4>
-            {discount
-              ? totalAmount
-              : totalAmount - (totalAmount * discount) / 100}{" "}
+            {totalAmount - (totalAmount * discount) / 100}
             <span>VNĐ</span>
           </h4>
         </div>
