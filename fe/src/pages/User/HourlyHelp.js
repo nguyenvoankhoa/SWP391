@@ -220,8 +220,8 @@ export default function FabricCleaning() {
                     value === 0
                       ? firstOption
                       : value === 1
-                      ? secondOption
-                      : thirdOption
+                        ? secondOption
+                        : thirdOption
                   }
                 />
               )}
