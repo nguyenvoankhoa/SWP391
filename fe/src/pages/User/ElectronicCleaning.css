@@ -2,7 +2,7 @@
   margin-top: 6%;
 }
 
-.ec-content .hh-submit {
+/* .ec-content .hh-submit {
   display: flex;
   justify-content: space-between;
   margin-top: 2%;
@@ -40,6 +40,34 @@
 }
 
 .hh-payment button:focus {
+  outline: none;
+  border-color: #f7f7f7;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+} */
+input#combo-box-demo{
+  margin: 0;
+}
+textarea .form-control {
+  margin-left: 5%;
+}
+button.ec-button{
+  margin: 7% 4%;
+  width: 91%;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  padding: 10px;
+}
+button.ec-button:active{
+  background-color: #397f77;
+  color: white;
+}
+button.ec-button:hover{
+  background-color: #397f77;
+  color: white;
+}
+
+button.ec-button:focus{
   outline: none;
   border-color: #f7f7f7;
   box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);

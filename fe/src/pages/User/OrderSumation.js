@@ -10,8 +10,8 @@ const OrderSumation = () => {
   const totalAmount = useSelector((state) => state.order.totalAmount);
   return (
     <>
-      <div className="hh-total col-md-4">
-        <h5 className="text-center">Thông tin đơn hàng</h5>
+      <div className="hh-total col-md-6">
+        <h5 className="text-center" style={{fontFamily: "Montserrat", fontWeight: "lighter", fontSize: "28px"}}>Thông tin đơn hàng</h5>
         <div className="total-infor">
           {cartItems.length === 0 ? (
             <p>Chưa có thông tin</p>
@@ -65,9 +65,9 @@ const OrderSumation = () => {
             <span>{totalAmount} VND</span>
           </p>
         </div>
-        <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
+        <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black", marginBottom: "4%" }} />
 
-        <Link className="text-center" to="/user/order">
+        <Link className="text-center" to="/user/order" style={{ textDecoration: "none", fontFamily: "Montserrat", fontWeight:"lighter", fontSize: "22px"}}>
           Thanh toán ngay
         </Link>
       </div>

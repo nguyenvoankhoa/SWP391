@@ -16,6 +16,7 @@ import { useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
 import { useDispatch } from "react-redux";
 import { orderItemAction } from "../../redux/order";
+import { Button } from "@mui/material";
 
 const AntTabs = styled(Tabs)({});
 
@@ -126,7 +127,7 @@ export default function ElectronicCleaning() {
   };
 
   const OptionalSection = ({ options }) => (
-    <Grid container spacing={2} justifyContent="left" marginRight={1}>
+    <Grid container spacing={2} justifyContent="left" marginRight={2}>
       <Grid item>
         <TextField
           label="Chọn dịch vụ"
@@ -148,7 +149,6 @@ export default function ElectronicCleaning() {
           disablePortal
           id="combo-box-demo"
           options={CleanFreq}
-          sx={{ width: 400 }}
           renderInput={(params) => (
             <TextField {...params} label="Chọn loại vệ sinh" />
           )}
@@ -171,7 +171,7 @@ export default function ElectronicCleaning() {
           <Box
             component="div"
             sx={{
-              "& .MuiTextField-root": { mt: 5, width: "30ch", ml: 5 },
+              "& .MuiTextField-root": { mt: 5, width: "30ch", ml: 3},
               display: "flex",
               mt: 5,
             }}
@@ -179,18 +179,18 @@ export default function ElectronicCleaning() {
             autoComplete="off"
           >
             <Paper
-              className="col-md-6 "
+              className="col-md-6"
               sx={{
                 flexGrow: 1,
                 width: "50%",
-                ml: 4,
-                mr: 2,
+                ml: 9,
+                mr: 7,
               }}
             >
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: "flex-start",
+                  justifyContent: "",
                   textAlign: "center",
                   marginLeft: 25,
                   marginTop: "1%",
@@ -233,19 +233,44 @@ export default function ElectronicCleaning() {
                   </DemoItem>
                 </DemoContainer>
               </LocalizationProvider>
-              <div className="row justify-content-center mt-5">
-                <div className="col-11">
+              <div className="row mt-5">
+                <div className="col-10">
                   <div class="form-floating">
                     <textarea
                       class="form-control"
                       placeholder="Leave a comment here"
                       onChange={handleNoteChange}
+                      style={{ marginLeft: "5%", width: "111%" }}
                     />
-                    <label for="floatingTextarea">Ghi chú</label>
+                    <label for="floatingTextarea" style={{ marginLeft: "7%", marginBottom: "4%" }}>
+                      Ghi chú
+                    </label>
                   </div>
                 </div>
               </div>
-              <button onClick={addServiceHandler}>Thêm vào giỏ hàng</button>
+              <Button
+                variant="contained"
+                onClick={addServiceHandler}
+                sx={{
+                  fontFamily: "Montserrat",
+                  width: "91%",
+                  height: "10%",
+                  mt: 6,
+                  mb: 8,
+                  ml: 3,
+                  backgroundColor: "#397F77",
+                  color: "#ffffff",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  letterSpacing: "0.07rem",
+                  "&:hover": {
+                    backgroundColor: "#397F77",
+                  },
+                }}
+              >
+                Thêm vào giỏ hàng
+              </Button>
             </Paper>
             <div
               className="col-5"
