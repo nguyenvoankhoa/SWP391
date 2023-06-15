@@ -7,16 +7,15 @@ import UserOddShift from "./UserOddShift";
 import UserPeriodic from "./UserPeriodic";
 const ActionRecord = () => {
   const data = useLoaderData();
-  console.log(data);
   const [option, setOption] = useState("Ca lẻ");
   const handleChangeOption = (option) => {
     setOption(option);
   };
   const oodShift = data.filter(
-    (bill) => !bill.completeStatus && bill.frequency === ""
+    (bill) => !bill.completeStatus && bill.frequency === "Once"
   );
   const periodic = data.filter(
-    (bill) => !bill.completeStatus && bill.frequency != ""
+    (bill) => !bill.completeStatus && bill.frequency !== "Once"
   );
   const history = data.filter((bill) => bill.completeStatus === true);
   return (
@@ -76,7 +75,6 @@ export async function billLoader() {
   const request = {
     id: user.id,
   };
-  console.log(token);
   const res = await fetch(
     "https://swp391-production.up.railway.app/customer/orders",
     {
@@ -88,12 +86,10 @@ export async function billLoader() {
       body: JSON.stringify(request),
     }
   );
-  console.log(res);
   if (!res.ok) {
     throw new Error("error");
   } else {
     const data = await res.json();
-    console.log(data);
     return data;
   }
 }

@@ -1,50 +1,62 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const EditOrderForm = ({ workType, hour }) => {
+const EditOrderForm = ({ workType, billId }) => {
   const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
+  const [employeeId, setEmployeeId] = useState("");
+  const nav = useNavigate();
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        const token = sessionStorage.getItem("jwtToken");
-        const businessName = { businessName: workType };
-        const res = await fetch(
-          "https://swp391-production.up.railway.app/admin/business",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(businessName),
-          }
-        );
-
-        if (!res.ok) {
-          throw new Error("Error fetching data");
+      const token = sessionStorage.getItem("jwtToken");
+      const businessName = { businessName: workType };
+      const res = await fetch(
+        "https://swp391-production.up.railway.app/admin/business",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(businessName),
         }
+      );
 
-        const responseData = await res.json();
-        console.log(responseData);
-        setData(responseData);
-      } catch (error) {
-        console.error(error);
+      if (!res.ok) {
+        throw new Error("Error fetching data");
       }
+      const responseData = await res.json();
+      setData(responseData);
     };
-
     fetchData();
-  }, [workType]);
-  const handleChooseEmployee = (hours) => {
-    for (const h in hours) {
-      if (h === hour) {
-        setError("Nhân viên đã bận");
-        break;
-      }
-    }
+  }, [workType, billId]);
+
+  const handleChooseEmployee = (id) => {
+    setEmployeeId(id);
   };
-  if (error) {
-    alert(error);
-  }
+
+  const assignEmployeeHandler = async () => {
+    let newOrder = {
+      billId: billId,
+      employeeId: employeeId,
+    };
+    const token = sessionStorage.getItem("jwtToken");
+    const res = await fetch(
+      "https://swp391-production.up.railway.app/admin/assign",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(newOrder),
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error("Error fetching data");
+    }
+    nav("/admin/order-service");
+  };
   return (
     <>
       <div
@@ -82,24 +94,24 @@ const EditOrderForm = ({ workType, hour }) => {
                 <tbody>
                   {data &&
                     data.map((employee) => (
-                      <tr key={employee.email}>
+                      <tr key={employee.id}>
                         <td>{employee.name}</td>
                         <td>{workType}</td>
                         <td>
-                          {employee.workHours.length === 0 ? (
+                          {employee.employeeWorks.length === 0 ? (
                             <span>Đang rảnh</span>
                           ) : (
-                            employee.workHours.map((hour) => (
-                              <span key={hour}>{hour}h, </span>
+                            employee.employeeWorks.map((item) => (
+                              <span key={item.workHour}>
+                                {item.workHour}({item.date}/{item.month}){" "}
+                              </span>
                             ))
                           )}
                         </td>
                         <td>
                           <input
                             type="checkbox"
-                            onChange={() =>
-                              handleChooseEmployee(employee.workHours)
-                            }
+                            onChange={() => handleChooseEmployee(employee.id)}
                           />
                         </td>
                       </tr>
@@ -119,6 +131,7 @@ const EditOrderForm = ({ workType, hour }) => {
                 type="button"
                 className="btn btn-primary"
                 data-bs-dismiss="modal"
+                onClick={assignEmployeeHandler}
               >
                 Xác nhận
               </button>

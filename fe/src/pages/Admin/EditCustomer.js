@@ -49,7 +49,7 @@ const EditCustomer = () => {
                           <div className="item-icon">
                             <img
                               src="../assets/images/iconTrash.svg"
-                              alt="#"
+                              alt="aaa"
                               data-bs-toggle="modal"
                               data-bs-target="#exampleModal"
                             />
@@ -57,7 +57,7 @@ const EditCustomer = () => {
                           <div className="item-icon">
                             <img
                               src="../assets/images/edit.png"
-                              className=""
+                              alt="aaa"
                               data-bs-toggle="modal"
                               data-bs-target="#staticBackdrop"
                               onClick={() => editCustomerHandler(customer)}

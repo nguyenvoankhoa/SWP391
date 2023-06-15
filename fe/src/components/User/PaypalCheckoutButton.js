@@ -1,24 +1,38 @@
 import React, { useState } from "react";
 import { PayPalButtons } from "@paypal/react-paypal-js";
+import { useNavigate } from "react-router-dom";
 const PaypalCheckoutButton = (props) => {
+  const nav = useNavigate();
   const [payFor, setPayFor] = useState(false);
   const [error, setError] = useState(null);
-  const { product } = props;
-  const handleApprove = (orderID) => {
-    //call backend to fullfill order
-
-    //if response is success
+  const bill = props.items;
+  const handleApprove = async (orderID) => {
     setPayFor(true);
-    // refresh user's account
+    const token = sessionStorage.getItem("jwtToken");
+    const res = await fetch(
+      "https://swp391-production.up.railway.app/customer/order",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(bill),
+      }
+    );
 
-    //if response is failure
+    if (!res.ok) {
+      throw new Error("Error fetching data");
+    }
+    nav("/user/order-completed");
   };
-  if (payFor) {
-    alert("Thank you for your purchase!");
-  }
   if (error) {
     alert(error);
   }
+  const product = {
+    description: "CUSTOMER",
+    price: 19,
+  };
   return (
     <PayPalButtons
       style={{

@@ -3,14 +3,13 @@ import Card from "../../UI/Card";
 import "./EditCus.css";
 import Title from "../../components/Title";
 import { useLoaderData } from "react-router-dom";
-import EditEmployeeForm from "../../components/Admin/EditEmpoyeeForm";
+import EditEmployeeForm from "../../components/Admin/EditEmployeeForm";
 const EditEmployee = () => {
   const data = useLoaderData();
   const [employee, setEmployee] = useState([]);
   const editEmployeeHandler = (employee) => {
     setEmployee(employee);
   };
-  console.log(data);
   return (
     <>
       <div className="mb-5" />

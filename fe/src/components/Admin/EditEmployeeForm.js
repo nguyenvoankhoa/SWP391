@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const EditEmployeeForm = (props) => {
+  const nav = useNavigate();
   const [workType, setWorkType] = useState(props.employee.workType || "");
   const [name, setName] = useState(props.employee.employeeInfo?.name || "");
   const [phone, setPhone] = useState(props.employee.employeeInfo?.phone || "");
@@ -24,13 +26,32 @@ const EditEmployeeForm = (props) => {
     setName(props.employee.employeeInfo?.name || "");
     setPhone(props.employee.employeeInfo?.phone || "");
   }, [props.employee]);
-  const saveEmployeeHandler = () => {
+  const saveEmployeeHandler = async () => {
     const employeeInfo = {
       name: name,
       phone: phone,
       password: password,
       workType: workType,
     };
+    let id = props.employee.employeeInfo.id;
+    const token = sessionStorage.getItem("jwtToken");
+    console.log(employeeInfo);
+    const res = await fetch(
+      "https://swp391-production.up.railway.app/admin/employees/" + id,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(employeeInfo),
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error("Error fetching data");
+    }
+    nav("/admin/edit-employee");
   };
   return (
     <div

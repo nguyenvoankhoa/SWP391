@@ -3,7 +3,7 @@ import Card from "../UI/Card";
 import Title from "./Title";
 import Button from "../UI/Button";
 import "./SignComponent.css";
-import { TextField } from '@mui/material';
+import { TextField } from "@mui/material";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -75,21 +75,23 @@ const SignInForm = () => {
             fontWeight="600"
           />
           <div className="mt-3">
-
             <TextField
-              className="mb-3 w-100" id="outlined-basic" label="Email"
-              variant="outlined" value={email} onChange={emailHandler} />
-
-
+              className="mb-3 w-100"
+              label="Email"
+              variant="outlined"
+              value={email}
+              onChange={emailHandler}
+            />
           </div>
           <div className="mt-3">
-
             <TextField
-              className="mb-3 w-100" id="outlined-basic" label="Password"
-              variant="outlined" value={password}
-              onChange={passwordHandler} />
-
-
+              type="password"
+              className="mb-3 w-100"
+              label="Password"
+              variant="outlined"
+              value={password}
+              onChange={passwordHandler}
+            />
           </div>
           <p style={{ color: "red" }}>{error}</p>
 

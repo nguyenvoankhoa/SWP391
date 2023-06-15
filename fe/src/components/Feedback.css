@@ -1,4 +1,3 @@
-
 .container-feedback img {
   position: absolute;
   top: 0;
@@ -15,10 +14,9 @@
   padding-left: 9%;
   padding-bottom: 10%;
   box-shadow: 0 3px 6px rgba(177, 195, 199, 0.2),
-      3px 6px 9px rgba(177, 195, 199, 0.2),
-      6px 9px 12px rgba(177, 195, 199, 0.2),
-      9px 12px 15px rgba(177, 195, 199, 0.2);
-  height: 30vw;
+    3px 6px 9px rgba(177, 195, 199, 0.2), 6px 9px 12px rgba(177, 195, 199, 0.2),
+    9px 12px 15px rgba(177, 195, 199, 0.2);
+  height: 400px;
   /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
@@ -34,7 +32,7 @@
   margin-bottom: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-family: 'Montserrat';
+  font-family: "Montserrat";
   padding-bottom: 12%;
   font-weight: lighter;
   display: block;

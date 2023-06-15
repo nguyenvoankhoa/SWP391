@@ -4,9 +4,9 @@
   background-color: #597afd;
 }
 @media (min-width: 768px) {
-  .card {
+  /* .card {
     width: 550px;
-  }
+  } */
   .info {
     width: 100%;
   }

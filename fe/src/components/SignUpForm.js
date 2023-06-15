@@ -1,15 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../UI/Card";
 import Title from "./Title";
 import "./SignComponent.css";
 import Button from "../UI/Button";
-import { Link } from "react-router-dom";
-import { TextField } from '@mui/material';
+import { Link, useNavigate } from "react-router-dom";
+import { TextField } from "@mui/material";
 const SignUpForm = () => {
+  const nav = useNavigate();
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [departmentNumber, setDepartmentNumber] = useState("");
+  const [roomNumber, setRoomNumber] = useState("");
+  const [phone, setPhone] = useState("");
+  const registerHandler = async () => {
+    let newUser = {
+      name: name,
+      email: email,
+      password: password,
+      phone: phone,
+      departmentNumber: departmentNumber,
+      roomNumber: roomNumber,
+    };
+    console.log(newUser);
+    const res = await fetch(
+      "https://swp391-production.up.railway.app/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      }
+    );
+    if (!res.ok) {
+      throw new Error("error");
+    } else {
+      const data = await res.json();
+      nav("/sign-in");
+      console.log(data);
+      return data;
+    }
+  };
+  const nameHandler = (e) => {
+    setName(e.target.value);
+  };
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  };
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  };
+  const departmentHandler = (e) => {
+    setDepartmentNumber(e.target.value);
+  };
+  const roomHandler = (e) => {
+    setRoomNumber(e.target.value);
+  };
+  const phoneHandler = (e) => {
+    setPhone(e.target.value);
+  };
   return (
     <div className="container  mb-4">
       <Card>
-        <form className="px-lg-3 px-sm-0">
+        <div className="px-lg-3 px-sm-0">
           <Title
             color="#015450"
             title="ĐĂNG KÝ"
@@ -17,36 +71,54 @@ const SignUpForm = () => {
             fontWeight="600"
           />
           <div className="mt-1">
-
             <TextField
-              className="mb-3 w-100" id="outlined-basic" label="Tên"
-              variant="outlined" />
+              className="mb-3 w-100"
+              label="Tên"
+              variant="outlined"
+              onChange={nameHandler}
+            />
           </div>
           <div className="mt-1">
             <TextField
-              className="mb-3 w-100" id="outlined-basic" label="Email"
-              variant="outlined" />
+              className="mb-3 w-100"
+              label="Email"
+              variant="outlined"
+              onChange={emailHandler}
+            />
           </div>
           <div className="mt-1">
             <TextField
-              className="mb-3 w-100" id="outlined-basic" label="Password"
-              variant="outlined" />
+              type="password"
+              className="mb-3 w-100"
+              label="Password"
+              variant="outlined"
+              onChange={passwordHandler}
+            />
           </div>
           <div className="row">
             <div className="mt-1 col-4">
               <TextField
-                className="mb-3 w-100" id="outlined-basic" label="Số Phòng"
-                variant="outlined" />
+                className="mb-3 w-100"
+                label="Số Phòng"
+                variant="outlined"
+                onChange={roomHandler}
+              />
             </div>
             <div className="mt-1 col-4">
               <TextField
-                className="mb-3 w-100" id="outlined-basic" label="Số Toà"
-                variant="outlined" />
+                className="mb-3 w-100"
+                label="Số Toà"
+                variant="outlined"
+                onChange={departmentHandler}
+              />
             </div>
             <div className="mt-1 col-4">
               <TextField
-                className="mb-3 w-100" id="outlined-basic" label="Số điện thoại"
-                variant="outlined" />
+                className="mb-3 w-100"
+                label="Số điện thoại"
+                variant="outlined"
+                onChange={phoneHandler}
+              />
             </div>
           </div>
 
@@ -57,7 +129,7 @@ const SignUpForm = () => {
               fontSize="15px"
               fontWeight="400"
             />
-            <Link to="/sign-in" style={{ textDecoration: 'none' }}>
+            <Link to="/sign-in" style={{ textDecoration: "none" }}>
               <Title
                 color="#000000"
                 title=" Đăng nhập ngay"
@@ -68,6 +140,9 @@ const SignUpForm = () => {
           </div>
 
           <div className="d-flex justify-content-center my-3">
+            <button type="submit" onClick={registerHandler}>
+              Đăng ký
+            </button>
             <Button
               backgroundColor=" #397F77 "
               borderRadius="15px"
@@ -81,7 +156,7 @@ const SignUpForm = () => {
               />
             </Button>
           </div>
-        </form>
+        </div>
       </Card>
     </div>
   );

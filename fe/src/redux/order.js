@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialOrderState = {
   totalAmount: 0,
   items: [],
+  error: "",
 };
 
 const orderSlice = createSlice({
@@ -10,22 +11,17 @@ const orderSlice = createSlice({
   reducers: {
     addItem(state, action) {
       const itemAdded = action.payload;
-      console.log(itemAdded);
-      state.totalAmount += itemAdded.price * itemAdded.quantity;
       const existingOrderItemIndex = state.items.findIndex(
         (item) => item.businessId === itemAdded.businessId
       );
 
       const existingOrderItem = state.items[existingOrderItemIndex];
 
-      if (existingOrderItem) {
-        const updatedItem = {
-          ...existingOrderItem,
-          quantity: existingOrderItem.quantity + itemAdded.quantity,
-        };
-        state.items[existingOrderItemIndex] = updatedItem;
-      } else {
+      if (!existingOrderItem) {
         state.items.push(itemAdded);
+        state.totalAmount += itemAdded.price;
+      } else {
+        state.error = "Đã có trong giỏ hàng";
       }
     },
     removeItem(state, action) {
@@ -36,24 +32,15 @@ const orderSlice = createSlice({
 
       if (existingOrderItemIndex !== -1) {
         const existingItem = state.items[existingOrderItemIndex];
-        state.quantity -= 1;
         const updatedTotalAmount = state.totalAmount - existingItem.price;
         let updatedItems;
-
-        if (existingItem.quantity === 1) {
-          updatedItems = state.items.filter((item) => item.businessId !== id);
-        } else {
-          const updatedItem = {
-            ...existingItem,
-            quantity: existingItem.quantity - 1,
-          };
-          updatedItems = [...state.items];
-          updatedItems[existingOrderItemIndex] = updatedItem;
-        }
-
+        updatedItems = state.items.filter((item) => item.businessId !== id);
         state.items = updatedItems;
         state.totalAmount = updatedTotalAmount;
       }
+    },
+    removeError(state) {
+      state.error = "";
     },
   },
 });

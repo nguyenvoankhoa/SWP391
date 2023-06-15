@@ -54,6 +54,7 @@ export default function ElectronicCleaning() {
   const [selectedTime, setSelectedTime] = useState();
   const [selectedServiceId, setSelectedServiceId] = useState("");
   const [selectedFreq, setSelectedFreq] = useState("");
+  const [note, setNote] = useState("");
   const data = useLoaderData();
   const DATA = data
     .filter((item) => item.name === "Vệ sinh máy lạnh")
@@ -90,7 +91,9 @@ export default function ElectronicCleaning() {
   const handleServiceChange = (event) => {
     setSelectedServiceId(() => event.target.value);
   };
-
+  const handleNoteChange = (event) => {
+    setNote(event.target.value);
+  };
   const addServiceHandler = () => {
     const date = selectedDate.$D;
     const dayParse = new Date(selectedDate.$d);
@@ -108,6 +111,8 @@ export default function ElectronicCleaning() {
     }
     let service = {
       businessId: selectedService.id,
+      name: "Giúp việc theo giờ",
+      note: note,
       date: date,
       month: month + 1,
       day: day,
@@ -228,7 +233,18 @@ export default function ElectronicCleaning() {
                   </DemoItem>
                 </DemoContainer>
               </LocalizationProvider>
-
+              <div className="row justify-content-center mt-5">
+                <div className="col-11">
+                  <div class="form-floating">
+                    <textarea
+                      class="form-control"
+                      placeholder="Leave a comment here"
+                      onChange={handleNoteChange}
+                    />
+                    <label for="floatingTextarea">Ghi chú</label>
+                  </div>
+                </div>
+              </div>
               <button onClick={addServiceHandler}>Thêm vào giỏ hàng</button>
             </Paper>
             <div

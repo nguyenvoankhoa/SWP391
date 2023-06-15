@@ -25,7 +25,7 @@ const UserPeriodic = (props) => {
           <thead>
             <tr>
               <th scope="col">Dịch vụ</th>
-              <th scope="col">Số lượng</th>
+              <th scope="col">Loại</th>
               <th scope="col">Định kỳ</th>
               <th scope="col">Nhân viên</th>
               <th scope="col">Giao dịch</th>
@@ -36,7 +36,7 @@ const UserPeriodic = (props) => {
             {data.map((service) => (
               <tr key={service.id}>
                 <td>{service.business.name}</td>
-                <td>{service.quantity}</td>
+                <td>{service.business.type}</td>
                 <td>{service.frequency}</td>
                 {service.employee ? (
                   <td>{service.employee.name}</td>

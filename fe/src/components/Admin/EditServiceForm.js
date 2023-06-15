@@ -1,20 +1,43 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const EditServiceForm = (props) => {
-  const [price, setPrice] = useState("");
+  const [priceChange, setPrice] = useState("");
   const [detail, setDetail] = useState("");
   const [name, setName] = useState("");
-  const [serviceId, setServiceId] = useState("");
   const [type, setType] = useState("");
+  const nav = useNavigate();
   useEffect(() => {
     setPrice(props.service.price || "");
     setDetail(props.service.detail || "");
     setName(props.service.name || "");
-    setServiceId(props.service.serviceId || "");
     setType(props.service.type || "");
   }, [props.service]);
   const handlePriceChange = (e) => {
     setPrice(e.target.value);
+  };
+  const priceHandler = async () => {
+    let price = {
+      businessId: props.service.serviceId,
+      price: priceChange,
+    };
+    const token = sessionStorage.getItem("jwtToken");
+    const res = await fetch(
+      "https://swp391-production.up.railway.app/admin/update-service",
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(price),
+      }
+    );
+
+    if (!res.ok) {
+      throw new Error("Error fetching data");
+    }
+    nav("/admin/edit-service");
   };
   return (
     <div
@@ -84,7 +107,7 @@ const EditServiceForm = (props) => {
                         type="text"
                         className="form-control"
                         id="website"
-                        value={price}
+                        value={priceChange}
                         onChange={handlePriceChange}
                       />
                     </div>
@@ -105,6 +128,7 @@ const EditServiceForm = (props) => {
               type="button"
               className="btn btn-primary"
               data-bs-dismiss="modal"
+              onClick={priceHandler}
             >
               Xác nhận
             </button>

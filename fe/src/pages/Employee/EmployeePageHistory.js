@@ -4,6 +4,7 @@ import Card from "../../UI/Card";
 import Title from "../../components/Title";
 const EmployeePage = () => {
   const data = useLoaderData();
+  console.log(data);
   return (
     <>
       <Title
@@ -24,12 +25,9 @@ const EmployeePage = () => {
                 <thead>
                   <tr>
                     <th scope="col">Công việc</th>
+                    <th scope="col">Loại</th>
                     <th scope="col">Thời gian</th>
-                    <th scope="col">Số toà </th>
-                    <th scope="col">Số phòng</th>
-                    <th scope="col">Thanh toán</th>
-                    <th scope="col">Trạng thái</th>
-                    <th scope="col">Số lượng</th>
+                    <th scope="col">Ngày</th>
                     <th scope="col">Tổng cộng</th>
                     <th scope="col">SĐT khách hàng</th>
                   </tr>
@@ -37,24 +35,14 @@ const EmployeePage = () => {
                 <tbody>
                   {data.map((bill) => (
                     <tr key={Math.random()}>
-                      <th scope="col">{bill.workType}</th>
-                      <th scope="col">{bill.time}</th>
-                      <th scope="col">{bill.departmentNumber}</th>
-                      <th scope="col">{bill.roomNumber}</th>
-                      {bill.payStatus ? (
-                        <th>Đã thanh toán</th>
-                      ) : (
-                        <th>Chưa thanh toán</th>
-                      )}
-                      {bill.completedStatus ? (
-                        <th>Đã xong</th>
-                      ) : (
-                        <th>Chưa xong</th>
-                      )}
-
-                      <th scope="col">{bill.quantity}</th>
+                      <th scope="col">{bill.business.name}</th>
+                      <th scope="col">{bill.business.type}</th>
+                      <th scope="col">{bill.hour}</th>
+                      <th scope="col">
+                        {bill.date}/{bill.month}
+                      </th>
                       <th scope="col">{bill.total}</th>
-                      <th scope="col">{bill.customerPhone}</th>
+                      <th scope="col">{bill.customer.phone}</th>
                     </tr>
                   ))}
                 </tbody>
@@ -68,14 +56,14 @@ const EmployeePage = () => {
 };
 
 export default EmployeePage;
-export async function employeePageLoader() {
+export async function employeeHistoryLoader() {
   const token = sessionStorage.getItem("jwtToken");
   const user = JSON.parse(sessionStorage.getItem("user"));
   const request = {
     id: user.id,
   };
   const res = await fetch(
-    "https://swp391-production.up.railway.app/employee/info",
+    "https://swp391-production.up.railway.app/employee/history",
     {
       method: "POST",
       headers: {

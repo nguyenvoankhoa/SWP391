@@ -25,12 +25,13 @@ const EmployeePage = () => {
                 <thead>
                   <tr>
                     <th scope="col">Công việc</th>
+                    <th scope="col">Loại</th>
                     <th scope="col">Thời gian</th>
                     <th scope="col">Số toà </th>
                     <th scope="col">Số phòng</th>
                     <th scope="col">Thanh toán</th>
                     <th scope="col">Trạng thái</th>
-                    <th scope="col">Số lượng</th>
+
                     <th scope="col">Tổng cộng</th>
                     <th scope="col">SĐT khách hàng</th>
                   </tr>
@@ -39,7 +40,8 @@ const EmployeePage = () => {
                   {data.map((bill) => (
                     <tr key={Math.random()}>
                       <th scope="col">{bill.workType}</th>
-                      <th scope="col">{bill.time}</th>
+                      <th scope="col">{bill.type}</th>
+                      <th scope="col">{bill.hour}</th>
                       <th scope="col">{bill.departmentNumber}</th>
                       <th scope="col">{bill.roomNumber}</th>
                       {bill.payStatus ? (
@@ -52,8 +54,6 @@ const EmployeePage = () => {
                       ) : (
                         <th>Chưa xong</th>
                       )}
-
-                      <th scope="col">{bill.quantity}</th>
                       <th scope="col">{bill.total}</th>
                       <th scope="col">{bill.customerPhone}</th>
                     </tr>

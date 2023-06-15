@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import { RiAccountCircleLine } from 'react-icons/ri';
+import { RiAccountCircleLine } from "react-icons/ri";
 
 const HeadingBar = () => {
   return (
@@ -36,7 +36,7 @@ const HeadingBar = () => {
             <li>
               <NavLink
                 style={{
-                  fontWeight: "1200",
+                  fontWeight: "700",
                 }}
                 className={({ isActive }) =>
                   isActive
@@ -57,7 +57,7 @@ const HeadingBar = () => {
                   id="dropdownMenuLink"
                   data-bs-toggle="dropdown"
                   aria-expanded="false"
-                  style={{ position: "relative", fontWeight: "1200" }}
+                  style={{ position: "relative", fontWeight: "700" }}
                 >
                   DỊCH VỤ
                   <div className="arrow"></div>
@@ -94,7 +94,7 @@ const HeadingBar = () => {
             <li>
               <NavLink
                 style={{
-                  fontWeight: "1200",
+                  fontWeight: "700",
                 }}
                 className={({ isActive }) =>
                   isActive
@@ -110,7 +110,7 @@ const HeadingBar = () => {
             <li>
               <NavLink
                 style={{
-                  fontWeight: "1200",
+                  fontWeight: "700",
                 }}
                 className={({ isActive }) =>
                   isActive
@@ -126,7 +126,7 @@ const HeadingBar = () => {
             <li>
               <NavLink
                 style={{
-                  fontWeight: "1200",
+                  fontWeight: "700",
                 }}
                 className={({ isActive }) =>
                   isActive
@@ -139,18 +139,14 @@ const HeadingBar = () => {
                 CHÍNH SÁCH BẢO HÀNH
               </NavLink>
             </li>
-
           </ul>
 
           {/* Login */}
           <NavLink to="sign-in" className="Btn" href="#">
-            <div class="sign">
-              <RiAccountCircleLine
-                color="white"
-                size={40}
-              />
+            <div className="sign">
+              <RiAccountCircleLine color="white" size={40} />
             </div>
-            <div class="text-login">Đăng nhập</div>
+            <div className="text-login">Đăng nhập</div>
           </NavLink>
         </div>
       </div>

@@ -27,12 +27,14 @@ import EditEmployee, { employeeLoader } from "./pages/Admin/EditEmployee";
 import EditService, { serviceLoader } from "./pages/Admin/EditService";
 import AdminLayout from "./layouts/AdminLayout";
 import EmployeeLayout from "./layouts/EmployeeLayout";
-import OrderSumation from "./pages/User/OrderSumation";
 import OrderCompleted from "./pages/User/OrderCompleted";
 import ActionRecord, { billLoader } from "./pages/User/ActionRecord";
 import AccountInfor, { customerInfoLoader } from "./pages/User/AccountInfor";
-import EmployeePageHistory from "./pages/Employee/EmployeePageHistory";
+import EmployeePageHistory, {
+  employeeHistoryLoader,
+} from "./pages/Employee/EmployeePageHistory";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import OrderCheckout from "./pages/User/OrderCheckout";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -73,6 +75,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomeService /> },
       { path: "hourly-help", element: <HourlyHelp />, loader: UserLoader },
+
       {
         path: "total-senitation",
         element: <TotalSanitation />,
@@ -88,6 +91,7 @@ const router = createBrowserRouter([
         element: <ElectronicCleaning />,
         loader: UserLoader,
       },
+      { path: "order", element: <OrderCheckout />, loader: customerInfoLoader },
       { path: "order-completed", element: <OrderCompleted /> },
       { path: "action-record", element: <ActionRecord />, loader: billLoader },
       {
@@ -128,7 +132,7 @@ const router = createBrowserRouter([
       {
         path: "history-emp",
         element: <EmployeePageHistory />,
-        loader: employeePageLoader,
+        loader: employeeHistoryLoader,
       },
     ],
   },

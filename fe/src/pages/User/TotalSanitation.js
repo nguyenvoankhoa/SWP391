@@ -53,7 +53,8 @@ export default function FabricCleaning() {
   const [selectedDate, setSelectedDate] = useState();
   const [selectedTime, setSelectedTime] = useState();
   const [selectedServiceId, setSelectedServiceId] = useState("");
-  const [selectedFreq, setSelectedFreq] = useState("");
+  const [selectedFreq, setSelectedFreq] = useState();
+  const [note, setNote] = useState("");
   const data = useLoaderData();
   const DATA = data
     .filter((item) => item.name === "Tổng vệ sinh")
@@ -90,10 +91,18 @@ export default function FabricCleaning() {
     setValue(newValue);
     setShowForm(true);
   };
+  const handleNoteChange = (event) => {
+    setNote(event.target.value);
+  };
 
   useEffect(() => {
+    setSelectedDate();
+    setSelectedTime();
+    setSelectedFreq();
+    setSelectedServiceId();
+    setNote("");
     setShowForm(true);
-  }, []);
+  }, [value]);
   const handleServiceChange = (event) => {
     setSelectedServiceId(() => event.target.value);
   };
@@ -115,6 +124,8 @@ export default function FabricCleaning() {
     }
     let service = {
       businessId: selectedService.id,
+      name: "Giúp việc theo giờ",
+      note: note,
       date: date,
       month: month + 1,
       day: day,
@@ -242,16 +253,22 @@ export default function FabricCleaning() {
                   </DemoItem>
                 </DemoContainer>
               </LocalizationProvider>
-
+              <div className="row justify-content-center mt-5">
+                <div className="col-11">
+                  <div class="form-floating">
+                    <textarea
+                      class="form-control"
+                      placeholder="Leave a comment here"
+                      value={note}
+                      onChange={handleNoteChange}
+                    />
+                    <label for="floatingTextarea">Ghi chú</label>
+                  </div>
+                </div>
+              </div>
               <button onClick={addServiceHandler}>Thêm vào giỏ hàng</button>
             </Paper>
-            <div
-              className="col-5"
-              style={{
-                display: "flex",
-                position: "initial",
-              }}
-            >
+            <div className="col-5">
               <OrderSumation />
             </div>
           </Box>

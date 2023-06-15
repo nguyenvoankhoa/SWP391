@@ -3,15 +3,11 @@ import { Divider } from "@mui/material";
 import "./OrderSumation.css";
 import { useDispatch, useSelector } from "react-redux";
 import { orderItemAction } from "../../redux/order";
+import { Link } from "react-router-dom";
 const OrderSumation = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.order.items);
   const totalAmount = useSelector((state) => state.order.totalAmount);
-  const [discount, setDiscount] = useState(null);
-  const discountHandler = () => {
-    setDiscount(10);
-  };
-
   return (
     <>
       <div className="hh-total col-md-4">
@@ -21,21 +17,40 @@ const OrderSumation = () => {
             <p>Chưa có thông tin</p>
           ) : (
             cartItems.map((order) => (
-              <p key={order.type}>
-                <p>{order.type}</p>
-                <p>Số lượng: {order.quantity}</p>
-                <img
-                  type="button"
-                  src="/assets/images/remove.svg"
-                  alt="remove"
-                  style={{
-                    width: "18px",
-                  }}
-                  onClick={() =>
-                    dispatch(orderItemAction.removeItem(order.businessId))
-                  }
-                />
-              </p>
+              <div key={order.type}>
+                <div className="card mb-3">
+                  <div className="card-body">
+                    <div className="d-flex justify-content-between">
+                      <div className="d-flex flex-row align-items-center">
+                        <div className="ms-3">
+                          <h5>{order.name}</h5>
+                          <p className="small mb-0">{order.type}</p>
+                        </div>
+                      </div>
+                      <div className="d-flex flex-row align-items-center">
+                        <div style={{ width: 80 }}>
+                          <h5 className="mb-0">
+                            {order.quantity * order.price}
+                          </h5>
+                        </div>
+                        <img
+                          type="button"
+                          src="/assets/images/remove.svg"
+                          alt="remove"
+                          style={{
+                            width: "18px",
+                          }}
+                          onClick={() =>
+                            dispatch(
+                              orderItemAction.removeItem(order.businessId)
+                            )
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))
           )}
         </div>
@@ -44,33 +59,17 @@ const OrderSumation = () => {
           <p>
             Đơn giá: <span>{totalAmount} VNĐ</span>
           </p>
-          <input
-            placeholder="Mã giảm giá"
-            className="inputDiscount"
-            name="email"
-            type="text"
-          />
-          <button className="apply-discount" onClick={discountHandler}>
-            Ap dung
-          </button>
-          {discount && <p>Giam gia : {discount}%</p>}
+
           <p>
             Thành tiền:
-            <span>{totalAmount - (totalAmount * discount) / 100} VND</span>
+            <span>{totalAmount} VND</span>
           </p>
         </div>
         <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
-        <div className="total-sumup">
-          <h5>
-            <span>Tổng</span>
-            <span>Giá trị</span>
-            <span>Đơn hàng</span>
-          </h5>
-          <h4>
-            {totalAmount - (totalAmount * discount) / 100}
-            <span>VNĐ</span>
-          </h4>
-        </div>
+
+        <Link className="text-center" to="/user/order">
+          Thanh toán ngay
+        </Link>
       </div>
     </>
   );
