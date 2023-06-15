@@ -139,7 +139,7 @@ export default function FabricCleaning() {
   };
 
   const OptionalSection = ({ options }) => (
-    <Grid container spacing={2} justifyContent="left" marginRight={1}>
+    <Grid container spacing={2} justifyContent="center" marginRight={1}>
       <Grid item>
         <TextField
           label="Chọn dịch vụ"
@@ -161,7 +161,6 @@ export default function FabricCleaning() {
           disablePortal
           id="combo-box-demo"
           options={CleanFreq}
-          sx={{ width: 400 }}
           renderInput={(params) => (
             <TextField {...params} label="Chọn loại vệ sinh" />
           )}
@@ -184,32 +183,34 @@ export default function FabricCleaning() {
           <Box
             component="div"
             sx={{
-              "& .MuiTextField-root": { mt: 5, width: "30ch", ml: 5 },
+              "& .MuiTextField-root": { mt: 5, width: "30ch" },
               display: "flex",
               mt: 5,
             }}
             noValidate
             autoComplete="off"
+            className="row"
           >
             <Paper
-              className="col-md-6 "
+              className="col-lg-6 col-sm-12"
               sx={{
                 flexGrow: 1,
                 width: "50%",
-                ml: 4,
-                mr: 2,
               }}
             >
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: "flex-start",
+                  justifyContent: "center",
                   textAlign: "center",
-                  marginLeft: 25,
-                  marginTop: "1%",
                 }}
               >
                 <AntTabs
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    textAlign: "center",
+                  }}
                   value={value}
                   onChange={handleChange}
                   aria-label="ant example"
@@ -268,7 +269,7 @@ export default function FabricCleaning() {
               </div>
               <button onClick={addServiceHandler}>Thêm vào giỏ hàng</button>
             </Paper>
-            <div className="col-5">
+            <div className="col-lg-5 col-sm-12">
               <OrderSumation />
             </div>
           </Box>

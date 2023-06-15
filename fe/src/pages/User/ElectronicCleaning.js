@@ -87,8 +87,13 @@ export default function ElectronicCleaning() {
   };
 
   useEffect(() => {
+    setSelectedDate();
+    setSelectedTime();
+    setSelectedFreq();
+    setSelectedServiceId();
+    setNote("");
     setShowForm(true);
-  }, []);
+  }, [value]);
   const handleServiceChange = (event) => {
     setSelectedServiceId(() => event.target.value);
   };
@@ -127,7 +132,7 @@ export default function ElectronicCleaning() {
   };
 
   const OptionalSection = ({ options }) => (
-    <Grid container spacing={2} justifyContent="left" marginRight={2}>
+    <Grid container spacing={2} justifyContent="center" marginRight={1}>
       <Grid item>
         <TextField
           label="Chọn dịch vụ"
@@ -171,29 +176,26 @@ export default function ElectronicCleaning() {
           <Box
             component="div"
             sx={{
-              "& .MuiTextField-root": { mt: 5, width: "30ch", ml: 3},
+              "& .MuiTextField-root": { mt: 5, width: "30ch" },
               display: "flex",
               mt: 5,
             }}
             noValidate
             autoComplete="off"
+            className="row"
           >
             <Paper
-              className="col-md-6"
+              className="col-lg-6 col-sm-12"
               sx={{
                 flexGrow: 1,
                 width: "50%",
-                ml: 9,
-                mr: 7,
               }}
             >
               <Box
                 sx={{
                   display: "flex",
-                  justifyContent: "",
+                  justifyContent: "center",
                   textAlign: "center",
-                  marginLeft: 25,
-                  marginTop: "1%",
                 }}
               >
                 <AntTabs
@@ -232,53 +234,24 @@ export default function ElectronicCleaning() {
                     />
                   </DemoItem>
                 </DemoContainer>
-              </LocalizationProvider>
-              <div className="row mt-5">
-                <div className="col-10">
-                  <div class="form-floating">
-                    <textarea
-                      class="form-control"
-                      placeholder="Leave a comment here"
-                      onChange={handleNoteChange}
-                      style={{ marginLeft: "5%", width: "111%" }}
-                    />
-                    <label for="floatingTextarea" style={{ marginLeft: "7%", marginBottom: "4%" }}>
-                      Ghi chú
-                    </label>
+                <div className="row justify-content-center mt-5">
+                  <div className="col-11">
+                    <div class="form-floating">
+                      <textarea
+                        class="form-control"
+                        placeholder="Leave a comment here"
+                        onChange={handleNoteChange}
+                      />
+                      <label for="floatingTextarea">Ghi chú</label>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <Button
-                variant="contained"
-                onClick={addServiceHandler}
-                sx={{
-                  fontFamily: "Montserrat",
-                  width: "91%",
-                  height: "10%",
-                  mt: 6,
-                  mb: 8,
-                  ml: 3,
-                  backgroundColor: "#397F77",
-                  color: "#ffffff",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  letterSpacing: "0.07rem",
-                  "&:hover": {
-                    backgroundColor: "#397F77",
-                  },
-                }}
-              >
-                Thêm vào giỏ hàng
-              </Button>
+
+                <button onClick={addServiceHandler}>Thêm vào giỏ hàng</button>
+              </LocalizationProvider>
             </Paper>
-            <div
-              className="col-5"
-              style={{
-                display: "flex",
-                position: "initial",
-              }}
-            >
+
+            <div className="col-lg-5 col-sm-12">
               <OrderSumation />
             </div>
           </Box>
