@@ -125,7 +125,7 @@ export default function FabricCleaning() {
     }
     let service = {
       businessId: selectedService.id,
-      name: "Giúp việc theo giờ",
+      name: "Tổng vệ sinh",
       note: note,
       date: date,
       month: month + 1,

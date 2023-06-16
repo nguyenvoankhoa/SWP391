@@ -117,7 +117,7 @@ export default function ElectronicCleaning() {
     }
     let service = {
       businessId: selectedService.id,
-      name: "Giúp việc theo giờ",
+      name: "Vệ sinh máy lạnh",
       note: note,
       date: date,
       month: month + 1,
