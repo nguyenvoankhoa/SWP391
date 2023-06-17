@@ -111,6 +111,9 @@ const EditOrderForm = ({ workType, billId }) => {
                         <td>
                           <input
                             type="checkbox"
+                            id={employee.id}
+                            value={employee.id}
+                            checked={employeeId === employee.id}
                             onChange={() => handleChooseEmployee(employee.id)}
                           />
                         </td>
