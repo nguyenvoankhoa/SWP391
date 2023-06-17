@@ -25,19 +25,14 @@ const PaymentPicker = (props) => {
               backgroundColor: selectedPayment === method ? "#397f77" : "",
               border: selectedPayment === method ? " " : "1px solid #397f77",
               fontWeight: selectedPayment === method ? "500" : "normal",
-              variant: "contained"
+              variant: "contained",
             }}
           >
             {method}
-
           </Button>
-
-
-
         </div>
-      ))
-      }
-    </div >
+      ))}
+    </div>
   );
 };
 
