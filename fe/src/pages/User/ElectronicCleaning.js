@@ -229,6 +229,7 @@ export default function ElectronicCleaning() {
                     </DemoItem>
                     <DemoItem>
                       <TimePicker
+                        sx={{ marginLeft: "27px" }}
                         value={selectedTime}
                         onChange={(time) => setSelectedTime(time)}
                         label="Chọn giờ"

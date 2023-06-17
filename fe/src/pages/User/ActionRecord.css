@@ -3,7 +3,7 @@
   margin-top: 2%;
   background-color: white;
   border: 1px solid #65928a88;
-  border-radius: 20px;
+  border-radius: 7px;
   padding: 2%;
 }
 
@@ -35,7 +35,7 @@
   font-size: 22px;
 }
 .navigate:hover {
-  color: orange;
+  color: #397F77;
 }
 .link {
   font-family: "Work Sans";

@@ -248,7 +248,8 @@ export default function FabricCleaning() {
                       />
                     </DemoItem>
                     <DemoItem>
-                      <TimePicker
+                      <TimePicker 
+                        sx={{ marginLeft: "27px" }}
                         value={selectedTime}
                         onChange={(time) => setSelectedTime(time)}
                         label="Chọn giờ"
