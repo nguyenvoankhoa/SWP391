@@ -1,4 +1,6 @@
+import { Button } from "@mui/material";
 import React, { useState } from "react";
+
 const payMethod = ["Tiền mặt", "PayPal"];
 const PaymentPicker = (props) => {
   const [selectedPayment, setSelectedPayment] = useState("Tiền mặt");
@@ -14,19 +16,28 @@ const PaymentPicker = (props) => {
           className="col-md-5 d-flex justify-content-center hh-payment"
           key={method}
         >
-          <button
+          <Button
+            size="small"
             onClick={() => paymentHandler(method)}
             style={{
+              width: "150px",
               color: selectedPayment === method ? "white" : "black",
               backgroundColor: selectedPayment === method ? "#397f77" : "",
-              fontWeight: selectedPayment === method ? "600" : "normal",
+              border: selectedPayment === method ? " " : "1px solid #397f77",
+              fontWeight: selectedPayment === method ? "500" : "normal",
+              variant: "contained"
             }}
           >
             {method}
-          </button>
+
+          </Button>
+
+
+
         </div>
-      ))}
-    </div>
+      ))
+      }
+    </div >
   );
 };
 

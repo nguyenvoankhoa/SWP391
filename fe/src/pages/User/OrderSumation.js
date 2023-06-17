@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { Divider } from "@mui/material";
+import { Button, Divider, Grid } from "@mui/material";
 import "./OrderSumation.css";
 import { useDispatch, useSelector } from "react-redux";
 import { orderItemAction } from "../../redux/order";
 import { Link } from "react-router-dom";
+import { MdPayments } from "react-icons/md";
+
 const OrderSumation = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.order.items);
@@ -11,7 +13,7 @@ const OrderSumation = () => {
   return (
     <>
       <div className="hh-total col-md-6">
-        <h5 className="text-center" style={{fontFamily: "Montserrat", fontWeight: "lighter", fontSize: "28px"}}>Thông tin đơn hàng</h5>
+        <h5 className="text-center" style={{ fontFamily: "Montserrat", fontWeight: "lighter", fontSize: "28px" }}>Thông tin đơn hàng</h5>
         <div className="total-infor">
           {cartItems.length === 0 ? (
             <p>Chưa có thông tin</p>
@@ -67,9 +69,18 @@ const OrderSumation = () => {
         </div>
         <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black", marginBottom: "4%" }} />
 
-        <Link className="text-center" to="/user/order" style={{ textDecoration: "none", fontFamily: "Montserrat", fontWeight:"lighter", fontSize: "22px"}}>
-          Thanh toán ngay
-        </Link>
+        <Grid container>
+          <Grid item xs={3} marginBottom={7}>
+
+          </Grid>
+          <Grid item xs={6}>
+            <Link className="text-center" to="/user/order" style={{ textDecoration: "none", fontFamily: "Montserrat", fontWeight: "lighter", fontSize: "22px" }}>
+              <Button variant="contained" color="primary" startIcon={<MdPayments color="white" />}>
+                Thanh Toán
+              </Button>
+            </Link>
+          </Grid>
+        </Grid>
       </div>
     </>
   );
