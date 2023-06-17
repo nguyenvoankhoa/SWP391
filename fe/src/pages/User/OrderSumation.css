@@ -93,3 +93,6 @@
   border-bottom-right-radius: 0.5em;
   cursor: pointer;
 }
+.infor-button-order {
+  width: 150px;
+}

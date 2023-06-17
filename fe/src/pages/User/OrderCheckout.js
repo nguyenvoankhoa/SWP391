@@ -4,6 +4,10 @@ import Card from "../../UI/Card";
 import { useSelector } from "react-redux";
 import PaymentPicker from "../../components/User/PaymentPicker";
 import PaypalCheckoutButton from "../../components/User/PaypalCheckoutButton";
+import { Box, Button, Container, Divider, Grid } from "@mui/material";
+import Title from "../../components/Title";
+import { BsFillSendCheckFill } from "react-icons/bs";
+
 const OrderCheckout = () => {
   const data = useLoaderData();
   const nav = useNavigate();
@@ -71,50 +75,114 @@ const OrderCheckout = () => {
     console.log(data);
     nav("/user/order-completed");
   };
+
   return (
     <>
-      <h1 style={{color: "white", marginTop: "2%"}}>Vị trí làm việc</h1>
-      <Card>
-        <h3>Tòa : {data.departmentNumber}</h3>
-        <h5>Phòng: {data.roomNumber}</h5>
-        <p>Chi tiết địa chỉ :</p>
-        <p>Căn hộ</p>
-        <p>
-          {data.roomNumber}, {data.departmentNumber}, Số 512 đường Nguyễn Xiển,
-          Phường Long Thạnh Mỹ, Quận 9, TP. Hồ Chí Minh (TP. Thủ Đức mới)
-        </p>
-      </Card>
-      <h1>Thông tin công việc</h1>
-      {cartItems.length === 0 ? (
-        <p>Chưa có đơn hàng</p>
-      ) : (
-        cartItems.map((item) => (
-          <Card key={item.businessId}>
-            <h3>
-              Ngày làm việc: {item.day}, {item.date}/{item.month}/2023
-            </h3>
-            <h5>Thời gian: {item.hour}</h5>
-            <p>Lặp lại: {item.frequency}</p>
-            <p>Chi tiết công việc :</p>
-            <p>
-              <strong>
-                {item.name} - {item.type}
-              </strong>
-            </p>
-            <p>Ghi chú: {item.note}</p>
-            <p>Giá: {item.price}</p>
+      <Box container flex >
+        <Grid container flex justifyContent={"center"}>
+          <Grid item xs={12}>
+            <Title
+              title="Thanh Toán"
+              color="black"
+              fontSize="35px"
+              fontWeight="1000"
+            />
+          </Grid>
+          <Grid> <h5 style={{ fontStyle: "italic" }}>Vui lòng kiểm tra lại thông tin trước khi đặt hàng</h5></Grid>
+        </Grid>
+        <Container sx={{
+          width: "1000px"
+        }}>
+
+          <Card>
+            <Grid container spacing={1}>
+              <Grid item xs={12}>
+                <h5>Vị trí làm việc</h5>
+              </Grid>
+              <Grid item xs={6}>
+                <div class="input-group">
+                  <button class="btn btn-dark infor-button-order" type="button" id="button-addon1" disabled>Toà</button>
+                  <input class="form-control" value={data.departmentNumber} aria-describedby="button-addon1" disabled />
+                </div>
+              </Grid>
+              <Grid item xs={6} >
+                <div class="input-group">
+                  <button class="btn btn-dark infor-button-order" type="button" id="button-addon1" disabled>Phòng</button>
+                  <input class="form-control" value={data.roomNumber} aria-describedby="button-addon1" disabled />
+                </div>
+              </Grid>
+              <Grid item xs={12}>
+                <div class="input-group">
+                  <button class="btn btn-dark infor-button-order" type="button" id="button-addon1" disabled>Chi tiết địa chỉ </button>
+                  <input class="form-control" value={`Số Phòng ${data.roomNumber}, Số Toà ${data.departmentNumber}, Số 512 đường Nguyễn Xiển,
+  Phường Long Thạnh Mỹ, Quận 9, TP. Hồ Chí Minh`} aria-describedby="button-addon1" disabled />
+                </div>
+              </Grid>
+            </Grid>
+
+            <Grid container paddingTop={2}>
+
+              <Grid item xs={12}>
+                <h5>Thông tin đơn hàng</h5>
+              </Grid>
+
+              {cartItems.length === 0 ? (
+                <p>Chưa có đơn hàng</p>
+              ) : (
+
+                cartItems.map((item) => (
+
+                  <Grid container spacing={2} paddingTop={1} key={item.businessId}>
+                    <Grid item xs={12}>
+                      <Divider sx={{ borderBottomWidth: 3, backgroundColor: "black", }} />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <div class="input-group">
+                        <button class="btn btn-dark infor-button-order" type="button" id="button-addon1" disabled>Ngày làm việc</button>
+                        <input class="form-control" value={`${item.day}:${item.date}/${item.month}/2023`} aria-describedby="button-addon1" disabled />
+                      </div>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <div class="input-group">
+                        <button class="btn btn-dark infor-button-order" type="button" id="button-addon1" disabled>Thời gian</button>
+                        <input class="form-control" value={item.hour} aria-describedby="button-addon1" disabled />
+                      </div>
+                    </Grid>
+                    <Grid item xs={6}>
+                      <div class="input-group">
+                        <button class="btn btn-dark infor-button-order" type="button" id="button-addon1" disabled>Lặp lại</button>
+                        <input class="form-control" value={item.frequency} aria-describedby="button-addon1" disabled />
+                      </div>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <div class="input-group">
+                        <button class="btn btn-dark infor-button-order" type="button" id="button-addon1" disabled>Chi tiết công việc</button>
+                        <input class="form-control" value={`(${item.name} - ${item.type}) Ghi chú: ${item.note}, Giá: ${item.price}`} aria-describedby="button-addon1" disabled />
+                      </div>
+                    </Grid>
+
+                  </Grid>
+                ))
+              )}
+            </Grid>
+            <Grid paddingTop={2}>
+              <h5>Phương thức thanh toán</h5>
+              <PaymentPicker onAddPayment={paymentHandler} />
+              {payment === "Tiền mặt" ? (
+                <div className="col-md-5 d-flex justify-content-center hh-payment">
+                  <Button variant="contained" onClick={createBillHandler} startIcon={<BsFillSendCheckFill />}>
+                    Đăng việc
+                  </Button>
+                </div>
+              ) : (
+                <PaypalCheckoutButton items={bill} />
+              )}
+            </Grid>
           </Card>
-        ))
-      )}
-      <h1>Phương thức thanh toán</h1>
-      <PaymentPicker onAddPayment={paymentHandler} />
-      {payment === "Tiền mặt" ? (
-        <div className="col-md-5 d-flex justify-content-center hh-payment">
-          <button onClick={createBillHandler}>Đăng việc</button>
-        </div>
-      ) : (
-        <PaypalCheckoutButton items={bill} />
-      )}
+        </Container>
+
+      </Box >
+
     </>
   );
 };

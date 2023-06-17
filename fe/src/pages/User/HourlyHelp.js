@@ -12,11 +12,14 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import "./ElectronicCleaning.css";
 import OrderSumation from "./OrderSumation";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
 import { useDispatch } from "react-redux";
 import { orderItemAction } from "../../redux/order";
-import { Button } from "@mui/material";
+import Button from '@mui/material/Button';
+import { BiCartAdd } from "react-icons/bi";
+
+
 const AntTabs = styled(Tabs)({});
 
 const AntTab = styled((props) => <Tab disableRipple {...props} />)(
@@ -220,37 +223,35 @@ export default function FabricCleaning() {
                     value === 0
                       ? firstOption
                       : value === 1
-                      ? secondOption
-                      : thirdOption
+                        ? secondOption
+                        : thirdOption
                   }
                 />
               )}
 
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer
-                  components={["DatePicker"]}
-                  sx={{ justifyContent: "center" }}
-                >
-                  <DemoItem>
-                    <DatePicker
-                      disablePast
-                      label="Chọn ngày"
-                      format="DD/MM/YYYY"
-                      value={selectedDate}
-                      onChange={(date) => setSelectedDate(date)}
-                    />
-                  </DemoItem>
-                  <DemoItem>
-                    <TimePicker
-                      sx={{ marginLeft: "27px" }}
-                      value={selectedTime}
-                      onChange={(time) => setSelectedTime(time)}
-                      label="Chọn giờ"
-                      format="hh:mm"
-                      ampm={false}
-                    />
-                  </DemoItem>
-                </DemoContainer>
+                <Grid container flex justifyContent={"center"}>
+                  <DemoContainer components={["DatePicker"]}>
+                    <DemoItem>
+                      <DatePicker
+                        disablePast
+                        label="Chọn ngày"
+                        format="DD/MM/YYYY"
+                        value={selectedDate}
+                        onChange={(date) => setSelectedDate(date)}
+                      />
+                    </DemoItem>
+                    <DemoItem>
+                      <TimePicker
+                        value={selectedTime}
+                        onChange={(time) => setSelectedTime(time)}
+                        label="Chọn giờ"
+                        format="hh:mm"
+                        ampm={false}
+                      />
+                    </DemoItem>
+                  </DemoContainer>
+                </Grid>
                 <div className="row justify-content-center mt-5">
                   <div className="col-11">
                     <div class="form-floating">
@@ -269,30 +270,19 @@ export default function FabricCleaning() {
                     </div>
                   </div>
                 </div>
+                <Grid container flex sx={{ justifyContent: 'center', m: 4 }}>
 
-                <Button
-                  variant="contained"
-                  onClick={addServiceHandler}
-                  sx={{
-                    fontFamily: "Montserrat",
-                    width: "81%",
-                    height: "10%",
-                    mt: 6,
-                    mb: 8,
-                    ml: 8,
-                    backgroundColor: "#397F77",
-                    color: "#ffffff",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    letterSpacing: "0.07rem",
-                    "&:hover": {
-                      backgroundColor: "#397F77",
-                    },
-                  }}
-                >
-                  Thêm vào giỏ hàng
-                </Button>
+                  <Grid item xs={4} >
+                    <Button variant="outlined" component={Link} to="/user">
+                      Quay lại trang chủ
+                    </Button>
+                  </Grid>
+                  <Grid item xs={5} >
+                    <Button variant="contained" color="primary" onClick={addServiceHandler} startIcon={<BiCartAdd />} >
+                      Thêm vào giỏ hàng
+                    </Button>
+                  </Grid>
+                </Grid>
               </LocalizationProvider>
             </Paper>
 
