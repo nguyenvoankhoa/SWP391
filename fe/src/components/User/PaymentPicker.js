@@ -10,7 +10,7 @@ const PaymentPicker = (props) => {
   };
 
   return (
-    <div className="row col-md-12 hh-submit">
+    <div className="row col-md-12 hh-submit" style={{marginTop: "2%", justifyContent: "center"}}>
       {payMethod.map((method) => (
         <div
           className="col-md-5 d-flex justify-content-center hh-payment"
@@ -25,19 +25,14 @@ const PaymentPicker = (props) => {
               backgroundColor: selectedPayment === method ? "#397f77" : "",
               border: selectedPayment === method ? " " : "1px solid #397f77",
               fontWeight: selectedPayment === method ? "500" : "normal",
-              variant: "contained"
+              variant: "contained",
             }}
           >
             {method}
-
           </Button>
-
-
-
         </div>
-      ))
-      }
-    </div >
+      ))}
+    </div>
   );
 };
 

@@ -42,6 +42,10 @@ const orderSlice = createSlice({
     removeError(state) {
       state.error = "";
     },
+
+    removeAllItems(state) {
+      state.items = [];
+    },
   },
 });
 

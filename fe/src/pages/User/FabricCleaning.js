@@ -175,7 +175,7 @@ export default function FabricCleaning() {
     <Box sx={{ width: "100%" }}>
       <Box sx={{ bgcolor: "none", p: 2 }}>
         <Title
-          title="VỆ SINH MÁY LẠNH"
+          title="VỆ SINH SOFA, NỆM, THẢM"
           color="white"
           fontSize="35px"
           fontWeight="1000"
@@ -243,6 +243,7 @@ export default function FabricCleaning() {
                     </DemoItem>
                     <DemoItem>
                       <TimePicker
+                        sx={{ marginLeft: "27px" }}
                         value={selectedTime}
                         onChange={(time) => setSelectedTime(time)}
                         label="Chọn giờ"
@@ -256,11 +257,12 @@ export default function FabricCleaning() {
                   <div className="col-11">
                     <div class="form-floating">
                       <textarea
+                        style={{ marginLeft: "6%", width: "88%" }}
                         class="form-control"
                         placeholder="Leave a comment here"
                         onChange={handleNoteChange}
                       />
-                      <label for="floatingTextarea">Ghi chú</label>
+                      <label for="floatingTextarea" style={{ marginLeft: "7%", marginBottom: "4%" }}>Ghi chú</label>
                     </div>
                   </div>
                 </div>

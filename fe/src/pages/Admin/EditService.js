@@ -10,6 +10,7 @@ const EditService = () => {
   const handleServiceChange = (service) => {
     setService(service);
   };
+  console.log(data)
   return (
     <>
       <div className="mb-5" />

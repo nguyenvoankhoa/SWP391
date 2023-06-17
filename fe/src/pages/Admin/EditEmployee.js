@@ -4,19 +4,15 @@ import "./EditCus.css";
 import Title from "../../components/Title";
 import { useLoaderData } from "react-router-dom";
 import EditEmployeeForm from "../../components/Admin/EditEmployeeForm";
+import AddEmployeeForm from "../../components/Admin/AddEmployeeForm";
 const EditEmployee = () => {
-
-
-
-
   const data = useLoaderData();
-  const [employee, setEmployee,] = useState([]);
+  const [employee, setEmployee] = useState([]);
   const editEmployeeHandler = (employee) => {
     setEmployee(employee);
   };
   return (
     <>
-
       <div className="mb-5" />
       <Title title="NHÂN VIÊN" color="white" fontSize="35px" fontWeight="700" />
 
@@ -158,6 +154,7 @@ const EditEmployee = () => {
           </Card>
         </div>
       </div>
+      <AddEmployeeForm />
       <EditEmployeeForm employee={employee} />
     </>
   );

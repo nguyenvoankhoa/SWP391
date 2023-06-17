@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { PayPalButtons } from "@paypal/react-paypal-js";
 import { useNavigate } from "react-router-dom";
+import { orderItemAction } from "../../redux/order";
+import { useDispatch } from "react-redux";
 const PaypalCheckoutButton = (props) => {
   const nav = useNavigate();
   const [payFor, setPayFor] = useState(false);
   const [error, setError] = useState(null);
+  const dispatch = useDispatch();
   const bill = props.items;
-  const handleApprove = async (orderID) => {
+  const handleApprove = async () => {
     setPayFor(true);
     const token = sessionStorage.getItem("jwtToken");
     const res = await fetch(
@@ -24,6 +27,7 @@ const PaypalCheckoutButton = (props) => {
     if (!res.ok) {
       throw new Error("Error fetching data");
     }
+    dispatch(orderItemAction.removeAllItems());
     nav("/user/order-completed");
   };
   if (error) {
@@ -68,7 +72,7 @@ const PaypalCheckoutButton = (props) => {
         const order = await actions.order.capture();
         console.log("order", order);
 
-        handleApprove(data.orderID);
+        handleApprove();
       }}
       onError={(err) => {
         setError(err);

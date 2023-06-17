@@ -21,6 +21,9 @@ const OrderCompleted = () => {
         className="container os-container"
         style={{
           height: "auto",
+          justifyContent: "center",
+          display: "flex", 
+          marginTop: "6%"
         }}
       >
         <div
@@ -29,17 +32,13 @@ const OrderCompleted = () => {
             backgroundColor: "white",
             marginTop: "2%",
             height: "70vh",
-            boxShadow: "0 5px 10px #65928a88",
-            borderRadius: "20px",
+            boxShadow: "0 10px 10px #65928a88",
+            borderRadius: "5px",
             padding: "1%",
+            width: "80%",
+
           }}
         >
-          <Title
-            title="ĐƠN HÀNG ĐÃ HOÀN TẤT"
-            color="black"
-            fontSize="35px"
-            fontWeight="1000"
-          />
           <img
             src="/assets/images/order-completed.svg"
             alt="order-completed"
@@ -48,6 +47,13 @@ const OrderCompleted = () => {
               height: "17vw",
             }}
           ></img>
+          <Title
+            title="ĐƠN HÀNG ĐÃ HOÀN TẤT"
+            color="black"
+            fontSize="35px"
+            fontWeight="1000"
+          />
+
           <h5
             className="text-center"
             style={{
@@ -62,6 +68,7 @@ const OrderCompleted = () => {
               borderRadius: "5px",
               backgroundColor: "#397F77",
               padding: "0",
+              border: "none",
             }}
           >
             <Link
