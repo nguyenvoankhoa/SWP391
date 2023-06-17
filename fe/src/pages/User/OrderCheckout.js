@@ -127,6 +127,11 @@ const OrderCheckout = () => {
 
             <Grid container paddingTop={2}>
               <Grid item xs={12}>
+                <Divider
+                  sx={{ borderBottomWidth: 1, backgroundColor: "black" }}
+                />
+              </Grid>
+              <Grid item xs={12} style={{marginTop: "2%"}}>
                 <h5>Thông tin đơn hàng</h5>
               </Grid>
 
@@ -223,7 +228,12 @@ const OrderCheckout = () => {
             </Grid>
             <Grid paddingTop={2}>
               <h5>Phương thức thanh toán</h5>
-              <PaymentPicker onAddPayment={paymentHandler} />
+              <PaymentPicker
+                onAddPayment={paymentHandler}
+                style={{
+                  marginTop: "2%",
+                }}
+              />
               {payment === "Tiền mặt" ? (
                 <CashCheckoutButton items={bill} />
               ) : (
