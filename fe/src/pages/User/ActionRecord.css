@@ -15,12 +15,11 @@
 }
 
 .ar-content .ar-nav button {
-  background-color: white;
-  border: solid 1px #496360;
-  font-weight: 600;
+  font-weight: lighter;
   font-size: 18px;
-  border-radius: 10px;
-  margin: 0;
+  align-items: center;
+  justify-content: center;
+  margin: 0 5% 0 5%;
 }
 
 .ar-content .ar-list {
@@ -47,4 +46,10 @@
 }
 .link:hover {
   color: white;
+}
+.centered-tabs {
+  justify-content: center;
+}
+div.MuiTabs-flexContainer{
+  justify-content: center;
 }

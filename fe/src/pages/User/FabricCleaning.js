@@ -16,6 +16,7 @@ import { useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
 import { useDispatch } from "react-redux";
 import { orderItemAction } from "../../redux/order";
+import { Button } from "@mui/material";
 
 const AntTabs = styled(Tabs)({});
 
@@ -124,7 +125,7 @@ export default function FabricCleaning() {
     }
     let service = {
       businessId: selectedService.id,
-      name: "Giúp việc theo giờ",
+      name: "Vệ sinh nệm, sofa, thảm",
       note: note,
       date: date,
       month: month + 1,
@@ -139,7 +140,7 @@ export default function FabricCleaning() {
   };
 
   const OptionalSection = ({ options }) => (
-    <Grid container spacing={2} justifyContent="center" marginRight={1}>
+    <Grid container spacing={5} justifyContent="center" marginRight={1}>
       <Grid item>
         <TextField
           label="Chọn dịch vụ"
@@ -228,7 +229,10 @@ export default function FabricCleaning() {
               )}
 
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                <DemoContainer components={["DatePicker"]}>
+                <DemoContainer
+                  components={["DatePicker"]}
+                  sx={{ justifyContent: "center" }}
+                >
                   <DemoItem>
                     <DatePicker
                       disablePast
@@ -240,6 +244,7 @@ export default function FabricCleaning() {
                   </DemoItem>
                   <DemoItem>
                     <TimePicker
+                      sx={{ marginLeft: "27px" }}
                       value={selectedTime}
                       onChange={(time) => setSelectedTime(time)}
                       label="Chọn giờ"
@@ -253,16 +258,44 @@ export default function FabricCleaning() {
                 <div className="col-11">
                   <div class="form-floating">
                     <textarea
+                      style={{ marginLeft: "6%", width: "88%" }}
                       class="form-control"
                       placeholder="Leave a comment here"
                       id="floatingTextarea"
                       onChange={handleNoteChange}
                     />
-                    <label for="floatingTextarea">Ghi chú</label>
+                    <label
+                      for="floatingTextarea"
+                      style={{ marginLeft: "7%", marginBottom: "4%" }}
+                    >
+                      Ghi chú
+                    </label>
                   </div>
                 </div>
               </div>
-              <button onClick={addServiceHandler}>Thêm vào giỏ hàng</button>
+              <Button
+                variant="contained"
+                onClick={addServiceHandler}
+                sx={{
+                  fontFamily: "Montserrat",
+                  width: "81%",
+                  height: "10%",
+                  mt: 6,
+                  mb: 8,
+                  ml: 8,
+                  backgroundColor: "#397F77",
+                  color: "#ffffff",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  letterSpacing: "0.07rem",
+                  "&:hover": {
+                    backgroundColor: "#397F77",
+                  },
+                }}
+              >
+                Thêm vào giỏ hàng
+              </Button>
             </Paper>
             <div
               className="col-lg-5 col-sm-12"

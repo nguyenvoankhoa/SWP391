@@ -11,13 +11,12 @@
 
 .nav-container .nav-content {
   width: 120%;
-  height: 95%;
+  height: 100vh;
   justify-content: flex-start;
   align-items: left;
   padding-top: 10%;
   background-color: #fffafa;
-  border-top-right-radius: 30px;
-  box-shadow: 6px 4px 5px #4e4e4e46;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 }
 
@@ -50,7 +49,8 @@
 
 .nav-container .nav-content .nav-item a {
   text-decoration: none;
-  color: #2a5b55;
+  color: #015450;
+  font-family: "Montserrat";
 }
 
 .nav-container .nav-content .nav-item span {
@@ -64,7 +64,7 @@
 .nav-container .nav-content .nav-item .seperator {
   position: absolute;
   width: 60%;
-  height: 5px;
+  height: 1px;
   background-color: black;
   left: 50%;
   top: 100%;
@@ -81,5 +81,7 @@
 .nav-container .nav-content .user-hb-name span {
   width: 100%;
   text-align: center;
-  padding-bottom: 10%;
+  padding-bottom: 8%;
+  font-family: "Montserrat";
+  font-weight: normal;
 }

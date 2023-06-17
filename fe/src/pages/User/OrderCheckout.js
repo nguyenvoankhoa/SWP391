@@ -73,7 +73,7 @@ const OrderCheckout = () => {
   };
   return (
     <>
-      <h1>Vị trí làm việc</h1>
+      <h1 style={{color: "white", marginTop: "2%"}}>Vị trí làm việc</h1>
       <Card>
         <h3>Tòa : {data.departmentNumber}</h3>
         <h5>Phòng: {data.roomNumber}</h5>
