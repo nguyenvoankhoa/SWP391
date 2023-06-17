@@ -83,12 +83,12 @@ const OrderCheckout = () => {
           <Grid item xs={12}>
             <Title
               title="Thanh Toán"
-              color="black"
+              color="white"
               fontSize="35px"
               fontWeight="1000"
             />
           </Grid>
-          <Grid> <h5 style={{ fontStyle: "italic" }}>Vui lòng kiểm tra lại thông tin trước khi đặt hàng</h5></Grid>
+          <Grid> <h5 style={{ fontStyle: "italic", color: "white" }}>Vui lòng kiểm tra lại thông tin trước khi đặt hàng</h5></Grid>
         </Grid>
         <Container sx={{
           width: "1000px"

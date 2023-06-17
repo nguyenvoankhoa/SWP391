@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Title from "../../components/Title";
 import "./AccountInfor.css";
 import { useLoaderData, useNavigate } from "react-router-dom";
-
+import { Button } from "@mui/material";
 const AccountInfor = () => {
   const data = useLoaderData();
   const nav = useNavigate();
@@ -66,26 +66,26 @@ const AccountInfor = () => {
           padding="3% 0 0  0"
         />
         <div className="row justify-content-center">
-          <div className="row col-lg-10 col-sm-8 ai-content">
+          <div className="row col-lg-8 col-sm-8 ai-content">
             <div className="row col-lg-7 col-md-12 u-infor">
               <div className="col-md-12">
-                <p>HỌ VÀ TÊN</p>
+                <p className="custom-p">HỌ VÀ TÊN</p>
                 <input className="" value={name} onChange={handleNameChange} />
               </div>
               <div className="col-md-12">
-                <p>EMAIL</p>
+                <p className="custom-p">EMAIL</p>
                 <input className="" value={data.email} disabled />
               </div>
-              <div className="col-md-6">
-                <p>SỐ TÒA</p>
+              <div className="col-md-6" style={{ marginTop: "2%" }}>
+                <p className="custom-p">SỐ TÒA</p>
                 <input
                   className=""
                   value={departmentNum}
                   onChange={handleDepartmentNumChange}
                 />
               </div>
-              <div className="col-md-6">
-                <p>SỐ PHÒNG</p>
+              <div className="col-md-6" style={{ marginTop: "2%" }}>
+                <p className="custom-p">SỐ PHÒNG</p>
                 <input
                   className=""
                   value={roomNum}
@@ -93,7 +93,7 @@ const AccountInfor = () => {
                 />
               </div>
               <div className="col-md-12">
-                <p>SỐ ĐIỆN THOẠI</p>
+                <p className="custom-p">SỐ ĐIỆN THOẠI</p>
                 <input
                   className=""
                   value={phone}
@@ -104,7 +104,29 @@ const AccountInfor = () => {
                 className="col-md-12 d-flex justify-content-center"
                 id="finish"
               >
-                <button onClick={customerHandler}>Cập nhật</button>
+                <Button
+                  variant="contained"
+                  onClick={customerHandler}
+                  sx={{
+                    fontFamily: "Montserrat",
+                    width: "110%",
+                    height: "30%",
+                    mt: 5,
+                    mb: 7,
+                    ml: 1,
+                    backgroundColor: "#397F77",
+                    color: "#ffffff",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    letterSpacing: "0.07rem",
+                    "&:hover": {
+                      backgroundColor: "#397F77",
+                    },
+                  }}
+                >
+                  Cập nhật
+                </Button>
               </div>
             </div>
           </div>
