@@ -126,7 +126,7 @@ export default function FabricCleaning() {
     }
     let service = {
       businessId: selectedService.id,
-      name: "Giúp việc theo giờ",
+      name: "Vệ sinh nệm, sofa, thảm",
       note: note,
       date: date,
       month: month + 1,
@@ -141,7 +141,7 @@ export default function FabricCleaning() {
   };
 
   const OptionalSection = ({ options }) => (
-    <Grid container spacing={2} justifyContent="center" marginRight={1}>
+    <Grid container spacing={5} justifyContent="center" marginRight={1}>
       <Grid item>
         <TextField
           label="Chọn dịch vụ"

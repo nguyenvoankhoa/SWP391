@@ -18,38 +18,41 @@ const UserPeriodic = (props) => {
         </div>
       )}
       {data.length > 0 && (
-        <table
-          className="table table-bordered table-striped text-center"
-          style={{ fontSize: "18px", fontWeight: "400" }}
-        >
-          <thead>
-            <tr>
-              <th scope="col">Dịch vụ</th>
-              <th scope="col">Loại</th>
-              <th scope="col">Định kỳ</th>
-              <th scope="col">Nhân viên</th>
-              <th scope="col">Giao dịch</th>
-              <th scope="col">Tổng cộng</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((service) => (
-              <tr key={service.id}>
-                <td>{service.business.name}</td>
-                <td>{service.business.type}</td>
-                <td>{service.frequency}</td>
-                {service.employee ? (
-                  <td>{service.employee.name}</td>
-                ) : (
-                  <td>Đang chờ xử lý</td>
-                )}
-                <td>{service.payment}</td>
-
-                <td>{service.total}</td>
+        <div className="table-responsive">
+          {" "}
+          <table
+            className="table table-bordered table-striped text-center"
+            style={{ fontSize: "18px", fontWeight: "400" }}
+          >
+            <thead>
+              <tr>
+                <th scope="col">Dịch vụ</th>
+                <th scope="col">Loại</th>
+                <th scope="col">Định kỳ</th>
+                <th scope="col">Nhân viên</th>
+                <th scope="col">Giao dịch</th>
+                <th scope="col">Tổng cộng</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {data.map((service) => (
+                <tr key={service.id}>
+                  <td>{service.business.name}</td>
+                  <td>{service.business.type}</td>
+                  <td>{service.frequency}</td>
+                  {service.employee ? (
+                    <td>{service.employee.name}</td>
+                  ) : (
+                    <td>Đang chờ xử lý</td>
+                  )}
+                  <td>{service.payment}</td>
+
+                  <td>{service.total}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </>
   );

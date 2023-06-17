@@ -141,7 +141,7 @@ export default function FabricCleaning() {
   };
 
   const OptionalSection = ({ options }) => (
-    <Grid container spacing={2} justifyContent="center" marginRight={1}>
+    <Grid container spacing={5} justifyContent="center" marginRight={1}>
       <Grid item>
         <TextField
           label="Chọn dịch vụ"
@@ -256,11 +256,17 @@ export default function FabricCleaning() {
                   <div className="col-11">
                     <div class="form-floating">
                       <textarea
+                        style={{ marginLeft: "6%", width: "88%" }}
                         class="form-control"
                         placeholder="Leave a comment here"
                         onChange={handleNoteChange}
                       />
-                      <label for="floatingTextarea">Ghi chú</label>
+                      <label
+                        for="floatingTextarea"
+                        style={{ marginLeft: "7%", marginBottom: "4%" }}
+                      >
+                        Ghi chú
+                      </label>
                     </div>
                   </div>
                 </div>

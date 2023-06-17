@@ -15,7 +15,7 @@ const UserHeadingBar = () => {
         <li className="nav-item user-hb-avt" type="button">
           <NavLink className="nav-link d-flex" to="account-infor">
             {" "}
-            <img className="nav-avt" src="/assets/images/person1.svg" alt="" />
+            <img className="rounded-circle" src="/assets/images/thay Hoang.svg" alt="" style={{width: "70%"}} />
           </NavLink>
         </li>
         <li className="nav-item user-hb-name" type="button">

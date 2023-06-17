@@ -22,15 +22,16 @@
 .item-icon img:hover {
   opacity: 40%;
 }
-.find-employ {
-  padding-right: 700px;
-}
-.find-employ-item {
-  width: 900px;
-}
+
+/* .find-employ-item {
+  width: 100%;
+} */
 .table-responsive {
   font-size: 18px;
   font-weight: 400;
   text-align: center;
   font-family: "Work Sans";
+}
+.modal {
+  top: 15%;
 }

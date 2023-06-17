@@ -5,6 +5,10 @@ import { Link, useLoaderData } from "react-router-dom";
 import UserHistory from "./UserHistory";
 import UserOddShift from "./UserOddShift";
 import UserPeriodic from "./UserPeriodic";
+import { styled } from "@mui/material/styles";
+import Tabs from "@mui/material/Tabs";
+import Tab from "@mui/material/Tab";
+
 const ActionRecord = () => {
   const data = useLoaderData();
   const [option, setOption] = useState("Ca lẻ");
@@ -18,6 +22,33 @@ const ActionRecord = () => {
     (bill) => !bill.completeStatus && bill.frequency !== "Once"
   );
   const history = data.filter((bill) => bill.completeStatus === true);
+
+  const AntTabs = styled(Tabs)({});
+
+  const AntTab = styled((props) => <Tab disableRipple {...props} />)(
+    ({ theme }) => ({
+      textTransform: "none",
+      minWidth: 0,
+      [theme.breakpoints.up("sm")]: {
+        minWidth: 0,
+      },
+      fontWeight: theme.typography.fontWeightRegular,
+      marginRight: theme.spacing(2),
+      color: "rgba(0, 0, 0, 0.85)",
+      fontFamily: "Montserrat, sans-serif",
+      "&:hover": {
+        color: "#40a9ff",
+        opacity: 1,
+      },
+      "&.Mui-selected": {
+        color: "#1890ff",
+        fontWeight: theme.typography.fontWeightMedium,
+      },
+      "&.Mui-focusVisible": {
+        backgroundColor: "#d1eaff",
+      },
+    })
+  );
   return (
     <>
       <div
@@ -36,7 +67,7 @@ const ActionRecord = () => {
         <div className="row justify-content-center">
           <div className="row col-10 ar-content">
             <div className="row ar-nav">
-              <Link
+              {/* <Link
                 className="col-4 p-0 navigate"
                 onClick={() => handleChangeOption("Ca lẻ")}
               >
@@ -53,7 +84,18 @@ const ActionRecord = () => {
                 onClick={() => handleChangeOption("Lịch sử")}
               >
                 Lịch sử
-              </Link>
+              </Link> */}
+              <div>
+                <AntTabs
+                  value={option}
+                  onChange={handleChangeOption}
+                  aria-label="ant example"
+                >
+                  <AntTab label="Ca lẻ" />
+                  <AntTab label="Định kỳ" />
+                  <AntTab label="Lịch sử" />
+                </AntTabs>
+              </div>
             </div>
             <div className="col-md-12 ar-list p-0">
               {option === "Lịch sử" && <UserHistory list={history} />}
