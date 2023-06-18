@@ -2,20 +2,42 @@ import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
 import styles from "./AdminHome.module.css";
-import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, LabelList } from "recharts";
+import {
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  LabelList,
+} from "recharts";
 import { Bar, PieChart, Pie, Cell } from "recharts";
 import { Autocomplete, TextField } from "@mui/material";
 
-
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+const renderCustomizedLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  percent,
+  index,
+}) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
   return (
-    <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+    <text
+      x={x}
+      y={y}
+      fill="white"
+      textAnchor={x > cx ? "start" : "end"}
+      dominantBaseline="central"
+    >
       {`${(percent * 100).toFixed(0)}%`}
     </text>
   );
@@ -43,28 +65,54 @@ const AdminHome = () => {
   console.log(data);
   const [pieData, setPieData] = useState([]);
 
-  const weekdays = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat'];
+  const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
   var serviceList = new Set();
   {
     data.forEach((service) => serviceList.add(service.name));
   }
-  serviceList = Array.from(serviceList)
+  serviceList = Array.from(serviceList);
 
   const [selectedField, setSelectedField] = useState(serviceList[0]);
 
   const handleSelect = (event, service) => {
-    setSelectedField(service)
-  }
+    setSelectedField(service);
+  };
 
   function formatXAxis(value) {
-    if (value === 0) return "No"
-    if (value === 1) return "Yes"
-    return value
+    if (value === 0) return "No";
+    if (value === 1) return "Yes";
+    return value;
   }
 
-
   useEffect(() => {
-// I need you here!!!
+    async function fetchData() {
+      try {
+        const token = sessionStorage.getItem("jwtToken");
+        const res = await fetch(
+          "https://swp391-production.up.railway.app/admin/amount",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const dataPie = await res.json();
+        // Do something with the dataPie, such as updating component state
+        console.log(dataPie);
+      } catch (error) {
+        // Handle any errors that occurred during the fetch request
+        console.error(error);
+      }
+    }
+
+    fetchData();
   }, []);
 
   return (
@@ -91,9 +139,11 @@ const AdminHome = () => {
                 sx={{
                   width: 300,
                   marginBottom: "2%",
-                  marginLeft: "5%"
+                  marginLeft: "5%",
                 }}
-                renderInput={(params) => <TextField {...params} label="Dịch vụ" />}
+                renderInput={(params) => (
+                  <TextField {...params} label="Dịch vụ" />
+                )}
                 onChange={handleSelect}
               />
               <ResponsiveContainer width="90%" height="85%">
@@ -103,16 +153,11 @@ const AdminHome = () => {
                   data={data.filter((item) => item.name === selectedField)}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis
-                    dataKey="day"
-                    tickFormatter={formatXAxis(weekdays)}
-                  />
+                  <XAxis dataKey="day" tickFormatter={formatXAxis(weekdays)} />
                   <YAxis dataKey="amount" tick={<CustomYAxisTick />} />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="amount" fill="#8884d8">
-
-                  </Bar>
+                  <Bar dataKey="amount" fill="#8884d8"></Bar>
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -122,14 +167,18 @@ const AdminHome = () => {
                   data={data}
                   dataKey="uv"
                   nameKey="name"
-                  cx="50%" cy="50%"
+                  cx="50%"
+                  cy="50%"
                   outerRadius={50}
                   fill="#8884d8"
                   labelLine={false}
                   label={renderCustomizedLabel}
                 >
                   {data.map((entry, index) => (
-                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
                   ))}
                 </Pie>
               </PieChart>
@@ -161,23 +210,3 @@ export async function businessInWeek() {
     return data;
   }
 }
-
-// export async function businessInPercent() {
-//   const token = sessionStorage.getItem("jwtToken");
-//   const res = await fetch(
-//     "https://swp391-production.up.railway.app/admin/amount",
-//     {
-//       method: "GET",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: `Bearer ${token}`,
-//       },
-//     }
-//   );
-//   if (!res.ok) {
-//     throw new Error("error");
-//   } else {
-//     const dataPie = await res.json();
-//     return dataPie;
-//   }
-// }
