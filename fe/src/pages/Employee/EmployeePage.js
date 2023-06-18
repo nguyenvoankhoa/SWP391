@@ -31,7 +31,7 @@ const EmployeePage = () => {
                     <th scope="col">Số phòng</th>
                     <th scope="col">Thanh toán</th>
                     <th scope="col">Trạng thái</th>
-
+                    <th scope="col">Ghi chú</th>
                     <th scope="col">Tổng cộng</th>
                     <th scope="col">SĐT khách hàng</th>
                   </tr>
@@ -54,6 +54,7 @@ const EmployeePage = () => {
                       ) : (
                         <th>Chưa xong</th>
                       )}
+                      <th scope="col">{bill.note}</th>
                       <th scope="col">{bill.total}</th>
                       <th scope="col">{bill.customerPhone}</th>
                     </tr>

@@ -12,6 +12,7 @@ const ActionRecord = () => {
   const handleChangeOption = (option) => {
     setOption(option);
   };
+  console.log(data);
   const oodShift = data.filter(
     (bill) => !bill.completeStatus && bill.frequency === "Once"
   );
@@ -19,6 +20,7 @@ const ActionRecord = () => {
     (bill) => !bill.completeStatus && bill.frequency !== "Once"
   );
   const history = data.filter((bill) => bill.completeStatus === true);
+  console.log(history);
   return (
     <>
       <div
@@ -54,7 +56,7 @@ const ActionRecord = () => {
                 onClick={() => handleChangeOption("Lịch sử")}
               >
                 Lịch sử
-            </Link>
+              </Link>
             </div>
             <div className="col-md-12 ar-list p-0">
               {option === "Lịch sử" && <UserHistory list={history} />}

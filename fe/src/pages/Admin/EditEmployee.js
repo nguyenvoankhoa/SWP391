@@ -11,9 +11,6 @@ const EditEmployee = () => {
   const editEmployeeHandler = (employee) => {
     setEmployee(employee);
   };
-  const AddEmployeeHandler = (employee) => {
-    setEmployee(employee);
-  };
   return (
     <>
       <div className="mb-5" />
@@ -23,18 +20,18 @@ const EditEmployee = () => {
         <div className="col-10 ">
           <div className="d-flex flex-row-reverse">
             <button
-              className="d-flex justify-content-end"
               type="button"
-              class="btn btn-primary"
+              className="btn btn-primary"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
               Thêm Nhân Viên
             </button>
+            <AddEmployeeForm />
           </div>
 
           <Card>
-            <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
+            <div className="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
               <table className="table table-bordered table-striped">
                 <thead>
                   <tr>
@@ -85,7 +82,7 @@ const EditEmployee = () => {
           </Card>
         </div>
       </div>
-      <AddEmployeeForm />
+
       <EditEmployeeForm employee={employee} />
     </>
   );
