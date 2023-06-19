@@ -10,6 +10,7 @@ const EditCustomer = () => {
   const editCustomerHandler = (customer) => {
     setCustomer(customer);
   };
+
   return (
     <>
       <div className="mb-5" />
@@ -52,6 +53,7 @@ const EditCustomer = () => {
                               alt="aaa"
                               data-bs-toggle="modal"
                               data-bs-target="#exampleModal"
+                              onClick={() => editCustomerHandler(customer)}
                             />
                           </div>
                           <div className="item-icon">
