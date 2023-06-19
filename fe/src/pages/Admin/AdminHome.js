@@ -1,33 +1,119 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
 import styles from "./AdminHome.module.css";
-import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, LabelList } from "recharts";
-import { Bar, PieChart, Pie } from "recharts";
+import {
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  LabelList,
+} from "recharts";
+import { Bar, PieChart, Pie, Cell } from "recharts";
+import { Autocomplete, TextField } from "@mui/material";
 
-const AdminHome = () => {
-  const data = useLoaderData();
-  const HOURLY_HELP = data.filter((item) => item.name === "Giúp việc theo giờ");
-  const TOTAL_SANITATION = data.filter((item) => item.name === "Tổng vệ sinh");
-  const FABRIC_CLEANING = data.filter((item) => item.name === "Vệ sinh nệm, sofa, thảm");
-  const ELECTRONIC_CLEANING = data.filter((item) => item.name === "Vệ sinh máy lạnh");
-  console.log(data);
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const RADIAN = Math.PI / 180;
+const renderCustomizedLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  percent,
+  index,
+}) => {
+  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+  const x = cx + radius * Math.cos(-midAngle * RADIAN);
+  const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
-  const renderCustomizedLabel = (props) => {
-    const { x, y, width, height, value } = props;
-    const radius = 10;
+  return (
+    <text
+      x={x}
+      y={y}
+      fill="white"
+      textAnchor={x > cx ? "start" : "end"}
+      dominantBaseline="central"
+    >
+      {`${(percent * 100).toFixed(0)}%`}
+    </text>
+  );
+};
 
+const CustomYAxisTick = (props) => {
+  const { x, y, payload } = props;
+  const value = payload.value;
+
+  if (Number.isInteger(value)) {
     return (
-      <g>
-        <circle cx={x + width / 2} cy={y - radius} r={radius} fill="#8884d8" />
-        <text x={x + width / 2} y={y - radius} fill="#fff" textAnchor="middle" dominantBaseline="middle">
-          {value.split(' ')[1]}
+      <g transform={`translate(${x},${y})`}>
+        <text x={0} y={0} dy={16} textAnchor="end" fill="#666">
+          {value}
         </text>
       </g>
     );
+  }
+
+  return null;
+};
+
+const AdminHome = () => {
+  const data = useLoaderData();
+  const [pieData, setPieData] = useState([]);
+
+  const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  var serviceList = new Set();
+  {
+    data.forEach((service) => serviceList.add(service.name));
+  }
+  serviceList = Array.from(serviceList);
+
+  const [selectedField, setSelectedField] = useState(serviceList[0]);
+
+  const handleSelect = (event, service) => {
+    setSelectedField(service);
   };
 
-  const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  function formatXAxis(value) {
+    if (value === 0) return "No";
+    if (value === 1) return "Yes";
+    return value;
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const token = sessionStorage.getItem("jwtToken");
+        const res = await fetch(
+          "https://swp391-production.up.railway.app/admin/amount",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch data");
+        }
+
+        const dataPie = await res.json();
+        // Do something with the dataPie, such as updating component state
+        setPieData(dataPie);
+        console.log(pieData);
+      } catch (error) {
+        // Handle any errors that occurred during the fetch request
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -45,33 +131,57 @@ const AdminHome = () => {
           padding="2% 0 0  0"
         />
         <div className="container">
-          <div className="row">
-            <div className={styles.bg + " col-md-8"}>
-              {/* <ResponsiveContainer width="100%" height="100%">
-              <BarChart
-                width={500}
-                height={300}
-                data={data}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
+          <div className={styles.content + " row"}>
+            <div className={styles.bg + " col-md-7"}>
+              <Autocomplete
+                disablePortal
+                options={serviceList}
+                sx={{
+                  width: 300,
+                  marginBottom: "2%",
+                  marginLeft: "5%",
                 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey={weekdays} />
-                <YAxis dataKey="amount"/>
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="amount" fill="#8884d8" minPointSize={5}>
-                  
-                </Bar>
-              </BarChart>
-            </ResponsiveContainer> */}
+                renderInput={(params) => (
+                  <TextField {...params} label="Dịch vụ" />
+                )}
+                onChange={handleSelect}
+              />
+              <ResponsiveContainer width="90%" height="85%">
+                <BarChart
+                  width={500}
+                  height={200}
+                  data={data.filter((item) => item.name === selectedField)}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="day" tickFormatter={formatXAxis(weekdays)} />
+                  <YAxis dataKey="amount" tick={<CustomYAxisTick />} />
+                  <Tooltip />
+                  <Legend />
+                  <Bar dataKey="amount" fill="#8884d8"></Bar>
+                </BarChart>
+              </ResponsiveContainer>
             </div>
-            <div className="col-md-4">
-
+            <div className={styles.bg + " col-md-4"}>
+              <PieChart width={730} height={730}>
+                <Pie
+                  data={pieData}
+                  dataKey="uv"
+                  nameKey="name"
+                  cx="50%"
+                  cy="50%"
+                  outerRadius={50}
+                  fill="#8884d8"
+                  labelLine={false}
+                  label={renderCustomizedLabel}
+                >
+                  {data.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+              </PieChart>
             </div>
           </div>
         </div>
@@ -85,25 +195,6 @@ export async function businessInWeek() {
   const token = sessionStorage.getItem("jwtToken");
   const res = await fetch(
     "https://swp391-production.up.railway.app/admin/bill-by-week",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
-  if (!res.ok) {
-    throw new Error("error");
-  } else {
-    const data = await res.json();
-    return data;
-  }
-}
-export async function businessInPercent() {
-  const token = sessionStorage.getItem("jwtToken");
-  const res = await fetch(
-    "https://swp391-production.up.railway.app/admin/amount",
     {
       method: "GET",
       headers: {

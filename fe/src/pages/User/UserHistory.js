@@ -2,6 +2,7 @@ import React from "react";
 import "./UserHistory.css";
 const UserHistory = (props) => {
   const data = props.list;
+  console.log(data);
   return (
     <>
       {data.length === 0 && <p className="text-center">Chưa có thông tin</p>}
@@ -14,7 +15,7 @@ const UserHistory = (props) => {
             <thead>
               <tr>
                 <th scope="col">Dịch vụ</th>
-                <th scope="col">Số lượng</th>
+                <th scope="col">Loại</th>
                 <th scope="col">Ngày</th>
                 <th scope="col">Nhân viên</th>
                 <th scope="col">Giao dịch</th>
@@ -25,7 +26,7 @@ const UserHistory = (props) => {
               {data.map((service) => (
                 <tr key={service.id}>
                   <td>{service.business.name}</td>
-                  <td>{service.quantity}</td>
+                  <td>{service.business.type}</td>
                   <td>
                     {service.day}/{service.month}
                   </td>
