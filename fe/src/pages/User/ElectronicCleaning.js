@@ -149,20 +149,18 @@ export default function ElectronicCleaning() {
         </TextField>
       </Grid>
       <Grid item>
-        <Autocomplete
-          value={selectedFreq === "" ? null : selectedFreq}
-          onChange={(event, freq) => setSelectedFreq(freq)}
-          disablePortal
-          id="combo-box-demo"
-          options={CleanFreq}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="Chọn loại vệ sinh"
-              InputLabelProps={{ shrink: true }}
-            />
-          )}
-        />
+        <TextField
+          select
+          label="Chọn loại vệ sinh"
+          value={selectedFreq}
+          onChange={(event) => setSelectedFreq(event.target.value)}
+        >
+          {CleanFreq.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </TextField>
       </Grid>
     </Grid>
   );

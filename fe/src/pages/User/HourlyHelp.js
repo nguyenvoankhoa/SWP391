@@ -16,9 +16,8 @@ import { Link, useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
 import { useDispatch } from "react-redux";
 import { orderItemAction } from "../../redux/order";
-import Button from '@mui/material/Button';
+import Button from "@mui/material/Button";
 import { BiCartAdd } from "react-icons/bi";
-
 
 const AntTabs = styled(Tabs)({});
 
@@ -157,16 +156,18 @@ export default function FabricCleaning() {
         </TextField>
       </Grid>
       <Grid item>
-        <Autocomplete
-          value={selectedFreq === "" ? null : selectedFreq}
-          onChange={(event, freq) => setSelectedFreq(freq)}
-          disablePortal
-          id="combo-box-demo"
-          options={CleanFreq}
-          renderInput={(params) => (
-            <TextField {...params} label="Chọn loại vệ sinh" InputLabelProps={{ shrink: true }} />
-          )}
-        />
+        <TextField
+          select
+          label="Chọn loại vệ sinh"
+          value={selectedFreq}
+          onChange={(event) => setSelectedFreq(event.target.value)}
+        >
+          {CleanFreq.map((option) => (
+            <MenuItem key={option} value={option}>
+              {option}
+            </MenuItem>
+          ))}
+        </TextField>
       </Grid>
     </Grid>
   );
@@ -223,8 +224,8 @@ export default function FabricCleaning() {
                     value === 0
                       ? firstOption
                       : value === 1
-                        ? secondOption
-                        : thirdOption
+                      ? secondOption
+                      : thirdOption
                   }
                 />
               )}
@@ -271,15 +272,19 @@ export default function FabricCleaning() {
                     </div>
                   </div>
                 </div>
-                <Grid container flex sx={{ justifyContent: 'center', m: 4 }}>
-
-                  <Grid item xs={4} >
+                <Grid container flex sx={{ justifyContent: "center", m: 4 }}>
+                  <Grid item xs={4}>
                     <Button variant="outlined" component={Link} to="/user">
                       Quay lại trang chủ
                     </Button>
                   </Grid>
-                  <Grid item xs={5} >
-                    <Button variant="contained" color="primary" onClick={addServiceHandler} startIcon={<BiCartAdd />} >
+                  <Grid item xs={5}>
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={addServiceHandler}
+                      startIcon={<BiCartAdd />}
+                    >
                       Thêm vào giỏ hàng
                     </Button>
                   </Grid>
