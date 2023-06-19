@@ -5,7 +5,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="container">
         <div className="row justify-content-around">
-          <div className="col-md-4" style={{ textAlign: "center" }}>
+          <div className="col-md-4" style={{ textAlign: "justify" }}>
             <h3 className="text-lg font-bold mb-2">ĐỊA CHỈ</h3>
             <p>
               Vinhomes Grand Park,
@@ -16,7 +16,7 @@ const Footer = () => {
           </div>
           <div
             className="col-md-4 contact-info"
-            style={{ textAlign: "center" }}
+            style={{ textAlign: "justify" }}
           >
             <h3 className="text-lg font-bold mb-2">LIÊN HỆ</h3>
             <p>Tổng đài: 1800 1883</p>
@@ -25,7 +25,7 @@ const Footer = () => {
               <p className="contact-info__text">Clean Shine</p>
             </div>
           </div>
-          <div className="col-md-4" style={{ textAlign: "center" }}>
+          <div className="col-md-4" style={{ textAlign: "justify" }}>
             <h3 className="text-lg font-bold mb-2">HỖ TRỢ KHÁCH HÀNG</h3>
             <p>Câu hỏi thường gặp</p>
             <p>Chính sách bảo mật</p>

@@ -62,8 +62,7 @@ const CustomYAxisTick = (props) => {
 
 const AdminHome = () => {
   const data = useLoaderData();
-  console.log(data);
-  const [pieData, setPieData] = useState(null);
+  const [pieData, setPieData] = useState([]);
 
   const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
   var serviceList = new Set();
@@ -165,7 +164,7 @@ const AdminHome = () => {
             <div className={styles.bg + " col-md-4"}>
               <PieChart width={730} height={730}>
                 <Pie
-                  data={data}
+                  data={pieData}
                   dataKey="uv"
                   nameKey="name"
                   cx="50%"

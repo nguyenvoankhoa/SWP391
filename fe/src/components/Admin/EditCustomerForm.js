@@ -25,6 +25,25 @@ const EditCustomerForm = (props) => {
   const handleDepartmentNumChange = (e) => {
     setDepartmentNum(e.target.value);
   };
+  const deleteCustomerHandler = async () => {
+    const id = { id: props.customer.customerInfo.id };
+    const token = sessionStorage.getItem("jwtToken");
+    const res = await fetch(
+      "https://swp391-production.up.railway.app/admin/customers",
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(id),
+      }
+    );
+    if (!res.ok) {
+      throw new Error("Error fetching data");
+    }
+    nav("/admin/edit-customer");
+  };
   const customerHandler = async () => {
     let newCustomer = {
       id: props.customer.customerInfo.id,
@@ -195,6 +214,7 @@ const EditCustomerForm = (props) => {
                 type="button"
                 className="btn btn-primary"
                 data-bs-dismiss="modal"
+                onClick={deleteCustomerHandler}
               >
                 Có
               </button>
