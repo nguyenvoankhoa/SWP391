@@ -165,7 +165,7 @@ export default function FabricCleaning() {
           id="combo-box-demo"
           options={CleanFreq}
           renderInput={(params) => (
-            <TextField {...params} label="Chọn loại vệ sinh" />
+            <TextField {...params} label="Chọn loại vệ sinh" InputLabelProps={{ shrink: true }}/>
           )}
         />
       </Grid>
