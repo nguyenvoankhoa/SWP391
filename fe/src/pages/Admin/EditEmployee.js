@@ -23,7 +23,7 @@ const EditEmployee = () => {
               type="button"
               className="btn btn-primary"
               data-bs-toggle="modal"
-              data-bs-target="#exampleModal"
+              data-bs-target="#AddModal"
             >
               Thêm Nhân Viên
             </button>
@@ -62,6 +62,23 @@ const EditEmployee = () => {
                               data-bs-toggle="modal"
                               data-bs-target="#exampleModal"
                             />
+                          </div>
+                          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Xoá nhân viên</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  Bạn có chắc đây là điều đúng đắn
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">không</button>
+                                  <button type="button" class="btn btn-primary">Có</button>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                           <div className="item-icon">
                             <img

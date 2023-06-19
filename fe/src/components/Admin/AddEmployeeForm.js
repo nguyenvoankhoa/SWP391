@@ -61,7 +61,7 @@ const AddEmployeeForm = () => {
   return (
     <div
       className="modal fade"
-      id="exampleModal"
+      id="AddModal"
       tabIndex={-1}
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
