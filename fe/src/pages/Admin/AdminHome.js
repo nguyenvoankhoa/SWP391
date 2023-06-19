@@ -63,7 +63,7 @@ const CustomYAxisTick = (props) => {
 const AdminHome = () => {
   const data = useLoaderData();
   console.log(data);
-  const [pieData, setPieData] = useState([]);
+  const [pieData, setPieData] = useState(null);
 
   const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
   var serviceList = new Set();
@@ -105,7 +105,8 @@ const AdminHome = () => {
 
         const dataPie = await res.json();
         // Do something with the dataPie, such as updating component state
-        console.log(dataPie);
+        setPieData(dataPie);
+        console.log(pieData);
       } catch (error) {
         // Handle any errors that occurred during the fetch request
         console.error(error);
