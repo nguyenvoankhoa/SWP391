@@ -19,7 +19,6 @@ const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, per
     </text>
   );
 };
-
 const CustomYAxisTick = (props) => {
   const { x, y, payload } = props;
   const value = payload.value;
@@ -37,19 +36,27 @@ const CustomYAxisTick = (props) => {
   return null;
 };
 
+
+/**
+ * @param serviceList: created for getting unduplicated list of service contained in data
+ * @param renderCustomizedLabel and @param CustomYAxisTick used for styling the percentage displayed in PieChart
+ * @param data created for storing Bar Chart data
+ * @param pieChartData created for storing Pie Chart data.
+ * 
+*/
 const AdminHome = () => {
   const data = useLoaderData();
   console.log(data);
   const [pieChartData, setPieChartData] = useState([]);
 
-  const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
   var serviceList = new Set();
   {
     data.forEach((service) => serviceList.add(service.name));
+    serviceList = Array.from(serviceList);
   }
-  serviceList = Array.from(serviceList);
-
   const [selectedField, setSelectedField] = useState(serviceList[0]);
+  const selectedData = data.filter((item) => item.name === selectedField);
+  console.log(selectedData)
 
   const handleSelect = (event, service) => {
     setSelectedField(service);
@@ -84,7 +91,7 @@ const AdminHome = () => {
         let keyArr = Object.keys(dataPie);
         let valueArr = Object.values(dataPie);
         for (let i = 0; i < valueArr.length; i++) {
-          let tmpObj = {service: keyArr[i], quantity: valueArr[i] };
+          let tmpObj = { service: keyArr[i], quantity: valueArr[i] };
           setPieChartData(prevPieChart => [...prevPieChart, tmpObj]);
         }
 
@@ -96,8 +103,18 @@ const AdminHome = () => {
     fetchData();
   }, []);
 
-  console.log(pieChartData)
-
+  const dataMap = new Map();
+  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  daysOfWeek.forEach((day) => {
+    dataMap.set(day, { day, amount: 0 });
+  });
+  selectedData.forEach((service) => {
+    if (dataMap.has(service.day)) {
+      dataMap.set(service.day, { day: service.day, amount: service.amount });
+    }
+  });
+  const chartData = Array.from(dataMap.values())
+  console.log(chartData)
   return (
     <>
       <div
@@ -111,7 +128,7 @@ const AdminHome = () => {
           color="black"
           fontSize="35px"
           fontWeight="2000"
-          padding="2% 0 0  0"
+          padding="1% 0 1% 0"
         />
         <div className="container">
           <div className={styles.content + " row"}>
@@ -129,14 +146,14 @@ const AdminHome = () => {
                 )}
                 onChange={handleSelect}
               />
-              <ResponsiveContainer width="90%" height="85%">
+              <ResponsiveContainer width="95%" height="85%">
                 <BarChart
                   width={500}
                   height={200}
-                  data={data.filter((item) => item.name === selectedField)}
+                  data={chartData}
                 >
                   <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="day" tickFormatter={formatXAxis(weekdays)} />
+                  <XAxis dataKey="day" />
                   <YAxis dataKey="amount" tick={<CustomYAxisTick />} />
                   <Tooltip />
                   <Legend />
@@ -145,7 +162,8 @@ const AdminHome = () => {
               </ResponsiveContainer>
             </div>
             <div className={styles.bg + " col-md-4"}>
-              <PieChart width={370} height={500}>
+              <h5 className="text-center">Tổng số đơn hàng</h5>
+              <PieChart width={370} height={450}>
                 <Pie
                   data={pieChartData}
                   dataKey="quantity"
@@ -164,6 +182,14 @@ const AdminHome = () => {
                     />
                   ))}
                 </Pie>
+                <Tooltip
+
+                />
+                <Legend
+                  style={{
+
+                  }}
+                />
               </PieChart>
             </div>
           </div>
