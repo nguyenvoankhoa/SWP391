@@ -7,7 +7,7 @@ const UserHistory = (props) => {
     <>
       {data.length === 0 && <p className="text-center">Chưa có thông tin</p>}
       {data.length > 0 && (
-        <div className="table-responsive">
+        <div className="table-responsive table-wrapper-scroll-y">
           <table
             className="table table-bordered table-striped text-center"
             style={{ fontSize: "18px", fontWeight: "400" }}

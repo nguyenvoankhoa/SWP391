@@ -71,7 +71,7 @@ const OrderCheckout = () => {
               <Grid item xs={6}>
                 <div class="input-group">
                   <button
-                    class="btn btn-dark infor-button-order"
+                    class="btn bt-checkout infor-button-order"
                     type="button"
                     id="button-addon1"
                     disabled
@@ -89,7 +89,7 @@ const OrderCheckout = () => {
               <Grid item xs={6}>
                 <div class="input-group">
                   <button
-                    class="btn btn-dark infor-button-order"
+                    class="btn bt-checkout infor-button-order"
                     type="button"
                     id="button-addon1"
                     disabled
@@ -104,10 +104,10 @@ const OrderCheckout = () => {
                   />
                 </div>
               </Grid>
-              <Grid item xs={12} style={{marginTop: "2%"}}>
+              <Grid item xs={12} style={{ marginTop: "2%" }}>
                 <div class="input-group">
                   <button
-                    class="btn btn-dark infor-button-order"
+                    class="btn bt-checkout infor-button-order"
                     type="button"
                     id="button-addon1"
                     disabled
@@ -131,7 +131,7 @@ const OrderCheckout = () => {
                   sx={{ borderBottomWidth: 1, backgroundColor: "black" }}
                 />
               </Grid>
-              <Grid item xs={12} style={{marginTop: "2%"}}>
+              <Grid item xs={12} style={{ marginTop: "2%" }}>
                 <h5>Thông tin đơn hàng</h5>
               </Grid>
 
@@ -153,7 +153,7 @@ const OrderCheckout = () => {
                     <Grid item xs={12}>
                       <div class="input-group">
                         <button
-                          class="btn btn-dark infor-button-order"
+                          class="btn bt-checkout infor-button-order"
                           type="button"
                           id="button-addon1"
                           disabled
@@ -171,7 +171,7 @@ const OrderCheckout = () => {
                     <Grid item xs={6}>
                       <div class="input-group">
                         <button
-                          class="btn btn-dark infor-button-order"
+                          class="btn bt-checkout infor-button-order"
                           type="button"
                           id="button-addon1"
                           disabled
@@ -189,7 +189,7 @@ const OrderCheckout = () => {
                     <Grid item xs={6}>
                       <div class="input-group">
                         <button
-                          class="btn btn-dark infor-button-order"
+                          class="btn bt-checkout infor-button-order"
                           type="button"
                           id="button-addon1"
                           disabled
@@ -207,7 +207,7 @@ const OrderCheckout = () => {
                     <Grid item xs={12}>
                       <div class="input-group">
                         <button
-                          class="btn btn-dark infor-button-order"
+                          class="btn bt-checkout infor-button-order"
                           type="button"
                           id="button-addon1"
                           disabled

@@ -93,6 +93,8 @@
   border-bottom-right-radius: 0.5em;
   cursor: pointer;
 }
-.infor-button-order {
+.bt-checkout {
+  background-color: #397f77 !important;
   width: 150px;
+  color: white !important;
 }

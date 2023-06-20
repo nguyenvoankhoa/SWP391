@@ -1,5 +1,5 @@
 .ar-content {
-  height: 75vh;
+  height: 80vh;
   margin-top: 2%;
   background-color: white;
   border: 1px solid #65928a88;
@@ -35,7 +35,7 @@
   font-size: 22px;
 }
 .navigate:hover {
-  color: #397F77;
+  color: #397f77;
 }
 .link {
   font-family: "Work Sans";
@@ -50,6 +50,6 @@
 .centered-tabs {
   justify-content: center;
 }
-div.MuiTabs-flexContainer{
+div.MuiTabs-flexContainer {
   justify-content: center;
 }

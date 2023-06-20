@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { orderItemAction } from "../../redux/order";
 import { Link } from "react-router-dom";
 import { MdPayments } from "react-icons/md";
+import { CiCircleRemove } from "react-icons/ci";
 
 const OrderSumation = () => {
   const dispatch = useDispatch();
@@ -35,19 +36,18 @@ const OrderSumation = () => {
                             {order.quantity * order.price}
                           </h5>
                         </div>
-                        <img
-                          type="button"
-                          src="/assets/images/remove.svg"
-                          alt="remove"
+                        <CiCircleRemove
                           style={{
-                            width: "18px",
+                            fontSize: "20px",
+                            color: "red",
+                            cursor: "pointer"
                           }}
                           onClick={() =>
                             dispatch(
                               orderItemAction.removeItem(order.businessId)
                             )
-                          }
-                        />
+                          } />
+
                       </div>
                     </div>
                   </div>
