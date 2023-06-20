@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import { Grid, TextField, Paper, Autocomplete } from "@mui/material";
+import { Grid, TextField, Paper } from "@mui/material";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -158,7 +158,7 @@ export default function FabricCleaning() {
       <Grid item>
         <TextField
           select
-          label="Chọn loại vệ sinh"
+          label="Chọn tần suất"
           value={selectedFreq}
           onChange={(event) => setSelectedFreq(event.target.value)}
         >

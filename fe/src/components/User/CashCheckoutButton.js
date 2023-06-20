@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { orderItemAction } from "../../redux/order";
 import { useDispatch } from "react-redux";
+import { Button } from "@mui/material";
 const CashCheckoutButton = (props) => {
   const nav = useNavigate();
   const dispatch = useDispatch();
@@ -26,7 +27,30 @@ const CashCheckoutButton = (props) => {
     dispatch(orderItemAction.removeAllItems());
     nav("/user/order-completed");
   };
-  return <button onClick={handlePayment}>Checkout</button>;
+  return (
+    <div className="col-md-12 d-flex justify-content-center">
+          <Button
+      variant="contained"
+      onClick={handlePayment}
+      sx={{
+        fontFamily: "Montserrat",
+        width: "30%",
+        height: "30%",
+        mt: 5,
+        mb: 7,
+        backgroundColor: "#397F77",
+        color: "#ffffff",
+        letterSpacing: "0.07rem",
+        "&:hover": {
+          backgroundColor: "#397F77",
+        },
+      }}
+    >
+      Cập nhật
+    </Button>
+    </div>
+
+  );
 };
 
 export default CashCheckoutButton;
