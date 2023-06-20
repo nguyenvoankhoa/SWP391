@@ -2,42 +2,19 @@ import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
 import styles from "./AdminHome.module.css";
-import {
-  BarChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  LabelList,
-} from "recharts";
+import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, LabelList } from "recharts";
 import { Bar, PieChart, Pie, Cell } from "recharts";
 import { Autocomplete, TextField } from "@mui/material";
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
+const COLORS = ['#79B7D4', '#DE8004', '#FFBB28', '#FF8042'];
 const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent,
-  index,
-}) => {
+const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
   return (
-    <text
-      x={x}
-      y={y}
-      fill="white"
-      textAnchor={x > cx ? "start" : "end"}
-      dominantBaseline="central"
-    >
+    <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
       {`${(percent * 100).toFixed(0)}%`}
     </text>
   );
@@ -62,7 +39,8 @@ const CustomYAxisTick = (props) => {
 
 const AdminHome = () => {
   const data = useLoaderData();
-  const [pieData, setPieData] = useState([]);
+  console.log(data);
+  const [pieChartData, setPieChartData] = useState([]);
 
   const weekdays = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
   var serviceList = new Set();
@@ -103,17 +81,22 @@ const AdminHome = () => {
         }
 
         const dataPie = await res.json();
-        // Do something with the dataPie, such as updating component state
-        setPieData(dataPie);
-        console.log(pieData);
+        let keyArr = Object.keys(dataPie);
+        let valueArr = Object.values(dataPie);
+        for (let i = 0; i < valueArr.length; i++) {
+          let tmpObj = {service: keyArr[i], quantity: valueArr[i] };
+          setPieChartData(prevPieChart => [...prevPieChart, tmpObj]);
+        }
+
       } catch (error) {
-        // Handle any errors that occurred during the fetch request
         console.error(error);
       }
     }
 
     fetchData();
   }, []);
+
+  console.log(pieChartData)
 
   return (
     <>
@@ -162,14 +145,14 @@ const AdminHome = () => {
               </ResponsiveContainer>
             </div>
             <div className={styles.bg + " col-md-4"}>
-              <PieChart width={730} height={730}>
+              <PieChart width={370} height={500}>
                 <Pie
-                  data={pieData}
-                  dataKey="uv"
-                  nameKey="name"
+                  data={pieChartData}
+                  dataKey="quantity"
+                  nameKey="service"
                   cx="50%"
                   cy="50%"
-                  outerRadius={50}
+                  outerRadius={150}
                   fill="#8884d8"
                   labelLine={false}
                   label={renderCustomizedLabel}
@@ -191,6 +174,7 @@ const AdminHome = () => {
 };
 
 export default AdminHome;
+
 export async function businessInWeek() {
   const token = sessionStorage.getItem("jwtToken");
   const res = await fetch(
