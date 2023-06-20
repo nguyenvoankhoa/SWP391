@@ -85,3 +85,8 @@
   font-family: "Montserrat";
   font-weight: normal;
 }
+@media (max-width: 768px)  {
+ .nav-item img{
+    width: 12vw !important;
+  }
+}

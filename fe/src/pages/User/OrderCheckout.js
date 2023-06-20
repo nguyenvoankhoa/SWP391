@@ -4,7 +4,7 @@ import Card from "../../UI/Card";
 import { useSelector } from "react-redux";
 import PaymentPicker from "../../components/User/PaymentPicker";
 import PaypalCheckoutButton from "../../components/User/PaypalCheckoutButton";
-import { Box, Button, Container, Divider, Grid } from "@mui/material";
+import { Box, Container, Divider, Grid } from "@mui/material";
 import Title from "../../components/Title";
 import CashCheckoutButton from "../../components/User/CashCheckoutButton";
 const OrderCheckout = () => {
@@ -116,7 +116,7 @@ const OrderCheckout = () => {
                   </button>
                   <input
                     class="form-control"
-                    value={`Số Phòng ${data.roomNumber}, Số Toà ${data.departmentNumber}, Số 512 đường Nguyễn Xiển,
+                    value={`Tòa ${data.departmentNumber}.${data.roomNumber}, Số 512 đường Nguyễn Xiển,
   Phường Long Thạnh Mỹ, Quận 9, TP. Hồ Chí Minh`}
                     aria-describedby="button-addon1"
                     disabled
