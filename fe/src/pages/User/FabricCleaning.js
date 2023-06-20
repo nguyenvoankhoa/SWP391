@@ -159,7 +159,7 @@ export default function FabricCleaning() {
       <Grid item>
         <TextField
           select
-          label="Chọn loại vệ sinh"
+          label="Chọn tần suất"
           value={selectedFreq}
           onChange={(event) => setSelectedFreq(event.target.value)}
         >
