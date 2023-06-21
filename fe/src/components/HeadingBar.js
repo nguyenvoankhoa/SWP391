@@ -11,7 +11,7 @@ const HeadingBar = () => {
       <div className="container-fluid">
         {/* LOGO */}
         <NavLink className="navbar-brand" to="/">
-          <img src="/assets/images/logoCleanShine.svg" alt="" />
+          <img src="/assets/images/LOGO.svg" alt="" />
         </NavLink>
 
         {/* NAVIGATION BUTTON */}
