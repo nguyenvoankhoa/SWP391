@@ -63,7 +63,7 @@ const Feedback = () => {
             }}
           >
             <div className="fb-content">
-              <img src="assets/images/person4.svg" alt=""></img>
+              <img src="assets/images/avatar3.jpg" alt=""className="rounded-circle"></img>
               <h3 className="text-center">An Khoa</h3>
               <p>"Mình không phải khách hàng thường xuyên của CleanShine,
                 chỉ thi thoảng bận bịu quá không dọn được nhà thì mới
@@ -84,11 +84,9 @@ const Feedback = () => {
             }}
           >
             <div className="fb-content">
-              <img src="assets/images/person4.svg" alt=""></img>
+              <img src="assets/images/avatar5.jpg" alt=""className="rounded-circle"></img>
               <h3 className="text-center">Thiên An</h3>
-              <p>Có hề gì đâu bao nhiêu là hắt hủi, đánh mắng, vì Zezé đã có một người bạn đặc biệt để trút nỗi lòng: 
-                 cây cam ngọt nơi vườn sau. Và cả một người bạn nữa, bằng xương bằng thịt, một ngày kia xuất hiện, 
-                 cho cậu bé nhạy cảm khôn sớm biết thế nào là trìu mến, thế nào là nỗi đau, và mãi mãi thay đổi cuộc đời cậu.</p>
+              <p>Cảm ơn dịch vụ CleanShine đã giúp mình có nhiều thời gian rảnh tận hưởng cuộc sống.</p>
             </div>
           </div>
 
@@ -104,7 +102,7 @@ const Feedback = () => {
             }}
           >
             <div className="fb-content">
-              <img src="assets/images/person7.svg" alt=""></img>
+              <img src="/assets/images/avatar4.jpg" alt="" className="rounded-circle"></img>
               <h3 className="text-center">Thanh Mai</h3>
               <p>When they are very young and much smaller we
                 use the same size rope to tie them and, at that age,
@@ -127,7 +125,7 @@ const Feedback = () => {
             }}
           >
             <div className="fb-content">
-              <img src="assets/images/person4.svg" alt=""></img>
+              <img src="assets/images/avatar6.jpg" alt=""className="rounded-circle"></img>
               <h3 className="text-center">Hoàng Anh</h3>
               <p>Mình không phải khách hàng thường xuyên của CleanShine,
                 chỉ thi thoảng bận bịu quá không dọn được nhà thì mới
@@ -148,7 +146,7 @@ const Feedback = () => {
             }}
           >
             <div className="fb-content">
-              <img src="assets/images/person5.svg" alt=""></img>
+              <img src="assets/images/avatar1.jpg" alt=""className="rounded-circle"></img>
               <h3 className="text-center">Ngọc Như </h3>
               <p>"People’s words can have a big effect on other’s
                 lives. Think about what you say before it comes
@@ -169,7 +167,7 @@ const Feedback = () => {
             }}
           >
             <div className="fb-content">
-              <img src="assets/images/person6.svg" alt=""></img>
+              <img src="assets/images/avatar2.jpg" alt=""className="rounded-circle"></img>
               <h3 className="text-center">Trần Giao</h3>
               <p>“Your Honor, long before the baker started buying
                 butter from me, I have been buying a pound loaf of
