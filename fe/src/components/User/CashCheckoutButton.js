@@ -46,7 +46,7 @@ const CashCheckoutButton = (props) => {
         },
       }}
     >
-      Cập nhật
+      Hoàn tất đặt hàng
     </Button>
     </div>
 
