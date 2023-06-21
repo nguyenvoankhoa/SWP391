@@ -19,7 +19,7 @@ const UserPeriodic = (props) => {
       )}
       {data.length > 0 && (
 
-        <div className="row table-responsive table-wrapper-scroll-y w-100  my-custom-scrollbar">
+        <div className="table-responsive table-wrapper-scroll-y w-100  my-custom-scrollbar">
           {" "}
           <table
             className="table table-bordered table-striped text-center"
@@ -54,6 +54,8 @@ const UserPeriodic = (props) => {
             </tbody>
           </table>
         </div>
+
+
       )}
     </>
   );

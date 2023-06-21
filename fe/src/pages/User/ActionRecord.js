@@ -58,7 +58,7 @@ const ActionRecord = () => {
                 Lịch sử
               </Link>
             </div>
-            <div className="col-md-12 ar-list p-0">
+            <div className="col-md-12 ar-list p-0 table-responsive table-wrapper-scroll-y w-100  my-custom-scrollbar">
               {option === "Lịch sử" && <UserHistory list={history} />}
               {option === "Ca lẻ" && <UserOddShift list={oodShift} />}
               {option === "Định kỳ" && <UserPeriodic list={periodic} />}
