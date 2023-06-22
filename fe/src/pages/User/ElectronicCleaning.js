@@ -170,7 +170,7 @@ export default function ElectronicCleaning() {
       <Box sx={{ bgcolor: "none", p: 2 }}>
         <Title
           title="VỆ SINH MÁY LẠNH"
-          color="white"
+          color="#397f77"
           fontSize="35px"
           fontWeight="1000"
           padding="1% 0 1% 0"

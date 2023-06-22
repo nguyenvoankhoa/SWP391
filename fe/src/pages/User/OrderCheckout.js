@@ -47,16 +47,16 @@ const OrderCheckout = () => {
           <Grid item xs={12}>
             <Title
               title="Thanh Toán"
-              color="white"
+              color="#397f77"
               fontSize="35px"
               fontWeight="1000"
             />
           </Grid>
           <Grid>
             {" "}
-            <h5 style={{ fontStyle: "italic" }}>
+            <h4 style={{ fontStyle: "italic", fontWeight: "400" }}>
               Vui lòng kiểm tra lại thông tin trước khi đặt hàng
-            </h5>
+            </h4>
           </Grid>
         </Grid>
         <Container
@@ -64,7 +64,9 @@ const OrderCheckout = () => {
             width: "1000px",
           }}
         >
+          <div className="line"></div>
           <Card>
+
             <Grid container spacing={1}>
 
               <Grid item xs={12} container
@@ -93,7 +95,7 @@ const OrderCheckout = () => {
               </Grid>
               <Grid item xs={9}>
                 <div>
-                  <p>Tòa: {data.departmentNumber}, Phòng: {data.roomNumber},Vinhomes Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.</p>
+                  <p>Tòa: {data.departmentNumber}, Phòng: {data.roomNumber}, Vinhomes Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.</p>
                 </div>
               </Grid>
 
@@ -178,7 +180,7 @@ const OrderCheckout = () => {
               </Grid>
             </Card>
           </Grid>
-          <Grid paddingTop={2}>
+          <Grid items xs={12} paddingTop={2} paddingBottom={2}>
             <Card>
               <h5 style={{
                 color: "#397f77"
@@ -187,6 +189,7 @@ const OrderCheckout = () => {
                 onAddPayment={paymentHandler}
               />
               {payment === "Tiền mặt" ? (
+
                 <CashCheckoutButton items={bill} />
               ) : (
                 <PaypalCheckoutButton items={bill} />

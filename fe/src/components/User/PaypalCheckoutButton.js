@@ -42,7 +42,7 @@ const PaypalCheckoutButton = (props) => {
       style={{
         color: "silver",
         layout: "horizontal",
-        height: 20,
+        height: 40,
         tagline: false,
         shape: "pill",
       }}

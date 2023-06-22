@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { orderItemAction } from "../../redux/order";
 import { Link } from "react-router-dom";
 import { MdPayments } from "react-icons/md";
-import { CiCircleRemove } from "react-icons/ci";
+import { BsFillBackspaceFill } from "react-icons/bs";
 
 const OrderSumation = () => {
   const dispatch = useDispatch();
@@ -36,10 +36,10 @@ const OrderSumation = () => {
                             {order.quantity * order.price}
                           </h5>
                         </div>
-                        <CiCircleRemove
+                        <BsFillBackspaceFill
                           style={{
                             fontSize: "20px",
-                            color: "red",
+                            color: "#cc0000",
                             cursor: "pointer"
                           }}
                           onClick={() =>
