@@ -12,7 +12,7 @@ const SERVICE = [
   },
   {
     image: "assets/images/globe.svg",
-    title: "SỬA CHỮA THIẾT BỊ",
+    title: "VỆ SINH THIẾT BỊ",
     content:
       "Đội ngũ kỹ thuật được đào tạo bài bản, có kinh nghiệm trong việc nắm bắt và sự lý sự cố.",
     link: "/sign-in",
