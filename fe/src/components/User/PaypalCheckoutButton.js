@@ -42,7 +42,7 @@ const PaypalCheckoutButton = (props) => {
       style={{
         color: "silver",
         layout: "horizontal",
-        height: 48,
+        height: 20,
         tagline: false,
         shape: "pill",
       }}
@@ -67,7 +67,7 @@ const PaypalCheckoutButton = (props) => {
           ],
         });
       }}
-      onCancel={() => {}}
+      onCancel={() => { }}
       onApprove={async (data, actions) => {
         const order = await actions.order.capture();
         console.log("order", order);

@@ -7,6 +7,7 @@ import PaypalCheckoutButton from "../../components/User/PaypalCheckoutButton";
 import { Box, Container, Divider, Grid } from "@mui/material";
 import Title from "../../components/Title";
 import CashCheckoutButton from "../../components/User/CashCheckoutButton";
+import { MdLocationOn } from "react-icons/md";
 const OrderCheckout = () => {
   const data = useLoaderData();
   const user = JSON.parse(sessionStorage.getItem("user"));
@@ -65,184 +66,136 @@ const OrderCheckout = () => {
         >
           <Card>
             <Grid container spacing={1}>
-              <Grid item xs={12}>
-                <h5>Vị trí làm việc</h5>
-              </Grid>
-              <Grid item xs={6}>
-                <div class="input-group">
-                  <button
-                    class="btn bt-checkout infor-button-order"
-                    type="button"
-                    id="button-addon1"
-                    disabled
-                  >
-                    Toà
-                  </button>
-                  <input
-                    class="form-control"
-                    value={data.departmentNumber}
-                    aria-describedby="button-addon1"
-                    disabled
-                  />
-                </div>
-              </Grid>
-              <Grid item xs={6}>
-                <div class="input-group">
-                  <button
-                    class="btn bt-checkout infor-button-order"
-                    type="button"
-                    id="button-addon1"
-                    disabled
-                  >
-                    Phòng
-                  </button>
-                  <input
-                    class="form-control"
-                    value={data.roomNumber}
-                    aria-describedby="button-addon1"
-                    disabled
-                  />
-                </div>
-              </Grid>
-              <Grid item xs={12} style={{ marginTop: "2%" }}>
-                <div class="input-group">
-                  <button
-                    class="btn bt-checkout infor-button-order"
-                    type="button"
-                    id="button-addon1"
-                    disabled
-                  >
-                    Chi tiết địa chỉ{" "}
-                  </button>
-                  <input
-                    class="form-control"
-                    value={`Tòa ${data.departmentNumber}.${data.roomNumber}, Số 512 đường Nguyễn Xiển,
-  Phường Long Thạnh Mỹ, Quận 9, TP. Hồ Chí Minh`}
-                    aria-describedby="button-addon1"
-                    disabled
-                  />
-                </div>
-              </Grid>
-            </Grid>
 
-            <Grid container paddingTop={2}>
-              <Grid item xs={12}>
-                <Divider
-                  sx={{ borderBottomWidth: 1, backgroundColor: "black" }}
-                />
+              <Grid item xs={12} container
+                style={{
+                  color: "#397f77"
+                }}
+              >
+                <Grid item xs={0} >
+                  <MdLocationOn
+                    fontSize={25}
+                  />
+                </Grid>
+                <Grid item xs={5} >
+                  <h5>Địa điểm làm việc</h5>
+                </Grid>
               </Grid>
-              <Grid item xs={12} style={{ marginTop: "2%" }}>
-                <h5>Thông tin đơn hàng</h5>
+              <Grid item xs={2}>
+                <div>
+                  <h5
+                    style={{
+                      fontWeight: "700"
+                    }}
+                  >{user.name}</h5>
+                </div>
+                <p>{user.phone}</p>
+              </Grid>
+              <Grid item xs={9}>
+                <div>
+                  <p>Tòa: {data.departmentNumber}, Phòng: {data.roomNumber},Vinhomes Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.</p>
+                </div>
               </Grid>
 
-              {cartItems.length === 0 ? (
-                <p>Chưa có đơn hàng</p>
-              ) : (
-                cartItems.map((item) => (
-                  <Grid
-                    container
-                    spacing={2}
-                    paddingTop={1}
-                    key={item.businessId}
-                  >
-                    <Grid item xs={12}>
-                      <Divider
-                        sx={{ borderBottomWidth: 3, backgroundColor: "black" }}
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <div class="input-group">
-                        <button
-                          class="btn bt-checkout infor-button-order"
-                          type="button"
-                          id="button-addon1"
-                          disabled
-                        >
-                          Ngày làm việc
-                        </button>
-                        <input
-                          class="form-control"
-                          value={`${item.day}:${item.date}/${item.month}/2023`}
-                          aria-describedby="button-addon1"
-                          disabled
-                        />
-                      </div>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <div class="input-group">
-                        <button
-                          class="btn bt-checkout infor-button-order"
-                          type="button"
-                          id="button-addon1"
-                          disabled
-                        >
-                          Thời gian
-                        </button>
-                        <input
-                          class="form-control"
-                          value={item.hour}
-                          aria-describedby="button-addon1"
-                          disabled
-                        />
-                      </div>
-                    </Grid>
-                    <Grid item xs={6}>
-                      <div class="input-group">
-                        <button
-                          class="btn bt-checkout infor-button-order"
-                          type="button"
-                          id="button-addon1"
-                          disabled
-                        >
-                          Lặp lại
-                        </button>
-                        <input
-                          class="form-control"
-                          value={item.frequency}
-                          aria-describedby="button-addon1"
-                          disabled
-                        />
-                      </div>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <div class="input-group">
-                        <button
-                          class="btn bt-checkout infor-button-order"
-                          type="button"
-                          id="button-addon1"
-                          disabled
-                        >
-                          Chi tiết công việc
-                        </button>
-                        <input
-                          class="form-control"
-                          value={`(${item.name} - ${item.type}) Ghi chú: ${item.note}, Giá: ${item.price}`}
-                          aria-describedby="button-addon1"
-                          disabled
-                        />
-                      </div>
-                    </Grid>
-                  </Grid>
-                ))
-              )}
             </Grid>
-            <Grid paddingTop={2}>
-              <h5>Phương thức thanh toán</h5>
+          </Card>
+
+
+          <Grid
+            style={{
+              marginTop: "20px"
+            }}>
+            <Card >
+              <Grid container >
+                <Grid item xs={12}>
+                  <h5 style={{
+                    color: "#397f77"
+                  }}>Thông tin đơn hàng</h5>
+                </Grid>
+
+                {cartItems.length === 0 ? (
+                  <p>Chưa có đơn hàng</p>
+                ) : (
+                  cartItems.map((item) => (
+                    <Grid
+                      container
+                      spacing={2}
+                      paddingTop={1}
+                      key={item.businessId}
+                    >
+                      <Grid item xs={12}>
+                        <Divider
+                          sx={{ borderBottomWidth: 1, backgroundColor: "black" }}
+                        />
+                      </Grid>
+                      <Grid item xs={12} container>
+                        <Grid item xs={4}>
+                          <Grid>
+                            <h5>Công việc</h5>
+                          </Grid>
+                          <Grid>
+                            <p>{item.name} - {item.type}</p>
+                          </Grid>
+                        </Grid>
+                        <Grid item xs={4}>
+                          <Grid>
+                            <h5>Thời gian</h5>
+                          </Grid>
+                          <Grid>
+                            <p>{item.hour} {item.day}, {item.date}/{item.month}/2023</p>
+                          </Grid>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <Grid>
+                            <h5>Lặp lại</h5>
+                          </Grid>
+                          <Grid>
+                            <p>{item.frequency}</p>
+                          </Grid>
+                        </Grid>
+                        <Grid item xs={2}>
+                          <Grid>
+                            <h5>Thành tiền</h5>
+                          </Grid>
+                          <Grid>
+                            <p>{item.price}</p>
+                          </Grid>
+                        </Grid>
+                        <Grid item xs={12} container flex>
+                          <Grid paddingRight={2}>
+                            <h5>Ghi chú:</h5>
+                          </Grid>
+                          <Grid>
+                            <p>{item.note}</p>
+                          </Grid>
+
+
+                        </Grid>
+                      </Grid>
+                    </Grid>
+                  ))
+                )}
+              </Grid>
+            </Card>
+          </Grid>
+          <Grid paddingTop={2}>
+            <Card>
+              <h5 style={{
+                color: "#397f77"
+              }}>Phương thức thanh toán</h5>
               <PaymentPicker
                 onAddPayment={paymentHandler}
-                style={{
-                  marginTop: "2%",
-                }}
               />
               {payment === "Tiền mặt" ? (
                 <CashCheckoutButton items={bill} />
               ) : (
                 <PaypalCheckoutButton items={bill} />
               )}
-            </Grid>
-          </Card>
+            </Card>
+          </Grid>
+
         </Container>
-      </Box>
+      </Box >
     </>
   );
 };

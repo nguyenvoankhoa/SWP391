@@ -29,25 +29,24 @@ const CashCheckoutButton = (props) => {
   };
   return (
     <div className="col-md-12 d-flex justify-content-center">
-          <Button
-      variant="contained"
-      onClick={handlePayment}
-      sx={{
-        fontFamily: "Montserrat",
-        width: "30%",
-        height: "30%",
-        mt: 5,
-        mb: 7,
-        backgroundColor: "#397F77",
-        color: "#ffffff",
-        letterSpacing: "0.07rem",
-        "&:hover": {
+      <Button
+        variant="contained"
+        onClick={handlePayment}
+        sx={{
+          fontFamily: "Montserrat",
+          width: "30%",
+          height: "30%",
+          mt: 2,
           backgroundColor: "#397F77",
-        },
-      }}
-    >
-      Cập nhật
-    </Button>
+          color: "#ffffff",
+          letterSpacing: "0.07rem",
+          "&:hover": {
+            backgroundColor: "#397F77",
+          },
+        }}
+      >
+        Cập nhật
+      </Button>
     </div>
 
   );

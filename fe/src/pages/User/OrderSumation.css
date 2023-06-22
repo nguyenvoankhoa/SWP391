@@ -93,8 +93,6 @@
   border-bottom-right-radius: 0.5em;
   cursor: pointer;
 }
-.bt-checkout {
-  background-color: #397f77 !important;
-  width: 150px;
-  color: white !important;
+h5 {
+  font-weight: 600;
 }
