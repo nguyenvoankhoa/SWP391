@@ -27,7 +27,6 @@ import EditEmployee, { employeeLoader } from "./pages/Admin/EditEmployee";
 import EditService, { serviceLoader } from "./pages/Admin/EditService";
 import AdminLayout from "./layouts/AdminLayout";
 import EmployeeLayout from "./layouts/EmployeeLayout";
-import OrderCompleted from "./pages/User/OrderCompleted";
 import ActionRecord, { billLoader } from "./pages/User/ActionRecord";
 import AccountInfor, { customerInfoLoader } from "./pages/User/AccountInfor";
 import EmployeePageHistory, {
@@ -92,7 +91,6 @@ const router = createBrowserRouter([
         loader: UserLoader,
       },
       { path: "order", element: <OrderCheckout />, loader: customerInfoLoader },
-      { path: "order-completed", element: <OrderCompleted /> },
       { path: "action-record", element: <ActionRecord />, loader: billLoader },
       {
         path: "account-infor",
