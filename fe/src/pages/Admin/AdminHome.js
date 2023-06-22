@@ -6,7 +6,7 @@ import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveConta
 import { Bar, PieChart, Pie, Cell } from "recharts";
 import { Autocomplete, TextField } from "@mui/material";
 
-const COLORS = ['#79B7D4', '#DE8004', '#FFBB28', '#FF8042'];
+const COLORS = ['#79B7D4', '#B9FAF5', '#AEEBDC', '#FF8042'];
 const RADIAN = Math.PI / 180;
 const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
@@ -146,18 +146,18 @@ const AdminHome = () => {
                 )}
                 onChange={handleSelect}
               />
-              <ResponsiveContainer width="95%" height="85%">
+              <ResponsiveContainer width="95%" height="80%">
                 <BarChart
                   width={500}
                   height={200}
                   data={chartData}
                 >
-                  <CartesianGrid strokeDasharray="3 3" />
+                  <CartesianGrid vertical={false} strokeDasharray="3 3" />
                   <XAxis dataKey="day" />
-                  <YAxis dataKey="amount" tick={<CustomYAxisTick />} />
+                  <YAxis dataKey="amount" tick={<CustomYAxisTick />}/>
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="amount" fill="#8884d8"></Bar>
+                  <Bar dataKey="amount" fill="#8884d8" barSize={25}/>
                 </BarChart>
               </ResponsiveContainer>
             </div>
