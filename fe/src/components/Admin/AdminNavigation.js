@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useLogout from "../../hooks/useLogout";
 import "./AdminNavigation.css";
 import { useState } from "react";
@@ -11,10 +11,19 @@ const AdminNavigation = () => {
   };
 
   const [displayItem, setDisplayItem] = useState("");
+  const [selectedPath, setSelectedPath] = useState("");
+  const navigate = useNavigate();
 
-  const handleClick = (event) => {
+  const handleActiveClick = (event) => {
     const value = event.target.innerHTML;
+    setSelectedPath(event.target.getAttribute("href"));
     setDisplayItem(value);
+  }
+
+  const handleNavigateClick = (event) => {
+    const selectedService = event.target.innerHTML;
+    const link = `${selectedPath}/:serviceId=${selectedService}`;
+    navigate(link);
   }
 
   return (
@@ -25,25 +34,25 @@ const AdminNavigation = () => {
         </li>
         {/* Dashboard */}
         <li>
-          <NavLink className="nav-link" to="edit-customer">
+          <NavLink className="nav-link" to="edit-customer" onClick={handleActiveClick}>
             Thống kê
           </NavLink>
         </li>
         {/* Đơn đặt hàng, chia ra thành định kỳ, đơn lẻ, vô trong có sort theo tình trạng như là: chưa hoàn thành, đã hoàn thành, đã thanh toán. */}
         <li>
-          <NavLink className="nav-link flex-column" to="edit-employee" onClick={handleClick}>
+          <NavLink className="nav-link flex-column" to="" onClick={handleActiveClick}>
             Đơn đặt hàng
           </NavLink>
           {
             displayItem === "Đơn đặt hàng" &&
             <ul className="sub-menu">
               <li>
-                <NavLink className="nav-link" to="">
+                <NavLink className="nav-link" to="#" onClick={handleNavigateClick}>
                   Vệ sinh định kỳ
                 </NavLink>
               </li>
               <li>
-                <NavLink className="nav-link" to="">
+                <NavLink className="nav-link" to="#" onClick={handleNavigateClick}>
                   Vệ sinh một lần
                 </NavLink>
               </li>
@@ -52,25 +61,30 @@ const AdminNavigation = () => {
         </li>
         {/* Phân chia nhân viên theo chuyên môn: Vdu vệ sinh định kỳ, dọn dẹp máy lạnh, ... */}
         <li>
-          <NavLink className="nav-link" to="edit-service" onClick={handleClick}>
+          <NavLink className="nav-link" to="edit-employee" onClick={handleActiveClick}>
             Nhân viên
           </NavLink>
           {
             displayItem === "Nhân viên" &&
             <ul className="sub-menu">
               <li>
-                <NavLink className="nav-link" to="">
-                  Nhân viên vệ sinh
+                <NavLink className="nav-link" to="#" onClick={handleNavigateClick}>
+                  Giúp việc theo giờ
                 </NavLink>
               </li>
               <li>
-                <NavLink className="nav-link" to="">
-                  Nhân viên máy lạnh
+                <NavLink className="nav-link" to="#" onClick={handleNavigateClick}>
+                  Tổng vệ sinh
                 </NavLink>
               </li>
               <li>
-                <NavLink className="nav-link" to="">
-                  Nhân viên sofa
+                <NavLink className="nav-link" to="#" onClick={handleNavigateClick}>
+                  Vệ sinh máy lạnh
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className="nav-link" to="#" onClick={handleNavigateClick}>
+                  Vệ sinh nệm, sofa, thảm
                 </NavLink>
               </li>
             </ul>
@@ -78,30 +92,29 @@ const AdminNavigation = () => {
         </li>
         {/* Phân chia dịch vụ theo từng loại hình dịch vụ: vsinh định kỳ, máy lạnh, sofa,... */}
         <li>
-          <NavLink className="nav-link" to="order-service" onClick={handleClick}>
+          <NavLink className="nav-link" to="edit-service" onClick={handleActiveClick}>
             Dịch vụ
           </NavLink>
           {
             displayItem === "Dịch vụ" &&
             <ul className="sub-menu">
-              <li>
-                <NavLink className="nav-link" to="">
+              <li >
+                <NavLink className="nav-link" to="#" onClick={handleNavigateClick}>
                   Vệ sinh định kỳ
                 </NavLink>
-
               </li>
               <li>
-                <NavLink className="nav-link" to="">
+                <NavLink className="nav-link" to="#" onClick={handleNavigateClick}>
                   Vệ sinh một lần
                 </NavLink>
               </li>
               <li>
-                <NavLink className="nav-link" to="">
+                <NavLink className="nav-link" to="#" onClick={handleNavigateClick}>
                   Vệ sinh máy lạnh
                 </NavLink>
               </li>
               <li>
-                <NavLink className="nav-link" to="">
+                <NavLink className="nav-link" to="#" onClick={handleNavigateClick}>
                   Vệ sinh sofa
                 </NavLink>
               </li>
@@ -110,11 +123,11 @@ const AdminNavigation = () => {
         </li>
         {/* Đơn hàng của admin thì update thêm thông tin trong page đơn hàng */}
         <li>
-          <NavLink className="nav-link" to="">
+          <NavLink className="nav-link" to="order-service" onClick={handleActiveClick}>
             Đơn hàng
           </NavLink>
         </li>
-        <li className="nav-link" type="button" onClick={logoutHandler}>
+        <li type="button" onClick={logoutHandler}>
           <NavLink className="nav-link">Đăng xuất</NavLink>
         </li>
       </ul>

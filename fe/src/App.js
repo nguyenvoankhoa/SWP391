@@ -110,17 +110,45 @@ const router = createBrowserRouter([
         path: "edit-customer",
         element: <EditCustomer />,
         loader: customerLoader,
+        children: [
+          {
+            path: ":serviceId",
+            element: <OrderService />,
+          }
+        ]
       },
       {
         path: "edit-employee",
         element: <EditEmployee />,
         loader: employeeLoader,
+        children: [
+          {
+            path: ":serviceId",
+            element: <OrderService />,
+          }
+        ]
       },
-      { path: "edit-service", element: <EditService />, loader: serviceLoader },
+      { 
+        path: "edit-service", 
+        element: <EditService />, 
+        loader: serviceLoader,
+        children: [
+          {
+            path: ":serviceId",
+            element: <OrderService />,
+          }
+        ]
+      },
       {
         path: "order-service",
         element: <OrderService />,
         loader: orderLoader,
+        children: [
+          {
+            path: ":serviceId",
+            element: <OrderService />,
+          }
+        ]
       },
     ],
   },
