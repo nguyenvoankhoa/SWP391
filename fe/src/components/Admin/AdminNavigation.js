@@ -34,13 +34,13 @@ const AdminNavigation = () => {
         </li>
         {/* Dashboard */}
         <li>
-          <NavLink className="nav-link" to="edit-customer" onClick={handleActiveClick}>
+          <NavLink className="nav-link" to="" onClick={handleActiveClick}>
             Thống kê
           </NavLink>
         </li>
         {/* Đơn đặt hàng, chia ra thành định kỳ, đơn lẻ, vô trong có sort theo tình trạng như là: chưa hoàn thành, đã hoàn thành, đã thanh toán. */}
         <li>
-          <NavLink className="nav-link flex-column" to="" onClick={handleActiveClick}>
+          <NavLink className="nav-link flex-column" to="edit-customer" onClick={handleActiveClick}>
             Đơn đặt hàng
           </NavLink>
           {
