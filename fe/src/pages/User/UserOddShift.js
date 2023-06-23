@@ -16,9 +16,9 @@ const UserOddShift = (props) => {
         </div>
       )}
       {data.length > 0 && (
-        <div className="table-responsive">
+        <div className="table-responsive table-wrapper-scroll-y">
           <table
-            className="table table-bordered table-striped text-center"
+            className="table table-bordered  table-striped text-center"
             style={{ fontSize: "18px", fontWeight: "400" }}
           >
             <thead>

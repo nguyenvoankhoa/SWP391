@@ -178,7 +178,7 @@ export default function FabricCleaning() {
       <Box sx={{ bgcolor: "none", p: 2 }}>
         <Title
           title="VỆ SINH SOFA, NỆM, THẢM"
-          color="white"
+          color="#397f77"
           fontSize="35px"
           fontWeight="1000"
           padding="1% 0 1% 0"
@@ -225,8 +225,8 @@ export default function FabricCleaning() {
                     value === 0
                       ? optionalNem
                       : value === 1
-                      ? optionalSofa
-                      : optionalTham
+                        ? optionalSofa
+                        : optionalTham
                   }
                 />
               )}

@@ -21,13 +21,13 @@ const UserHeadingBar = () => {
         <li className="nav-item user-hb-name" type="button">
           <span className="nav-text">
             Hi {user.name}
-            <div className="seperator"></div>
+            <hr className="seperator"></hr>
           </span>
         </li>
         <li className="nav-item d-flex" type="button">
           <img
             className="nav-icon"
-            src="/assets/images/home.svg"
+            src="/assets/images/house.svg"
             alt="icon"
           ></img>
           <NavLink className="nav-link" to="">
@@ -37,7 +37,7 @@ const UserHeadingBar = () => {
         <li className="nav-item d-flex" type="button">
           <img
             className="nav-icon"
-            src="/assets/images/action.svg"
+            src="/assets/images/activity.svg"
             alt="icon"
           ></img>
           <NavLink className="nav-link" to="action-record">
@@ -47,7 +47,17 @@ const UserHeadingBar = () => {
         <li className="nav-item d-flex" type="button">
           <img
             className="nav-icon"
-            src="/assets/images/user.svg"
+            src="/assets/images/history.svg"
+            alt="icon"
+          ></img>
+          <NavLink className="nav-link" to="action-record">
+            Lịch sử
+          </NavLink>
+        </li>
+        <li className="nav-item d-flex" type="button">
+          <img
+            className="nav-icon"
+            src="/assets/images/person.svg"
             alt="icon"
           ></img>
           <NavLink className="nav-link" to="account-infor">
@@ -57,7 +67,7 @@ const UserHeadingBar = () => {
         <li className="nav-item d-flex" type="button" onClick={logoutHandler}>
           <img
             className="nav-icon"
-            src="/assets/images/exit.svg"
+            src="/assets/images/box-arrow-right.svg"
             alt="icon"
           ></img>
           <NavLink className="nav-link" to="/">
