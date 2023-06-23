@@ -1,16 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Card from "../../UI/Card";
 import "./EditCus.css";
 import Title from "../../components/Title";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import EditServiceForm from "../../components/Admin/EditServiceForm";
 const EditService = () => {
   const data = useLoaderData();
   const [service, setService] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const param = useParams();
+
+  useEffect(() => {
+    setFilteredData(data.filter((service) => service.name === param.serviceId));
+  }, [param])
+
+  {
+    if (filteredData.length == 0) {
+      setFilteredData(data);
+    }
+  }
+
   const handleServiceChange = (service) => {
     setService(service);
   };
-  console.log(data)
+
+  console.log(data);
+  console.log(filteredData);
+  console.log(param);
+
   return (
     <>
       <div className="mb-5" />
@@ -32,7 +49,7 @@ const EditService = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((service) => (
+                  {filteredData.map((service) => (
                     <tr key={service.serviceId}>
                       <th scope="row">{service.serviceId}</th>
                       <td>{service.name}</td>
@@ -42,7 +59,7 @@ const EditService = () => {
                       <td>
                         <div className="item-icon">
                           <img
-                            src="../assets/images/edit.png"
+                            src="/assets/images/edit.png"
                             className=""
                             data-bs-toggle="modal"
                             data-bs-target="#staticBackdrop"

@@ -1,20 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../../UI/Card";
 import "./EditCus.css";
 import Title from "../../components/Title";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import EditEmployeeForm from "../../components/Admin/EditEmployeeForm";
 import AddEmployeeForm from "../../components/Admin/AddEmployeeForm";
 const EditEmployee = () => {
   const data = useLoaderData();
   const [employee, setEmployee] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
+  const param = useParams();
+
+  useEffect(() => {
+    setFilteredData(data.filter((employee) => employee.workType === param.serviceId));
+  }, [param])
+
+  {
+    if (filteredData.length == 0) {
+      setFilteredData(data);
+    }
+  }
+
   const editEmployeeHandler = (employee) => {
     setEmployee(employee);
   };
+
+  console.log(data);
+  console.log(filteredData);
+  console.log(param);
+
   return (
     <>
-      <div className="mb-5" />
-      <Title title="NHÂN VIÊN" color="white" fontSize="35px" fontWeight="700" />
+      <Title title="NHÂN VIÊN" color="black" fontSize="35px" fontWeight="700" padding="2% 0 0 0" />
 
       <div className="row justify-content-center">
         <div className="col-10 ">
@@ -46,7 +63,7 @@ const EditEmployee = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((employee) => (
+                  {filteredData.map((employee) => (
                     <tr key={employee.id}>
                       <th scope="row">{employee.id}</th>
                       <td>{employee.employeeInfo.name}</td>
@@ -57,7 +74,7 @@ const EditEmployee = () => {
                         <div className="d-flex justify-content-around">
                           <div className="item-icon">
                             <img
-                              src="../assets/images/iconTrash.svg"
+                              src="/assets/images/iconTrash.svg"
                               alt="#"
                               data-bs-toggle="modal"
                               data-bs-target="#exampleModal"
@@ -82,7 +99,7 @@ const EditEmployee = () => {
                           </div>
                           <div className="item-icon">
                             <img
-                              src="../assets/images/edit.png"
+                              src="/assets/images/edit.png"
                               alt="#"
                               data-bs-toggle="modal"
                               data-bs-target="#staticBackdrop"

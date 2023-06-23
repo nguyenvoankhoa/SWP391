@@ -36,14 +36,6 @@ const CustomYAxisTick = (props) => {
   return null;
 };
 
-
-/**
- * @param serviceList: created for getting unduplicated list of service contained in data
- * @param renderCustomizedLabel and @param CustomYAxisTick used for styling the percentage displayed in PieChart
- * @param data created for storing Bar Chart data
- * @param pieChartData created for storing Pie Chart data.
- * 
-*/
 const AdminHome = () => {
   const data = useLoaderData();
   console.log(data);

@@ -22,14 +22,14 @@ const AdminNavigation = () => {
 
   const handleNavigateClick = (event) => {
     const selectedService = event.target.innerHTML;
-    const link = `${selectedPath}/:serviceId=${selectedService}`;
+    const link = `${selectedPath}/${selectedService}`;
     navigate(link);
   }
 
   return (
     <div className="nav-container admin-container">
       <ul className="nav flex-column nav-content">
-        <li className="text-center ad-name">
+        <li className="text-center ad-name mt-2 mb-2">
           Admin
         </li>
         {/* Dashboard */}
@@ -100,12 +100,12 @@ const AdminNavigation = () => {
             <ul className="sub-menu">
               <li >
                 <NavLink className="nav-link" to="#" onClick={handleNavigateClick}>
-                  Vệ sinh định kỳ
+                  Giúp việc theo giờ
                 </NavLink>
               </li>
               <li>
                 <NavLink className="nav-link" to="#" onClick={handleNavigateClick}>
-                  Vệ sinh một lần
+                  Tổng vệ sinh
                 </NavLink>
               </li>
               <li>
@@ -115,7 +115,7 @@ const AdminNavigation = () => {
               </li>
               <li>
                 <NavLink className="nav-link" to="#" onClick={handleNavigateClick}>
-                  Vệ sinh sofa
+                  Vệ sinh nệm, sofa, thảm
                 </NavLink>
               </li>
             </ul>

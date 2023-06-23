@@ -1,13 +1,14 @@
 .admin-container .nav-content {
-    padding-top: 2%;
-    padding-right: 2%;
+    padding: 5% 2%;
+    margin-left: 2%;
 }
 
 .admin-container .nav-content li{
     padding-left: 10px;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    padding-top: 5%;
+    padding-bottom: 0;
     font-size: 18px;
+    color: #397f77;
 }
 
 .admin-container .nav-content li:hover {
@@ -26,10 +27,16 @@
 
 .admin-container .nav-content li .sub-menu  {
     list-style-type: none;
-    padding-left: 0;
+    padding-left: 2%;
     border-left: solid 2px rgb(120, 120, 120);
     transform: translate(5%, 0);
-    color: rgb(120, 120, 120);
+    color: rgb(120, 120, 120) !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 2% 0;   
+    padding-bottom: 0;
+    margin-bottom: 0;
 }
 
 .admin-container .nav-content li .sub-menu li {
@@ -37,6 +44,11 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    padding: 2% 3% !important;
+}
+
+.admin-container .nav-content li .sub-menu li a {
+    color: rgb(120, 120, 120);
 }
 
 .sub-menu {
