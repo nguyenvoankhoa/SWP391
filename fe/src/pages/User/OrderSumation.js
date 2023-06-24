@@ -40,9 +40,9 @@ const OrderSumation = () => {
                         </div>
                       </div>
                       <div className="d-flex flex-row align-items-center">
-                        <div style={{ width: 80 }}>
-                          <h5 className="mb-0">
-                            {order.quantity * order.price }
+                        <div style={{ width: 100 }}>
+                          <h5 className="mb-0" style={{fontSize: "15px", marginTop: "2rem", marginRight: "10%"}}>
+                          {(order.quantity * order.price).toLocaleString()} VNĐ
                           </h5>
                         </div>
                         <BsFillBackspaceFill
@@ -50,6 +50,7 @@ const OrderSumation = () => {
                             fontSize: "20px",
                             color: "#cc0000",
                             cursor: "pointer",
+                            marginTop: "2rem"
                           }}
                           onClick={() =>
                             dispatch(
@@ -68,12 +69,12 @@ const OrderSumation = () => {
         <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
         <div className="total-cost">
           <p>
-            Đơn giá: <span>{totalAmount} VNĐ</span>
+          Đơn giá: <span>{totalAmount.toLocaleString()} VNĐ</span>
           </p>
 
           <p>
             Thành tiền:
-            <span>{totalAmount} VND</span>
+            <span>{totalAmount.toLocaleString()} VND</span>
           </p>
         </div>
         <Divider

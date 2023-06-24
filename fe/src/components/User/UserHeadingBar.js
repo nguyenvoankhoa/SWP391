@@ -63,25 +63,25 @@ const UserHeadingBar = () => {
 
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 10 }}>
+            <ListItemButton sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}>
               <ListItemText primary="Giúp việc theo giờ" />
             </ListItemButton>
           </List>
 
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 10 }}>
+            <ListItemButton sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}>
               <ListItemText primary="Tổng vệ sinh" />
             </ListItemButton>
           </List>
 
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 10 }}>
+            <ListItemButton sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}>
               <ListItemText primary="Vệ sinh sofa, nệm" />
             </ListItemButton>
           </List>
 
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 10 }}>
+            <ListItemButton sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}>
               <ListItemText primary="Vệ sinh máy lạnh" />
             </ListItemButton>
           </List>
