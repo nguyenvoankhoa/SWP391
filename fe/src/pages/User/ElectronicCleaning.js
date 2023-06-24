@@ -266,10 +266,16 @@ export default function ElectronicCleaning() {
                   </Grid>
                   <Grid item xs={5}>
                     <Button
-                      variant="contained"
-                      color="primary"
+                      variant="contained"  
                       onClick={addServiceHandler}
                       startIcon={<BiCartAdd />}
+                      sx={{
+                        backgroundColor: "#397F77",
+                        color: "#ffffff",
+                        "&:hover": {
+                          backgroundColor: "#397F77",
+                        },
+                      }}
                     >
                       Thêm vào giỏ hàng
                     </Button>

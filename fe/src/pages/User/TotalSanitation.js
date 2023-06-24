@@ -280,16 +280,22 @@ export default function FabricCleaning() {
                 </div>
                 <Grid container flex sx={{ justifyContent: "center", m: 4 }}>
                   <Grid item xs={4}>
-                    <Button variant="outlined" component={Link} to="/user">
+                    <Button variant="outlined"  component={Link} to="/user">
                       Quay lại trang chủ
                     </Button>
                   </Grid>
                   <Grid item xs={5}>
                     <Button
                       variant="contained"
-                      color="primary"
                       onClick={addServiceHandler}
                       startIcon={<BiCartAdd />}
+                      sx={{
+                        backgroundColor: "#397F77",
+                        color: "#ffffff",
+                        "&:hover": {
+                          backgroundColor: "#397F77",
+                        },
+                      }}
                     >
                       Thêm vào giỏ hàng
                     </Button>

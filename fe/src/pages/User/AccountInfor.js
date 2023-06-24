@@ -60,7 +60,7 @@ const AccountInfor = () => {
       >
         <Title
           title="THÔNG TIN TÀI KHOẢN"
-          color="white"
+          color="#397F77"
           fontSize="35px"
           fontWeight="1000"
           padding="3% 0 0  0"

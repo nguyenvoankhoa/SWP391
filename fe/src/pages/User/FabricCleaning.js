@@ -282,9 +282,15 @@ export default function FabricCleaning() {
                   <Grid item xs={5}>
                     <Button
                       variant="contained"
-                      color="primary"
                       onClick={addServiceHandler}
                       startIcon={<BiCartAdd />}
+                      sx={{
+                        backgroundColor: "#397F77",
+                        color: "#ffffff",
+                        "&:hover": {
+                          backgroundColor: "#397F77",
+                        },
+                      }}
                     >
                       Thêm vào giỏ hàng
                     </Button>

@@ -53,3 +53,9 @@
 div.MuiTabs-flexContainer {
   justify-content: center;
 }
+.custom-select-label {
+  margin-bottom: 0;
+}
+.custom-displayed-rows {
+  margin-bottom: 0;
+}

@@ -1,12 +1,22 @@
+import * as React from "react";
 import useLogout from "../../hooks/useLogout";
 import { NavLink } from "react-router-dom";
 import "./UserHeader.css";
+import List from "@mui/material/List";
+import Collapse from "@mui/material/Collapse";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
 const UserHeadingBar = () => {
   const user = JSON.parse(sessionStorage.getItem("user"));
   const { logout } = useLogout(); // Call the useLogout hook
 
   const logoutHandler = async () => {
     await logout(); // Call the logout function from the useLogout hook
+  };
+  const [open, setOpen] = React.useState(false);
+
+  const handleSubMenu = () => {
+    setOpen(!open);
   };
 
   return (
@@ -15,7 +25,12 @@ const UserHeadingBar = () => {
         <li className="nav-item user-hb-avt" type="button">
           <NavLink className="nav-link d-flex" to="account-infor">
             {" "}
-            <img className="rounded-circle" src="/assets/images/thay Hoang.svg" alt="" style={{width: "70%"}} />
+            <img
+              className="rounded-circle"
+              src="/assets/images/thay Hoang.svg"
+              alt=""
+              style={{ width: "70%" }}
+            />
           </NavLink>
         </li>
         <li className="nav-item user-hb-name" type="button">
@@ -34,7 +49,8 @@ const UserHeadingBar = () => {
             Trang chủ
           </NavLink>
         </li>
-        <li className="nav-item d-flex" type="button">
+        {/* Activity's sub-menu include: hourly help, total sanitation, electronic and fabric cleaning */}
+        <li className="nav-item d-flex" type="button" onClick={handleSubMenu}>
           <img
             className="nav-icon"
             src="/assets/images/activity.svg"
@@ -44,6 +60,32 @@ const UserHeadingBar = () => {
             Hoạt động
           </NavLink>
         </li>
+
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            <ListItemButton sx={{ pl: 10 }}>
+              <ListItemText primary="Giúp việc theo giờ" />
+            </ListItemButton>
+          </List>
+
+          <List component="div" disablePadding>
+            <ListItemButton sx={{ pl: 10 }}>
+              <ListItemText primary="Tổng vệ sinh" />
+            </ListItemButton>
+          </List>
+
+          <List component="div" disablePadding>
+            <ListItemButton sx={{ pl: 10 }}>
+              <ListItemText primary="Vệ sinh sofa, nệm" />
+            </ListItemButton>
+          </List>
+
+          <List component="div" disablePadding>
+            <ListItemButton sx={{ pl: 10 }}>
+              <ListItemText primary="Vệ sinh máy lạnh" />
+            </ListItemButton>
+          </List>
+        </Collapse>
         <li className="nav-item d-flex" type="button">
           <img
             className="nav-icon"
