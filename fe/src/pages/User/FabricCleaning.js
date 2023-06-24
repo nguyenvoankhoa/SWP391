@@ -118,11 +118,11 @@ export default function FabricCleaning() {
     const hour = timeParse.getHours() + ":" + timeParse.getMinutes();
     let frequency;
     if (selectedFreq === "Hàng tuần") {
-      frequency = "Weekly";
+      frequency = "Hàng tuần";
     } else if (selectedFreq === "Hàng tháng") {
-      frequency = "Monthly";
+      frequency = "Hàng tháng";
     } else {
-      frequency = "Once";
+      frequency = "Một lần";
     }
     let service = {
       businessId: selectedService.id,
@@ -276,7 +276,19 @@ export default function FabricCleaning() {
                 </div>
                 <Grid container flex sx={{ justifyContent: "center", m: 4 }}>
                   <Grid item xs={4}>
-                    <Button variant="outlined" component={Link} to="/user">
+                  <Button
+                      variant="outlined"
+                      component={Link}
+                      to="/user"
+                      sx={{
+                        borderColor: "#397F77",
+                        color: "#397F77",
+                        "&:hover": {
+                          borderColor: "#397F77",
+                          color: "#397F77",
+                        },
+                      }}
+                    >
                       Quay lại trang chủ
                     </Button>
                   </Grid>

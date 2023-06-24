@@ -66,20 +66,19 @@ const OrderCheckout = () => {
         >
           <div className="line"></div>
           <Card>
-
             <Grid container spacing={1}>
-
-              <Grid item xs={12} container
+              <Grid
+                item
+                xs={12}
+                container
                 style={{
-                  color: "#397f77"
+                  color: "#397f77",
                 }}
               >
-                <Grid item xs={0} >
-                  <MdLocationOn
-                    fontSize={25}
-                  />
+                <Grid item xs={0}>
+                  <MdLocationOn fontSize={25} />
                 </Grid>
-                <Grid item xs={5} >
+                <Grid item xs={5}>
                   <h5>Địa điểm làm việc</h5>
                 </Grid>
               </Grid>
@@ -87,32 +86,40 @@ const OrderCheckout = () => {
                 <div>
                   <h5
                     style={{
-                      fontWeight: "700"
+                      fontWeight: "700",
                     }}
-                  >{user.name}</h5>
+                  >
+                    {user.name}
+                  </h5>
                 </div>
                 <p>{user.phone}</p>
               </Grid>
-              <Grid item xs={9}>
+              <Grid item xs={10}>
                 <div>
-                  <p>Tòa: {data.departmentNumber}, Phòng: {data.roomNumber}, Vinhomes Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.</p>
+                  <p>
+                    Tòa {data.departmentNumber}.{data.roomNumber}, Vinhomes
+                    Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.
+                  </p>
                 </div>
               </Grid>
-
             </Grid>
           </Card>
 
-
           <Grid
             style={{
-              marginTop: "20px"
-            }}>
-            <Card >
-              <Grid container >
+              marginTop: "20px",
+            }}
+          >
+            <Card>
+              <Grid container>
                 <Grid item xs={12}>
-                  <h5 style={{
-                    color: "#397f77"
-                  }}>Thông tin đơn hàng</h5>
+                  <h5
+                    style={{
+                      color: "#397f77",
+                    }}
+                  >
+                    Thông tin đơn hàng
+                  </h5>
                 </Grid>
 
                 {cartItems.length === 0 ? (
@@ -127,7 +134,10 @@ const OrderCheckout = () => {
                     >
                       <Grid item xs={12}>
                         <Divider
-                          sx={{ borderBottomWidth: 1, backgroundColor: "black" }}
+                          sx={{
+                            borderBottomWidth: 1,
+                            backgroundColor: "black",
+                          }}
                         />
                       </Grid>
                       <Grid item xs={12} container>
@@ -136,7 +146,9 @@ const OrderCheckout = () => {
                             <h5>Công việc</h5>
                           </Grid>
                           <Grid>
-                            <p>{item.name} - {item.type}</p>
+                            <p>
+                              {item.name} - {item.type}
+                            </p>
                           </Grid>
                         </Grid>
                         <Grid item xs={4}>
@@ -144,7 +156,10 @@ const OrderCheckout = () => {
                             <h5>Thời gian</h5>
                           </Grid>
                           <Grid>
-                            <p>{item.hour} {item.day}, {item.date}/{item.month}/2023</p>
+                            <p>
+                              {item.hour} {item.day}, {item.date}/{item.month}
+                              /2023
+                            </p>
                           </Grid>
                         </Grid>
                         <Grid item xs={2}>
@@ -160,7 +175,7 @@ const OrderCheckout = () => {
                             <h5>Thành tiền</h5>
                           </Grid>
                           <Grid>
-                            <p>{item.price}</p>
+                            <p>{item.price.toLocaleString()} VNĐ</p>
                           </Grid>
                         </Grid>
                         <Grid item xs={12} container flex>
@@ -170,8 +185,21 @@ const OrderCheckout = () => {
                           <Grid>
                             <p>{item.note}</p>
                           </Grid>
-
-
+                        </Grid>
+                        <Grid items xs={12} paddingTop={2} paddingBottom={2}>
+                          <h5
+                            style={{
+                              color: "#397f77",
+                            }}
+                          >
+                            Phương thức thanh toán
+                          </h5>
+                          <PaymentPicker onAddPayment={paymentHandler} />
+                          {payment === "Tiền mặt" ? (
+                            <CashCheckoutButton items={bill} />
+                          ) : (
+                            <PaypalCheckoutButton items={bill} />
+                          )}
                         </Grid>
                       </Grid>
                     </Grid>
@@ -180,7 +208,7 @@ const OrderCheckout = () => {
               </Grid>
             </Card>
           </Grid>
-          <Grid items xs={12} paddingTop={2} paddingBottom={2}>
+          {/* <Grid items xs={12} paddingTop={2} paddingBottom={2}>
             <Card>
               <h5 style={{
                 color: "#397f77"
@@ -195,10 +223,9 @@ const OrderCheckout = () => {
                 <PaypalCheckoutButton items={bill} />
               )}
             </Card>
-          </Grid>
-
+          </Grid> */}
         </Container>
-      </Box >
+      </Box>
     </>
   );
 };
