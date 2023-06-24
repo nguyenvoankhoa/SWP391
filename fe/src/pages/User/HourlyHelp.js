@@ -244,6 +244,7 @@ export default function FabricCleaning() {
                     </DemoItem>
                     <DemoItem>
                       <TimePicker
+                        disablePast
                         sx={{ marginLeft: "27px" }}
                         value={selectedTime}
                         onChange={(time) => setSelectedTime(time)}

@@ -20,7 +20,6 @@ import Button from "@mui/material/Button";
 import { BiCartAdd } from "react-icons/bi";
 
 const AntTabs = styled(Tabs)({});
-
 const AntTab = styled((props) => <Tab disableRipple {...props} />)(
   ({ theme }) => ({
     textTransform: "none",
@@ -250,6 +249,7 @@ export default function FabricCleaning() {
                     </DemoItem>
                     <DemoItem>
                       <TimePicker
+                        disablePast
                         sx={{ marginLeft: "27px" }}
                         value={selectedTime}
                         onChange={(time) => setSelectedTime(time)}
