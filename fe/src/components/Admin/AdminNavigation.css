@@ -4,7 +4,7 @@
 }
 
 .admin-container .nav-content li{
-    padding-left: 2vw;
+    padding-left: 0;
     padding-top: 5%;
     padding-bottom: 5%;
     font-size: 20px;
@@ -25,30 +25,31 @@
     padding: 0 !important;
 }
 
+.admin-container .nav-content .ad-services {
+    padding: 3% 1.5vw;
+    width: 100% !important;
+}
+
+.admin-container .nav-content .ad-services:hover {
+    background-color: #9DCEC8 !important;
+}
+
 .admin-container .nav-content li .sub-menu  {
     list-style-type: none;
-    padding-left: 5%;
-    border-left: solid 2px rgb(120, 120, 120);
-    transform: translate(5%, 0);
     color: rgb(120, 120, 120) !important;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    margin: 3% 0;   
-    padding-bottom: 0;
-    margin-bottom: 0;
+    height: fit-content;
+    width: 100%;
 }
 
 .admin-container .nav-content li .sub-menu li {
     font-size: 16px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    padding: 4% 3% !important;
+    padding: 1vw 0 !important;
+    width: 100%;
 }
 
 .admin-container .nav-content li .sub-menu li a {
     color: rgb(120, 120, 120);
+    width: 100%;
 }
 
 .sub-menu {

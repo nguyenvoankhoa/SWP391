@@ -32,14 +32,14 @@ const AdminNavigation = () => {
         <li className="text-center ad-name mt-2 mb-2">Admin</li>
         {/* Dashboard */}
         <li>
-          <NavLink className="nav-link" to="" onClick={handleActiveClick}>
+          <NavLink className="nav-link ad-services" to="" onClick={handleActiveClick}>
             Thống kê
           </NavLink>
         </li>
         {/* Đơn đặt hàng, chia ra thành định kỳ, đơn lẻ, vô trong có sort theo tình trạng như là: chưa hoàn thành, đã hoàn thành, đã thanh toán. */}
         <li>
           <NavLink
-            className="nav-link flex-column"
+            className="nav-link flex-column ad-services"
             to="edit-customer"
             onClick={handleActiveClick}
           >
@@ -49,7 +49,7 @@ const AdminNavigation = () => {
         {/* Phân chia nhân viên theo chuyên môn: Vdu vệ sinh định kỳ, dọn dẹp máy lạnh, ... */}
         <li>
           <NavLink
-            className="nav-link"
+            className="nav-link ad-services"
             to="edit-employee"
             onClick={handleActiveClick}
           >
@@ -99,7 +99,7 @@ const AdminNavigation = () => {
         {/* Phân chia dịch vụ theo từng loại hình dịch vụ: vsinh định kỳ, máy lạnh, sofa,... */}
         <li>
           <NavLink
-            className="nav-link"
+            className="nav-link ad-services"
             to="edit-service"
             onClick={handleActiveClick}
           >
@@ -149,7 +149,7 @@ const AdminNavigation = () => {
         {/* Đơn hàng của admin thì update thêm thông tin trong page đơn hàng */}
         <li>
           <NavLink
-            className="nav-link"
+            className="nav-link ad-services"
             to="order-service"
             onClick={handleActiveClick}
           >
@@ -197,7 +197,7 @@ const AdminNavigation = () => {
           )}
         </li>
         <li type="button" onClick={logoutHandler}>
-          <NavLink className="nav-link">Đăng xuất</NavLink>
+          <NavLink className="nav-link ad-services">Đăng xuất</NavLink>
         </li>
       </ul>
     </div>
