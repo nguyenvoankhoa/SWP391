@@ -56,32 +56,68 @@ const UserHeadingBar = () => {
             src="/assets/images/activity.svg"
             alt="icon"
           ></img>
-          <NavLink className="nav-link" to="action-record">
-            Hoạt động
-          </NavLink>
+          <NavLink className="nav-link">Hoạt động</NavLink>
         </li>
 
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}>
+            <ListItemButton
+              component={NavLink}
+              to="action-record"
+              sx={{
+                pl: 10,
+                "&:hover": {
+                  backgroundColor: "#9dcec8",
+                  color: "black"
+                },
+              }}
+            >
               <ListItemText primary="Giúp việc theo giờ" />
             </ListItemButton>
           </List>
 
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}>
+            <ListItemButton
+              component={NavLink}
+              to="action-record"
+              sx={{
+                pl: 10,
+                "&:hover": {
+                  backgroundColor: "#9dcec8",
+                  color: "black"
+                },
+              }}
+            >
               <ListItemText primary="Tổng vệ sinh" />
             </ListItemButton>
           </List>
-
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}>
+            <ListItemButton
+              component={NavLink}
+              to="action-record"
+              sx={{
+                pl: 10,
+                "&:hover": {
+                  backgroundColor: "#9dcec8",
+                  color: "black"
+                },
+              }}
+            >
               <ListItemText primary="Vệ sinh sofa, nệm" />
             </ListItemButton>
           </List>
-
           <List component="div" disablePadding>
-            <ListItemButton sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}>
+            <ListItemButton
+              component={NavLink}
+              to="action-record"
+              sx={{
+                pl: 10,
+                "&:hover": {
+                  backgroundColor: "#9dcec8",
+                  color: "black"
+                },
+              }}
+            >
               <ListItemText primary="Vệ sinh máy lạnh" />
             </ListItemButton>
           </List>

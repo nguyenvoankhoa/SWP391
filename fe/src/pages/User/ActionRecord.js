@@ -8,16 +8,7 @@ import UserPeriodic from "./UserPeriodic";
 import { styled } from "@mui/material/styles";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import {
-  Paper,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  TablePagination,
-} from "@mui/material";
+import {Paper,} from "@mui/material";
 const ActionRecord = () => {
   const data = useLoaderData();
   const [option, setOption] = useState("Ca lẻ");
@@ -64,192 +55,6 @@ const ActionRecord = () => {
       },
     })
   );
-  const column = [
-    { id: "service", label: "Dịch vụ", minWidth: 170 },
-    { id: "type", label: "Loại", minWidth: 170 },
-    { id: "date", label: "Ngày", minWidth: 170 },
-    { id: "staff", label: "Nhân viên", minWidth: 170 },
-    { id: "transaction", label: "Giao dịch", minWidth: 170 },
-    { id: "total", label: "Tổng cộng", minWidth: 170 },
-  ];
-
-  const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
-
-  const handleChangePage = (event, newPage) => {
-    setPage(newPage);
-  };
-
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(+event.target.value);
-    setPage(0);
-  };
-  function createData(service, type, date, staff, transaction, total) {
-    return { service, type, date, staff, transaction, total };
-  }
-
-  const rows = [
-    createData(
-      "Vệ sinh theo giờ",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Vệ sinh máy lạnh",
-      "2 HP",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "200.000 VNĐ"
-    ),
-    createData(
-      "Vệ sinh sofa, nệm",
-      "Nệm",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Vệ sinh theo giờ",
-      "3 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "250.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Row 11",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-    createData(
-      "Tổng vệ sinh",
-      "2 phòng",
-      "Saturday, 24 June",
-      "Đang chờ xử lý",
-      "Tiền mặt",
-      "150.000 VNĐ"
-    ),
-  ];
   return (
     <>
       <Title
@@ -269,7 +74,7 @@ const ActionRecord = () => {
           display: "flex-end",
         }}
       >
-        <TableContainer sx={{ maxHeight: 440 }}>
+      
           <AntTabs
             value={value}
             onChange={handleChange}
@@ -282,11 +87,11 @@ const ActionRecord = () => {
             />
           </AntTabs>
           <div className="col-md-12 ar-list p-0 table-responsive table-wrapper-scroll-y w-100  my-custom-scrollbar">
-            {/* {option === "Lịch sử" && <UserHistory list={history} />}
+            {option === "Lịch sử" && <UserHistory list={history} />}
             {option === "Ca lẻ" && <UserOddShift list={oodShift} />}
-            {option === "Định kỳ" && <UserPeriodic list={periodic} />} */}
+            {option === "Định kỳ" && <UserPeriodic list={periodic} />}
 
-            <Table>
+            {/* <Table>
               <TableHead>
                 <TableRow>
                   {column.map((column) => (
@@ -318,10 +123,9 @@ const ActionRecord = () => {
                   </TableRow>
                 ))}
               </TableBody>
-            </Table>
+            </Table> */}
           </div>
-        </TableContainer>
-        <TablePagination 
+        {/* <TablePagination 
           rowsPerPageOptions={[10, 15]}
           component="div"
           count={rows.length}
@@ -333,7 +137,7 @@ const ActionRecord = () => {
             selectLabel: 'custom-select-label',
             displayedRows: 'custom-displayed-rows'
           }}
-        />
+        /> */}
       </Paper>
     </>
   );

@@ -34,6 +34,7 @@ import EmployeePageHistory, {
 } from "./pages/Employee/EmployeePageHistory";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import OrderCheckout from "./pages/User/OrderCheckout";
+import UserOddShift from "./pages/User/UserOddShift";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -92,6 +93,7 @@ const router = createBrowserRouter([
       },
       { path: "order", element: <OrderCheckout />, loader: customerInfoLoader },
       { path: "action-record", element: <ActionRecord />, loader: billLoader },
+      { path: "hourly-record", element: <UserOddShift />, loader: billLoader },
       {
         path: "account-infor",
         element: <AccountInfor />,
