@@ -2,19 +2,42 @@ import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
 import styles from "./AdminHome.module.css";
-import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, LabelList } from "recharts";
+import {
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+  LabelList,
+} from "recharts";
 import { Bar, PieChart, Pie, Cell } from "recharts";
 import { Autocomplete, TextField } from "@mui/material";
 
-const COLORS = ['#79B7D4', '#B9FAF5', '#AEEBDC', '#FF8042'];
+const COLORS = ["#79B7D4", "#B9FAF5", "#AEEBDC", "#FF8042"];
 const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({ cx, cy, midAngle, innerRadius, outerRadius, percent, index }) => {
+const renderCustomizedLabel = ({
+  cx,
+  cy,
+  midAngle,
+  innerRadius,
+  outerRadius,
+  percent,
+  index,
+}) => {
   const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
   const x = cx + radius * Math.cos(-midAngle * RADIAN);
   const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
   return (
-    <text x={x} y={y} fill="white" textAnchor={x > cx ? 'start' : 'end'} dominantBaseline="central">
+    <text
+      x={x}
+      y={y}
+      fill="white"
+      textAnchor={x > cx ? "start" : "end"}
+      dominantBaseline="central"
+    >
       {`${(percent * 100).toFixed(0)}%`}
     </text>
   );
@@ -38,7 +61,6 @@ const CustomYAxisTick = (props) => {
 
 const AdminHome = () => {
   const data = useLoaderData();
-  console.log(data);
   const [pieChartData, setPieChartData] = useState([]);
 
   var serviceList = new Set();
@@ -48,7 +70,6 @@ const AdminHome = () => {
   }
   const [selectedField, setSelectedField] = useState(serviceList[0]);
   const selectedData = data.filter((item) => item.name === selectedField);
-  console.log(selectedData)
 
   const handleSelect = (event, service) => {
     setSelectedField(service);
@@ -84,9 +105,8 @@ const AdminHome = () => {
         let valueArr = Object.values(dataPie);
         for (let i = 0; i < valueArr.length; i++) {
           let tmpObj = { service: keyArr[i], quantity: valueArr[i] };
-          setPieChartData(prevPieChart => [...prevPieChart, tmpObj]);
+          setPieChartData((prevPieChart) => [...prevPieChart, tmpObj]);
         }
-
       } catch (error) {
         console.error(error);
       }
@@ -96,7 +116,15 @@ const AdminHome = () => {
   }, []);
 
   const dataMap = new Map();
-  const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  const daysOfWeek = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
+  ];
   daysOfWeek.forEach((day) => {
     dataMap.set(day, { day, amount: 0 });
   });
@@ -105,8 +133,7 @@ const AdminHome = () => {
       dataMap.set(service.day, { day: service.day, amount: service.amount });
     }
   });
-  const chartData = Array.from(dataMap.values())
-  console.log(chartData)
+  const chartData = Array.from(dataMap.values());
   return (
     <>
       <div
@@ -139,17 +166,13 @@ const AdminHome = () => {
                 onChange={handleSelect}
               />
               <ResponsiveContainer width="95%" height="80%">
-                <BarChart
-                  width={500}
-                  height={200}
-                  data={chartData}
-                >
+                <BarChart width={500} height={200} data={chartData}>
                   <CartesianGrid vertical={false} strokeDasharray="3 3" />
                   <XAxis dataKey="day" />
-                  <YAxis dataKey="amount" tick={<CustomYAxisTick />}/>
+                  <YAxis dataKey="amount" tick={<CustomYAxisTick />} />
                   <Tooltip />
                   <Legend />
-                  <Bar dataKey="amount" fill="#8884d8" barSize={25}/>
+                  <Bar dataKey="amount" fill="#8884d8" barSize={25} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -174,14 +197,8 @@ const AdminHome = () => {
                     />
                   ))}
                 </Pie>
-                <Tooltip
-
-                />
-                <Legend
-                  style={{
-
-                  }}
-                />
+                <Tooltip />
+                <Legend style={{}} />
               </PieChart>
             </div>
           </div>

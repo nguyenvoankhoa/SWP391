@@ -86,40 +86,64 @@ const UserHeadingBar = () => {
 
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            <ListItemButton
-              sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}
+          <ListItemButton
+              component={NavLink}
+              to="action-record"
+              sx={{
+                pl: 10,
+                "&:hover": {
+                  backgroundColor: "#9dcec8",
+                  color: "black"
+                },
+              }}
             >
-              <NavLink to="action-record">
-                <ListItemText primary="Giúp việc theo giờ" />
-              </NavLink>
+              <ListItemText primary="Giúp việc theo giờ" />
             </ListItemButton>
           </List>
 
           <List component="div" disablePadding>
             <ListItemButton
-              sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}
+              component={NavLink}
+              to="action-record/total-senitation"
+              sx={{
+                pl: 10,
+                "&:hover": {
+                  backgroundColor: "#9dcec8",
+                  color: "black"
+                },
+              }}
             >
-              <NavLink to="action-record/total-senitation">
-                <ListItemText primary="Tổng vệ sinh" />
-              </NavLink>
+            <ListItemText primary="Tổng vệ sinh" />
+            </ListItemButton>
+          </List>
+          <List component="div" disablePadding>
+          <ListItemButton
+              component={NavLink}
+              to="action-record/fabric-cleaning"
+              sx={{
+                pl: 10,
+                "&:hover": {
+                  backgroundColor: "#9dcec8",
+                  color: "black"
+                },
+              }}
+            >
+              <ListItemText primary="Vệ sinh sofa, nệm" />
             </ListItemButton>
           </List>
           <List component="div" disablePadding>
             <ListItemButton
-              sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}
+              component={NavLink}
+              to="action-record/electronic-cleaning"
+              sx={{
+                pl: 10,
+                "&:hover": {
+                  backgroundColor: "#9dcec8",
+                  color: "black"
+                },
+              }}
             >
-              <NavLink to="action-record/fabric-cleaning">
-                <ListItemText primary="Vệ sinh sofa, nệm" />
-              </NavLink>
-            </ListItemButton>
-          </List>
-          <List component="div" disablePadding>
-            <ListItemButton
-              sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}
-            >
-              <NavLink to="action-record/electronic-cleaning">
-                <ListItemText primary="Vệ sinh máy lạnh" />
-              </NavLink>
+             <ListItemText primary="Vệ sinh máy lạnh" />
             </ListItemButton>
           </List>
         </Collapse>
