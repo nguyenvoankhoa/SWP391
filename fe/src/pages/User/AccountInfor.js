@@ -69,15 +69,15 @@ const AccountInfor = () => {
           <div className="row col-lg-8 col-sm-8 ai-content">
             <div className="row col-lg-7 col-md-12 u-infor">
               <div className="col-md-12">
-                <p className="custom-p">HỌ VÀ TÊN</p>
+                <p className="custom-p">Tên</p>
                 <input className="" value={name} onChange={handleNameChange} />
               </div>
               <div className="col-md-12">
-                <p className="custom-p">EMAIL</p>
+                <p className="custom-p">Email</p>
                 <input className="" value={data.email} disabled />
               </div>
               <div className="col-md-6" style={{ marginTop: "2%" }}>
-                <p className="custom-p">SỐ TÒA</p>
+                <p className="custom-p">Số tòa</p>
                 <input
                   className=""
                   value={departmentNum}
@@ -85,7 +85,7 @@ const AccountInfor = () => {
                 />
               </div>
               <div className="col-md-6" style={{ marginTop: "2%" }}>
-                <p className="custom-p">SỐ PHÒNG</p>
+                <p className="custom-p">Số phòng</p>
                 <input
                   className=""
                   value={roomNum}
@@ -93,7 +93,7 @@ const AccountInfor = () => {
                 />
               </div>
               <div className="col-md-12">
-                <p className="custom-p">SỐ ĐIỆN THOẠI</p>
+                <p className="custom-p">Số điện thoại</p>
                 <input
                   className=""
                   value={phone}
@@ -132,6 +132,7 @@ const AccountInfor = () => {
           </div>
         </div>
       </div>
+      <hr></hr>
     </>
   );
 };

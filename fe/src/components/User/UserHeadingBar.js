@@ -6,6 +6,8 @@ import List from "@mui/material/List";
 import Collapse from "@mui/material/Collapse";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import { Typography } from "@mui/material";
 const UserHeadingBar = () => {
   const user = JSON.parse(sessionStorage.getItem("user"));
   const { logout } = useLogout(); // Call the useLogout hook
@@ -22,23 +24,36 @@ const UserHeadingBar = () => {
   return (
     <div className="nav-container">
       <ul className="nav flex-column nav-content">
-        <li className="nav-item user-hb-avt" type="button">
+        <li
+          className="nav-item user-hb-avt"
+          type="button"
+          style={{ paddingLeft: 10 }}
+        >
           <NavLink className="nav-link d-flex" to="account-infor">
-            {" "}
-            <img
-              className="rounded-circle"
-              src="/assets/images/thay Hoang.svg"
-              alt=""
-              style={{ width: "70%" }}
-            />
+            <div className="user-hb-container">
+              <img
+                className="rounded-circle"
+                src="/assets/images/thay Hoang.svg"
+                alt=""
+                style={{ width: "30%" }}
+              />
+              <span
+                className="nav-text"
+                style={{ paddingLeft: 15, fontWeight: "bold",   paddingTop: "14%" }}
+              >
+                Hi {user.name}
+                <hr className="seperator"></hr>
+                <div style={{ display: "flex", alignItems: "center", paddingTop: "5%"  }}>
+                  <EditOutlinedIcon style={{ width: "15%"}} />
+                  <Typography style={{ marginLeft: "5px" }}>
+                    Sửa hồ sơ
+                  </Typography>
+                </div>
+              </span>
+            </div>
           </NavLink>
         </li>
-        <li className="nav-item user-hb-name" type="button">
-          <span className="nav-text">
-            Hi {user.name}
-            <hr className="seperator"></hr>
-          </span>
-        </li>
+
         <li className="nav-item d-flex" type="button">
           <img
             className="nav-icon"
@@ -68,7 +83,7 @@ const UserHeadingBar = () => {
                 pl: 10,
                 "&:hover": {
                   backgroundColor: "#9dcec8",
-                  color: "black"
+                  color: "black",
                 },
               }}
             >
@@ -84,7 +99,7 @@ const UserHeadingBar = () => {
                 pl: 10,
                 "&:hover": {
                   backgroundColor: "#9dcec8",
-                  color: "black"
+                  color: "black",
                 },
               }}
             >
@@ -99,7 +114,7 @@ const UserHeadingBar = () => {
                 pl: 10,
                 "&:hover": {
                   backgroundColor: "#9dcec8",
-                  color: "black"
+                  color: "black",
                 },
               }}
             >
@@ -114,7 +129,7 @@ const UserHeadingBar = () => {
                 pl: 10,
                 "&:hover": {
                   backgroundColor: "#9dcec8",
-                  color: "black"
+                  color: "black",
                 },
               }}
             >

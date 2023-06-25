@@ -31,7 +31,7 @@
 }
 
 .nav-container .nav-content .nav-item {
-  margin: 3% 0;
+  margin: 4% 0;
   font-weight: 550;
   font-size: 1.2rem;
   display: flex;
@@ -55,10 +55,11 @@
 
 .nav-container .nav-content .nav-item span {
   position: relative;
-  font-weight: 1000;
+  font-weight: lighter;
   letter-spacing: 1px;
-  font-size: 1.6rem;
+  font-size: 1rem;
   padding-bottom: 15%;
+
 }
 
 .nav-container .nav-content .nav-item .seperator {
@@ -89,4 +90,9 @@
  .nav-item img{
     width: 12vw !important;
   }
+}
+.user-hb-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
