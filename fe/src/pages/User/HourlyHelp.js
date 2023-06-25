@@ -121,7 +121,7 @@ export default function FabricCleaning() {
     } else if (selectedFreq === "Hàng tháng") {
       frequency = "Hàng tháng";
     } else {
-      frequency = "Một l";
+      frequency = "Một lần";
     }
     let service = {
       businessId: selectedService.id,
