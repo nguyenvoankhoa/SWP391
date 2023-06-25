@@ -31,7 +31,7 @@ const OddShiftTable = (props) => {
                 {row.employee ? row.employee.name : "Đang chờ xử lý"}
               </TableCell>
               <TableCell align="left">{row.payment}</TableCell>
-              <TableCell align="left">{row.total}</TableCell>
+              <TableCell align="left">{row.total.toLocaleString()} VNĐ</TableCell>
             </TableRow>
           ))}
         </TableBody>
