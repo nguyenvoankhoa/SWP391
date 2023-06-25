@@ -12,7 +12,7 @@ const EditService = () => {
 
   useEffect(() => {
     setFilteredData(data.filter((service) => service.name === param.serviceId));
-  }, [param])
+  }, [param]);
 
   {
     if (filteredData.length == 0) {
@@ -23,14 +23,15 @@ const EditService = () => {
   const handleServiceChange = (service) => {
     setService(service);
   };
-
-  console.log(data);
-  console.log(filteredData);
-  console.log(param);
-
   return (
     <>
-      <Title title="DỊCH VỤ" color="black" fontSize="35px" fontWeight="700" padding="2% 0 1% 0" />
+      <Title
+        title="DỊCH VỤ"
+        color="black"
+        fontSize="35px"
+        fontWeight="700"
+        padding="2% 0 1% 0"
+      />
 
       <div className="row justify-content-center">
         <div className="col-10">

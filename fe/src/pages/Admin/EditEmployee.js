@@ -7,31 +7,21 @@ import EditEmployeeForm from "../../components/Admin/EditEmployeeForm";
 import AddEmployeeForm from "../../components/Admin/AddEmployeeForm";
 const EditEmployee = () => {
   const data = useLoaderData();
-  console.log(data);
   const [employee, setEmployee] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const param = useParams();
-
+  const [workType, setWorkType] = useState("");
   useEffect(() => {
-    setFilteredData(
-      data.filter((employee) => employee.workType === param.serviceId)
+    let array = data.filter(
+      (employee) => employee.workType === param.serviceId
     );
-  }, []);
-
-  // {
-  //   if (filteredData.length == 0) {
-  //     setFilteredData(data);
-  //   }
-  // }
+    setFilteredData(array);
+    setWorkType(param.serviceId);
+  }, [param]);
 
   const editEmployeeHandler = (employee) => {
     setEmployee(employee);
   };
-
-  console.log(data);
-  console.log(filteredData);
-  console.log(param);
-
   return (
     <>
       <Title
@@ -53,7 +43,7 @@ const EditEmployee = () => {
             >
               Thêm Nhân Viên
             </button>
-            <AddEmployeeForm />
+            <AddEmployeeForm workType={workType} />
           </div>
 
           <Card>
@@ -90,40 +80,43 @@ const EditEmployee = () => {
                             />
                           </div>
                           <div
-                            class="modal fade"
+                            className="modal fade"
                             id="exampleModal"
-                            tabindex="-1"
+                            tabIndex="-1"
                             aria-labelledby="exampleModalLabel"
                             aria-hidden="true"
                           >
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
+                            <div className="modal-dialog">
+                              <div className="modal-content">
+                                <div className="modal-header">
                                   <h1
-                                    class="modal-title fs-5"
+                                    className="modal-title fs-5"
                                     id="exampleModalLabel"
                                   >
                                     Xoá nhân viên
                                   </h1>
                                   <button
                                     type="button"
-                                    class="btn-close"
+                                    className="btn-close"
                                     data-bs-dismiss="modal"
                                     aria-label="Close"
                                   ></button>
                                 </div>
-                                <div class="modal-body">
+                                <div className="modal-body">
                                   Bạn có chắc đây là điều đúng đắn
                                 </div>
-                                <div class="modal-footer">
+                                <div className="modal-footer">
                                   <button
                                     type="button"
-                                    class="btn btn-secondary"
+                                    className="btn btn-secondary"
                                     data-bs-dismiss="modal"
                                   >
                                     không
                                   </button>
-                                  <button type="button" class="btn btn-primary">
+                                  <button
+                                    type="button"
+                                    className="btn btn-primary"
+                                  >
                                     Có
                                   </button>
                                 </div>

@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const AddEmployeeForm = () => {
+const AddEmployeeForm = (props) => {
   const nav = useNavigate();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [option, setOption] = useState("Vệ sinh nệm, sofa, thảm");
-
   const handleNameChange = (event) => {
     setName(event.target.value);
   };
@@ -24,21 +22,17 @@ const AddEmployeeForm = () => {
   const handlePhoneChange = (event) => {
     setPhone(event.target.value);
   };
-
-  const handleOptionChange = (event) => {
-    setOption(event.target.value);
-  };
   const handleAddEmployee = async () => {
     let employee = {
       name: name,
       email: email,
       password: password,
       phone: phone,
-      workType: option,
+      workType: props.workType,
     };
     const token = sessionStorage.getItem("jwtToken");
     const res = await fetch(
-      "https://swp391-production.up.railway.app/admin/create-employee   ",
+      "https://swp391-production.up.railway.app/admin/create-employee",
       {
         method: "POST",
         headers: {
@@ -70,8 +64,9 @@ const AddEmployeeForm = () => {
         <div className="modal-content">
           <div className="modal-header">
             <h1 className="modal-title fs-5" id="exampleModalLabel">
-              Thêm Nhân Viên
+              Thêm nhân viên
             </h1>
+
             <button
               type="button"
               className="btn-close"
@@ -80,6 +75,7 @@ const AddEmployeeForm = () => {
             ></button>
           </div>
           <div className="modal-body row container d-flex justify-content-center">
+            <h5>{props.workType}</h5>
             <div className="col-md-6">
               <div className="form-group">
                 <label htmlFor="fullName">Tên</label>
@@ -122,28 +118,6 @@ const AddEmployeeForm = () => {
                   value={phone}
                   onChange={handlePhoneChange}
                 />
-              </div>
-            </div>
-            <div className="col-md-12">
-              <div className="row">
-                <div className="form-group col-md-12">
-                  <label htmlFor="workType">Công việc</label>
-                  <select
-                    className="form-control"
-                    id="workType"
-                    value={option}
-                    onChange={handleOptionChange}
-                  >
-                    <option value="Vệ sinh nệm, sofa, thảm">
-                      Vệ sinh nệm, sofa, thảm
-                    </option>
-                    <option value="Vệ sinh máy lạnh">Vệ sinh máy lạnh</option>
-                    <option value="Giúp việc theo giờ">
-                      Giúp việc theo giờ
-                    </option>
-                    <option value="Tổng vệ sinh">Tổng vệ sinh</option>
-                  </select>
-                </div>
               </div>
             </div>
           </div>
