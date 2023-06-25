@@ -7,6 +7,7 @@ import EditEmployeeForm from "../../components/Admin/EditEmployeeForm";
 import AddEmployeeForm from "../../components/Admin/AddEmployeeForm";
 const EditEmployee = () => {
   const data = useLoaderData();
+  console.log(data);
   const [employee, setEmployee] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const param = useParams();
@@ -15,13 +16,13 @@ const EditEmployee = () => {
     setFilteredData(
       data.filter((employee) => employee.workType === param.serviceId)
     );
-  }, [param]);
+  }, []);
 
-  {
-    if (filteredData.length == 0) {
-      setFilteredData(data);
-    }
-  }
+  // {
+  //   if (filteredData.length == 0) {
+  //     setFilteredData(data);
+  //   }
+  // }
 
   const editEmployeeHandler = (employee) => {
     setEmployee(employee);
