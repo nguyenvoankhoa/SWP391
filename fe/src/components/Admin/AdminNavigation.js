@@ -155,6 +155,46 @@ const AdminNavigation = () => {
           >
             Đơn hàng
           </NavLink>
+          {displayItem === "Đơn hàng" && (
+            <ul className="sub-menu">
+              <li>
+                <NavLink
+                  className="nav-link"
+                  to="#"
+                  onClick={handleNavigateClick}
+                >
+                  Giúp việc theo giờ
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="nav-link"
+                  to="#"
+                  onClick={handleNavigateClick}
+                >
+                  Tổng vệ sinh
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="nav-link"
+                  to="#"
+                  onClick={handleNavigateClick}
+                >
+                  Vệ sinh máy lạnh
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="nav-link"
+                  to="#"
+                  onClick={handleNavigateClick}
+                >
+                  Vệ sinh nệm, sofa, thảm
+                </NavLink>
+              </li>
+            </ul>
+          )}
         </li>
         <li type="button" onClick={logoutHandler}>
           <NavLink className="nav-link">Đăng xuất</NavLink>

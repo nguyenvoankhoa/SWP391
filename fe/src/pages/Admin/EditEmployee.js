@@ -11,6 +11,7 @@ const EditEmployee = () => {
   const [filteredData, setFilteredData] = useState([]);
   const param = useParams();
   const [workType, setWorkType] = useState("");
+
   useEffect(() => {
     let array = data.filter(
       (employee) => employee.workType === param.serviceId
@@ -19,9 +20,16 @@ const EditEmployee = () => {
     setWorkType(param.serviceId);
   }, [param]);
 
+  {
+    if (filteredData.length == 0 && data.length != 0) {
+      setFilteredData(data);
+    }
+  } 
+
   const editEmployeeHandler = (employee) => {
     setEmployee(employee);
   };
+
   return (
     <>
       <Title

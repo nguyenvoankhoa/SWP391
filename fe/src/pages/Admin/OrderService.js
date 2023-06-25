@@ -1,9 +1,9 @@
 import Card from "../../UI/Card";
 import "./EditCus.css";
 import Title from "../../components/Title";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import EditOrderForm from "../../components/Admin/EditOrderForm";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ConfirmPayment from "../../components/Admin/ConfirmPayment";
 import ConfirmComplete from "../../components/Admin/ConfirmComplete";
 import CancelOrder from "../../components/Admin/CancelOrder";
@@ -15,6 +15,23 @@ const OrderService = () => {
     setWorkType(type);
     setBillId(id);
   };
+  const [filteredData, setFilteredData] = useState([]);
+  const param = useParams();
+
+  useEffect(() => {
+    let array = data.filter(
+      (bill) => bill.business.name === param.serviceId
+    );
+    setFilteredData(array);
+    setWorkType(param.serviceId);
+  }, [param]);
+
+  {
+    if (filteredData.length == 0 && data.length != 0) {
+      setFilteredData(data);
+    }
+  } 
+
   return (
     <>
       <Title title="ĐƠN HÀNG" color="black" fontSize="35px" fontWeight="700" padding="2% 0 1% 0" />
@@ -40,7 +57,7 @@ const OrderService = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((bill) => (
+                  {filteredData.map((bill) => (
                     <tr key={bill.id}>
                       <th scope="row">{bill.id}</th>
                       <td>{bill.business.name}</td>
