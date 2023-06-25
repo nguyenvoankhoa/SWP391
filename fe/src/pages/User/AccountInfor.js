@@ -132,7 +132,6 @@ const AccountInfor = () => {
           </div>
         </div>
       </div>
-      <hr></hr>
     </>
   );
 };
