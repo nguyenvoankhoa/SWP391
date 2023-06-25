@@ -27,7 +27,7 @@ const PaypalCheckoutButton = (props) => {
     if (!res.ok) {
       throw new Error("Error fetching data");
     }
-    dispatch(orderItemAction.removeAllItems());
+    dispatch(orderItemAction.removeItem());
     nav("/user/order-completed");
   };
   if (error) {
@@ -35,7 +35,7 @@ const PaypalCheckoutButton = (props) => {
   }
   const product = {
     description: "CUSTOMER",
-    price: 19,
+    price: bill.price,
   };
   return (
     <PayPalButtons
@@ -67,7 +67,7 @@ const PaypalCheckoutButton = (props) => {
           ],
         });
       }}
-      onCancel={() => { }}
+      onCancel={() => {}}
       onApprove={async (data, actions) => {
         const order = await actions.order.capture();
         console.log("order", order);

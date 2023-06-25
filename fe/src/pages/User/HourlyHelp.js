@@ -69,21 +69,21 @@ export default function FabricCleaning() {
   const selectedService = DATA.find(
     (service) => service.id === selectedServiceId
   );
-  const firstOption = DATA.filter((item) => item.type === "2 phòng").map(
+  const firstOption = DATA.filter((item) => item.type === "1 phòng").map(
     (item) => ({
       value: item.id,
       label: item.detail,
     })
   );
 
-  const secondOption = DATA.filter((item) => item.type === "3 phòng").map(
+  const secondOption = DATA.filter((item) => item.type === "2 phòng").map(
     (item) => ({
       value: item.id,
       label: item.detail,
     })
   );
 
-  const thirdOption = DATA.filter((item) => item.type === "4 phòng").map(
+  const thirdOption = DATA.filter((item) => item.type === "3 phòng").map(
     (item) => ({
       value: item.id,
       label: item.detail,
@@ -132,7 +132,6 @@ export default function FabricCleaning() {
       day: day,
       hour: hour,
       frequency: frequency,
-      quantity: 1,
       price: selectedService.price,
       type: selectedService.type,
     };
@@ -213,9 +212,9 @@ export default function FabricCleaning() {
                   onChange={handleChange}
                   aria-label="ant example"
                 >
+                  <AntTab label="1 phòng" />
                   <AntTab label="2 phòng" />
                   <AntTab label="3 phòng" />
-                  <AntTab label="4 phòng" />
                 </AntTabs>
               </Box>
               {showForm && (

@@ -125,7 +125,6 @@ export default function ElectronicCleaning() {
       day: day,
       hour: hour,
       frequency: frequency,
-      quantity: 1,
       price: selectedService.price,
       type: selectedService.type,
     };
@@ -261,7 +260,7 @@ export default function ElectronicCleaning() {
                 </div>
                 <Grid container flex sx={{ justifyContent: "center", m: 4 }}>
                   <Grid item xs={4}>
-                  <Button
+                    <Button
                       variant="outlined"
                       component={Link}
                       to="/user"
@@ -279,7 +278,7 @@ export default function ElectronicCleaning() {
                   </Grid>
                   <Grid item xs={5}>
                     <Button
-                      variant="contained"  
+                      variant="contained"
                       onClick={addServiceHandler}
                       startIcon={<BiCartAdd />}
                       sx={{

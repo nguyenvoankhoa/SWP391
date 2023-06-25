@@ -12,8 +12,10 @@ const EditEmployee = () => {
   const param = useParams();
 
   useEffect(() => {
-    setFilteredData(data.filter((employee) => employee.workType === param.serviceId));
-  }, [param])
+    setFilteredData(
+      data.filter((employee) => employee.workType === param.serviceId)
+    );
+  }, [param]);
 
   {
     if (filteredData.length == 0) {
@@ -31,7 +33,13 @@ const EditEmployee = () => {
 
   return (
     <>
-      <Title title="NHÂN VIÊN" color="black" fontSize="35px" fontWeight="700" padding="2% 0 0 0" />
+      <Title
+        title="NHÂN VIÊN"
+        color="black"
+        fontSize="35px"
+        fontWeight="700"
+        padding="2% 0 0 0"
+      />
 
       <div className="row justify-content-center">
         <div className="col-10 ">
@@ -80,19 +88,43 @@ const EditEmployee = () => {
                               data-bs-target="#exampleModal"
                             />
                           </div>
-                          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div
+                            class="modal fade"
+                            id="exampleModal"
+                            tabindex="-1"
+                            aria-labelledby="exampleModalLabel"
+                            aria-hidden="true"
+                          >
                             <div class="modal-dialog">
                               <div class="modal-content">
                                 <div class="modal-header">
-                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Xoá nhân viên</h1>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                  <h1
+                                    class="modal-title fs-5"
+                                    id="exampleModalLabel"
+                                  >
+                                    Xoá nhân viên
+                                  </h1>
+                                  <button
+                                    type="button"
+                                    class="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  ></button>
                                 </div>
                                 <div class="modal-body">
                                   Bạn có chắc đây là điều đúng đắn
                                 </div>
                                 <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">không</button>
-                                  <button type="button" class="btn btn-primary">Có</button>
+                                  <button
+                                    type="button"
+                                    class="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                  >
+                                    không
+                                  </button>
+                                  <button type="button" class="btn btn-primary">
+                                    Có
+                                  </button>
                                 </div>
                               </div>
                             </div>

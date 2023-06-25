@@ -1,6 +1,6 @@
 import * as React from "react";
 import useLogout from "../../hooks/useLogout";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./UserHeader.css";
 import List from "@mui/material/List";
 import Collapse from "@mui/material/Collapse";
@@ -39,12 +39,22 @@ const UserHeadingBar = () => {
               />
               <span
                 className="nav-text"
-                style={{ paddingLeft: 15, fontWeight: "bold",   paddingTop: "14%" }}
+                style={{
+                  paddingLeft: 15,
+                  fontWeight: "bold",
+                  paddingTop: "14%",
+                }}
               >
                 Hi {user.name}
                 <hr className="seperator"></hr>
-                <div style={{ display: "flex", alignItems: "center", paddingTop: "5%"  }}>
-                  <EditOutlinedIcon style={{ width: "15%"}} />
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    paddingTop: "5%",
+                  }}
+                >
+                  <EditOutlinedIcon style={{ width: "15%" }} />
                   <Typography style={{ marginLeft: "5px" }}>
                     Sửa hồ sơ
                   </Typography>
@@ -77,63 +87,39 @@ const UserHeadingBar = () => {
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             <ListItemButton
-              component={NavLink}
-              to="action-record"
-              sx={{
-                pl: 10,
-                "&:hover": {
-                  backgroundColor: "#9dcec8",
-                  color: "black",
-                },
-              }}
+              sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}
             >
-              <ListItemText primary="Giúp việc theo giờ" />
+              <NavLink to="action-record">
+                <ListItemText primary="Giúp việc theo giờ" />
+              </NavLink>
             </ListItemButton>
           </List>
 
           <List component="div" disablePadding>
             <ListItemButton
-              component={NavLink}
-              to="action-record"
-              sx={{
-                pl: 10,
-                "&:hover": {
-                  backgroundColor: "#9dcec8",
-                  color: "black",
-                },
-              }}
+              sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}
             >
-              <ListItemText primary="Tổng vệ sinh" />
+              <NavLink to="action-record/total-senitation">
+                <ListItemText primary="Tổng vệ sinh" />
+              </NavLink>
             </ListItemButton>
           </List>
           <List component="div" disablePadding>
             <ListItemButton
-              component={NavLink}
-              to="action-record"
-              sx={{
-                pl: 10,
-                "&:hover": {
-                  backgroundColor: "#9dcec8",
-                  color: "black",
-                },
-              }}
+              sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}
             >
-              <ListItemText primary="Vệ sinh sofa, nệm" />
+              <NavLink to="action-record/fabric-cleaning">
+                <ListItemText primary="Vệ sinh sofa, nệm" />
+              </NavLink>
             </ListItemButton>
           </List>
           <List component="div" disablePadding>
             <ListItemButton
-              component={NavLink}
-              to="action-record"
-              sx={{
-                pl: 10,
-                "&:hover": {
-                  backgroundColor: "#9dcec8",
-                  color: "black",
-                },
-              }}
+              sx={{ pl: 10, "&:hover": { backgroundColor: "#9dcec8" } }}
             >
-              <ListItemText primary="Vệ sinh máy lạnh" />
+              <NavLink to="action-record/electronic-cleaning">
+                <ListItemText primary="Vệ sinh máy lạnh" />
+              </NavLink>
             </ListItemButton>
           </List>
         </Collapse>

@@ -34,7 +34,10 @@ import EmployeePageHistory, {
 } from "./pages/Employee/EmployeePageHistory";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import OrderCheckout from "./pages/User/OrderCheckout";
-import UserOddShift from "./pages/User/UserOddShift";
+import HourlyHelpBill from "./pages/User/Bill/HourlyHelpBill";
+import FabricCleaningBill from "./pages/User/Bill/FabricCleaningBill";
+import ElectronicCleaningBill from "./pages/User/Bill/ElectronicCleaningBill";
+import TotalSanitationBill from "./pages/User/Bill/TotalSanitationBill";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -92,8 +95,32 @@ const router = createBrowserRouter([
         loader: UserLoader,
       },
       { path: "order", element: <OrderCheckout />, loader: customerInfoLoader },
-      { path: "action-record", element: <ActionRecord />, loader: billLoader },
-      { path: "hourly-record", element: <UserOddShift />, loader: billLoader },
+      {
+        path: "action-record",
+        loader: billLoader,
+        children: [
+          {
+            index: true,
+            element: <HourlyHelpBill />,
+            loader: billLoader,
+          },
+          {
+            path: "fabric-cleaning",
+            element: <FabricCleaningBill />,
+            loader: billLoader,
+          },
+          {
+            path: "electronic-cleaning",
+            element: <ElectronicCleaningBill />,
+            loader: billLoader,
+          },
+          {
+            path: "total-senitation",
+            element: <TotalSanitationBill />,
+            loader: billLoader,
+          },
+        ],
+      },
       {
         path: "account-infor",
         element: <AccountInfor />,
@@ -114,8 +141,8 @@ const router = createBrowserRouter([
           {
             path: ":serviceId",
             element: <OrderService />,
-          }
-        ]
+          },
+        ],
       },
       {
         path: "edit-employee",
@@ -125,19 +152,19 @@ const router = createBrowserRouter([
           {
             path: ":serviceId",
             element: <OrderService />,
-          }
-        ]
+          },
+        ],
       },
-      { 
-        path: "edit-service", 
-        element: <EditService />, 
+      {
+        path: "edit-service",
+        element: <EditService />,
         loader: serviceLoader,
         children: [
           {
             path: ":serviceId",
             element: <OrderService />,
-          }
-        ]
+          },
+        ],
       },
       {
         path: "order-service",
@@ -147,8 +174,8 @@ const router = createBrowserRouter([
           {
             path: ":serviceId",
             element: <OrderService />,
-          }
-        ]
+          },
+        ],
       },
     ],
   },

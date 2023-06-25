@@ -12,27 +12,23 @@ const OrderCheckout = () => {
   const data = useLoaderData();
   const user = JSON.parse(sessionStorage.getItem("user"));
   const cartItems = useSelector((state) => state.order.items);
+  const totalAmount = useSelector((state) => state.order.totalAmount);
   const [payment, setPayment] = useState("Tiền mặt");
-  const [bill, setBill] = useState([]);
-
+  const [bill, setBill] = useState({});
   const handleBill = () => {
-    let bill = [];
-    cartItems.forEach((checkout) => {
-      let item = {
-        customerId: user.id,
-        businessId: checkout.businessId,
-        day: checkout.day,
-        date: checkout.date,
-        month: checkout.month,
-        total: checkout.price,
-        payment: payment,
-        note: checkout.note,
-        frequency: checkout.frequency,
-        hour: checkout.hour,
-      };
-      bill.push(item);
-    });
-    console.log(bill);
+    let bill = {
+      customerId: user.id,
+      businessId: cartItems[0].businessId,
+      day: cartItems[0].day,
+      date: cartItems[0].date,
+      month: cartItems[0].month,
+      total: totalAmount,
+      payment: payment,
+      note: cartItems[0].note,
+      frequency: cartItems[0].frequency,
+      hour: cartItems[0].hour,
+    };
+
     setBill(bill);
   };
   const paymentHandler = (props) => {
@@ -208,22 +204,6 @@ const OrderCheckout = () => {
               </Grid>
             </Card>
           </Grid>
-          {/* <Grid items xs={12} paddingTop={2} paddingBottom={2}>
-            <Card>
-              <h5 style={{
-                color: "#397f77"
-              }}>Phương thức thanh toán</h5>
-              <PaymentPicker
-                onAddPayment={paymentHandler}
-              />
-              {payment === "Tiền mặt" ? (
-
-                <CashCheckoutButton items={bill} />
-              ) : (
-                <PaypalCheckoutButton items={bill} />
-              )}
-            </Card>
-          </Grid> */}
         </Container>
       </Box>
     </>

@@ -11,40 +11,17 @@ const orderSlice = createSlice({
   reducers: {
     addItem(state, action) {
       const itemAdded = action.payload;
-      const existingOrderItemIndex = state.items.findIndex(
-        (item) => item.businessId === itemAdded.businessId
-      );
+      state.items = [];
 
-      const existingOrderItem = state.items[existingOrderItemIndex];
-
-      if (!existingOrderItem) {
-        state.items.push(itemAdded);
-        state.totalAmount += itemAdded.price;
-      } else {
-        state.error = "Đã có trong giỏ hàng";
-      }
+      state.items.push(itemAdded);
+      state.totalAmount = itemAdded.price;
     },
-    removeItem(state, action) {
-      const id = action.payload;
-      const existingOrderItemIndex = state.items.findIndex(
-        (item) => item.businessId === id
-      );
-
-      if (existingOrderItemIndex !== -1) {
-        const existingItem = state.items[existingOrderItemIndex];
-        const updatedTotalAmount = state.totalAmount - existingItem.price;
-        let updatedItems;
-        updatedItems = state.items.filter((item) => item.businessId !== id);
-        state.items = updatedItems;
-        state.totalAmount = updatedTotalAmount;
-      }
+    removeItem(state) {
+      state.totalAmount = 0;
+      state.items = [];
     },
     removeError(state) {
       state.error = "";
-    },
-
-    removeAllItems(state) {
-      state.items = [];
     },
   },
 });

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Divider, Grid, getAvatarGroupUtilityClass } from "@mui/material";
+import { Button, Divider, Grid } from "@mui/material";
 import "./OrderSumation.css";
 import { useDispatch, useSelector } from "react-redux";
 import { orderItemAction } from "../../redux/order";
@@ -41,8 +41,15 @@ const OrderSumation = () => {
                       </div>
                       <div className="d-flex flex-row align-items-center">
                         <div style={{ width: 100 }}>
-                          <h5 className="mb-0" style={{fontSize: "15px", marginTop: "2rem", marginRight: "10%"}}>
-                          {(order.quantity * order.price).toLocaleString()} VNĐ
+                          <h5
+                            className="mb-0"
+                            style={{
+                              fontSize: "15px",
+                              marginTop: "2rem",
+                              marginRight: "10%",
+                            }}
+                          >
+                            {order.price.toLocaleString()} VNĐ
                           </h5>
                         </div>
                         <BsFillBackspaceFill
@@ -50,7 +57,7 @@ const OrderSumation = () => {
                             fontSize: "20px",
                             color: "#cc0000",
                             cursor: "pointer",
-                            marginTop: "2rem"
+                            marginTop: "2rem",
                           }}
                           onClick={() =>
                             dispatch(
@@ -69,7 +76,7 @@ const OrderSumation = () => {
         <Divider sx={{ borderBottomWidth: 1, backgroundColor: "black" }} />
         <div className="total-cost">
           <p>
-          Đơn giá: <span>{totalAmount.toLocaleString()} VNĐ</span>
+            Đơn giá: <span>{totalAmount.toLocaleString()} VNĐ</span>
           </p>
 
           <p>

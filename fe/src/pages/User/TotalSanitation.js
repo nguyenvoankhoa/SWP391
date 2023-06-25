@@ -132,7 +132,6 @@ export default function FabricCleaning() {
       day: day,
       hour: hour,
       frequency: frequency,
-      quantity: 1,
       price: selectedService.price,
       type: selectedService.type,
     };
@@ -229,8 +228,8 @@ export default function FabricCleaning() {
                     value === 0
                       ? firstOption
                       : value === 1
-                        ? secondOption
-                        : thirdOption
+                      ? secondOption
+                      : thirdOption
                   }
                 />
               )}
@@ -280,7 +279,7 @@ export default function FabricCleaning() {
                 </div>
                 <Grid container flex sx={{ justifyContent: "center", m: 4 }}>
                   <Grid item xs={4}>
-                  <Button
+                    <Button
                       variant="outlined"
                       component={Link}
                       to="/user"
