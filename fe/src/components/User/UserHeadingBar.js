@@ -1,6 +1,6 @@
 import * as React from "react";
 import useLogout from "../../hooks/useLogout";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "./UserHeader.css";
 import List from "@mui/material/List";
 import Collapse from "@mui/material/Collapse";

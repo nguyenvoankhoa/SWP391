@@ -48,7 +48,7 @@ const ChooseFavouriteEmployee = (props) => {
     };
 
     fetchData();
-  }, []);
+  }, [props.date, props.name]);
 
   return (
     <>

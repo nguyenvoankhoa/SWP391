@@ -27,7 +27,7 @@ import EditEmployee, { employeeLoader } from "./pages/Admin/EditEmployee";
 import EditService, { serviceLoader } from "./pages/Admin/EditService";
 import AdminLayout from "./layouts/AdminLayout";
 import EmployeeLayout from "./layouts/EmployeeLayout";
-import ActionRecord, { billLoader } from "./pages/User/ActionRecord";
+import { billLoader } from "./pages/User/ActionRecord";
 import AccountInfor, { customerInfoLoader } from "./pages/User/AccountInfor";
 import EmployeePageHistory, {
   employeeHistoryLoader,

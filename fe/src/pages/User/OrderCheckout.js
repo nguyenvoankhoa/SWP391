@@ -34,7 +34,6 @@ const OrderCheckout = () => {
       favouriteEmployee: cartItems[0].favouriteEmployee,
       employeeId: cartItems[0].employeeId,
     };
-    console.log(bill);
     setBill(bill);
   };
   const paymentHandler = (props) => {

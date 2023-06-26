@@ -19,18 +19,14 @@ const OrderService = () => {
   const param = useParams();
 
   useEffect(() => {
-    let array = data.filter(
-      (bill) => bill.business.name === param.serviceId
-    );
+    let array = data.filter((bill) => bill.business.name === param.serviceId);
     setFilteredData(array);
     setWorkType(param.serviceId);
   }, [param]);
 
-  {
-    if (filteredData.length == 0 && data.length != 0) {
-      setFilteredData(data);
-    }
-  } 
+  if (filteredData.length === 0 && data.length !== 0) {
+    setFilteredData(data);
+  }
 
   return (
     <>

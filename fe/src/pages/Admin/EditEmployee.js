@@ -20,11 +20,9 @@ const EditEmployee = () => {
     setWorkType(param.serviceId);
   }, [param]);
 
-  {
-    if (filteredData.length == 0 && data.length != 0) {
-      setFilteredData(data);
-    }
-  } 
+  if (filteredData.length === 0 && data.length !== 0) {
+    setFilteredData(data);
+  }
 
   const editEmployeeHandler = (employee) => {
     setEmployee(employee);
