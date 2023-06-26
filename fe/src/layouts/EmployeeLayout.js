@@ -1,11 +1,9 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import EmployeeNavigation from "../components/Employee/EmployeeNavigation";
-import useTokenRefresh from "../hooks/useTokenRefresh";
 import Overlays from "./Overlays";
 
 const EmployeeLayout = () => {
-  // useTokenRefresh();
   return (
     <>
       <Overlays>

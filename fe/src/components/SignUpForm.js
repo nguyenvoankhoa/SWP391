@@ -38,7 +38,6 @@ const SignUpForm = () => {
     } else {
       const data = await res.json();
       nav("/sign-in");
-      console.log(data);
       return data;
     }
   };

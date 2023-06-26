@@ -30,6 +30,7 @@ const AddEmployeeForm = (props) => {
       phone: phone,
       workType: props.workType,
     };
+    console.log(employee);
     const token = sessionStorage.getItem("jwtToken");
     const res = await fetch(
       "https://swp391-production.up.railway.app/admin/create-employee",

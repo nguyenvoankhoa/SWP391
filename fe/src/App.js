@@ -38,6 +38,7 @@ import HourlyHelpBill from "./pages/User/Bill/HourlyHelpBill";
 import FabricCleaningBill from "./pages/User/Bill/FabricCleaningBill";
 import ElectronicCleaningBill from "./pages/User/Bill/ElectronicCleaningBill";
 import TotalSanitationBill from "./pages/User/Bill/TotalSanitationBill";
+import UserHistory, { historyLoader } from "./pages/User/UserHistory";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -78,7 +79,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomeService /> },
       { path: "hourly-help", element: <HourlyHelp />, loader: UserLoader },
-
+      { path: "history", element: <UserHistory />, loader: historyLoader },
       {
         path: "total-senitation",
         element: <TotalSanitation />,

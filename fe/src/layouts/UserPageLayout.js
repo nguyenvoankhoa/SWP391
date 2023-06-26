@@ -2,11 +2,9 @@ import React from "react";
 import UserHeader from "../components/User/UserHeader";
 import { Outlet } from "react-router-dom";
 import Overlays from "./Overlays";
-import Footer from '../components/Footer'
-import useTokenRefresh from "../hooks/useTokenRefresh";
+import Footer from "../components/Footer";
 
 const UserPageLayout = () => {
-  // useTokenRefresh();
   return (
     <Overlays>
       <div className="row">
@@ -16,7 +14,7 @@ const UserPageLayout = () => {
         <div className="col-lg-10 col-md-12">
           <Outlet />
         </div>
-        <Footer/>
+        <Footer />
       </div>
     </Overlays>
   );

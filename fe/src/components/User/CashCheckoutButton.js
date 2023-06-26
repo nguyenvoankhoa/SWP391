@@ -21,7 +21,6 @@ const style = {
 const CashCheckoutButton = (props) => {
   const [open, setOpen] = React.useState(false);
   const handleClose = () => setOpen(false);
-  const [error, setError] = useState(null);
   const dispatch = useDispatch();
   const bill = props.items;
   const handlePayment = async () => {
@@ -38,21 +37,13 @@ const CashCheckoutButton = (props) => {
         body: JSON.stringify(bill),
       }
     );
-
-    if (!res.ok) {
-      throw new Error("Error fetching data");
+    if (res.status === 400) {
+      alert("Bạn đã đặt đơn hàng này");
+    } else {
+      setOpen(true);
     }
-    if (res == null) {
-      setError("Bạn đã đặt đơn hàng này");
-    }
-    console.log(res);
-
     dispatch(orderItemAction.removeItem());
-    setOpen(true);
   };
-  if (error) {
-    alert(error);
-  }
   return (
     <Grid container spacing={0} marginTop={3}>
       <Grid item xs={12}>

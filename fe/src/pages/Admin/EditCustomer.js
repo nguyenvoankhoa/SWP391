@@ -18,7 +18,7 @@ const EditCustomer = () => {
         color="black"
         fontSize="35px"
         fontWeight="700"
-        padding="2% 0 1% 0" 
+        padding="2% 0 1% 0"
       />
       <div className="row justify-content-center">
         <div className="col-10">

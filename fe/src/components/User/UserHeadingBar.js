@@ -86,14 +86,14 @@ const UserHeadingBar = () => {
 
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-          <ListItemButton
+            <ListItemButton
               component={NavLink}
               to="action-record"
               sx={{
                 pl: 10,
                 "&:hover": {
                   backgroundColor: "#9dcec8",
-                  color: "black"
+                  color: "black",
                 },
               }}
             >
@@ -109,22 +109,22 @@ const UserHeadingBar = () => {
                 pl: 10,
                 "&:hover": {
                   backgroundColor: "#9dcec8",
-                  color: "black"
+                  color: "black",
                 },
               }}
             >
-            <ListItemText primary="Tổng vệ sinh" />
+              <ListItemText primary="Tổng vệ sinh" />
             </ListItemButton>
           </List>
           <List component="div" disablePadding>
-          <ListItemButton
+            <ListItemButton
               component={NavLink}
               to="action-record/fabric-cleaning"
               sx={{
                 pl: 10,
                 "&:hover": {
                   backgroundColor: "#9dcec8",
-                  color: "black"
+                  color: "black",
                 },
               }}
             >
@@ -139,11 +139,11 @@ const UserHeadingBar = () => {
                 pl: 10,
                 "&:hover": {
                   backgroundColor: "#9dcec8",
-                  color: "black"
+                  color: "black",
                 },
               }}
             >
-             <ListItemText primary="Vệ sinh máy lạnh" />
+              <ListItemText primary="Vệ sinh máy lạnh" />
             </ListItemButton>
           </List>
         </Collapse>
@@ -153,7 +153,7 @@ const UserHeadingBar = () => {
             src="/assets/images/history.svg"
             alt="icon"
           ></img>
-          <NavLink className="nav-link" to="action-record">
+          <NavLink className="nav-link" to="history">
             Lịch sử
           </NavLink>
         </li>

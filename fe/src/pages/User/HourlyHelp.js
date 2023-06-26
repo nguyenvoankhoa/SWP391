@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 import { orderItemAction } from "../../redux/order";
 import Button from "@mui/material/Button";
 import { BiCartAdd } from "react-icons/bi";
+import ChooseFavouriteEmployee from "../../components/User/ChooseFavouriteEmployee";
 
 const AntTabs = styled(Tabs)({});
 
@@ -57,6 +58,8 @@ export default function FabricCleaning() {
   const [selectedServiceId, setSelectedServiceId] = useState("");
   const [selectedFreq, setSelectedFreq] = useState("");
   const [note, setNote] = useState("");
+  const [employeeId, setEmployeeId] = useState(null);
+  const [isOn, setOn] = useState(false);
   const data = useLoaderData();
   const DATA = data
     .filter((item) => item.name === "Giúp việc theo giờ")
@@ -97,6 +100,7 @@ export default function FabricCleaning() {
     setNote(event.target.value);
   };
   useEffect(() => {
+    setEmployeeId();
     setSelectedDate();
     setSelectedTime();
     setSelectedFreq();
@@ -106,6 +110,12 @@ export default function FabricCleaning() {
   }, [value]);
   const handleServiceChange = (event) => {
     setSelectedServiceId(() => event.target.value);
+  };
+  const handleEmloyee = (employee) => {
+    setEmployeeId(employee);
+  };
+  const handleFavourite = (isOn) => {
+    setOn(isOn);
   };
 
   const addServiceHandler = () => {
@@ -134,6 +144,8 @@ export default function FabricCleaning() {
       frequency: frequency,
       price: selectedService.price,
       type: selectedService.type,
+      favouriteEmployee: isOn,
+      employeeId: employeeId,
     };
     dispatch(orderItemAction.addItem(service));
   };
@@ -305,6 +317,12 @@ export default function FabricCleaning() {
                     >
                       Thêm vào giỏ hàng
                     </Button>
+                    <ChooseFavouriteEmployee
+                      name="Giúp việc theo giờ"
+                      onAddEmployee={handleEmloyee}
+                      onAddFavourite={handleFavourite}
+                      date={selectedDate}
+                    />
                   </Grid>
                 </Grid>
               </LocalizationProvider>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Card from "../../UI/Card";
 import { useSelector } from "react-redux";
@@ -15,6 +15,9 @@ const OrderCheckout = () => {
   const totalAmount = useSelector((state) => state.order.totalAmount);
   const [payment, setPayment] = useState("Tiền mặt");
   const [bill, setBill] = useState({});
+  useEffect(() => {
+    handleBill();
+  }, [payment]);
   const handleBill = () => {
     let bill = {
       customerId: user.id,
@@ -27,13 +30,15 @@ const OrderCheckout = () => {
       note: cartItems[0].note,
       frequency: cartItems[0].frequency,
       hour: cartItems[0].hour,
+      businessName: cartItems[0].name,
+      favouriteEmployee: cartItems[0].favouriteEmployee,
+      employeeId: cartItems[0].employeeId,
     };
-
+    console.log(bill);
     setBill(bill);
   };
   const paymentHandler = (props) => {
     setPayment(props);
-    handleBill();
   };
 
   return (
@@ -178,6 +183,7 @@ const OrderCheckout = () => {
                           <Grid paddingRight={2}>
                             <h5>Ghi chú:</h5>
                           </Grid>
+
                           <Grid>
                             <p>{item.note}</p>
                           </Grid>

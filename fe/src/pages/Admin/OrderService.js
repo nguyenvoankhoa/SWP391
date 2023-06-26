@@ -34,7 +34,13 @@ const OrderService = () => {
 
   return (
     <>
-      <Title title="ĐƠN HÀNG" color="black" fontSize="35px" fontWeight="700" padding="2% 0 1% 0" />
+      <Title
+        title="ĐƠN HÀNG"
+        color="black"
+        fontSize="35px"
+        fontWeight="700"
+        padding="2% 0 1% 0"
+      />
       <div className="row justify-content-center">
         <div className="col-11">
           <Card>
