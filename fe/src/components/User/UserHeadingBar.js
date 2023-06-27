@@ -91,9 +91,10 @@ const UserHeadingBar = () => {
               to="action-record"
               sx={{
                 pl: 10,
+                color: "rgb(120, 120, 120)",
                 "&:hover": {
                   backgroundColor: "#9dcec8",
-                  color: "black",
+                  color: "rgb(120, 120, 120)",
                 },
               }}
             >
@@ -104,12 +105,13 @@ const UserHeadingBar = () => {
           <List component="div" disablePadding>
             <ListItemButton
               component={NavLink}
-              to="action-record/total-senitation"
+              to="action-record/total-senitation"           
               sx={{
                 pl: 10,
+                color: "rgb(120, 120, 120)",
                 "&:hover": {
                   backgroundColor: "#9dcec8",
-                  color: "black",
+                  color: "rgb(120, 120, 120)",
                 },
               }}
             >
@@ -122,9 +124,10 @@ const UserHeadingBar = () => {
               to="action-record/fabric-cleaning"
               sx={{
                 pl: 10,
+                color: "rgb(120, 120, 120)",
                 "&:hover": {
                   backgroundColor: "#9dcec8",
-                  color: "black",
+                  color: "rgb(120, 120, 120)",
                 },
               }}
             >
@@ -137,9 +140,10 @@ const UserHeadingBar = () => {
               to="action-record/electronic-cleaning"
               sx={{
                 pl: 10,
+                color: "rgb(120, 120, 120)",
                 "&:hover": {
                   backgroundColor: "#9dcec8",
-                  color: "black",
+                  color: "rgb(120, 120, 120)",
                 },
               }}
             >

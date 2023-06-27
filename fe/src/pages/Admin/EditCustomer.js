@@ -4,77 +4,101 @@ import "./EditCus.css";
 import Title from "../../components/Title";
 import { useLoaderData } from "react-router-dom";
 import EditCustomerForm from "../../components/Admin/EditCustomerForm";
-const EditCustomer = () => {
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+} from "@mui/material";
+const EditCustomer = (props) => {
   const data = useLoaderData();
   const [customer, setCustomer] = useState([]);
   const editCustomerHandler = (customer) => {
     setCustomer(customer);
   };
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+  const column = [
+    { id: "no", label: "STT", minWidth: 170 },
+    { id: "name", label: "Họ tên", minWidth: 170 },
+    { id: "email", label: "Email", minWidth: 170 },
+    { id: "block", label: "Tòa", minWidth: 170 },
+    { id: "room", label: "Mã căn", minWidth: 170 },
+    { id: "phone", label: "Số điện thoại", minWidth: 170 },
+  ];
 
   return (
     <>
       <Title
         title="KHÁCH HÀNG"
-        color="black"
+        color="#397F77"
         fontSize="35px"
         fontWeight="700"
         padding="2% 0 1% 0"
       />
-      <div className="row justify-content-center">
-        <div className="col-10">
-          <Card>
-            <div class="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
-              <table className="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">STT</th>
-                    <th scope="col">Tên</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Số toà</th>
-                    <th scope="col">Số phòng</th>
-                    <th scope="col">Số điện thoại</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.map((customer) => (
-                    <tr key={customer.id}>
-                      <th scope="row">{customer.id}</th>
-                      <td>{customer.customerInfo.name}</td>
-                      <td>{customer.customerInfo.email}</td>
-                      <td>{customer.departmentNumber}</td>
-                      <td>{customer.roomNumber}</td>
-                      <td>{customer.customerInfo.phone}</td>
-                      <td>
-                        <div className="d-flex justify-content-around">
-                          <div className="item-icon">
-                            <img
-                              src="../assets/images/iconTrash.svg"
-                              alt="aaa"
-                              data-bs-toggle="modal"
-                              data-bs-target="#exampleModal"
-                              onClick={() => editCustomerHandler(customer)}
-                            />
-                          </div>
-                          <div className="item-icon">
-                            <img
-                              src="../assets/images/edit.png"
-                              alt="aaa"
-                              data-bs-toggle="modal"
-                              data-bs-target="#staticBackdrop"
-                              onClick={() => editCustomerHandler(customer)}
-                            />
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </Card>
-        </div>
-      </div>
+      <Paper
+        className="container"
+        sx={{
+          marginTop: 5,
+          width: "90%",
+          overflow: "hidden",
+          justifyContent: "center",
+          display: "flex-end",
+        }}
+      >
+        <Table>
+          <TableHead>
+            <TableRow>
+              {column.map((column) => (
+                <TableCell key={column.id} align="center">
+                  {column.label}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map((customer) => (
+              <TableRow key={customer.id} hover role="checkbox" tabIndex={-1}>
+                <TableCell>{customer.no}</TableCell>
+                <TableCell align="left" style={{ paddingLeft: "5%" }}>
+                  {customer.name}
+                </TableCell>
+                <TableCell align="left" style={{ paddingLeft: "3%" }}>
+                  {customer.email}
+                </TableCell>
+                <TableCell align="center">{customer.block}</TableCell>
+                <TableCell align="center">{customer.room}</TableCell>
+                <TableCell align="center">{customer.phone}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        <TablePagination
+          rowsPerPageOptions={[10, 15]}
+          component="div"
+          count={customer.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          classes={{
+            selectLabel: "custom-select-label",
+            displayedRows: "custom-displayed-rows",
+          }}
+        />
+      </Paper>
       <EditCustomerForm customer={customer} />
     </>
   );

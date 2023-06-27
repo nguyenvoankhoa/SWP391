@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./UserHistory.css";
 import { useLoaderData } from "react-router";
+import Title from "../../components/Title";
 const UserHistory = (props) => {
   const data = useLoaderData();
   console.log(data);
@@ -28,7 +29,13 @@ const UserHistory = (props) => {
   };
   return (
     <>
-      <h1 className="my-5">Lịch sử</h1>
+        <Title
+        title="LỊCH SỬ"
+        color="#397F77"
+        fontSize="35px"
+        fontWeight="1000"
+        padding="3% 0 0  0"
+      />
       {data.length === 0 && <p className="text-center">Chưa có thông tin</p>}
       {data.length > 0 && (
         <div className="table-responsive table-wrapper-scroll-y">
