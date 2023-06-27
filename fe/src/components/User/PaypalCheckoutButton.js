@@ -38,47 +38,52 @@ const PaypalCheckoutButton = (props) => {
     price: bill.price,
   };
   return (
-    <PayPalButtons
+    <div className="container"
       style={{
-        color: "silver",
-        layout: "horizontal",
-        height: 40,
-        tagline: false,
-        shape: "pill",
-      }}
-      onClick={(data, action) => {
-        const hasAlreadyPay = false;
-        if (hasAlreadyPay) {
-          setError("You already pay");
-          return action.reject();
-        } else {
-          return action.resolve();
-        }
-      }}
-      createOrder={(data, actions) => {
-        return actions.order.create({
-          purchase_units: [
-            {
-              description: product.description,
-              amount: {
-                value: product.price,
+        width: "150px",
+        marginTop: "12px"
+      }}>
+      <PayPalButtons
+        style={{
+          color: "silver",
+          layout: "horizontal",
+          height: 40,
+          tagline: false,
+        }}
+        onClick={(data, action) => {
+          const hasAlreadyPay = false;
+          if (hasAlreadyPay) {
+            setError("You already pay");
+            return action.reject();
+          } else {
+            return action.resolve();
+          }
+        }}
+        createOrder={(data, actions) => {
+          return actions.order.create({
+            purchase_units: [
+              {
+                description: product.description,
+                amount: {
+                  value: product.price,
+                },
               },
-            },
-          ],
-        });
-      }}
-      onCancel={() => {}}
-      onApprove={async (data, actions) => {
-        const order = await actions.order.capture();
-        console.log("order", order);
+            ],
+          });
+        }}
+        onCancel={() => { }}
+        onApprove={async (data, actions) => {
+          const order = await actions.order.capture();
+          console.log("order", order);
 
-        handleApprove();
-      }}
-      onError={(err) => {
-        setError(err);
-        console.error("PayPal Checkout onError", err);
-      }}
-    />
+          handleApprove();
+        }}
+        onError={(err) => {
+          setError(err);
+          console.error("PayPal Checkout onError", err);
+        }}
+      />
+    </div>
   );
 };
 

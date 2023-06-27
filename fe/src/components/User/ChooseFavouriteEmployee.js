@@ -1,13 +1,34 @@
+
+import Box from '@mui/material/Box';
+import Switch from '@mui/material/Switch';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Fade from '@mui/material/Fade';
+import { Button } from '@mui/material';
 import React, { useEffect, useState } from "react";
+import Modal from '@mui/material/Modal';
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  bgcolor: 'background.paper',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 const ChooseFavouriteEmployee = (props) => {
-  const [data, setData] = useState(null);
-  const [isOn, setIsOn] = useState(false);
-  const [employeeId, setEmployeeId] = useState(null);
-  const handleClick = () => {
-    setIsOn(!isOn);
-    props.onAddFavourite(!isOn);
+  const [checked, setChecked] = React.useState(false);
+  const handleChange = () => {
+    setChecked((prev) => !prev);
   };
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [data, setData] = useState(null);
+  const [employeeId, setEmployeeId] = useState(null);
+
 
   const handleChooseEmployee = (id) => {
     setEmployeeId(id);
@@ -49,43 +70,64 @@ const ChooseFavouriteEmployee = (props) => {
 
     fetchData();
   }, [props.date, props.name]);
+  const icon = (
 
+    <Button variant="contained" onClick={handleOpen}>Chọn nhân viên</Button>
+
+
+  );
   return (
     <>
-      <button onClick={handleClick}>{isOn ? "ON" : "OFF"}</button>
-      {isOn && (
-        <table className="table table-bordered">
-          <thead>
-            <tr>
-              <th scope="col">Tên nhân viên</th>
-              <th scope="col">Tổng điểm</th>
-              <th scope="col">Điểm đánh giá</th>
-              <th scope="col">Chọn</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data &&
-              data.map((employee) => (
-                <tr key={employee.employeeId}>
-                  <td>{employee.employeeName}</td>
-                  <td>{employee.totalPoint}</td>
-                  <td>{employee.averagePoint}</td>
-                  <td>
-                    <input
-                      type="checkbox"
-                      id={employee.employeeId}
-                      value={employee.employeeId}
-                      checked={employeeId === employee.employeeId}
-                      onChange={() => handleChooseEmployee(employee.employeeId)}
-                    />
-                  </td>
-                </tr>
-              ))}
-          </tbody>
-        </table>
-      )}
+      <FormControlLabel
+        control={<Switch checked={checked} onChange={handleChange} />}
+        label="Show"
+      />
+      <Box sx={{ display: 'flex' }}>
+        <Fade in={checked}>{icon}</Fade>
+      </Box>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Tên nhân viên</th>
+                <th scope="col">Tổng điểm</th>
+                <th scope="col">Điểm đánh giá</th>
+                <th scope="col">Chọn</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data &&
+                data.map((employee) => (
+                  <tr key={employee.employeeId}>
+                    <td>{employee.employeeName}</td>
+                    <td>{employee.totalPoint}</td>
+                    <td>{employee.averagePoint}</td>
+                    <td>
+                      <input
+                        type="checkbox"
+                        id={employee.employeeId}
+                        value={employee.employeeId}
+                        checked={employeeId === employee.employeeId}
+                        onChange={() => handleChooseEmployee(employee.employeeId)}
+                      />
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
+        </Box>
+      </Modal>
     </>
+
+
   );
 };
+
 
 export default ChooseFavouriteEmployee;

@@ -235,8 +235,8 @@ export default function FabricCleaning() {
                     value === 0
                       ? firstOption
                       : value === 1
-                      ? secondOption
-                      : thirdOption
+                        ? secondOption
+                        : thirdOption
                   }
                 />
               )}
@@ -265,6 +265,22 @@ export default function FabricCleaning() {
                       />
                     </DemoItem>
                   </DemoContainer>
+
+                </Grid>
+                <Grid container flex justifyContent={"center"} marginTop={2}>
+
+                  <Grid item xs={4} marginLeft={2}>
+                    <p>Chọn nhân viên yêu thích</p>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <ChooseFavouriteEmployee
+                      name="Giúp việc theo giờ"
+                      onAddEmployee={handleEmloyee}
+                      onAddFavourite={handleFavourite}
+                      date={selectedDate}
+                    />
+                  </Grid>
+
                 </Grid>
                 <div className="row justify-content-center mt-5">
                   <div className="col-11">
@@ -317,12 +333,7 @@ export default function FabricCleaning() {
                     >
                       Thêm vào giỏ hàng
                     </Button>
-                    <ChooseFavouriteEmployee
-                      name="Giúp việc theo giờ"
-                      onAddEmployee={handleEmloyee}
-                      onAddFavourite={handleFavourite}
-                      date={selectedDate}
-                    />
+
                   </Grid>
                 </Grid>
               </LocalizationProvider>
