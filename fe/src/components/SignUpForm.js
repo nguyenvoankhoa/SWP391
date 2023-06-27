@@ -22,17 +22,14 @@ const SignUpForm = () => {
       departmentNumber: departmentNumber,
       roomNumber: roomNumber,
     };
-    console.log(newUser);
-    const res = await fetch(
-      "https://swp391-production.up.railway.app/register",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newUser),
-      }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const res = await fetch(apiUrl + "register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newUser),
+    });
     if (!res.ok) {
       throw new Error("error");
     } else {

@@ -8,17 +8,15 @@ const ConfirmComplete = (props) => {
     const id = {
       id: props.id,
     };
-    const res = await fetch(
-      "https://swp391-production.up.railway.app/admin/confirm",
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(id),
-      }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const res = await fetch(apiUrl + "admin/confirm", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(id),
+    });
 
     if (!res.ok) {
       throw new Error("Error fetching data");

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./UserHistory.css";
 import { useLoaderData } from "react-router";
+import Title from "../../components/Title";
 const UserHistory = (props) => {
   const data = useLoaderData();
   console.log(data);
@@ -11,24 +12,28 @@ const UserHistory = (props) => {
       rateValue: star,
     };
     const token = sessionStorage.getItem("jwtToken");
-    const res = await fetch(
-      "https://swp391-production.up.railway.app/customer/rate",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(rateRequest),
-      }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const res = await fetch(apiUrl + "customer/rate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(rateRequest),
+    });
     if (!res.ok) {
       throw new Error("error");
     }
   };
   return (
     <>
-      <h1 className="my-5">Lịch sử</h1>
+      <Title
+        title="LỊCH SỬ"
+        color="#397F77"
+        fontSize="35px"
+        fontWeight="1000"
+        padding="3% 0 0  0"
+      />
       {data.length === 0 && <p className="text-center">Chưa có thông tin</p>}
       {data.length > 0 && (
         <div className="table-responsive table-wrapper-scroll-y">
@@ -96,17 +101,15 @@ export async function historyLoader() {
     id: user.id,
   };
   const token = sessionStorage.getItem("jwtToken");
-  const res = await fetch(
-    "https://swp391-production.up.railway.app/customer/history",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(id),
-    }
-  );
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const res = await fetch(apiUrl + "customer/history", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(id),
+  });
   if (!res.ok) {
     throw new Error("error");
   } else {

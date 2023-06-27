@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import { RiAccountCircleLine } from "react-icons/ri";
+import { RiAccountCircleLine, RiFontSize } from "react-icons/ri";
+import { Typography } from "@mui/material";
 
 const HeadingBar = () => {
   return (
@@ -139,15 +140,44 @@ const HeadingBar = () => {
                 CHÍNH SÁCH BẢO HÀNH
               </NavLink>
             </li>
-          </ul>
-
-          {/* Login */}
-          <NavLink to="sign-in" className="Btn" href="#">
-            <div className="sign">
-              <RiAccountCircleLine color="white" size={40} />
-            </div>
-            <div className="text-login">Đăng nhập</div>
+            <NavLink
+            to="sign-in"
+            href="#"
+            style={{ textDecoration: "none", marginLeft: "5%", marginTop: "0.3%" }}
+          >
+            <Typography
+              sx={{
+                color: "gray",
+                letterSpacing: "0.05rem",
+                display: "inline",
+                fontWeight: "lighter",
+                fontSize: "20px"
+              }}
+              component="span"
+            >
+              Đăng nhập
+            </Typography>
           </NavLink>
+          <div class="navbar__link-separator" style={{borderRight: "1px solid black", height: "1rem", marginLeft: 8, marginTop: 10}}/> 
+          <NavLink
+            to="sign-up"
+            href="#"
+            style={{ textDecoration: "none", marginLeft: 9, marginTop: "0.3%" }}
+          >
+            <Typography
+              sx={{
+                color: "gray",
+                letterSpacing: "0.05rem",
+                display: "inline",
+                fontWeight: "lighter",
+                fontSize: "20px"
+              }}
+              component="span"
+            >
+              Đăng ký
+            </Typography>
+          </NavLink>
+          </ul>
         </div>
       </div>
     </nav>

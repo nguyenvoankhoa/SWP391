@@ -35,18 +35,15 @@ const EditEmployeeForm = (props) => {
     };
     let id = props.employee.employeeInfo.id;
     const token = sessionStorage.getItem("jwtToken");
-    console.log(employeeInfo);
-    const res = await fetch(
-      "https://swp391-production.up.railway.app/admin/employees/" + id,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(employeeInfo),
-      }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const res = await fetch(apiUrl + "admin/employees/" + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(employeeInfo),
+    });
 
     if (!res.ok) {
       throw new Error("Error fetching data");

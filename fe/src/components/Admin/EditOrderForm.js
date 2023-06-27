@@ -9,17 +9,15 @@ const EditOrderForm = ({ workType, billId }) => {
     const fetchData = async () => {
       const token = sessionStorage.getItem("jwtToken");
       const businessName = { businessName: workType };
-      const res = await fetch(
-        "https://swp391-production.up.railway.app/admin/business",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(businessName),
-        }
-      );
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const res = await fetch(apiUrl + "admin/business", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(businessName),
+      });
 
       if (!res.ok) {
         throw new Error("Error fetching data");
@@ -40,17 +38,15 @@ const EditOrderForm = ({ workType, billId }) => {
       employeeId: employeeId,
     };
     const token = sessionStorage.getItem("jwtToken");
-    const res = await fetch(
-      "https://swp391-production.up.railway.app/admin/assign",
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(newOrder),
-      }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const res = await fetch(apiUrl + "admin/assign", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(newOrder),
+    });
 
     if (!res.ok) {
       throw new Error("Error fetching data");

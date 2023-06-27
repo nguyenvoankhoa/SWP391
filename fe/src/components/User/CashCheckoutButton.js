@@ -24,19 +24,16 @@ const CashCheckoutButton = (props) => {
   const dispatch = useDispatch();
   const bill = props.items;
   const handlePayment = async () => {
-    console.log(bill);
     const token = sessionStorage.getItem("jwtToken");
-    const res = await fetch(
-      "https://swp391-production.up.railway.app/customer/order",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(bill),
-      }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const res = await fetch(apiUrl + "customer/order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(bill),
+    });
     if (res.status === 400) {
       alert("Bạn đã đặt đơn hàng này");
     } else {

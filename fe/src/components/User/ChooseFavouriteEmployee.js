@@ -46,18 +46,15 @@ const ChooseFavouriteEmployee = (props) => {
         date: props.date ? props.date.$D : 26,
         month: props.date ? props.date.$M + 1 : 6,
       };
-
-      const response = await fetch(
-        "https://swp391-production.up.railway.app/customer/favourite-employee",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(req),
-        }
-      );
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(apiUrl + "customer/favourite-employee", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(req),
+      });
 
       if (response.ok) {
         const data = await response.json();

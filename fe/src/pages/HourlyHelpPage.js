@@ -99,7 +99,8 @@ const HourlyHelpPage = () => {
 export default HourlyHelpPage;
 
 export async function loader() {
-  const res = await fetch("https://swp391-production.up.railway.app/services");
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const res = await fetch(apiUrl + "services");
   if (!res.ok) {
     throw json({ message: "can not load item" }, { status: 500 });
   } else {
