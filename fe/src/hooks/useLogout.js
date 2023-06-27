@@ -8,16 +8,13 @@ const useLogout = () => {
   const logout = async () => {
     try {
       setLoading(true);
-
-      const res = await fetch(
-        "https://swp391-production.up.railway.app/logout"
-      );
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const res = await fetch(apiUrl + "logout");
       if (!res.ok) {
         throw new Error("Error");
       } else {
         sessionStorage.removeItem("user");
         sessionStorage.removeItem("jwtToken");
-        sessionStorage.removeItem("signinTime");
         sessionStorage.removeItem("refreshToken");
         nav("/");
       }

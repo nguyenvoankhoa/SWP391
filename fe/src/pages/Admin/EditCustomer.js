@@ -113,16 +113,14 @@ const EditCustomer = (props) => {
 export default EditCustomer;
 export async function customerLoader() {
   const token = sessionStorage.getItem("jwtToken");
-  const res = await fetch(
-    "https://swp391-production.up.railway.app/admin/customers",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const res = await fetch(apiUrl + "admin/customers", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
   if (!res.ok) {
     throw new Error("error");
   } else {

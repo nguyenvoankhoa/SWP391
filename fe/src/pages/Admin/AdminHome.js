@@ -85,16 +85,14 @@ const AdminHome = () => {
     async function fetchData() {
       try {
         const token = sessionStorage.getItem("jwtToken");
-        const res = await fetch(
-          "https://swp391-production.up.railway.app/admin/amount",
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+        const apiUrl = process.env.REACT_APP_API_URL;
+        const res = await fetch(apiUrl + "admin/amount", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
 
         if (!res.ok) {
           throw new Error("Failed to fetch data");
@@ -212,16 +210,14 @@ export default AdminHome;
 
 export async function businessInWeek() {
   const token = sessionStorage.getItem("jwtToken");
-  const res = await fetch(
-    "https://swp391-production.up.railway.app/admin/bill-by-week",
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    }
-  );
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const res = await fetch(apiUrl + "admin/bill-by-week", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
   if (!res.ok) {
     throw new Error("error");
   } else {

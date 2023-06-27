@@ -28,17 +28,15 @@ const EditCustomerForm = (props) => {
   const deleteCustomerHandler = async () => {
     const id = { id: props.customer.customerInfo.id };
     const token = sessionStorage.getItem("jwtToken");
-    const res = await fetch(
-      "https://swp391-production.up.railway.app/admin/customers",
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(id),
-      }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const res = await fetch(apiUrl + "admin/customers", {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(id),
+    });
     if (!res.ok) {
       throw new Error("Error fetching data");
     }
@@ -53,17 +51,15 @@ const EditCustomerForm = (props) => {
       roomNumber: roomNum,
     };
     const token = sessionStorage.getItem("jwtToken");
-    const res = await fetch(
-      "https://swp391-production.up.railway.app/admin/customers",
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(newCustomer),
-      }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const res = await fetch(apiUrl + "admin/customers", {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(newCustomer),
+    });
 
     if (!res.ok) {
       throw new Error("Error fetching data");

@@ -25,16 +25,14 @@ const SignInForm = () => {
         email: email,
         password: password,
       };
-      const response = await fetch(
-        "https://swp391-production.up.railway.app/authenticate",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(loginData),
-        }
-      );
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const response = await fetch(apiUrl + "authenticate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      });
       if (response.status === 403) {
         setError("Sai tài khoản hoặc mật khẩu");
         return;

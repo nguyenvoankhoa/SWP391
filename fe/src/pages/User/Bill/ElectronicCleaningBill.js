@@ -16,17 +16,15 @@ const ActionRecord = () => {
     const request = {
       id: user.id,
     };
-    const res = await fetch(
-      "https://swp391-production.up.railway.app/customer/periodic-orders",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(request),
-      }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const res = await fetch(apiUrl + "customer/periodic-orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(request),
+    });
 
     if (!res.ok) {
       throw new Error("Error");

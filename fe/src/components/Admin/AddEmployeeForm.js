@@ -30,19 +30,16 @@ const AddEmployeeForm = (props) => {
       phone: phone,
       workType: props.workType,
     };
-    console.log(employee);
     const token = sessionStorage.getItem("jwtToken");
-    const res = await fetch(
-      "https://swp391-production.up.railway.app/admin/create-employee",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(employee),
-      }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const res = await fetch(apiUrl + "admin/create-employee", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(employee),
+    });
     if (!res.ok) {
       throw new Error("error");
     }

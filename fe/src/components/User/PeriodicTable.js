@@ -15,17 +15,15 @@ const PeriodicTable = (props) => {
     let cancelRequest = {
       id: id,
     };
-    const res = await fetch(
-      "https://swp391-production.up.railway.app/customer/cancel-bill",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(cancelRequest),
-      }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const res = await fetch(apiUrl + "customer/cancel-bill", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(cancelRequest),
+    });
     console.log(res);
 
     if (!res.ok) {

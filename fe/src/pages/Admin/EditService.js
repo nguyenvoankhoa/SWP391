@@ -82,7 +82,8 @@ const EditService = () => {
 
 export default EditService;
 export async function serviceLoader() {
-  const res = await fetch("https://swp391-production.up.railway.app/services");
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const res = await fetch(apiUrl + "services");
   if (!res.ok) {
     throw new Error("error");
   } else {

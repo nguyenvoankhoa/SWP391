@@ -12,24 +12,22 @@ const UserHistory = (props) => {
       rateValue: star,
     };
     const token = sessionStorage.getItem("jwtToken");
-    const res = await fetch(
-      "https://swp391-production.up.railway.app/customer/rate",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(rateRequest),
-      }
-    );
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const res = await fetch(apiUrl + "customer/rate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(rateRequest),
+    });
     if (!res.ok) {
       throw new Error("error");
     }
   };
   return (
     <>
-        <Title
+      <Title
         title="LỊCH SỬ"
         color="#397F77"
         fontSize="35px"
@@ -103,17 +101,15 @@ export async function historyLoader() {
     id: user.id,
   };
   const token = sessionStorage.getItem("jwtToken");
-  const res = await fetch(
-    "https://swp391-production.up.railway.app/customer/history",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify(id),
-    }
-  );
+  const apiUrl = process.env.REACT_APP_API_URL;
+  const res = await fetch(apiUrl + "customer/history", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(id),
+  });
   if (!res.ok) {
     throw new Error("error");
   } else {
