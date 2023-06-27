@@ -71,16 +71,18 @@ const EditCustomer = (props) => {
           <TableBody>
             {data.map((customer) => (
               <TableRow key={customer.id} hover role="checkbox" tabIndex={-1}>
-                <TableCell>{customer.no}</TableCell>
+                <TableCell>{customer.id}</TableCell>
                 <TableCell align="left" style={{ paddingLeft: "5%" }}>
-                  {customer.name}
+                  {customer.customerInfo.name}
                 </TableCell>
                 <TableCell align="left" style={{ paddingLeft: "3%" }}>
-                  {customer.email}
+                  {customer.customerInfo.email}
                 </TableCell>
-                <TableCell align="center">{customer.block}</TableCell>
-                <TableCell align="center">{customer.room}</TableCell>
-                <TableCell align="center">{customer.phone}</TableCell>
+                <TableCell align="center">{customer.departmentNumber}</TableCell>
+                <TableCell align="center">{customer.roomNumber}</TableCell>
+                <TableCell align="center">
+                  {customer.customerInfo.phone}
+                </TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -88,7 +90,7 @@ const EditCustomer = (props) => {
         <TablePagination
           rowsPerPageOptions={[10, 15]}
           component="div"
-          count={customer.length}
+          count={data.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
