@@ -96,14 +96,16 @@ const SignInForm = () => {
           <div className="d-flex justify-content-center">
             <Title
               color="#000000"
-              title="Chưa có tài khoản ? "
+              title="Chưa có tài khoản?"
               fontSize="15px"
               fontWeight="400"
+              padding="0 5px 0 0"
             />
+
             <Link to="/sign-up">
               <Title
                 color="#000000"
-                title=" Đăng ký ngay"
+                title="Đăng ký ngay"
                 fontSize="15px"
                 fontWeight="400"
               />

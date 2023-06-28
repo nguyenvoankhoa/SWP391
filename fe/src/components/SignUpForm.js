@@ -121,14 +121,15 @@ const SignUpForm = () => {
           <div className="d-flex justify-content-center">
             <Title
               color="#000000"
-              title="Đã có tài khoản ? "
+              title="Đã có tài khoản?"
               fontSize="15px"
               fontWeight="400"
+              padding="0 5px 0 0"
             />
-            <Link to="/sign-in" style={{ textDecoration: "none" }}>
+            <Link to="/sign-in">
               <Title
                 color="#000000"
-                title=" Đăng nhập ngay"
+                title="Đăng nhập ngay"
                 fontSize="15px"
                 fontWeight="400"
               />
@@ -139,18 +140,6 @@ const SignUpForm = () => {
             <button type="submit" onClick={registerHandler}>
               Đăng ký
             </button>
-            <Button
-              backgroundColor=" #397F77 "
-              borderRadius="15px"
-              padding="5px 30px"
-            >
-              <Title
-                color="#ffffff"
-                title="Đăng ký"
-                fontSize="17px"
-                fontWeight="400"
-              />
-            </Button>
           </div>
         </div>
       </Card>
