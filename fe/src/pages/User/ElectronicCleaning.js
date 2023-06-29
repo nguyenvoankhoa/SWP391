@@ -82,9 +82,12 @@ export default function ElectronicCleaning() {
       label: item.detail,
     })
   );
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setShowForm(true);
+    setSelectedDate(null);
+    setSelectedTime(null)
   };
 
   useEffect(() => {
