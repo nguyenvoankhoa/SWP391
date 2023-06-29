@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Title from "./Title";
 import "./SignComponent.css";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Button,
-  TextField,
-  Paper,
   Input,
   InputAdornment,
   MenuItem,
@@ -36,32 +34,43 @@ const SignUpForm = () => {
   const [phoneError, setPhoneError] = useState(false);
   const [selectedToa, setSelectedToa] = useState("");
   const [selectedCanHo, setSelectedCanHo] = useState("");
-  const [isFormValid, setIsFormValid] = useState(false);
+  const [isButtonDisabled, setButtonDisabled] = useState(false);
   const registerHandler = async () => {
-    let newUser = {
-      name: name,
-      email: email,
-      password: password,
-      phone: phone,
-      departmentNumber: departmentNumber,
-      roomNumber: roomNumber,
-    };
-    const apiUrl = process.env.REACT_APP_API_URL;
-    const res = await fetch(apiUrl + "register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    });
-    if (!res.ok) {
-      throw new Error("error");
+    if (name.trim() === '' || email.trim() === '' || phone.trim() === '' || password.trim() === '' || selectedToa === '' || selectedCanHo === '') {
+      alert('Vui lòng điền đầy đủ thông tin.');
     } else {
-      const data = await res.json();
-      nav("/sign-in");
-      return data;
+      let newUser = {
+        name: name,
+        email: email,
+        password: password,
+        phone: phone,
+        departmentNumber: departmentNumber,
+        roomNumber: roomNumber,
+      };
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const res = await fetch(apiUrl + 'register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newUser),
+      });
+      if (!res.ok) {
+        throw new Error('error');
+      } else {
+        const data = await res.json();
+        nav('/sign-in');
+        return data;
+      }
     }
-  };
+  }; 
+  useEffect(() => {
+    if (name.trim() === '' || email.trim() === '' || phone.trim() === '' || password.trim() === '' || selectedToa === '' || selectedCanHo === '') {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(false);
+    }
+  }, [name, email, phone, password, selectedToa, selectedCanHo]);
   const nameHandler = (event) => {
     const inputValue = event.target.value;
     setName(inputValue);
@@ -75,7 +84,6 @@ const SignUpForm = () => {
     } else {
       setIsNameEmpty(false);
     }
-        setIsFormValid(true);
   };
   const [isNameEmpty, setIsNameEmpty] = useState(false);
 
@@ -152,7 +160,7 @@ const SignUpForm = () => {
     { value: "0206", label: "0206" },
     { value: "0207", label: "0207" },
     { value: "0208", label: "0208" },
-    { value: "0209", label: "0200" },
+    { value: "0209", label: "0209" },
     { value: "0210", label: "0210" },
     { value: "0211", label: "0211" },
     { value: "0212", label: "0212" },
@@ -177,7 +185,7 @@ const SignUpForm = () => {
             style={{ width: "800px", height: "100%" }}
           />
         </div>
-        <div className="col-md-3 offset-md-2">
+        <div className="col-3 offset-md-1 ">
           <Title
             color="#015450"
             title="ĐĂNG KÝ"
@@ -329,6 +337,7 @@ const SignUpForm = () => {
             <Button
               variant="contained"
               onClick={registerHandler}
+              disabled={isButtonDisabled}
               sx={{
                 fontFamily: "Montserrat",
                 width: "40%",
@@ -345,8 +354,7 @@ const SignUpForm = () => {
                 "&:hover": {
                   backgroundColor: "#397F77",
                 },
-              }}
-              disabled={isFormValid || isFormValid} 
+              }}         
             >
               Đăng ký
             </Button>
