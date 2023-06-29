@@ -152,7 +152,7 @@ const SignUpForm = () => {
     { value: "0206", label: "0206" },
     { value: "0207", label: "0207" },
     { value: "0208", label: "0208" },
-    { value: "0209", label: "0200" },
+    { value: "0209", label: "0209" },
     { value: "0210", label: "0210" },
     { value: "0211", label: "0211" },
     { value: "0212", label: "0212" },
@@ -177,7 +177,7 @@ const SignUpForm = () => {
             style={{ width: "800px", height: "100%" }}
           />
         </div>
-        <div className="col-md-3 offset-md-2">
+        <div className="col-3 offset-md-1 ">
           <Title
             color="#015450"
             title="ĐĂNG KÝ"
@@ -346,7 +346,6 @@ const SignUpForm = () => {
                   backgroundColor: "#397F77",
                 },
               }}
-              disabled={isFormValid} 
             >
               Đăng ký
             </Button>
