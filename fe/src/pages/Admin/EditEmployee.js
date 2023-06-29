@@ -5,6 +5,16 @@ import Title from "../../components/Title";
 import { useLoaderData, useParams } from "react-router-dom";
 import EditEmployeeForm from "../../components/Admin/EditEmployeeForm";
 import AddEmployeeForm from "../../components/Admin/AddEmployeeForm";
+import {
+  Paper,
+  Tab,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+} from "@mui/material";
 const EditEmployee = () => {
   const data = useLoaderData();
   const [employee, setEmployee] = useState([]);
@@ -27,12 +37,30 @@ const EditEmployee = () => {
   const editEmployeeHandler = (employee) => {
     setEmployee(employee);
   };
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+  const column = [
+    { id: "no", label: "STT", minWidth: 170 },
+    { id: "name", label: "Họ tên", minWidth: 170 },
+    { id: "email", label: "Email", minWidth: 170 },
+    { id: "phone", label: "Số điện thoại", minWidth: 170 },
+    { id: "job", label: "Công việc", minWidth: 170 },
+    { id: "edit", label: "Chỉnh sửa", minWidth: 170 },
+  ];
   return (
     <>
       <Title
         title="NHÂN VIÊN"
-        color="black"
+        color="#397F77"
         fontSize="35px"
         fontWeight="700"
         padding="2% 0 0 0"
@@ -52,7 +80,7 @@ const EditEmployee = () => {
             <AddEmployeeForm workType={workType} />
           </div>
 
-          <Card>
+          {/* <Card>
             <div className="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
               <table className="table table-bordered table-striped">
                 <thead>
@@ -79,7 +107,7 @@ const EditEmployee = () => {
                         <div className="d-flex justify-content-around">
                           <div className="item-icon">
                             <img
-                              src="/assets/images/iconTrash.svg"
+                              src="/assets/images/trash.svg"
                               alt="#"
                               data-bs-toggle="modal"
                               data-bs-target="#exampleModal"
@@ -131,7 +159,7 @@ const EditEmployee = () => {
                           </div>
                           <div className="item-icon">
                             <img
-                              src="/assets/images/edit.png"
+                              src="/assets/images/pencil.svg"
                               alt="#"
                               data-bs-toggle="modal"
                               data-bs-target="#staticBackdrop"
@@ -145,7 +173,74 @@ const EditEmployee = () => {
                 </tbody>
               </table>
             </div>
-          </Card>
+          </Card> */}
+          <Paper
+            className="container"
+            sx={{
+              marginTop: 5,
+              width: "100%",
+              overflow: "hidden",
+              justifyContent: "center",
+              display: "flex-end",
+            }}
+          >
+            <Table>
+              <TableHead>
+                <TableRow>
+                  {column.map((column) => (
+                    <TableCell key={column.id} align="center">
+                      {column.label}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                  {filteredData.map((employee) => (
+                    <TableRow key={employee.id} hover role="checkbox" tabIndex={-1}>
+                      <TableCell align="left" style={{ paddingLeft: "4%" }}>
+                        {employee.id}
+                      </TableCell>
+                      <TableCell align="left" style={{ paddingLeft: "4%" }}>
+                        {employee.employeeInfo.name}
+                      </TableCell>
+                      <TableCell align="left" style={{ paddingLeft: "10%" }}>
+                        {employee.employeeInfo.email}
+                      </TableCell>
+                      <TableCell align="left" style={{ paddingLeft: "10%" }}>
+                        {employee.employeeInfo.phone}
+                      </TableCell>
+                      <TableCell align="left" style={{ paddingLeft: "7%" }}>
+                        {employee.workType}
+                      </TableCell>
+                      <TableCell align="left" style={{ paddingLeft: "5%" }}>
+          <div style={{ display: "flex" }}>
+            <img
+              src="/assets/images/pencil.svg"
+              alt="Pencil"
+              style={{ width: "25%" }}
+            />
+            <img src="/assets/images/trash.svg" alt="Trash" style={{marginLeft: "12%",width: "25%" }}
+            />
+          </div>
+        </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+            </Table>
+            <TablePagination
+          rowsPerPageOptions={[10, 15]}
+          component="div"
+          count={filteredData.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          classes={{
+            selectLabel: "custom-select-label",
+            displayedRows: "custom-displayed-rows",
+          }}
+        />
+          </Paper>
         </div>
       </div>
 
