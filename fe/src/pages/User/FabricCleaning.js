@@ -90,9 +90,12 @@ export default function FabricCleaning() {
     })
   );
   console.log(optionalSofa);
+  
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setShowForm(true);
+    setSelectedDate(null);
+    setSelectedTime(null)
   };
 
   useEffect(() => {

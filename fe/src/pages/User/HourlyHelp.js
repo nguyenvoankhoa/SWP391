@@ -95,6 +95,8 @@ export default function FabricCleaning() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setShowForm(true);
+    setSelectedDate(null);
+    setSelectedTime(null)
   };
   const handleNoteChange = (event) => {
     setNote(event.target.value);

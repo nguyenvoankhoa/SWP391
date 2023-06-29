@@ -23,7 +23,7 @@ const CashCheckoutButton = (props) => {
   const handleClose = () => setOpen(false);
   const dispatch = useDispatch();
   const bill = props.items;
-  const handlePayment = async () => {
+  const handleOpen = async () => {
     const token = sessionStorage.getItem("jwtToken");
     const apiUrl = process.env.REACT_APP_API_URL;
     const res = await fetch(apiUrl + "customer/order", {
@@ -50,7 +50,7 @@ const CashCheckoutButton = (props) => {
         <Button
           variant="contained"
           // onClick={handleOpen}
-          onClick={handlePayment}
+          onClick={handleOpen}
           sx={{
             fontFamily: "Montserrat",
             backgroundColor: "#397F77",
@@ -67,8 +67,8 @@ const CashCheckoutButton = (props) => {
         <Modal
           open={open}
           onClose={handleClose}
-          aria-labelledby="modal-modal-title"
-          aria-describedby="modal-modal-description"
+          aria-labelledby="parent-modal-title"
+          aria-describedby="parent-modal-description"
         >
           <Box sx={style}>
             <Grid container flex justifyContent={"center"}>
