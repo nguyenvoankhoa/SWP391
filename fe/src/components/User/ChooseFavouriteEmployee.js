@@ -22,13 +22,17 @@ const ChooseFavouriteEmployee = (props) => {
   const [checked, setChecked] = React.useState(false);
   const handleChange = () => {
     setChecked((prev) => !prev);
+    handleOpen();
   };
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setUnderstood(false);
+  }
   const [data, setData] = useState(null);
   const [employeeId, setEmployeeId] = useState(null);
-
+  const [understood, setUnderstood] = useState(false);
 
   const handleChooseEmployee = (id) => {
     setEmployeeId(id);
@@ -67,59 +71,70 @@ const ChooseFavouriteEmployee = (props) => {
 
     fetchData();
   }, [props.date, props.name]);
-  const icon = (
+  // const icon = (
 
-    <Button variant="contained" onClick={handleOpen}>Chọn nhân viên</Button>
+  //   <Button variant="contained" onClick={handleOpen}>Chọn nhân viên</Button>
 
 
-  );
+  // );
   return (
     <>
       <FormControlLabel
         control={<Switch checked={checked} onChange={handleChange} />}
         label="Show"
       />
-      <Box sx={{ display: 'flex' }}>
+      {/* <Box sx={{ display: 'flex' }}>
         <Fade in={checked}>{icon}</Fade>
-      </Box>
+      </Box> */}
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <table className="table table-bordered">
-            <thead>
-              <tr>
-                <th scope="col">Tên nhân viên</th>
-                <th scope="col">Tổng điểm</th>
-                <th scope="col">Điểm đánh giá</th>
-                <th scope="col">Chọn</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data &&
-                data.map((employee) => (
-                  <tr key={employee.employeeId}>
-                    <td>{employee.employeeName}</td>
-                    <td>{employee.totalPoint}</td>
-                    <td>{employee.averagePoint}</td>
-                    <td>
-                      <input
-                        type="checkbox"
-                        id={employee.employeeId}
-                        value={employee.employeeId}
-                        checked={employeeId === employee.employeeId}
-                        onChange={() => handleChooseEmployee(employee.employeeId)}
-                      />
-                    </td>
+        {
+          !understood ?
+            <Box sx={style}>
+              <table className="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Tên nhân viên</th>
+                    <th scope="col">Tổng điểm</th>
+                    <th scope="col">Điểm đánh giá</th>
+                    <th scope="col">Chọn</th>
                   </tr>
-                ))}
-            </tbody>
-          </table>
-        </Box>
-      </Modal>
+                </thead>
+                <tbody>
+                  {data &&
+                    data.map((employee) => (
+                      <tr key={employee.employeeId}>
+                        <td>{employee.employeeName}</td>
+                        <td>{employee.totalPoint}</td>
+                        <td>{employee.averagePoint}</td>
+                        <td>
+                          <input
+                            type="checkbox"
+                            id={employee.employeeId}
+                            value={employee.employeeId}
+                            checked={employeeId === employee.employeeId}
+                            onChange={() => handleChooseEmployee(employee.employeeId)}
+                          />
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+              <Button onClick={() => setUnderstood(true)}>Bạn hiểu chưa? Hiểu thì chọn nhân viên đi</Button>
+            </Box>
+            :
+            <Box
+              sx={style}
+            >
+              <h5>Pick a choose time!</h5>
+            </Box>
+        }
+
+      </Modal >
     </>
 
 

@@ -12,6 +12,7 @@ const OrderCheckout = () => {
   const data = useLoaderData();
   const user = JSON.parse(sessionStorage.getItem("user"));
   const cartItems = useSelector((state) => state.order.items);
+  console.log(cartItems);
   const totalAmount = useSelector((state) => state.order.totalAmount);
   const [payment, setPayment] = useState("Tiền mặt");
   const [bill, setBill] = useState({});

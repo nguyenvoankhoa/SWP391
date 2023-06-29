@@ -47,7 +47,7 @@ const AntTab = styled((props) => <Tab disableRipple {...props} />)(
   })
 );
 
-const CleanFreq = ["Hàng tuần", "Hàng tháng", "Một lần"];
+const CleanFreq = ["Một lần", "Hàng tuần", "Hàng tháng"];
 
 export default function FabricCleaning() {
   const [value, setValue] = useState(0);
@@ -56,7 +56,7 @@ export default function FabricCleaning() {
   const [selectedDate, setSelectedDate] = useState();
   const [selectedTime, setSelectedTime] = useState();
   const [selectedServiceId, setSelectedServiceId] = useState("");
-  const [selectedFreq, setSelectedFreq] = useState("");
+  const [selectedFreq, setSelectedFreq] = useState(CleanFreq[0]);
   const [note, setNote] = useState("");
   const [employeeId, setEmployeeId] = useState(null);
   const [isOn, setOn] = useState(false);
