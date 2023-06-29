@@ -4,12 +4,8 @@ import Overlays from "../layouts/Overlays";
 const SignUpPage = () => {
   return (
     <div className="container-fluid signin-bg">
-      <div className="row justify-content-center align-items-center">
-        <div className="col-md-6">
-          <div className="px-lg-5">
+      <div className="row justify-content-left align-items-left">
             <SignUpForm />
-          </div>
-        </div>
       </div>
     </div>
   );

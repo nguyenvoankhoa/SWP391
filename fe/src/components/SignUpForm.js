@@ -346,7 +346,7 @@ const SignUpForm = () => {
                   backgroundColor: "#397F77",
                 },
               }}
-              disabled={isFormValid || isFormValid} 
+              disabled={isFormValid} 
             >
               Đăng ký
             </Button>
