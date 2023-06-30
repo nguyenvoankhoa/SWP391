@@ -124,10 +124,6 @@ const AdminNavigation = () => {
           <NavLink className="nav-link" onClick={handleSubMenu}>
             Dịch vụ
           </NavLink>
-                  Giúp việc theo giờ
-                </NavLink>
-              </li>
-              <li>
         </li>
 
         <Collapse in={open} timeout="auto" unmountOnExit>
