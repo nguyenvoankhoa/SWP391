@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -25,13 +26,26 @@ const ConfirmPayment = (props) => {
     nav("/admin/order-service");
   };
   return (
-    <button
-      type="button"
-      className="btn btn-outline-success"
-      onClick={paymentConfirm}
+    <Button
+    variant="outlined"
+    onClick={paymentConfirm}
+    sx={{
+      
+      height: "35px",
+      textAlign: "justify",
+      fontSize: "12px",
+      width: "100%",
+      padding: 0,
+      borderColor: "#397F77",
+      color: "#397F77",
+      "&:hover": {
+        borderColor: "#397F77",
+        color: "#397F77",
+      },
+    }}
     >
-      Xác nhận
-    </button>
+    Xác nhận
+    </Button>
   );
 };
 

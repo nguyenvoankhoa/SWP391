@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -25,13 +26,17 @@ const ConfirmComplete = (props) => {
     nav("/admin/order-service");
   };
   return (
-    <button
-      type="button"
-      className="btn btn-outline-success"
-      onClick={paymentConfirm}
-    >
-      Xác nhận
-    </button>
+    <div>
+      <Button onClick={paymentConfirm}  style={{ fontSize: "12px"  }}>
+        {" "}
+        <img
+          src="/assets/images/checkall.svg"
+          alt=""
+          style={{ width: "30%"}}
+        />
+        Xác nhận
+      </Button>
+    </div>
   );
 };
 

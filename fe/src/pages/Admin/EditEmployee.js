@@ -195,51 +195,59 @@ const EditEmployee = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                  {filteredData.map((employee) => (
-                    <TableRow key={employee.id} hover role="checkbox" tabIndex={-1}>
-                      <TableCell align="left" style={{ paddingLeft: "4%" }}>
-                        {employee.id}
-                      </TableCell>
-                      <TableCell align="left" style={{ paddingLeft: "4%" }}>
-                        {employee.employeeInfo.name}
-                      </TableCell>
-                      <TableCell align="left" style={{ paddingLeft: "10%" }}>
-                        {employee.employeeInfo.email}
-                      </TableCell>
-                      <TableCell align="left" style={{ paddingLeft: "10%" }}>
-                        {employee.employeeInfo.phone}
-                      </TableCell>
-                      <TableCell align="left" style={{ paddingLeft: "7%" }}>
-                        {employee.workType}
-                      </TableCell>
-                      <TableCell align="left" style={{ paddingLeft: "5%" }}>
-          <div style={{ display: "flex" }}>
-            <img
-              src="/assets/images/pencil.svg"
-              alt="Pencil"
-              style={{ width: "25%" }}
-            />
-            <img src="/assets/images/trash.svg" alt="Trash" style={{marginLeft: "12%",width: "25%" }}
-            />
-          </div>
-        </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
+                {filteredData.map((employee) => (
+                  <TableRow
+                    key={employee.id}
+                    hover
+                    role="checkbox"
+                    tabIndex={-1}
+                  >
+                    <TableCell align="left" style={{ paddingLeft: "4%" }}>
+                      {employee.id}
+                    </TableCell>
+                    <TableCell align="left" style={{ paddingLeft: "4%" }}>
+                      {employee.employeeInfo.name}
+                    </TableCell>
+                    <TableCell align="left" style={{ paddingLeft: "10%" }}>
+                      {employee.employeeInfo.email}
+                    </TableCell>
+                    <TableCell align="left" style={{ paddingLeft: "10%" }}>
+                      {employee.employeeInfo.phone}
+                    </TableCell>
+                    <TableCell align="left" style={{ paddingLeft: "7%" }}>
+                      {employee.workType}
+                    </TableCell>
+                    <TableCell align="left" style={{ paddingLeft: "5%" }}>
+                      <div style={{ display: "flex" }}>
+                        <img
+                          src="/assets/images/pencil.svg"
+                          alt="Pencil"
+                          style={{ width: "25%" }}
+                        />
+                        <img
+                          src="/assets/images/trash.svg"
+                          alt="Trash"
+                          style={{ marginLeft: "12%", width: "25%" }}
+                        />
+                      </div>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
             </Table>
             <TablePagination
-          rowsPerPageOptions={[10, 15]}
-          component="div"
-          count={filteredData.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-          classes={{
-            selectLabel: "custom-select-label",
-            displayedRows: "custom-displayed-rows",
-          }}
-        />
+              rowsPerPageOptions={[10, 15]}
+              component="div"
+              count={filteredData.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              classes={{
+                selectLabel: "custom-select-label",
+                displayedRows: "custom-displayed-rows",
+              }}
+            />
           </Paper>
         </div>
       </div>

@@ -23,6 +23,25 @@ const EditService = () => {
   const handleServiceChange = (service) => {
     setService(service);
   };
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+  const column = [
+    { id: "no", label: "STT", minWidth: 170 },
+    { id: "name", label: "Công việc", minWidth: 170 },
+    { id: "type", label: "Loại", minWidth: 170 },
+    { id: "detail", label: "Chi tiết", minWidth: 170 },
+    { id: "price", label: "Giá", minWidth: 170 },
+    { id: "edit", label: "Chỉnh sửa", minWidth: 170 },
+  ];
   return (
     <>
       <Title

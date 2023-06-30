@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import { Button } from "@mui/material";
 const CancelOrder = (props) => {
   const nav = useNavigate();
   const paymentConfirm = async () => {
@@ -25,13 +25,15 @@ const CancelOrder = (props) => {
     nav("/admin/order-service");
   };
   return (
-    <button
-      type="button"
-      className="btn btn-outline-danger"
-      onClick={paymentConfirm}
-    >
-      Hủy đơn
-    </button>
+    <Button onClick={paymentConfirm}  style={{ fontSize: "12px"  }}>
+    {" "}
+    <img
+      src="/assets/images/x.svg"
+      alt=""
+      style={{ width: "35%"}}
+    />
+    Hủy đơn
+  </Button>
   );
 };
 

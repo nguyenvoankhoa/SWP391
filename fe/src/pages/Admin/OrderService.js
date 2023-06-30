@@ -7,6 +7,18 @@ import React, { useState, useEffect } from "react";
 import ConfirmPayment from "../../components/Admin/ConfirmPayment";
 import ConfirmComplete from "../../components/Admin/ConfirmComplete";
 import CancelOrder from "../../components/Admin/CancelOrder";
+import {
+  Button,
+  Paper,
+  Tab,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+  Typography,
+} from "@mui/material";
 const OrderService = () => {
   const data = useLoaderData();
   const [workType, setWorkType] = useState("");
@@ -27,7 +39,31 @@ const OrderService = () => {
   if (filteredData.length === 0 && data.length !== 0) {
     setFilteredData(data);
   }
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+  const column = [
+    { id: "no", label: "STT", minWidth: 170 },
+    { id: "name", label: "Công việc", minWidth: 170 },
+    { id: "type", label: "Loại", minWidth: 170 },
+    { id: "date", label: "Ngày", minWidth: 170 },
+    { id: "time", label: "Giờ ", minWidth: 170 },
+    { id: "customer", label: "Khách hàng", minWidth: 170 },
+    { id: "staff", label: "Nhân viên", minWidth: 170 },
+    { id: "phone", label: "Số điện thoại", minWidth: 170 },
+    { id: "transaction", label: "Giao dịch", minWidth: 170 },
+    { id: "total", label: "Tổng cộng", minWidth: 170 },
+    { id: "payment", label: "Thanh toán", minWidth: 170 },
+    { id: "status", label: "Trạng thái", minWidth: 170 },
+  ];
   return (
     <>
       <Title
@@ -37,92 +73,119 @@ const OrderService = () => {
         fontWeight="700"
         padding="2% 0 1% 0"
       />
-      <div className="row justify-content-center">
-        <div className="col-11">
-          <Card>
-            <div className="table-responsive table-wrapper-scroll-y my-custom-scrollbar">
-              <table className="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th scope="col">STT</th>
-                    <th scope="col">Công việc</th>
-                    <th scope="col">Loại</th>
-                    <th scope="col">Ngày làm</th>
-                    <th scope="col">Giờ làm</th>
-                    <th scope="col">Khách hàng</th>
-                    <th scope="col">Nhân viên</th>
-                    <th scope="col">Số điện thoại</th>
-                    <th scope="col">Giao dịch</th>
-                    <th scope="col">Tổng cộng</th>
-                    <th scope="col">Thanh toán</th>
-                    <th scope="col">Hoàn thành</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredData.map((bill) => (
-                    <tr key={bill.id}>
-                      <th scope="row">{bill.id}</th>
-                      <td>{bill.business.name}</td>
-                      <td>{bill.business.type}</td>
-                      <td>
-                        {bill.day}, {bill.date}/{bill.month}
-                      </td>
-                      <td>{bill.hour}</td>
-                      <td>{bill.customer.name}</td>
-                      {bill.employee ? (
-                        <td>{bill.employee.name}</td>
-                      ) : (
-                        <td>
-                          <button
-                            type="button"
-                            className="btn btn-outline-success"
-                            data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop"
-                            onClick={() =>
-                              assignEmployee(bill.business.name, bill.id)
-                            }
-                          >
-                            Tìm
-                          </button>
-                        </td>
-                      )}
-                      <td>{bill.customer.phone}</td>
-                      <td>{bill.payment}</td>
-                      <td>{bill.total}</td>
-                      {bill.payStatus ? (
-                        <td>Đã thanh toán</td>
-                      ) : (
-                        <td>
-                          <ConfirmPayment id={bill.id} />
-                        </td>
-                      )}
-
-                      {bill.completeStatus ? (
-                        <td>
-                          <button
-                            type="button"
-                            className="btn btn-outline-success"
-                            disabled
-                          >
-                            Đã hoàn tất
-                          </button>
-                        </td>
-                      ) : (
-                        <td>
-                          <div className="d-flex h-100">
-                            <ConfirmComplete id={bill.id} />
-                            <CancelOrder id={bill.id} />
-                          </div>
-                        </td>
-                      )}
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </Card>
-        </div>
-      </div>
+      <Paper
+        className="container"
+        sx={{
+          marginTop: 5,
+          width: "100%",
+          overflow: "hidden",
+          justifyContent: "center",
+          display: "flex-end",
+        }}
+      >
+        <Table>
+          <TableHead>
+            <TableRow>
+              {column.map((column) => (
+                <TableCell key={column.id} align="center">
+                  {column.label}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {filteredData.map((bill) => (
+              <TableRow key={bill.id} hover role="checkbox" tabIndex={-1}>
+                <TableCell align="left" style={{ paddingLeft: "2%" }}>
+                  {bill.id}
+                </TableCell>
+                <TableCell align="left">{bill.business.name}</TableCell>
+                <TableCell align="left">{bill.business.type}</TableCell>
+                <TableCell align="left">
+                  {bill.day}, {bill.date}/{bill.month}
+                </TableCell>
+                <TableCell align="left">{bill.hour}</TableCell>
+                <TableCell align="left">{bill.customer.name}</TableCell>
+                <TableCell align="left">
+                  {bill.employee ? (
+                    bill.employee.name
+                  ) : (
+                    <Button
+                      data-bs-toggle="modal"
+                      data-bs-target="#staticBackdrop"
+                      onClick={() =>
+                        assignEmployee(bill.business.name, bill.id)
+                      }
+                    >
+                      {" "}
+                      Tìm
+                    </Button>
+                  )}
+                </TableCell>
+                <TableCell align="left" style={{ padding: 0 }}>
+                  {bill.customer.phone}
+                </TableCell>
+                <TableCell align="left" style={{ paddingLeft: 10 }}>
+                  {bill.payment}
+                </TableCell>
+                <TableCell align="left" style={{ paddingLeft: "2%" }}>
+                  {bill.total}
+                </TableCell>
+                <TableCell align="left">
+                  {bill.payStatus ? (
+                    <td>Đã thanh toán</td>
+                  ) : (
+                    <ConfirmPayment id={bill.id} />
+                  )}
+                </TableCell>
+                <TableCell align="left">
+                  {bill.completeStatus ? (
+                    <td>
+                      <Button
+                        variant="outlined"                
+                        sx={{
+                          height: "35px",
+                          textAlign: "justify",
+                          fontSize: "12px",
+                          width: "100%",
+                          borderColor: "#397F77",
+                          color: "#397F77",
+                          "&:hover": {
+                            borderColor: "#397F77",
+                            color: "#397F77",
+                          },
+                        }}
+                      >
+                        Đã hoàn thành
+                      </Button>
+                    </td>
+                  ) : (
+                    <td>
+                      <div className="d-flex h-100">
+                        <ConfirmComplete id={bill.id} />
+                        <CancelOrder id={bill.id} />
+                      </div>
+                    </td>
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        <TablePagination
+          rowsPerPageOptions={[10, 15]}
+          component="div"
+          count={filteredData.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          classes={{
+            selectLabel: "custom-select-label",
+            displayedRows: "custom-displayed-rows",
+          }}
+        />
+      </Paper>
       <EditOrderForm workType={workType} billId={billId} />
     </>
   );
