@@ -7,7 +7,6 @@ import EditEmployeeForm from "../../components/Admin/EditEmployeeForm";
 import AddEmployeeForm from "../../components/Admin/AddEmployeeForm";
 import {
   Paper,
-  Tab,
   Table,
   TableBody,
   TableCell,
@@ -55,6 +54,7 @@ const EditEmployee = () => {
     { id: "phone", label: "Số điện thoại", minWidth: 170 },
     { id: "job", label: "Công việc", minWidth: 170 },
     { id: "edit", label: "Chỉnh sửa", minWidth: 170 },
+    { id: "delete", label: "Xóa", minWidth: 170 },
   ];
   return (
     <>
@@ -202,34 +202,87 @@ const EditEmployee = () => {
                     role="checkbox"
                     tabIndex={-1}
                   >
-                    <TableCell align="left" style={{ paddingLeft: "4%" }}>
+                    <TableCell align="left" style={{ paddingLeft: "3%" }}>
                       {employee.id}
                     </TableCell>
-                    <TableCell align="left" style={{ paddingLeft: "4%" }}>
+                    <TableCell align="left" style={{ paddingLeft: "3%" }}>
                       {employee.employeeInfo.name}
                     </TableCell>
-                    <TableCell align="left" style={{ paddingLeft: "10%" }}>
+                    <TableCell align="left" style={{ paddingLeft: "5%" }}>
                       {employee.employeeInfo.email}
                     </TableCell>
-                    <TableCell align="left" style={{ paddingLeft: "10%" }}>
+                    <TableCell align="left" style={{ paddingLeft: "4%" }}>
                       {employee.employeeInfo.phone}
                     </TableCell>
-                    <TableCell align="left" style={{ paddingLeft: "7%" }}>
+                    <TableCell align="left" style={{ paddingLeft: "5%" }}>
                       {employee.workType}
                     </TableCell>
-                    <TableCell align="left" style={{ paddingLeft: "5%" }}>
-                      <div style={{ display: "flex" }}>
+                    <TableCell align="left">
+                      <div className="col-md-12 offset-md-5" style={{ display: "flex" }}>
                         <img
                           src="/assets/images/pencil.svg"
                           alt="Pencil"
-                          style={{ width: "25%" }}
-                        />
-                        <img
-                          src="/assets/images/trash.svg"
-                          alt="Trash"
-                          style={{ marginLeft: "12%", width: "25%" }}
+                          style={{ width: "20%" }}
+                          data-bs-toggle="modal"
+                          data-bs-target="#staticBackdrop"
+                          onClick={() => editEmployeeHandler(employee)}
                         />
                       </div>
+                    </TableCell>
+                    <TableCell align="left" style={{padding:0}}>
+                      <div className="col-md-12 offset-md-4" style={{ display: "flex" }}>
+                      <img
+                          src="/assets/images/trash.svg"
+                          alt="Trash"
+                          style={{ width: "25%", justifyContent: "space-around"}}
+                          data-bs-toggle="modal"
+                          data-bs-target="#exampleModal"
+                        />
+                      </div>
+                      <div
+                            className="modal fade"
+                            id="exampleModal"
+                            tabIndex="-1"
+                            aria-labelledby="exampleModalLabel"
+                            aria-hidden="true"
+                          >
+                            <div className="modal-dialog">
+                              <div className="modal-content">
+                                <div className="modal-header">
+                                  <h1
+                                    className="modal-title fs-5"
+                                    id="exampleModalLabel"
+                                  >
+                                    Xoá nhân viên
+                                  </h1>
+                                  <button
+                                    type="button"
+                                    className="btn-close"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                  ></button>
+                                </div>
+                                <div className="modal-body">
+                                  Bạn có chắc đây là điều đúng đắn
+                                </div>
+                                <div className="modal-footer">
+                                  <button
+                                    type="button"
+                                    className="btn btn-secondary"
+                                    data-bs-dismiss="modal"
+                                  >
+                                    Hủy 
+                                  </button>
+                                  <button
+                                    type="button"
+                                    className="btn btn-primary"
+                                  >
+                                    Đồng ý 
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
                     </TableCell>
                   </TableRow>
                 ))}

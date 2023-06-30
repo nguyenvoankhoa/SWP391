@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -63,9 +64,14 @@ const EditEmployeeForm = (props) => {
       <div className="modal-dialog find-employ">
         <div className="modal-content find-employ-item">
           <div className="modal-header">
-            <h1 className="modal-title fs-5" id="staticBackdropLabel">
-              Thay đổi thông tin
-            </h1>
+            <Typography
+              variant="h4"
+              className="modal-title fs-5"
+              id="staticBackdropLabel"
+              sx={{fontFamily:"Montserrat", fontWeight: "bold", letterSpacing: "0.05rem"}}
+            >
+              Thay đổi thông tin nhân viên
+            </Typography>
             <button
               type="button"
               className="btn-close"
@@ -76,12 +82,11 @@ const EditEmployeeForm = (props) => {
           <div className="modal-body">
             <div className="container">
               <div className="row">
-                <div>
-                  <h6 className="mb-2 text-primary">Thông tin nhân viên</h6>
-                </div>
                 <div className="col-md-6">
                   <div className="form-group">
-                    <label htmlFor="fullName">Tên</label>
+                    <label htmlFor="fullName" style={{ fontWeight: "bold", marginBottom: "2%", fontFamily: "Montserrat", letterSpacing: "0.05rem" }}>
+                      Họ tên
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -92,7 +97,9 @@ const EditEmployeeForm = (props) => {
                 </div>
                 <div className="col-md-6">
                   <div className="form-group">
-                    <label htmlFor="eMail">Email</label>
+                    <label htmlFor="eMail" style={{ fontWeight: "bold", marginBottom: "2%", fontFamily: "Montserrat", letterSpacing: "0.05rem" }}>
+                      Email
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -101,9 +108,9 @@ const EditEmployeeForm = (props) => {
                     />
                   </div>
                 </div>
-                <div className="col-md-6">
+                {/* <div className="col-md-6">
                   <div className="form-group">
-                    <label htmlFor="password">
+                    <label htmlFor="password" style={{ fontWeight: "bold" }}>
                       Password (Bo trong de giu nguyen)
                     </label>
                     <input
@@ -113,10 +120,12 @@ const EditEmployeeForm = (props) => {
                       onChange={handlePasswordChange}
                     />
                   </div>
-                </div>
+                </div> */}
                 <div className="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                  <div className="form-group">
-                    <label htmlFor="phone">Số điện thoại</label>
+                  <div className="form-group" style={{marginTop: "10%"}}>
+                    <label htmlFor="phone" style={{ fontWeight: "bold", marginBottom: "2%", fontFamily: "Montserrat", letterSpacing: "0.05rem"}}>
+                      Số điện thoại
+                    </label>
                     <input
                       type="text"
                       className="form-control"
@@ -128,8 +137,10 @@ const EditEmployeeForm = (props) => {
                 </div>
                 <div className="col-md-6">
                   <div className="row">
-                    <div className="form-group col-md-12">
-                      <label htmlFor="workType">Công việc</label>
+                    <div className="form-group col-md-12" style={{marginTop: "9%"}}>
+                      <label htmlFor="workType" style={{ fontWeight: "bold", marginBottom: "2%", fontFamily: "Montserrat", letterSpacing: "0.05rem" }}>
+                        Công việc
+                      </label>
                       <select
                         className="form-control"
                         id="workType"
