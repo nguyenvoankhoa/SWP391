@@ -95,6 +95,14 @@ const ChooseFavouriteEmployee = (props) => {
         {
           !understood ?
             <Box sx={style}>
+              <h5>Bạn tự chọn người làm</h5>
+              <p>Chức năng ngày cho phép nhiều người cùng nhận công việc của bạn</p>
+              <Button onClick={() => setUnderstood(true)}>Chọn nhân viên đi</Button>
+            </Box>
+            :
+            <Box
+              sx={style}
+            >
               <table className="table table-bordered">
                 <thead>
                   <tr>
@@ -124,13 +132,6 @@ const ChooseFavouriteEmployee = (props) => {
                     ))}
                 </tbody>
               </table>
-              <Button onClick={() => setUnderstood(true)}>Bạn hiểu chưa? Hiểu thì chọn nhân viên đi</Button>
-            </Box>
-            :
-            <Box
-              sx={style}
-            >
-              <h5>Pick a choose time!</h5>
             </Box>
         }
 
