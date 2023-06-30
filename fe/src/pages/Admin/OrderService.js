@@ -68,7 +68,7 @@ const OrderService = () => {
     <>
       <Title
         title="ĐƠN HÀNG"
-        color="black"
+        color="#397F77"
         fontSize="35px"
         fontWeight="700"
         padding="2% 0 1% 0"
@@ -77,7 +77,7 @@ const OrderService = () => {
         className="container"
         sx={{
           marginTop: 5,
-          width: "100%",
+          width: "90%",
           overflow: "hidden",
           justifyContent: "center",
           display: "flex-end",
@@ -129,21 +129,26 @@ const OrderService = () => {
                   {bill.payment}
                 </TableCell>
                 <TableCell align="left" style={{ paddingLeft: "2%" }}>
-                  {bill.total}
+                  {bill.total.toLocaleString()} VNĐ
                 </TableCell>
-                <TableCell align="left">
+                <TableCell align="center" style={{ padding: 0 }}>
                   {bill.payStatus ? (
-                    <td>Đã thanh toán</td>
+                            <img
+                            src="/assets/images/complete.svg"
+                            alt=""
+                            style={{ width: "30%"}}
+                          />
                   ) : (
                     <ConfirmPayment id={bill.id} />
                   )}
                 </TableCell>
-                <TableCell align="left">
+                <TableCell align="left" style={{paddingLeft: "3%"}}>
                   {bill.completeStatus ? (
                     <td>
                       <Button
                         variant="outlined"                
                         sx={{
+                          padding: "5px",
                           height: "35px",
                           textAlign: "justify",
                           fontSize: "12px",

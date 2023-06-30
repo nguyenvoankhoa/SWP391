@@ -69,14 +69,19 @@ const EditEmployee = () => {
       <div className="row justify-content-center">
         <div className="col-10 ">
           <div className="d-flex flex-row-reverse">
-            <button
+            {/* <button
               type="button"
               className="btn btn-primary"
               data-bs-toggle="modal"
               data-bs-target="#AddModal"
             >
               Thêm Nhân Viên
-            </button>
+            </button> */}
+             <img src="/assets/images/add-person.svg" alt=""
+             style={{width: "4%"}}
+             data-bs-toggle="modal"
+             data-bs-target="#AddModal"
+             />
             <AddEmployeeForm workType={workType} />
           </div>
 
@@ -177,7 +182,7 @@ const EditEmployee = () => {
           <Paper
             className="container"
             sx={{
-              marginTop: 5,
+              marginTop: 1,
               width: "100%",
               overflow: "hidden",
               justifyContent: "center",
@@ -263,7 +268,7 @@ const EditEmployee = () => {
                                   ></button>
                                 </div>
                                 <div className="modal-body">
-                                  Bạn có chắc đây là điều đúng đắn
+                                 Bạn có chắc chắn muốn xóa? Không thể hoàn tác sau khi thực hiện thao tác này.
                                 </div>
                                 <div className="modal-footer">
                                   <button
