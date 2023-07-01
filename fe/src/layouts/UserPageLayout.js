@@ -8,7 +8,7 @@ const UserPageLayout = () => {
   return (
     <Overlays>
       <div className="row">
-        <div className="col-lg-2 col-md-12">
+        <div className="col-lg-2 col-md-12" style={{padding: 0}}>
           <UserHeader />
         </div>
         <div className="col-lg-10 col-md-12">

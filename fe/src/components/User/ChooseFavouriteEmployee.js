@@ -97,7 +97,7 @@ const ChooseFavouriteEmployee = (props) => {
               <h5>Bạn tự chọn người làm</h5>
               <p>Chức năng ngày cho phép nhiều người cùng nhận công việc của bạn</p>
               <p>Bạn được chọn 1 trong số những người này đến làm cho mình</p>
-              <p>Xin vui lòng chọn sớm để họ có thời gian chuẩn bị. Một tiếng trước khi công việc bắt đầu, nấu bạn không chọn thì hệ thống sẽ chọn hộ và vẫn mất phí</p>
+              <p>Xin vui lòng chọn sớm để họ có thời gian chuẩn bị. Một tiếng trước khi công việc bắt đầu, nếu bạn không chọn thì hệ thống sẽ chọn hộ và vẫn mất phí</p>
               <p style={{ color: 'red' }}>Phí : 20.000 đ</p>
               <Button variant="contained" onClick={() => setUnderstood(true)}>Chọn nhân viên </Button>
             </Box>

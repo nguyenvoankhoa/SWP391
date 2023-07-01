@@ -7,6 +7,7 @@ import Tab from "@mui/material/Tab";
 import { Paper, TableContainer, TablePagination } from "@mui/material";
 import OddShiftTable from "../../../components/User/OddShiftTable";
 import PeriodicTable from "../../../components/User/PeriodicTable";
+import '../Bill/Bill.css'
 const ActionRecord = () => {
   const odd = useLoaderData();
   const [data, setData] = useState([]);
