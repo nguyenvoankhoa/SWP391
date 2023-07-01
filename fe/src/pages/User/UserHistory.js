@@ -2,7 +2,10 @@ import React, { useState } from "react";
 import "./UserHistory.css";
 import { useLoaderData } from "react-router";
 import Title from "../../components/Title";
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 const UserHistory = (props) => {
+  const [value, setValue] = React.useState(2);
   const data = useLoaderData();
   console.log(data);
   const [star, setStar] = useState();
@@ -70,18 +73,26 @@ const UserHistory = (props) => {
                   <td>
                     {service.rateValue === 0 ? (
                       <>
-                        <input
-                          type="number"
+                        <Rating name="size-small" defaultValue={0}
+                          value={service.rateValue}
                           onChange={(event) =>
                             setStar(Number(event.target.value))
                           }
-                        />
-                        <button onClick={() => handleRateEmployee(service.id)}>
+                          onClick={() => handleRateEmployee(service.id)}
+                          size="small" />
+                        {/* <button onClick={() => handleRateEmployee(service.id)}>
                           Gửi
-                        </button>
+                        </button> */}
                       </>
                     ) : (
-                      service.rateValue
+
+                      <Rating
+                        disabled
+                        name="rate-employee"
+                        value={service.rateValue}
+                        size="small"
+                        max={5}
+                      />
                     )}
                   </td>
                 </tr>
