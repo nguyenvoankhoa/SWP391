@@ -8,17 +8,21 @@ import { Box, Container, Divider, Grid } from "@mui/material";
 import Title from "../../components/Title";
 import CashCheckoutButton from "../../components/User/CashCheckoutButton";
 import { MdLocationOn } from "react-icons/md";
+import useDateTranslate from "../../components/DateTranslate";
+
+
+
 const OrderCheckout = () => {
+
   const data = useLoaderData();
   const user = JSON.parse(sessionStorage.getItem("user"));
-  const cartItems = useSelector((state) => state.order.items);
+  var cartItems = useSelector((state) => state.order.items);
   console.log(cartItems);
   const totalAmount = useSelector((state) => state.order.totalAmount);
   const [payment, setPayment] = useState("Tiền mặt");
   const [bill, setBill] = useState({});
-  useEffect(() => {
-    handleBill();
-  }, [payment]);
+  const { transalateWeekdays } = useDateTranslate();
+
   const handleBill = () => {
     let bill = {
       customerId: user.id,
@@ -37,6 +41,7 @@ const OrderCheckout = () => {
     };
     setBill(bill);
   };
+
   const paymentHandler = (props) => {
     setPayment(props);
   };
