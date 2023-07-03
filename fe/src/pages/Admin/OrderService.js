@@ -1,4 +1,3 @@
-import Card from "../../UI/Card";
 import "./EditCus.css";
 import Title from "../../components/Title";
 import { useLoaderData, useParams } from "react-router-dom";
@@ -7,18 +6,7 @@ import React, { useState, useEffect } from "react";
 import ConfirmPayment from "../../components/Admin/ConfirmPayment";
 import ConfirmComplete from "../../components/Admin/ConfirmComplete";
 import CancelOrder from "../../components/Admin/CancelOrder";
-import {
-  Button,
-  Paper,
-  Tab,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TablePagination,
-  TableRow,
-  Typography,
-} from "@mui/material";
+import { Button, Paper, Table, TableBody, TableCell, TableHead, TablePagination, TableRow } from "@mui/material";
 const OrderService = () => {
   const data = useLoaderData();
   const [workType, setWorkType] = useState("");
@@ -77,7 +65,7 @@ const OrderService = () => {
         className="container"
         sx={{
           marginTop: 5,
-          width: "90%",
+          width: "100%",
           overflow: "hidden",
           justifyContent: "center",
           display: "flex-end",
@@ -87,7 +75,7 @@ const OrderService = () => {
           <TableHead>
             <TableRow>
               {column.map((column) => (
-                <TableCell key={column.id} align="center">
+                <TableCell key={column.id} align="left">
                   {column.label}
                 </TableCell>
               ))}
@@ -122,16 +110,16 @@ const OrderService = () => {
                     </Button>
                   )}
                 </TableCell>
-                <TableCell align="left" style={{ padding: 0 }}>
+                <TableCell align="left">
                   {bill.customer.phone}
                 </TableCell>
-                <TableCell align="left" style={{ paddingLeft: 10 }}>
+                <TableCell align="left">
                   {bill.payment}
                 </TableCell>
-                <TableCell align="left" style={{ paddingLeft: "2%" }}>
+                <TableCell align="left">
                   {bill.total.toLocaleString()} VNĐ
                 </TableCell>
-                <TableCell align="center" style={{ padding: 0 }}>
+                <TableCell align="left">
                   {bill.payStatus ? (
                             <img
                             src="/assets/images/complete.svg"
@@ -142,7 +130,7 @@ const OrderService = () => {
                     <ConfirmPayment id={bill.id} />
                   )}
                 </TableCell>
-                <TableCell align="left" style={{paddingLeft: "3%"}}>
+                <TableCell align="left">
                   {bill.completeStatus ? (
                     <td>
                       <Button

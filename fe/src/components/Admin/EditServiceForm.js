@@ -105,7 +105,7 @@ const EditServiceForm = (props) => {
                         type="text"
                         className="form-control"
                         id="website"
-                        value={priceChange}
+                        value={`${priceChange.toLocaleString()} VNĐ`} 
                         onChange={handlePriceChange}
                       />
                     </div>
