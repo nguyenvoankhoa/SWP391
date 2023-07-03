@@ -520,6 +520,13 @@ export default function AdminNavigation() {
     {
       text: "Đơn hàng",
       icon: "/assets/images/gear.svg",
+      link: "order-service",
+      subItems: [
+        { text: "Giúp việc theo giờ" },
+        { text: "Tổng vệ sinh" },
+        { text: "Vệ sinh máy lạnh" },
+        { text: "Vệ sinh sofa, nệm" },
+      ],
     },
     {
       text: "Đăng xuất",
@@ -610,9 +617,10 @@ export default function AdminNavigation() {
                       <ListItemButton
                         key={subText}
                         component={NavLink}
+                        onClick={handleNavigateClick}
                         to="#"
                         sx={{
-                          pl: 9,
+                          pl: 10,
                           color: "rgb(120, 120, 120)",
                           "&:hover": {
                             backgroundColor: "#9dcec8",
@@ -631,9 +639,10 @@ export default function AdminNavigation() {
         </List>
         <Divider />
         <List>
-          {icon.map(({ text, icon, onClick }) => (
+          {icon.map(({ text, icon, link, subItems,  onClick }) => (
             <ListItem key={text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
+              onClick={() => (onClick ? onClick() : handleActiveClick(text, subItems, link))}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
@@ -652,18 +661,38 @@ export default function AdminNavigation() {
                     width: "10%",
                   }}
                 />
-                {onClick ? ( // Conditionally render NavLink or regular text
-                  <NavLink
-                    className="nav-link"
-                    to="edit-customer"
-                    onClick={handleActiveClick} // Set onClick handler for NavLink
-                  >
-                    {text}
-                  </NavLink>
-                ) : (
-                  <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-                )}
+                <NavLink className="nav-link" to={link}>
+                  {text}
+                </NavLink>
               </ListItemButton>
+              {subItems && (
+                <Collapse
+                  in={open && activeMenuItem === text && displaySubmenu}
+                  timeout="auto"
+                  unmountOnExit
+                >
+                  <List component="div" disablePadding>
+                    {subItems.map(({ text: subText }) => (
+                      <ListItemButton
+                        key={subText}
+                        component={NavLink}
+                        onClick={handleNavigateClick}
+                        to="#"
+                        sx={{
+                          pl: 10,
+                          color: "rgb(120, 120, 120)",
+                          "&:hover": {
+                            backgroundColor: "#9dcec8",
+                            color: "rgb(120, 120, 120)",
+                          },
+                        }}
+                      >
+                        <ListItemText primary={subText} />
+                      </ListItemButton>
+                    ))}
+                  </List>
+                </Collapse>
+              )}
             </ListItem>
           ))}
         </List>
