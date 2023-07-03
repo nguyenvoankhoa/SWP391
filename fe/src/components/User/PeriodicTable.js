@@ -1,4 +1,5 @@
 import {
+  Button,
   Table,
   TableBody,
   TableCell,
@@ -7,6 +8,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+
 
 const PeriodicTable = (props) => {
   const nav = useNavigate();
@@ -59,9 +61,9 @@ const PeriodicTable = (props) => {
                 {row.total.toLocaleString()} VNĐ
               </TableCell>
               <TableCell align="left">
-                <button onClick={() => cancelFrequencyHandler(row.id)}>
+                <Button variant="contained" color="error" onClick={() => cancelFrequencyHandler(row.id)}>
                   Hủy
-                </button>
+                </Button>
               </TableCell>
             </TableRow>
           ))}

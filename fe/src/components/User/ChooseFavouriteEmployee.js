@@ -2,7 +2,6 @@
 import Box from '@mui/material/Box';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import Fade from '@mui/material/Fade';
 import { Button } from '@mui/material';
 import React, { useEffect, useState } from "react";
 import Modal from '@mui/material/Modal';
@@ -120,7 +119,7 @@ const ChooseFavouriteEmployee = (props) => {
                       <tr key={employee.employeeId}>
                         <td>{employee.employeeName}</td>
                         <td>{employee.totalPoint}</td>
-                        <td>{employee.averagePoint}</td>
+                        <td>{employee.averaxgePoint}</td>
                         <td>
                           <input
                             type="checkbox"

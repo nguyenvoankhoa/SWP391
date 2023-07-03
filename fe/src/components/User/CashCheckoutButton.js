@@ -1,28 +1,20 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { orderItemAction } from "../../redux/order";
 import { useDispatch } from "react-redux";
 import { Button, Grid } from "@mui/material";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
+import Stack from '@mui/material/Stack';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+const Alert = React.forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
 const CashCheckoutButton = (props) => {
   const [open, setOpen] = React.useState(false);
-  const handleClose = () => setOpen(false);
   const dispatch = useDispatch();
   const bill = props.items;
+
+
   const handleOpen = async () => {
     const token = sessionStorage.getItem("jwtToken");
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -36,11 +28,23 @@ const CashCheckoutButton = (props) => {
     });
     if (res.status === 400) {
       alert("Bạn đã đặt đơn hàng này");
+      setOpen(true);
     } else {
       setOpen(true);
+
     }
     dispatch(orderItemAction.removeItem());
+
   };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
   return (
     <Grid container spacing={0} marginTop={3}>
       <Grid item xs={12}>
@@ -49,8 +53,8 @@ const CashCheckoutButton = (props) => {
       <Grid item xs={12} container flex justifyContent={"center"}>
         <Button
           variant="contained"
-          // onClick={handleOpen}
           onClick={handleOpen}
+
           sx={{
             fontFamily: "Montserrat",
             backgroundColor: "#397F77",
@@ -64,52 +68,13 @@ const CashCheckoutButton = (props) => {
         >
           Thanh toán
         </Button>
-        <Modal
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="parent-modal-title"
-          aria-describedby="parent-modal-description"
-        >
-          <Box sx={style}>
-            <Grid container flex justifyContent={"center"}>
-              <Grid item xs={12} container flex justifyContent={"center"}>
-                <img
-                  src="/assets/images/order-completed.svg"
-                  alt="order-completed"
-                  style={{
-                    width: "5vw",
-                    height: "5vw",
-                  }}
-                ></img>
-              </Grid>
-              <Grid>
-                <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                  ĐƠN HÀNG ĐÃ HOÀN TẤT
-                </Typography>
-              </Grid>
-              <Grid>
-                <p>Cảm ơn bạn đã sử dụng dịch vụ</p>
-              </Grid>
-              <Grid>
-                <Button
-                  component={Link}
-                  to="/user"
-                  variant="contained"
-                  color="primary"
-                  style={{
-                    backgroundColor: "teal",
-                    color: "white",
-                    "&:hover": {
-                      backgroundColor: "darkslateblue",
-                    },
-                  }}
-                >
-                  Trang chủ
-                </Button>
-              </Grid>
-            </Grid>
-          </Box>
-        </Modal>
+        <Stack spacing={2} sx={{ width: '100%' }}>
+          <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+            <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+              Bạn đã đặt hàng thành công
+            </Alert>
+          </Snackbar>
+        </Stack>
       </Grid>
     </Grid>
   );
