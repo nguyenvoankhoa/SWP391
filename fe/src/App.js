@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
 import SignInPage from "./pages/SignInPage";
-import SignUpPage from "./pages/SignUpPage";
+import SignUpPage, { departmentLoader } from "./pages/SignUpPage";
 import NewsPage from "./pages/NewsPage";
 import GuaranteePage from "./pages/GuaranteePage";
 import ErrorPage from "./pages/ErrorPage";
@@ -70,7 +70,7 @@ const router = createBrowserRouter([
       { path: "news", element: <NewsPage /> },
       { path: "guarantee", element: <GuaranteePage /> },
       { path: "sign-in", element: <SignInPage /> },
-      { path: "sign-up", element: <SignUpPage /> },
+      { path: "sign-up", element: <SignUpPage />, loader: departmentLoader },
     ],
   },
   {

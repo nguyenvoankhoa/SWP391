@@ -1,35 +1,72 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Title from "../../components/Title";
 import "./AccountInfor.css";
+import {
+  Button,
+  MenuItem,
+  Select,
+  InputLabel,
+  FormControl,
+} from "@mui/material";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
 const AccountInfor = () => {
   const data = useLoaderData();
   const nav = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user"));
   const [name, setName] = useState(data.name);
   const [phone, setPhone] = useState(data.phone);
-  const [departmentNum, setDepartmentNum] = useState(data.departmentNumber);
-  const [roomNum, setRoomNum] = useState(data.roomNumber);
+  const [departs, setDeparts] = useState([]);
+  const [rooms, setRooms] = useState([]);
+  const [selectedToa, setSelectedToa] = useState("");
+  const [selectedCanHo, setSelectedCanHo] = useState("");
   const handleNameChange = (e) => {
     setName(e.target.value);
-  };
-  const handleRoomNumChange = (e) => {
-    setRoomNum(e.target.value);
   };
   const handlePhoneChange = (e) => {
     setPhone(e.target.value);
   };
-  const handleDepartmentNumChange = (e) => {
-    setDepartmentNum(e.target.value);
+  useEffect(() => {
+    const departmentLoader = async () => {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const res = await fetch(apiUrl + "departments");
+      const data = await res.json();
+      return data;
+    };
+    const loadDepartments = async () => {
+      const result = await departmentLoader();
+      const DEPARTMENT = result.map((e) => ({
+        value: e.departmentId,
+        label: e.departmentName,
+        rooms: e.rooms,
+      }));
+      setDeparts(DEPARTMENT);
+    };
+
+    loadDepartments();
+  }, []);
+  const roomHandler = (event) => {
+    const selectedRoom = event.target.value;
+    setSelectedCanHo(selectedRoom);
+  };
+  const departmentHandler = (event) => {
+    const selectedDepartment = event.target.value;
+    setSelectedToa(selectedDepartment);
+    const roomsOption = departs.filter(
+      (department) => department.value === event.target.value
+    );
+    const opts = roomsOption[0].rooms.map((e) => ({
+      value: e.id,
+      label: e.roomName,
+    }));
+    setRooms(opts);
   };
   const customerHandler = async () => {
     let newCustomer = {
       id: user.id,
       name: name,
       phone: phone,
-      departmentNumber: departmentNum,
-      roomNumber: roomNum,
+      departmentNumber: selectedToa,
+      roomNumber: selectedCanHo,
     };
     const token = sessionStorage.getItem("jwtToken");
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -68,35 +105,65 @@ const AccountInfor = () => {
             <div className="row col-lg-7 col-md-12 u-infor">
               <div className="col-md-12">
                 <p className="custom-p">Tên</p>
-                <input className="" value={name} onChange={handleNameChange} />
+                <input value={name} onChange={handleNameChange} />
               </div>
               <div className="col-md-12">
                 <p className="custom-p">Email</p>
-                <input className="" value={data.email} disabled />
+                <input value={data.email} disabled />
               </div>
-              <div className="col-md-6" style={{ marginTop: "2%" }}>
-                <p className="custom-p">Số tòa</p>
-                <input
-                  className=""
-                  value={departmentNum}
-                  onChange={handleDepartmentNumChange}
-                />
-              </div>
-              <div className="col-md-6" style={{ marginTop: "2%" }}>
-                <p className="custom-p">Số phòng</p>
-                <input
-                  className=""
-                  value={roomNum}
-                  onChange={handleRoomNumChange}
-                />
-              </div>
+              <FormControl
+                variant="standard"
+                sx={{ width: "40%", marginLeft: 4, marginTop: 3 }}
+              >
+                <InputLabel
+                  id="demo-simple-select-standard-label"
+                  sx={{ justifyContent: "left" }}
+                >
+                  Tòa
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  onChange={departmentHandler}
+                  displayEmpty
+                  required
+                  defaultValue={data.departmentNumber}
+                >
+                  {departs.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+              <FormControl
+                variant="standard"
+                sx={{ width: "40%", marginLeft: 4, marginTop: 3 }}
+              >
+                <InputLabel
+                  id="demo-simple-select-standard-label"
+                  sx={{ justifyContent: "left" }}
+                >
+                  Căn hộ
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-standard-label"
+                  id="demo-simple-select-standard"
+                  onChange={roomHandler}
+                  displayEmpty
+                  required
+                  disabled={!selectedToa}
+                >
+                  {rooms.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
               <div className="col-md-12">
                 <p className="custom-p">Số điện thoại</p>
-                <input
-                  className=""
-                  value={phone}
-                  onChange={handlePhoneChange}
-                />
+                <input value={phone} onChange={handlePhoneChange} />
               </div>
               <div
                 className="col-md-12 d-flex justify-content-center"
@@ -151,10 +218,6 @@ export async function customerInfoLoader() {
     },
     body: JSON.stringify(request),
   });
-  if (!res.ok) {
-    throw new Error("error");
-  } else {
-    const data = await res.json();
-    return data;
-  }
+  const data = await res.json();
+  return data;
 }
