@@ -5,16 +5,14 @@ import Overlays from "./Overlays";
 const AdminLayout = () => {
   return (
     <>
-      <Overlays>
-        <div className="row">
-          <div className="col-lg-2 col-md-12">
-            <AdminNavigation />
-          </div>
-          <div className="col-lg-10 col-md-12">
-            <Outlet />
-          </div>
+      <div className="row">
+        <div className="col-lg-2 col-md-12">
+          <AdminNavigation />
         </div>
-      </Overlays>
+        <div className="col-lg-10 col-md-12">
+          <Outlet />
+        </div>
+      </div>
     </>
   );
 };

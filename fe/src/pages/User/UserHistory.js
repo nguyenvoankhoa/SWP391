@@ -4,6 +4,7 @@ import { useLoaderData } from "react-router";
 import Title from "../../components/Title";
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
+//edit table user history
 const UserHistory = (props) => {
   const [value, setValue] = React.useState(2);
   const data = useLoaderData();
@@ -28,6 +29,27 @@ const UserHistory = (props) => {
       throw new Error("error");
     }
   };
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+  const column = [
+    { id: "service", label: "Dịch vụ", minWidth: 170 },
+    { id: "type", label: "Loại", minWidth: 170 },
+    { id: "date", label: "Ngày", minWidth: 170 },
+    { id: "staff", label: "Nhân viên", minWidth: 170 },
+    { id: "transaction", label: "Giao dịch", minWidth: 170 },
+    { id: "total", label: "Tổng cộng", minWidth: 170 },
+    { id: "total", label: "Tổng cộng", minWidth: 170 },
+  ];
+
   return (
     <>
       <Title
