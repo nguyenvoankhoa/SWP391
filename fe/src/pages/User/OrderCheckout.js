@@ -10,18 +10,15 @@ import CashCheckoutButton from "../../components/User/CashCheckoutButton";
 import { MdLocationOn } from "react-icons/md";
 import useDateTranslate from "../../components/DateTranslate";
 
-
-
 const OrderCheckout = () => {
 
   const data = useLoaderData();
   const user = JSON.parse(sessionStorage.getItem("user"));
-  var cartItems = useSelector((state) => state.order.items);
-  console.log(cartItems);
+  const cartItems = useSelector((state) => state.order.items);
   const totalAmount = useSelector((state) => state.order.totalAmount);
   const [payment, setPayment] = useState("Tiền mặt");
   const [bill, setBill] = useState({});
-  const { transalateWeekdays } = useDateTranslate();
+  const { translateWeekdays } = useDateTranslate();
 
   const handleBill = () => {
     let bill = {
@@ -39,6 +36,8 @@ const OrderCheckout = () => {
       favouriteEmployee: cartItems[0].favouriteEmployee,
       employeeId: cartItems[0].employeeId,
     };
+    bill.day = translateWeekdays(bill.day);
+    console.log(bill);
     setBill(bill);
   };
 

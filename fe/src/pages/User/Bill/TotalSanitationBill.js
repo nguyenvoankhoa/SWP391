@@ -136,7 +136,7 @@ const ActionRecord = () => {
           display: "flex-end",
         }}
       >
-        <TableContainer sx={{ maxHeight: 440 }}>
+        <TableContainer sx={{ maxHeight: 440}}>
           <AntTabs
             value={value}
             onChange={handleChange}

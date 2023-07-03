@@ -90,7 +90,7 @@ const UserHeadingBar = () => {
               component={NavLink}
               to="action-record"
               sx={{
-                pl: 10,
+                pl: 13,
                 color: "rgb(120, 120, 120)",
                 "&:hover": {
                   backgroundColor: "#9dcec8",
@@ -107,7 +107,7 @@ const UserHeadingBar = () => {
               component={NavLink}
               to="action-record/total-senitation"           
               sx={{
-                pl: 10,
+                pl: 13,
                 color: "rgb(120, 120, 120)",
                 "&:hover": {
                   backgroundColor: "#9dcec8",
@@ -123,7 +123,7 @@ const UserHeadingBar = () => {
               component={NavLink}
               to="action-record/fabric-cleaning"
               sx={{
-                pl: 10,
+                pl: 13,
                 color: "rgb(120, 120, 120)",
                 "&:hover": {
                   backgroundColor: "#9dcec8",
@@ -139,7 +139,7 @@ const UserHeadingBar = () => {
               component={NavLink}
               to="action-record/electronic-cleaning"
               sx={{
-                pl: 10,
+                pl: 13,
                 color: "rgb(120, 120, 120)",
                 "&:hover": {
                   backgroundColor: "#9dcec8",

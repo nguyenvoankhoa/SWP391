@@ -23,7 +23,7 @@
 .nav-container .nav-content li {
   width: 100%;
   justify-content: left;
-  padding-left: 20%;
+  padding-left: 15%;
 }
 
 .nav-container .nav-content li:hover:not(.user-hb-name):not(.user-hb-avt):not(.admin-container .nav-content li) {
@@ -31,7 +31,7 @@
 }
 
 .nav-container .nav-content .nav-item {
-  margin: 4% 0;
+  margin: 2% 0;
   font-weight: 550;
   font-size: 1.2rem;
   display: flex;

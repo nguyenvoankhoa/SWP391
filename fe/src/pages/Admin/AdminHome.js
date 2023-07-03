@@ -142,7 +142,7 @@ const AdminHome = () => {
       >
         <Title
           title="DỊCH VỤ VỆ SINH"
-          color="black"
+          color="#397F77"
           fontSize="35px"
           fontWeight="2000"
           padding="1% 0 1% 0"

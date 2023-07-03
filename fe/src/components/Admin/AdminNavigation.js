@@ -118,17 +118,12 @@ const AdminNavigation = () => {
         <li className="nav-item d-flex" type="button">
           <img
             className="nav-icon"
-            src="/assets/images/card-checklist.svg"
+            src="/assets/images/services.svg"
             alt="icon"
           ></img>
           <NavLink className="nav-link" onClick={handleSubMenu}>
             Dịch vụ
           </NavLink>
-          <NavLink>
-            Giúp việc theo giờ
-          </NavLink>
-        </li>
-        <li>
         </li>
 
         <Collapse in={open} timeout="auto" unmountOnExit>
@@ -255,8 +250,15 @@ const AdminNavigation = () => {
             </ul>
           )}
         </li>
-        <li type="button" onClick={logoutHandler}>
-          <NavLink className="nav-link ad-services">Đăng xuất</NavLink>
+        <li className="nav-item d-flex" type="button" onClick={logoutHandler}>
+          <img
+            className="nav-icon"
+            src="/assets/images/box-arrow-right.svg"
+            alt="icon"
+          ></img>
+          <NavLink className="nav-link" to="/">
+            Đăng xuất
+          </NavLink>
         </li>
       </ul>
     </div>
