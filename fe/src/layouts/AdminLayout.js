@@ -9,7 +9,7 @@ const AdminLayout = () => {
         <div className="col-lg-2 col-md-12">
           <AdminNavigation />
         </div>
-        <div className="col-lg-10 col-md-12">
+        <div className="col-lg-10 offset-md-2">
           <Outlet />
         </div>
       </div>

@@ -62,7 +62,7 @@ const EditCustomer = (props) => {
           <TableHead>
             <TableRow>
               {column.map((column) => (
-                <TableCell key={column.id} align="center">
+                <TableCell key={column.id} align="left">
                   {column.label}
                 </TableCell>
               ))}
@@ -71,20 +71,20 @@ const EditCustomer = (props) => {
           <TableBody>
             {data.map((customer) => (
               <TableRow key={customer.id} hover role="checkbox" tabIndex={-1}>
-                <TableCell align="left" style={{ paddingLeft: "5%" }}>
+                <TableCell align="left">
                   {customer.id}
                 </TableCell>
-                <TableCell align="left" style={{ paddingLeft: "5%" }}>
+                <TableCell align="left">
                   {customer.customerInfo.name}
                 </TableCell>
-                <TableCell align="left" style={{ paddingLeft: "10%" }}>
+                <TableCell align="left">
                   {customer.customerInfo.email}
                 </TableCell>
-                <TableCell align="center">
+                <TableCell align="left">
                   {customer.departmentNumber}
                 </TableCell>
-                <TableCell align="center">{customer.roomNumber}</TableCell>
-                <TableCell align="center">
+                <TableCell align="left">{customer.roomNumber}</TableCell>
+                <TableCell align="left">
                   {customer.customerInfo.phone}
                 </TableCell>
               </TableRow>

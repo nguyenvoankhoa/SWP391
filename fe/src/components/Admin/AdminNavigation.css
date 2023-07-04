@@ -55,6 +55,15 @@
 img.nav-icon {
     margin-right: 10px;
 }
+.myDrawerClass {
+    border-right: none;
+}
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+    border-right: none !important;
+}
+.css-1hsz34s-MuiDrawer-docked .MuiDrawer-paper{
+    width: 220px !important;
+}
 @keyframes fade-in {
     from {
         opacity: 0;

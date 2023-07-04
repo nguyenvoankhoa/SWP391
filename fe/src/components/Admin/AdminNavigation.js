@@ -1,349 +1,3 @@
-// import * as React from "react";
-// import { NavLink, useNavigate } from "react-router-dom";
-// import useLogout from "../../hooks/useLogout";
-// import "./AdminNavigation.css";
-// import { useState } from "react";
-// import Collapse from "@mui/material/Collapse";
-// import ListItemButton from "@mui/material/ListItemButton";
-// import ListItemText from "@mui/material/ListItemText";
-// import List from "@mui/material/List";
-// import { styled, useTheme } from "@mui/material/styles";
-// import Box from "@mui/material/Box";
-// import MuiDrawer from "@mui/material/Drawer";
-// import MuiAppBar from "@mui/material/AppBar";
-// import Toolbar from "@mui/material/Toolbar";
-// import CssBaseline from "@mui/material/CssBaseline";
-// import Typography from "@mui/material/Typography";
-// import Divider from "@mui/material/Divider";
-// import IconButton from "@mui/material/IconButton";
-// import MenuIcon from "@mui/icons-material/Menu";
-// import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-// import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-// import ListItem from "@mui/material/ListItem";
-// import ListItemIcon from "@mui/material/ListItemIcon";
-// import InboxIcon from "@mui/icons-material/MoveToInbox";
-// import MailIcon from "@mui/icons-material/Mail";
-
-// const AdminNavigation = () => {
-//   const { logout } = useLogout(); // Call the useLogout hook
-
-//   const logoutHandler = async () => {
-//     await logout(); // Call the logout function from the useLogout hook
-//   };
-
-//   const [displayItem, setDisplayItem] = useState("");
-//   const [selectedPath, setSelectedPath] = useState("");
-//   const navigate = useNavigate();
-
-//   const handleActiveClick = (event) => {
-//     const value = event.target.innerHTML;
-//     setSelectedPath(event.target.getAttribute("href"));
-//     setDisplayItem(value);
-//   };
-
-//   const handleNavigateClick = (event) => {
-//     const selectedService = event.target.innerHTML;
-//     const link = `${selectedPath}/${selectedService}`;
-//     navigate(link);
-//   };
-
-//   const [open, setOpen] = React.useState(false);
-//   const handleSubMenu = () => {
-//     setOpen(!open);
-//   };
-//   // code replace sidebar
-//   const drawerWidth = 240;
-
-//   const openedMixin = (theme) => ({
-//     width: drawerWidth,
-//     transition: theme.transitions.create("width", {
-//       easing: theme.transitions.easing.sharp,
-//       duration: theme.transitions.duration.enteringScreen,
-//     }),
-//     overflowX: "hidden",
-//   });
-//   const DrawerHeader = styled('div')(({ theme }) => ({
-//     display: 'flex',
-//     alignItems: 'center',
-//     justifyContent: 'flex-end',
-//     padding: theme.spacing(0, 1),
-//     // necessary for content to be below app bar
-//     ...theme.mixins.toolbar,
-//   }));
-
-//   const AppBar = styled(MuiAppBar, {
-//     shouldForwardProp: (prop) => prop !== 'open',
-//   })(({ theme, open }) => ({
-//     zIndex: theme.zIndex.drawer + 1,
-//     transition: theme.transitions.create(['width', 'margin'], {
-//       easing: theme.transitions.easing.sharp,
-//       duration: theme.transitions.duration.leavingScreen,
-//     }),
-//     ...(open && {
-//       marginLeft: drawerWidth,
-//       width: `calc(100% - ${drawerWidth}px)`,
-//       transition: theme.transitions.create(['width', 'margin'], {
-//         easing: theme.transitions.easing.sharp,
-//         duration: theme.transitions.duration.enteringScreen,
-//       }),
-//     }),
-//   }));
-
-//   const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-//     ({ theme, open }) => ({
-//       width: drawerWidth,
-//       flexShrink: 0,
-//       whiteSpace: 'nowrap',
-//       boxSizing: 'border-box',
-//       ...(open && {
-//         ...openedMixin(theme),
-//         '& .MuiDrawer-paper': openedMixin(theme),
-//       }),
-//       ...(!open && {
-//         ...closedMixin(theme),
-//         '& .MuiDrawer-paper': closedMixin(theme),
-//       }),
-//     }),
-//   );
-//   export default function MiniDrawer() {
-//     const theme = useTheme();
-//     const [open, setOpen] = React.useState(false);
-
-//     const handleDrawerOpen = () => {
-//       setOpen(true);
-//     };
-
-//     const handleDrawerClose = () => {
-//       setOpen(false);
-//     };
-//   return (
-//     <div className="nav-container admin-container">
-//       <ul className="nav flex-column nav-content">
-//         <li className="text-center ad-name mt-2 mb-2">Admin</li>
-//         <li className="nav-item d-flex" type="button">
-//           <img
-//             className="nav-icon"
-//             src="/assets/images/bar-chart.svg"
-//             alt="icon"
-//           ></img>
-//           <NavLink className="nav-link" to="" onClick={handleActiveClick}>
-//             Thống kê
-//           </NavLink>
-//         </li>
-//         <li className="nav-item d-flex" type="button">
-//           <img
-//             className="nav-icon"
-//             src="/assets/images/customers.svg"
-//             alt="icon"
-//           ></img>
-//           <NavLink
-//             className="nav-link"
-//             to="edit-customer"
-//             onClick={handleActiveClick}
-//           >
-//             Khách hàng
-//           </NavLink>
-//         </li>
-//         {/* Phân chia nhân viên theo chuyên môn: Vdu vệ sinh định kỳ, dọn dẹp máy lạnh, ... */}
-//         <li>
-//           <NavLink
-//             className="nav-link ad-services"
-//             to="edit-employee"
-//             onClick={handleActiveClick}
-//           >
-//             Nhân viên
-//           </NavLink>
-//           {displayItem === "Nhân viên" && (
-//             <ul className="sub-menu">
-//               <li>
-//                 <NavLink
-//                   className="nav-link"
-//                   to="#"
-//                   onClick={handleNavigateClick}
-//                 >
-//                   Giúp việc theo giờ
-//                 </NavLink>
-//               </li>
-//               <li>
-//                 <NavLink
-//                   className="nav-link"
-//                   to="#"
-//                   onClick={handleNavigateClick}
-//                 >
-//                   Tổng vệ sinh
-//                 </NavLink>
-//               </li>
-//               <li>
-//                 <NavLink
-//                   className="nav-link"
-//                   to="#"
-//                   onClick={handleNavigateClick}
-//                 >
-//                   Vệ sinh máy lạnh
-//                 </NavLink>
-//               </li>
-//               <li>
-//                 <NavLink
-//                   className="nav-link"
-//                   to="#"
-//                   onClick={handleNavigateClick}
-//                 >
-//                   Vệ sinh nệm, sofa, thảm
-//                 </NavLink>
-//               </li>
-//             </ul>
-//           )}
-//         </li>
-
-// <li className="nav-item d-flex" type="button">
-//   <img
-//     className="nav-icon"
-//     src="/assets/images/services.svg"
-//     alt="icon"
-//   ></img>
-//   <NavLink className="nav-link" onClick={handleSubMenu}>
-//     Dịch vụ
-//   </NavLink>
-// </li>
-
-// <Collapse in={open} timeout="auto" unmountOnExit>
-//   <List component="div" disablePadding>
-//     <ListItemButton
-//       component={NavLink}
-//       to="#"
-//       onClick={handleNavigateClick}
-//       sx={{
-//         pl: 5,
-//         color: "rgb(120, 120, 120)",
-//         "&:hover": {
-//           backgroundColor: "#9dcec8",
-//           color: "rgb(120, 120, 120)",
-//         },
-//       }}
-//     >
-//       <ListItemText primary="Giúp việc theo giờ" />
-//     </ListItemButton>
-//   </List>
-
-//   <List component="div" disablePadding>
-//     <ListItemButton
-//       component={NavLink}
-//       to="#"
-//       onClick={handleNavigateClick}
-//       sx={{
-//         pl: 5,
-//         color: "rgb(120, 120, 120)",
-//         "&:hover": {
-//           backgroundColor: "#9dcec8",
-//           color: "rgb(120, 120, 120)",
-//         },
-//       }}
-//     >
-//       <ListItemText primary="Tổng vệ sinh" />
-//     </ListItemButton>
-//   </List>
-
-//   <List component="div" disablePadding>
-//     <ListItemButton
-//       component={NavLink}
-//       to="#"
-//       onClick={handleNavigateClick}
-//       sx={{
-//         pl: 5,
-//         color: "rgb(120, 120, 120)",
-//         "&:hover": {
-//           backgroundColor: "#9dcec8",
-//           color: "rgb(120, 120, 120)",
-//         },
-//       }}
-//     >
-//       <ListItemText primary="Vệ sinh máy lạnh" />
-//     </ListItemButton>
-//   </List>
-
-//   <List component="div" disablePadding>
-//     <ListItemButton
-//       component={NavLink}
-//       to="#"
-//       onClick={handleNavigateClick}
-//       sx={{
-//         pl: 5,
-//         color: "rgb(120, 120, 120)",
-//         "&:hover": {
-//           backgroundColor: "#9dcec8",
-//           color: "rgb(120, 120, 120)",
-//         },
-//       }}
-//     >
-//       <ListItemText primary="Vệ sinh sofa, nệm" />
-//     </ListItemButton>
-//   </List>
-// </Collapse>
-
-//         {/* Đơn hàng của admin thì update thêm thông tin trong page đơn hàng */}
-//         <li>
-//           <NavLink
-//             className="nav-link ad-services"
-//             to="order-service"
-//             onClick={handleActiveClick}
-//           >
-//             Đơn hàng
-//           </NavLink>
-//           {displayItem === "Đơn hàng" && (
-//             <ul className="sub-menu">
-//               <li>
-//                 <NavLink
-//                   className="nav-link"
-//                   to="#"
-//                   onClick={handleNavigateClick}
-//                 >
-//                   Giúp việc theo giờ
-//                 </NavLink>
-//               </li>
-//               <li>
-//                 <NavLink
-//                   className="nav-link"
-//                   to="#"
-//                   onClick={handleNavigateClick}
-//                 >
-//                   Tổng vệ sinh
-//                 </NavLink>
-//               </li>
-//               <li>
-//                 <NavLink
-//                   className="nav-link"
-//                   to="#"
-//                   onClick={handleNavigateClick}
-//                 >
-//                   Vệ sinh máy lạnh
-//                 </NavLink>
-//               </li>
-//               <li>
-//                 <NavLink
-//                   className="nav-link"
-//                   to="#"
-//                   onClick={handleNavigateClick}
-//                 >
-//                   Vệ sinh nệm, sofa, thảm
-//                 </NavLink>
-//               </li>
-//             </ul>
-//           )}
-//         </li>
-//         <li className="nav-item d-flex" type="button" onClick={logoutHandler}>
-//           <img
-//             className="nav-icon"
-//             src="/assets/images/box-arrow-right.svg"
-//             alt="icon"
-//           ></img>
-//           <NavLink className="nav-link" to="/">
-//             Đăng xuất
-//           </NavLink>
-//         </li>
-//       </ul>
-//     </div>
-//   );
-// };
 import * as React from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -362,10 +16,10 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Collapse from "@mui/material/Collapse";
 import useLogout from "../../hooks/useLogout";
+import "./AdminNavigation.css";
 
 const drawerWidth = 240;
 
@@ -395,7 +49,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-end",
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
 }));
 
@@ -519,7 +172,7 @@ export default function AdminNavigation() {
   const icon = [
     {
       text: "Đơn hàng",
-      icon: "/assets/images/gear.svg",
+      icon: "/assets/images/clipboard-data.svg",
       link: "order-service",
       subItems: [
         { text: "Giúp việc theo giờ" },
@@ -540,7 +193,7 @@ export default function AdminNavigation() {
       <CssBaseline />
       <AppBar
         position="fixed"
-        sx={{ backgroundColor: "white", boxShadow: "none" }}
+        sx={{ backgroundColor: "white", boxShadow: "none", border: "none" }}
       >
         <Toolbar>
           <IconButton
@@ -585,25 +238,26 @@ export default function AdminNavigation() {
                 onClick={() => handleActiveClick(text, subItems, link)}
                 sx={{
                   minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
+                  justifyContent: open ? "flex-start" : "center",
                   px: 2.5,
                 }}
               >
-                <Icon
+                <img
                   className="nav-icon"
                   src={icon}
                   alt="icon"
-                  sx={{
-                    opacity: open ? 1 : 0,
-                    display: "flex",
-                    alignItems: "center",
-                    mr: 3,
-                    width: "10%",
+                  style={{
+                    width: "22px",
+                    height: "22px",
+                    marginRight: open ? "16px" : "0",
+                    display: "inline-block",
                   }}
                 />
-                <NavLink className="nav-link" to={link}>
-                  {text}
-                </NavLink>
+                {open && (
+                  <NavLink className="nav-link" to={link}>
+                    {text}
+                  </NavLink>
+                )}
               </ListItemButton>
 
               {subItems && (
@@ -639,31 +293,34 @@ export default function AdminNavigation() {
         </List>
         <Divider />
         <List>
-          {icon.map(({ text, icon, link, subItems,  onClick }) => (
+          {icon.map(({ text, icon, link, subItems, onClick }) => (
             <ListItem key={text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
-              onClick={() => (onClick ? onClick() : handleActiveClick(text, subItems, link))}
+                onClick={() =>
+                  onClick ? onClick() : handleActiveClick(text, subItems, link)
+                }
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
                 }}
               >
-                <Icon
+                <img
                   className="nav-icon"
                   src={icon}
                   alt="icon"
-                  sx={{
-                    opacity: open ? 1 : 0,
-                    display: "flex",
-                    alignItems: "center",
-                    mr: 3,
-                    width: "10%",
+                  style={{
+                    width: "22px",
+                    height: "22px",
+                    marginRight: open ? "16px" : "0",
+                    display: "inline-block",
                   }}
                 />
-                <NavLink className="nav-link" to={link}>
-                  {text}
-                </NavLink>
+                {open && (
+                  <NavLink className="nav-link" to={link}>
+                    {text}
+                  </NavLink>
+                )}
               </ListItemButton>
               {subItems && (
                 <Collapse
