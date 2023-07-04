@@ -81,45 +81,39 @@ const EditService = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredData.map((service) => (
-              <TableRow
-                key={service.serviceId}
-                hover
-                role="checkbox"
-                tabIndex={-1}
-              >
-                <TableCell align="left" >
-                  {service.serviceId}
-                </TableCell>
-                <TableCell align="left" >
-                  {service.name}
-                </TableCell>
-                <TableCell align="left" >
-                  {service.type}
-                </TableCell>
-                <TableCell align="left" >
-                  {service.detail}
-                </TableCell>
-                <TableCell align="left" >
-                  {service.price.toLocaleString()} VNĐ
-                </TableCell>
-                <TableCell align="center" sx={{padding: 0}}>
-                  <div
-                    className="col-md-12 offset-md-5"
-                    style={{ display: "flex" }}
-                  >
-                    <img
-                      src="/assets/images/pencil.svg"
-                      alt="Pencil"
-                      style={{ width: "15%" }}
-                      data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop"
-                      onClick={() => handleServiceChange(service)}
-                    />
-                  </div>
-                </TableCell>
-              </TableRow>
-            ))}
+            {filteredData
+              .slice(page * rowsPerPage, (page + 1) * rowsPerPage)
+              .map((service) => (
+                <TableRow
+                  key={service.serviceId}
+                  hover
+                  role="checkbox"
+                  tabIndex={-1}
+                >
+                  <TableCell align="left">{service.serviceId}</TableCell>
+                  <TableCell align="left">{service.name}</TableCell>
+                  <TableCell align="left">{service.type}</TableCell>
+                  <TableCell align="left">{service.detail}</TableCell>
+                  <TableCell align="left">
+                    {service.price.toLocaleString()} VNĐ
+                  </TableCell>
+                  <TableCell align="center" sx={{ padding: 0 }}>
+                    <div
+                      className="col-md-12 offset-md-5"
+                      style={{ display: "flex" }}
+                    >
+                      <img
+                        src="/assets/images/pencil.svg"
+                        alt="Pencil"
+                        style={{ width: "15%" }}
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                        onClick={() => handleServiceChange(service)}
+                      />
+                    </div>
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
         <TablePagination

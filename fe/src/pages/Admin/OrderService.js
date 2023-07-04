@@ -6,7 +6,16 @@ import React, { useState, useEffect } from "react";
 import ConfirmPayment from "../../components/Admin/ConfirmPayment";
 import ConfirmComplete from "../../components/Admin/ConfirmComplete";
 import CancelOrder from "../../components/Admin/CancelOrder";
-import { Button, Paper, Table, TableBody, TableCell, TableHead, TablePagination, TableRow } from "@mui/material";
+import {
+  Button,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+} from "@mui/material";
 const OrderService = () => {
   const data = useLoaderData();
   const [workType, setWorkType] = useState("");
@@ -82,87 +91,85 @@ const OrderService = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {filteredData.map((bill) => (
-              <TableRow key={bill.id} hover role="checkbox" tabIndex={-1}>
-                <TableCell align="left" style={{ paddingLeft: "2%" }}>
-                  {bill.id}
-                </TableCell>
-                <TableCell align="left">{bill.business.name}</TableCell>
-                <TableCell align="left">{bill.business.type}</TableCell>
-                <TableCell align="left">
-                  {bill.day}, {bill.date}/{bill.month}
-                </TableCell>
-                <TableCell align="left">{bill.hour}</TableCell>
-                <TableCell align="left">{bill.customer.name}</TableCell>
-                <TableCell align="left">
-                  {bill.employee ? (
-                    bill.employee.name
-                  ) : (
-                    <Button
-                      data-bs-toggle="modal"
-                      data-bs-target="#staticBackdrop"
-                      onClick={() =>
-                        assignEmployee(bill.business.name, bill.id)
-                      }
-                    >
-                      {" "}
-                      Tìm
-                    </Button>
-                  )}
-                </TableCell>
-                <TableCell align="left">
-                  {bill.customer.phone}
-                </TableCell>
-                <TableCell align="left">
-                  {bill.payment}
-                </TableCell>
-                <TableCell align="left">
-                  {bill.total.toLocaleString()} VNĐ
-                </TableCell>
-                <TableCell align="left">
-                  {bill.payStatus ? (
-                            <img
-                            src="/assets/images/complete.svg"
-                            alt=""
-                            style={{ width: "30%"}}
-                          />
-                  ) : (
-                    <ConfirmPayment id={bill.id} />
-                  )}
-                </TableCell>
-                <TableCell align="left">
-                  {bill.completeStatus ? (
-                    <td>
+            {filteredData
+              .slice(page * rowsPerPage, (page + 1) * rowsPerPage)
+              .map((bill) => (
+                <TableRow key={bill.id} hover role="checkbox" tabIndex={-1}>
+                  <TableCell align="left" style={{ paddingLeft: "2%" }}>
+                    {bill.id}
+                  </TableCell>
+                  <TableCell align="left">{bill.business.name}</TableCell>
+                  <TableCell align="left">{bill.business.type}</TableCell>
+                  <TableCell align="left">
+                    {bill.day}, {bill.date}/{bill.month}
+                  </TableCell>
+                  <TableCell align="left">{bill.hour}</TableCell>
+                  <TableCell align="left">{bill.customer.name}</TableCell>
+                  <TableCell align="left">
+                    {bill.employee ? (
+                      bill.employee.name
+                    ) : (
                       <Button
-                        variant="outlined"                
-                        sx={{
-                          padding: "5px",
-                          height: "35px",
-                          textAlign: "justify",
-                          fontSize: "12px",
-                          width: "100%",
-                          borderColor: "#397F77",
-                          color: "#397F77",
-                          "&:hover": {
+                        data-bs-toggle="modal"
+                        data-bs-target="#staticBackdrop"
+                        onClick={() =>
+                          assignEmployee(bill.business.name, bill.id)
+                        }
+                      >
+                        {" "}
+                        Tìm
+                      </Button>
+                    )}
+                  </TableCell>
+                  <TableCell align="left">{bill.customer.phone}</TableCell>
+                  <TableCell align="left">{bill.payment}</TableCell>
+                  <TableCell align="left">
+                    {bill.total.toLocaleString()} VNĐ
+                  </TableCell>
+                  <TableCell align="left">
+                    {bill.payStatus ? (
+                      <img
+                        src="/assets/images/complete.svg"
+                        alt=""
+                        style={{ width: "30%" }}
+                      />
+                    ) : (
+                      <ConfirmPayment id={bill.id} />
+                    )}
+                  </TableCell>
+                  <TableCell align="left">
+                    {bill.completeStatus ? (
+                      <td>
+                        <Button
+                          variant="outlined"
+                          sx={{
+                            padding: "5px",
+                            height: "35px",
+                            textAlign: "justify",
+                            fontSize: "12px",
+                            width: "100%",
                             borderColor: "#397F77",
                             color: "#397F77",
-                          },
-                        }}
-                      >
-                        Đã hoàn thành
-                      </Button>
-                    </td>
-                  ) : (
-                    <td>
-                      <div className="d-flex h-100">
-                        <ConfirmComplete id={bill.id} />
-                        <CancelOrder id={bill.id} />
-                      </div>
-                    </td>
-                  )}
-                </TableCell>
-              </TableRow>
-            ))}
+                            "&:hover": {
+                              borderColor: "#397F77",
+                              color: "#397F77",
+                            },
+                          }}
+                        >
+                          Đã hoàn thành
+                        </Button>
+                      </td>
+                    ) : (
+                      <td>
+                        <div className="d-flex h-100">
+                          <ConfirmComplete id={bill.id} />
+                          <CancelOrder id={bill.id} />
+                        </div>
+                      </td>
+                    )}
+                  </TableCell>
+                </TableRow>
+              ))}
           </TableBody>
         </Table>
         <TablePagination

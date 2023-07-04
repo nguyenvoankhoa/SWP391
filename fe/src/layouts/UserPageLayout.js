@@ -6,17 +6,14 @@ import Footer from "../components/Footer";
 
 const UserPageLayout = () => {
   return (
-    <Overlays>
       <div className="row">
         <div className="col-lg-2 col-md-12" style={{padding: 0}}>
           <UserHeader />
         </div>
-        <div className="col-lg-10 col-md-12">
+        <div className="col-md-10 offset-md-2">
           <Outlet />
         </div>
-        <Footer />
       </div>
-    </Overlays>
   );
 };
 

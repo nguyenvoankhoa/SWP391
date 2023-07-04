@@ -151,16 +151,28 @@ const ActionRecord = () => {
             />
           </AntTabs>
           {option === "Ca lẻ" && (
-            <OddShiftTable table={oodShift} column={columnOddShift} />
+            <OddShiftTable
+              table={oodShift.slice(
+                page * rowsPerPage,
+                (page + 1) * rowsPerPage
+              )}
+              column={columnOddShift}
+            />
           )}
           {option === "Định kỳ" && (
-            <PeriodicTable table={periodic} column={columnPeriodic} />
+            <PeriodicTable
+              table={periodic.slice(
+                page * rowsPerPage,
+                (page + 1) * rowsPerPage
+              )}
+              column={columnPeriodic}
+            />
           )}
         </TableContainer>
         <TablePagination
           rowsPerPageOptions={[10, 15]}
           component="div"
-          count={table.length}
+          count={option === "Ca lẻ" ? oodShift.length : periodic.length}
           rowsPerPage={rowsPerPage}
           page={page}
           onPageChange={handleChangePage}
