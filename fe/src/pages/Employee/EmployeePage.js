@@ -1,49 +1,87 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
-import Card from "../../UI/Card";
 import Title from "../../components/Title";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+} from "@mui/material";
 const EmployeePage = () => {
   const data = useLoaderData();
   console.log(data);
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
+  const column = [
+    { id: "job", label: "Công việc", minWidth: 170 },
+    { id: "type", label: "Loại", minWidth: 170 },
+    { id: "time", label: "Thời gian", minWidth: 170 },
+    { id: "phone", label: "Số điện thoại", minWidth: 170 },
+    { id: "block", label: "Tòa", minWidth: 170 },
+    { id: "room", label: "Mã căn", minWidth: 170 },
+    { id: "transaction", label: "Thanh toán", minWidth: 170 },
+    { id: "status", label: "Trạng thái", minWidth: 170 },
+    { id: "note", label: "Ghi chú", minWidth: 170 },
+    { id: "total", label: "Tổng cộng", minWidth: 170 },
+  ];
   return (
     <>
       <Title
         title="HÔM NAY"
-        color="white"
+        color="#397F77"
         fontSize="35px"
         fontWeight="700"
         padding="2% 0 0 0"
       />
-      <div className="row justify-content-center mt-5">
-        <div className="col-10">
-          <div className="table-responsive ">
-            <Card>
-              <table
-                className="table table-bordered table-striped text-center"
-                style={{ fontSize: "18px", fontWeight: "400" }}
-              >
-                <thead>
-                  <tr>
-                    <th scope="col">Công việc</th>
-                    <th scope="col">Loại</th>
-                    <th scope="col">Thời gian</th>
-                    <th scope="col">Số toà </th>
-                    <th scope="col">Số phòng</th>
-                    <th scope="col">Thanh toán</th>
-                    <th scope="col">Trạng thái</th>
-                    <th scope="col">Ghi chú</th>
-                    <th scope="col">Tổng cộng</th>
-                    <th scope="col">SĐT khách hàng</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data.map((bill) => (
-                    <tr key={Math.random()}>
-                      <th scope="col">{bill.workType}</th>
-                      <th scope="col">{bill.type}</th>
-                      <th scope="col">{bill.hour}</th>
-                      <th scope="col">{bill.departmentNumber}</th>
-                      <th scope="col">{bill.roomNumber}</th>
+      <div className="row mt-3">
+        <div className="col-md-10 offset-md-1">
+          <Paper
+            className="container"
+            sx={{
+              marginTop: 1,
+              width: "100%",
+              overflow: "hidden",
+              justifyContent: "center",
+              display: "flex-end",
+            }}
+          >
+            <Table>
+              <TableHead>
+                <TableRow>
+                  {column.map((column) => (
+                    <TableCell key={column.id} align="center">
+                      {column.label}
+                    </TableCell>
+                  ))}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {data.map((bill) => (
+                  <TableRow
+                    key={Math.random()}
+                    hover
+                    role="checkbox"
+                    tabIndex={-1}
+                  >
+                    <TableCell align="left">{bill.workType}</TableCell>
+                    <TableCell align="left">{bill.type}</TableCell>
+                    <TableCell align="left">{bill.hour}</TableCell>
+                    <TableCell align="left">{bill.customerPhone}</TableCell>
+                    <TableCell align="left">{bill.departmentNumber}</TableCell>
+                    <TableCell align="left">{bill.roomNumber}</TableCell>
+                    <TableCell align="left">
                       {bill.payStatus ? (
                         <th>Đã thanh toán</th>
                       ) : (
@@ -54,15 +92,27 @@ const EmployeePage = () => {
                       ) : (
                         <th>Chưa xong</th>
                       )}
-                      <th scope="col">{bill.note}</th>
-                      <th scope="col">{bill.total}</th>
-                      <th scope="col">{bill.customerPhone}</th>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </Card>
-          </div>
+                    </TableCell>
+                    <TableCell align="left">{bill.note}</TableCell>
+                    <TableCell align="left">{bill.total.toLocaleString()} VNĐ</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+            <TablePagination
+              rowsPerPageOptions={[10, 15]}
+              component="div"
+              count={data.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              classes={{
+                selectLabel: "custom-select-label",
+                displayedRows: "custom-displayed-rows",
+              }}
+            />
+          </Paper>
         </div>
       </div>
     </>
