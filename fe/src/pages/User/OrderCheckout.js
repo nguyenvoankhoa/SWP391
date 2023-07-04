@@ -162,7 +162,7 @@ const OrderCheckout = () => {
                           </Grid>
                           <Grid>
                             <p>
-                              {item.hour} {item.day}, {item.date}/{item.month}
+                              {item.hour} {translateWeekdays(item.day)}, {item.date}/{item.month}
                               /2023
                             </p>
                           </Grid>

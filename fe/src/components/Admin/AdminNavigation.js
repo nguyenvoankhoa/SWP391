@@ -100,11 +100,12 @@ export default function AdminNavigation() {
     setOpen(false);
   };
 
-  const Icon = styled("img")(({ theme }) => ({
-    minWidth: 0,
-    mr: theme.spacing(2),
-    justifyContent: "center",
-  }));
+  // const Icon = styled("img")(({ theme }) => ({
+  //   minWidth: 0,
+  //   mr: theme.spacing(2),
+  //   justifyContent: "center",
+  // }));
+
   const navigate = useNavigate();
   const [displayItem, setDisplayItem] = useState("");
   const [selectedPath, setSelectedPath] = useState("");
@@ -115,15 +116,11 @@ export default function AdminNavigation() {
     setSelectedPath(link);
     setDisplayItem(text);
     setActiveMenuItem(text);
-    if (subItems) {
-      setDisplaySubmenu(!displaySubmenu);
-    } else {
-      navigate(link);
-    }
+    setDisplaySubmenu(!displaySubmenu);
+    navigate(link);
   };
 
-  const handleNavigateClick = (event) => {
-    const selectedService = event.target.innerHTML;
+  const handleNavigateClick = (selectedService) => {
     const link = `${selectedPath}/${selectedService}`;
     navigate(link);
   };
@@ -271,7 +268,7 @@ export default function AdminNavigation() {
                       <ListItemButton
                         key={subText}
                         component={NavLink}
-                        onClick={handleNavigateClick}
+                        onClick={() => handleNavigateClick(subText)}
                         to="#"
                         sx={{
                           pl: 10,
@@ -333,7 +330,7 @@ export default function AdminNavigation() {
                       <ListItemButton
                         key={subText}
                         component={NavLink}
-                        onClick={handleNavigateClick}
+                        onClick={() => handleNavigateClick(subText)}
                         to="#"
                         sx={{
                           pl: 10,
