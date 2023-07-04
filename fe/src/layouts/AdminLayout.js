@@ -5,6 +5,7 @@ import Overlays from "./Overlays";
 const AdminLayout = () => {
   return (
     <>
+      <Overlays>
       <div className="row">
         <div className="col-lg-2 col-md-12">
           <AdminNavigation />
@@ -13,6 +14,7 @@ const AdminLayout = () => {
           <Outlet />
         </div>
       </div>
+      </Overlays>
     </>
   );
 };

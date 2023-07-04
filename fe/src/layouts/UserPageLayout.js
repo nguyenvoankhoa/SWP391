@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 
 const UserPageLayout = () => {
   return (
+    <Overlays>
       <div className="row">
         <div className="col-lg-2 col-md-12" style={{padding: 0}}>
           <UserHeader />
@@ -14,6 +15,7 @@ const UserPageLayout = () => {
           <Outlet />
         </div>
       </div>
+      </Overlays>
   );
 };
 

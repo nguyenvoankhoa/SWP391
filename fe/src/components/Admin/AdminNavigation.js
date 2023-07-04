@@ -12,8 +12,6 @@ import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
@@ -184,7 +182,7 @@ export default function AdminNavigation() {
       <CssBaseline />
       <AppBar
         position="fixed"
-        sx={{ backgroundColor: "white", boxShadow: "none", border: "none" }}
+        sx={{ backgroundColor: "#ffffff00", boxShadow: "none", border: "none" }}
       >
         <Toolbar>
           <IconButton
@@ -210,14 +208,12 @@ export default function AdminNavigation() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      <Drawer variant="permanent" open={open}         sx={{
+          backgroundColor: "#ffffff00",
+          "& .MuiDrawer-paper": { backgroundColor: "#ffffff00" },
+        }}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
           </IconButton>
         </DrawerHeader>
         <Divider />
