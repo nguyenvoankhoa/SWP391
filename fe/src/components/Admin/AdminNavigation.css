@@ -64,6 +64,10 @@ img.nav-icon {
 .css-1hsz34s-MuiDrawer-docked .MuiDrawer-paper{
     width: 220px !important;
 }
+.css-10hburv-MuiTypography-root {
+    font-family: "Montserrat" !important;
+    font-size: 13px !important;
+}
 @keyframes fade-in {
     from {
         opacity: 0;

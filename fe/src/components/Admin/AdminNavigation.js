@@ -100,12 +100,6 @@ export default function AdminNavigation() {
     setOpen(false);
   };
 
-  // const Icon = styled("img")(({ theme }) => ({
-  //   minWidth: 0,
-  //   mr: theme.spacing(2),
-  //   justifyContent: "center",
-  // }));
-
   const navigate = useNavigate();
   const [displayItem, setDisplayItem] = useState("");
   const [selectedPath, setSelectedPath] = useState("");
@@ -208,8 +202,7 @@ export default function AdminNavigation() {
             sx={{
               color: "black",
               letterSpacing: "0.05rem",
-              fontFamily: "Work Sans",
-              fontWeight: "bold",
+              fontFamily: "Montserrat",
               fontSize: "22px",
             }}
           >
@@ -237,6 +230,8 @@ export default function AdminNavigation() {
                   minHeight: 48,
                   justifyContent: open ? "flex-start" : "center",
                   px: 2.5,
+                  fontFamily: "Montserrat",
+                  fontSize: "15px"
                 }}
               >
                 <img
@@ -271,10 +266,8 @@ export default function AdminNavigation() {
                         onClick={() => handleNavigateClick(subText)}
                         to="#"
                         sx={{
-                          pl: 10,
-                          color: "rgb(120, 120, 120)",
+                          pl: 8,
                           "&:hover": {
-                            backgroundColor: "#9dcec8",
                             color: "rgb(120, 120, 120)",
                           },
                         }}
@@ -298,8 +291,10 @@ export default function AdminNavigation() {
                 }
                 sx={{
                   minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
+                  justifyContent: open ? "flex-start" : "center",
                   px: 2.5,
+                  fontFamily: "Montserrat",
+                  fontSize: "15px"
                 }}
               >
                 <img
@@ -333,10 +328,8 @@ export default function AdminNavigation() {
                         onClick={() => handleNavigateClick(subText)}
                         to="#"
                         sx={{
-                          pl: 10,
-                          color: "rgb(120, 120, 120)",
+                          pl: 8,
                           "&:hover": {
-                            backgroundColor: "#9dcec8",
                             color: "rgb(120, 120, 120)",
                           },
                         }}
