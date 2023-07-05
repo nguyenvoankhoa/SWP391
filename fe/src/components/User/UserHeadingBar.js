@@ -234,11 +234,11 @@ export default function UserHeadingBar() {
               mt: 1,
             }}
           >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem onClick={handleClose}>Activities</MenuItem>
             <MenuItem
               onClick={handleActiveClick}
               component={Link}
-              to="/account-info"
+              to="account-info"
               style={{ textDecoration: "none", color: "inherit" }}
             >
               My account
