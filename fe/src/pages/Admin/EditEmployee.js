@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Card from "../../UI/Card";
 import "./EditCus.css";
 import Title from "../../components/Title";
 import { useLoaderData, useParams } from "react-router-dom";
@@ -20,7 +19,7 @@ const EditEmployee = () => {
   const [filteredData, setFilteredData] = useState([]);
   const param = useParams();
   const [workType, setWorkType] = useState("");
-
+  console.log(param);
   useEffect(() => {
     let array = data.filter(
       (employee) => employee.workType === param.serviceId
@@ -63,17 +62,18 @@ const EditEmployee = () => {
         color="#397F77"
         fontSize="35px"
         fontWeight="700"
-        padding="2% 0 0 0"
       />
 
       <div className="row justify-content-center">
         <div className="col-10 ">
           <div className="d-flex flex-row-reverse">
-             <img src="/assets/images/add-person.svg" alt=""
-             style={{width: "4%"}}
-             data-bs-toggle="modal"
-             data-bs-target="#AddModal"
-             />
+            <img
+              src="/assets/images/add-person.svg"
+              alt=""
+              style={{ width: "4%" }}
+              data-bs-toggle="modal"
+              data-bs-target="#AddModal"
+            />
             <AddEmployeeForm workType={workType} />
           </div>
           <Paper
@@ -82,15 +82,13 @@ const EditEmployee = () => {
               marginTop: 1,
               width: "100%",
               overflow: "hidden",
-              justifyContent: "center",
-              display: "flex-end",
             }}
           >
             <Table>
               <TableHead>
                 <TableRow>
                   {column.map((column) => (
-                    <TableCell key={column.id} align="center">
+                    <TableCell key={column.id} align="left">
                       {column.label}
                     </TableCell>
                   ))}
@@ -104,23 +102,19 @@ const EditEmployee = () => {
                     role="checkbox"
                     tabIndex={-1}
                   >
-                    <TableCell align="left" style={{ paddingLeft: "3%" }}>
-                      {employee.id}
-                    </TableCell>
-                    <TableCell align="left" style={{ paddingLeft: "3%" }}>
+                    <TableCell align="left">{employee.id}</TableCell>
+                    <TableCell align="left">
                       {employee.employeeInfo.name}
                     </TableCell>
-                    <TableCell align="left" style={{ paddingLeft: "5%" }}>
+                    <TableCell align="left">
                       {employee.employeeInfo.email}
                     </TableCell>
-                    <TableCell align="left" style={{ paddingLeft: "4%" }}>
+                    <TableCell align="left">
                       {employee.employeeInfo.phone}
                     </TableCell>
-                    <TableCell align="left" style={{ paddingLeft: "5%" }}>
-                      {employee.workType}
-                    </TableCell>
+                    <TableCell align="left">{employee.workType}</TableCell>
                     <TableCell align="left">
-                      <div className="col-md-12 offset-md-5" style={{ display: "flex" }}>
+                      <div className="col-md-12 offset-md-3">
                         <img
                           src="/assets/images/pencil.svg"
                           alt="Pencil"
@@ -131,60 +125,61 @@ const EditEmployee = () => {
                         />
                       </div>
                     </TableCell>
-                    <TableCell align="left" style={{padding:0}}>
-                      <div className="col-md-12 offset-md-4" style={{ display: "flex" }}>
-                      <img
+                    <TableCell align="left" style={{ padding: 0 }}>
+                      <div className="col-md-12 offset-md-3">
+                        <img
                           src="/assets/images/trash.svg"
                           alt="Trash"
-                          style={{ width: "25%", justifyContent: "space-around"}}
+                          style={{
+                            width: "25%",
+                            justifyContent: "space-around",
+                          }}
                           data-bs-toggle="modal"
                           data-bs-target="#exampleModal"
                         />
                       </div>
                       <div
-                            className="modal fade"
-                            id="exampleModal"
-                            tabIndex="-1"
-                            aria-labelledby="exampleModalLabel"
-                            aria-hidden="true"
-                          >
-                            <div className="modal-dialog">
-                              <div className="modal-content">
-                                <div className="modal-header">
-                                  <h1
-                                    className="modal-title fs-5"
-                                    id="exampleModalLabel"
-                                  >
-                                    Xoá nhân viên
-                                  </h1>
-                                  <button
-                                    type="button"
-                                    className="btn-close"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"
-                                  ></button>
-                                </div>
-                                <div className="modal-body">
-                                 Bạn có chắc chắn muốn xóa? Không thể hoàn tác sau khi thực hiện thao tác này.
-                                </div>
-                                <div className="modal-footer">
-                                  <button
-                                    type="button"
-                                    className="btn btn-secondary"
-                                    data-bs-dismiss="modal"
-                                  >
-                                    Hủy 
-                                  </button>
-                                  <button
-                                    type="button"
-                                    className="btn btn-primary"
-                                  >
-                                    Đồng ý 
-                                  </button>
-                                </div>
-                              </div>
+                        className="modal fade"
+                        id="exampleModal"
+                        tabIndex="-1"
+                        aria-labelledby="exampleModalLabel"
+                        aria-hidden="true"
+                      >
+                        <div className="modal-dialog">
+                          <div className="modal-content">
+                            <div className="modal-header">
+                              <h1
+                                className="modal-title fs-5"
+                                id="exampleModalLabel"
+                              >
+                                Xoá nhân viên
+                              </h1>
+                              <button
+                                type="button"
+                                className="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                              ></button>
+                            </div>
+                            <div className="modal-body">
+                              Bạn có chắc chắn muốn xóa? Không thể hoàn tác sau
+                              khi thực hiện thao tác này.
+                            </div>
+                            <div className="modal-footer">
+                              <button
+                                type="button"
+                                className="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                              >
+                                Hủy
+                              </button>
+                              <button type="button" className="btn btn-primary">
+                                Đồng ý
+                              </button>
                             </div>
                           </div>
+                        </div>
+                      </div>
                     </TableCell>
                   </TableRow>
                 ))}

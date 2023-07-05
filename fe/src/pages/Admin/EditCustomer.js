@@ -1,11 +1,14 @@
-import React, { useState } from "react";
-import Card from "../../UI/Card";
+import React, { useEffect, useState } from "react";
 import "./EditCus.css";
 import Title from "../../components/Title";
 import { useLoaderData } from "react-router-dom";
-import EditCustomerForm from "../../components/Admin/EditCustomerForm";
 import {
+  Box,
+  FormControl,
+  InputLabel,
+  MenuItem,
   Paper,
+  Select,
   Table,
   TableBody,
   TableCell,
@@ -13,12 +16,8 @@ import {
   TablePagination,
   TableRow,
 } from "@mui/material";
-const EditCustomer = (props) => {
+const EditCustomer = () => {
   const data = useLoaderData();
-  const [customer, setCustomer] = useState([]);
-  const editCustomerHandler = (customer) => {
-    setCustomer(customer);
-  };
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
@@ -37,8 +36,35 @@ const EditCustomer = (props) => {
     { id: "block", label: "Tòa", minWidth: 170 },
     { id: "room", label: "Mã căn", minWidth: 170 },
     { id: "phone", label: "Số điện thoại", minWidth: 170 },
+    { id: "delete", label: "Xóa", minWidth: 170 },
   ];
+  const [departs, setDeparts] = useState([]);
+  const [selectedToa, setSelectedToa] = useState([]);
+  useEffect(() => {
+    const departmentLoader = async () => {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const res = await fetch(apiUrl + "departments");
+      const data = await res.json();
+      return data;
+    };
+    const loadDepartments = async () => {
+      const result = await departmentLoader();
+      const DEPARTMENT = result.map((e) => ({
+        value: e.departmentName,
+        label: e.departmentName,
+      }));
+      setDeparts(DEPARTMENT);
+    };
 
+    loadDepartments();
+  }, []);
+  const departmentHandler = (event) => {
+    const selectedDepartment = event.target.value;
+    const ARRAY = data.filter(
+      (customer) => customer.departmentNumber === selectedDepartment
+    );
+    setSelectedToa(ARRAY);
+  };
   return (
     <>
       <Title
@@ -46,12 +72,29 @@ const EditCustomer = (props) => {
         color="#397F77"
         fontSize="35px"
         fontWeight="700"
-        padding="2% 0 1% 0"
       />
+      <Box sx={{ maxWidth: 120 }}>
+        <FormControl fullWidth>
+          <InputLabel id="demo-simple-select-label">Tòa</InputLabel>
+          <Select
+            labelId="demo-simple-select-standard-label"
+            id="demo-simple-select-standard"
+            onChange={departmentHandler}
+            displayEmpty
+            required
+          >
+            {departs.map((option) => (
+              <MenuItem key={option.value} value={option.value}>
+                {option.label}
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Box>
       <Paper
         className="container"
         sx={{
-          marginTop: 5,
+          marginTop: 3,
           width: "90%",
           overflow: "hidden",
           justifyContent: "center",
@@ -69,23 +112,69 @@ const EditCustomer = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((customer) => (
+            {selectedToa.map((customer) => (
               <TableRow key={customer.id} hover role="checkbox" tabIndex={-1}>
-                <TableCell align="left">
-                  {customer.id}
-                </TableCell>
-                <TableCell align="left">
-                  {customer.customerInfo.name}
-                </TableCell>
-                <TableCell align="left">
-                  {customer.customerInfo.email}
-                </TableCell>
-                <TableCell align="left">
-                  {customer.departmentNumber}
-                </TableCell>
+                <TableCell align="left">{customer.id}</TableCell>
+                <TableCell align="left">{customer.name}</TableCell>
+                <TableCell align="left">{customer.email}</TableCell>
+                <TableCell align="left">{customer.departmentNumber}</TableCell>
                 <TableCell align="left">{customer.roomNumber}</TableCell>
-                <TableCell align="left">
-                  {customer.customerInfo.phone}
+                <TableCell align="left">{customer.phone}</TableCell>
+                <TableCell align="left" style={{ padding: 0 }}>
+                  <div className="col-md-12 offset-md-3">
+                    <img
+                      src="/assets/images/trash.svg"
+                      alt="Trash"
+                      style={{
+                        width: "25%",
+                        justifyContent: "space-around",
+                      }}
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
+                    />
+                  </div>
+                  <div
+                    className="modal fade"
+                    id="exampleModal"
+                    tabIndex="-1"
+                    aria-labelledby="exampleModalLabel"
+                    aria-hidden="true"
+                  >
+                    <div className="modal-dialog">
+                      <div className="modal-content">
+                        <div className="modal-header">
+                          <h1
+                            className="modal-title fs-5"
+                            id="exampleModalLabel"
+                          >
+                            Xoá nhân viên
+                          </h1>
+                          <button
+                            type="button"
+                            className="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div className="modal-body">
+                          Bạn có chắc chắn muốn xóa? Không thể hoàn tác sau khi
+                          thực hiện thao tác này.
+                        </div>
+                        <div className="modal-footer">
+                          <button
+                            type="button"
+                            className="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Hủy
+                          </button>
+                          <button type="button" className="btn btn-primary">
+                            Đồng ý
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </TableCell>
               </TableRow>
             ))}
@@ -105,7 +194,6 @@ const EditCustomer = (props) => {
           }}
         />
       </Paper>
-      <EditCustomerForm customer={customer} />
     </>
   );
 };

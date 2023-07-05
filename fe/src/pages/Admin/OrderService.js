@@ -37,7 +37,7 @@ const OrderService = () => {
     setFilteredData(data);
   }
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -68,12 +68,11 @@ const OrderService = () => {
         color="#397F77"
         fontSize="35px"
         fontWeight="700"
-        padding="2% 0 1% 0"
       />
       <Paper
         className="container"
         sx={{
-          marginTop: 5,
+          marginTop: 3,
           width: "100%",
           overflow: "hidden",
           justifyContent: "center",

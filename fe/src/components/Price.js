@@ -21,7 +21,7 @@ const Price = (props) => {
                 <td>{product.type}</td>
                 <td>{product.detail}</td>
                 <td>
-                  {product.price}/{product.unit}
+                  {product.price.toLocaleString()}VND ({product.unit})
                 </td>
               </tr>
             ))}

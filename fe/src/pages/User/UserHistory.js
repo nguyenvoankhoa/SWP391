@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./UserHistory.css";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import Title from "../../components/Title";
 import Rating from "@mui/material/Rating";
 import {
@@ -14,9 +14,8 @@ import {
 } from "@mui/material";
 //edit table user history
 const UserHistory = (props) => {
-  const [value, setValue] = React.useState(2);
   const data = useLoaderData();
-  console.log(data);
+  const nav = useNavigate();
   const [star, setStar] = useState();
   const handleRateEmployee = async (id) => {
     const rateRequest = {
@@ -36,6 +35,7 @@ const UserHistory = (props) => {
     if (!res.ok) {
       throw new Error("error");
     }
+    nav("/user/history");
   };
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
@@ -109,7 +109,7 @@ const UserHistory = (props) => {
                     {service.total.toLocaleString()} VNĐ
                   </TableCell>
                   <TableCell align="left">
-                  {service.rateValue === 0 ? (
+                    {service.rateValue === 0 ? (
                       <>
                         <Rating
                           name="size-small"
@@ -121,9 +121,6 @@ const UserHistory = (props) => {
                           onClick={() => handleRateEmployee(service.id)}
                           size="small"
                         />
-                        {/* <button onClick={() => handleRateEmployee(service.id)}>
-                          Gửi
-                        </button> */}
                       </>
                     ) : (
                       <Rating
@@ -140,18 +137,18 @@ const UserHistory = (props) => {
             </TableBody>
           </Table>
           <TablePagination
-          rowsPerPageOptions={[10, 15]}
-          component="div"
-          count={data.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-          classes={{
-            selectLabel: "custom-select-label",
-            displayedRows: "custom-displayed-rows",
-          }}
-        />
+            rowsPerPageOptions={[10, 15]}
+            component="div"
+            count={data.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+            classes={{
+              selectLabel: "custom-select-label",
+              displayedRows: "custom-displayed-rows",
+            }}
+          />
         </Paper>
       )}
     </>

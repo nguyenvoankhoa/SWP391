@@ -11,6 +11,7 @@ import {
 import { useLoaderData, useNavigate } from "react-router-dom";
 const AccountInfor = () => {
   const data = useLoaderData();
+  console.log(data);
   const nav = useNavigate();
   const user = JSON.parse(sessionStorage.getItem("user"));
   const [name, setName] = useState(data.name);
@@ -61,6 +62,10 @@ const AccountInfor = () => {
     setRooms(opts);
   };
   const customerHandler = async () => {
+    if (selectedCanHo === "" || selectedToa === "") {
+      alert("chọn tòa và căn hộ");
+      return;
+    }
     let newCustomer = {
       id: user.id,
       name: name,
@@ -218,6 +223,7 @@ export async function customerInfoLoader() {
     },
     body: JSON.stringify(request),
   });
+
   const data = await res.json();
   return data;
 }

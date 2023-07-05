@@ -9,9 +9,9 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 600,
   bgcolor: "background.paper",
-  border: "2px solid #000",
+  border: "2px solid #397F77",
   boxShadow: 24,
   p: 4,
 };
@@ -60,6 +60,7 @@ const ChooseFavouriteEmployee = (props) => {
 
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
         setData(data);
       } else {
         console.error("Error fetching data:", response.status);
@@ -106,22 +107,34 @@ const ChooseFavouriteEmployee = (props) => {
           </Box>
         ) : (
           <Box sx={style}>
-            <table className="table table-bordered">
-              <thead>
-                <tr>
-                  <th scope="col">Tên nhân viên</th>
-                  <th scope="col">Tổng điểm</th>
-                  <th scope="col">Điểm đánh giá</th>
-                  <th scope="col">Chọn</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data &&
-                  data.map((employee) => (
+            <p className="text-center">NHÂN VIÊN YÊU THÍCH</p>
+            {data.length === 0 ? (
+              <>
+                <p style={{ textAlign: "center" }}>
+                  Chưa có nhân viên yêu thích.
+                </p>
+                <p style={{ textAlign: "center" }}>
+                  Hãy đặt dịch vụ ngay để có thể chọn người làm yêu thích.
+                </p>
+              </>
+            ) : (
+              <table className="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Tên nhân viên</th>
+                    <th scope="col">Tổng điểm</th>
+                    <th scope="col">Số lượt</th>
+                    <th scope="col">Điểm trung bình</th>
+                    <th scope="col">Chọn</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((employee) => (
                     <tr key={employee.employeeId}>
                       <td>{employee.employeeName}</td>
                       <td>{employee.totalPoint}</td>
-                      <td>{employee.averaxgePoint}</td>
+                      <td>{employee.occurrences}</td>
+                      <td>{employee.averagePoint}</td>
                       <td>
                         <input
                           type="checkbox"
@@ -135,8 +148,9 @@ const ChooseFavouriteEmployee = (props) => {
                       </td>
                     </tr>
                   ))}
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            )}
           </Box>
         )}
       </Modal>

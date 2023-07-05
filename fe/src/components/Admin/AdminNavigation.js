@@ -136,7 +136,7 @@ export default function AdminNavigation() {
         { text: "Giúp việc theo giờ" },
         { text: "Tổng vệ sinh" },
         { text: "Vệ sinh máy lạnh" },
-        { text: "Vệ sinh sofa, nệm" },
+        { text: "Vệ sinh nệm, sofa, thảm" },
       ],
     },
     {
@@ -147,7 +147,7 @@ export default function AdminNavigation() {
         { text: "Giúp việc theo giờ" },
         { text: "Tổng vệ sinh" },
         { text: "Vệ sinh máy lạnh" },
-        { text: "Vệ sinh sofa, nệm" },
+        { text: "Vệ sinh nệm, sofa, thảm" },
       ],
     },
   ];
@@ -167,7 +167,7 @@ export default function AdminNavigation() {
         { text: "Giúp việc theo giờ" },
         { text: "Tổng vệ sinh" },
         { text: "Vệ sinh máy lạnh" },
-        { text: "Vệ sinh sofa, nệm" },
+        { text: "Vệ sinh nệm, sofa, thảm" },
       ],
     },
     {
@@ -208,13 +208,16 @@ export default function AdminNavigation() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}         sx={{
+      <Drawer
+        variant="permanent"
+        open={open}
+        sx={{
           backgroundColor: "#ffffff00",
           "& .MuiDrawer-paper": { backgroundColor: "#ffffff00" },
-        }}>
+        }}
+      >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-          </IconButton>
+          <IconButton onClick={handleDrawerClose}></IconButton>
         </DrawerHeader>
         <Divider />
         <List>
@@ -227,7 +230,7 @@ export default function AdminNavigation() {
                   justifyContent: open ? "flex-start" : "center",
                   px: 2.5,
                   fontFamily: "Montserrat",
-                  fontSize: "15px"
+                  fontSize: "15px",
                 }}
               >
                 <img
@@ -290,7 +293,7 @@ export default function AdminNavigation() {
                   justifyContent: open ? "flex-start" : "center",
                   px: 2.5,
                   fontFamily: "Montserrat",
-                  fontSize: "15px"
+                  fontSize: "15px",
                 }}
               >
                 <img

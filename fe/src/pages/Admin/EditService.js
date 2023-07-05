@@ -4,7 +4,6 @@ import Title from "../../components/Title";
 import { useLoaderData, useParams } from "react-router-dom";
 import EditServiceForm from "../../components/Admin/EditServiceForm";
 import {
-  Button,
   Paper,
   Table,
   TableBody,
@@ -18,22 +17,19 @@ const EditService = () => {
   const [service, setService] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const param = useParams();
-
   useEffect(() => {
     setFilteredData(data.filter((service) => service.name === param.serviceId));
   }, [param]);
 
-  {
-    if (filteredData.length == 0) {
-      setFilteredData(data);
-    }
+  if (filteredData.length === 0) {
+    setFilteredData(data);
   }
 
   const handleServiceChange = (service) => {
     setService(service);
   };
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -53,17 +49,11 @@ const EditService = () => {
   ];
   return (
     <>
-      <Title
-        title="DỊCH VỤ"
-        color="#397F77"
-        fontSize="35px"
-        fontWeight="700"
-        padding="2% 0 1% 0"
-      />
+      <Title title="DỊCH VỤ" color="#397F77" fontSize="35px" fontWeight="700" />
       <Paper
         className="container"
         sx={{
-          marginTop: 5,
+          marginTop: 3,
           width: "90%",
           overflow: "hidden",
           justifyContent: "center",
@@ -97,11 +87,8 @@ const EditService = () => {
                   <TableCell align="left">
                     {service.price.toLocaleString()} VNĐ
                   </TableCell>
-                  <TableCell align="center" sx={{ padding: 0 }}>
-                    <div
-                      className="col-md-12 offset-md-5"
-                      style={{ display: "flex" }}
-                    >
+                  <TableCell align="left" sx={{ padding: 0 }}>
+                    <div className="col-md-12 offset-md-2">
                       <img
                         src="/assets/images/pencil.svg"
                         alt="Pencil"
@@ -117,7 +104,7 @@ const EditService = () => {
           </TableBody>
         </Table>
         <TablePagination
-          rowsPerPageOptions={[10, 15]}
+          rowsPerPageOptions={[5, 10]}
           component="div"
           count={filteredData.length}
           rowsPerPage={rowsPerPage}
