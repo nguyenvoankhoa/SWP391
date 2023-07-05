@@ -73,8 +73,8 @@ const EditCustomer = () => {
         fontSize="35px"
         fontWeight="700"
       />
-      <Box sx={{ maxWidth: 120 }}>
-        <FormControl fullWidth>
+      <Box className="col-md-10 offset-md-10">
+        <FormControl sx={{ m: 1, minWidth: 130 }} size="small">
           <InputLabel id="demo-simple-select-label">Tòa</InputLabel>
           <Select
             labelId="demo-simple-select-standard-label"
@@ -147,7 +147,7 @@ const EditCustomer = () => {
                             className="modal-title fs-5"
                             id="exampleModalLabel"
                           >
-                            Xoá nhân viên
+                            Xoá khách hàng
                           </h1>
                           <button
                             type="button"

@@ -206,7 +206,7 @@ export default function UserHeadingBar() {
           <Tooltip title="Open settings">
             <Avatar
               alt="User Image"
-              src="/assets/images/thay Hoang.svg"
+              src="/assets/images/avatar7.jpg"
               onClick={handleClick}
               aria-controls={open ? "basic-menu" : undefined}
               aria-haspopup="true"

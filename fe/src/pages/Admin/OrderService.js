@@ -142,9 +142,9 @@ const OrderService = () => {
                         <Button
                           variant="outlined"
                           sx={{
-                            padding: "5px",
-                            height: "35px",
-                            textAlign: "justify",
+                            padding: "7px",
+                            height: "40px",
+                            textAlign: "center",
                             fontSize: "12px",
                             width: "100%",
                             borderColor: "#397F77",
