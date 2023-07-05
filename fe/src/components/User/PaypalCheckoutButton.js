@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { PayPalButtons } from "@paypal/react-paypal-js";
-import { useNavigate } from "react-router-dom";
 import { orderItemAction } from "../../redux/order";
 import { useDispatch } from "react-redux";
 const PaypalCheckoutButton = (props) => {
-  const nav = useNavigate();
   const [payFor, setPayFor] = useState(false);
   const [error, setError] = useState(null);
   const dispatch = useDispatch();
@@ -22,25 +20,26 @@ const PaypalCheckoutButton = (props) => {
       body: JSON.stringify(bill),
     });
 
-    if (!res.ok) {
+    if (res.status === 400) {
       throw new Error("Error fetching data");
     }
     dispatch(orderItemAction.removeItem());
-    nav("/user/order-completed");
   };
   if (error) {
     alert(error);
   }
   const product = {
     description: "CUSTOMER",
-    price: bill.price,
+    price: 20,
   };
   return (
-    <div className="container"
+    <div
+      className="container"
       style={{
         width: "150px",
-        marginTop: "12px"
-      }}>
+        marginTop: "12px",
+      }}
+    >
       <PayPalButtons
         style={{
           color: "silver",
@@ -69,7 +68,7 @@ const PaypalCheckoutButton = (props) => {
             ],
           });
         }}
-        onCancel={() => { }}
+        onCancel={() => {}}
         onApprove={async (data, actions) => {
           const order = await actions.order.capture();
           console.log("order", order);

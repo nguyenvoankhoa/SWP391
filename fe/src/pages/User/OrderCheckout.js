@@ -11,7 +11,6 @@ import { MdLocationOn } from "react-icons/md";
 import useDateTranslate from "../../components/DateTranslate";
 
 const OrderCheckout = () => {
-
   const data = useLoaderData();
   const user = JSON.parse(sessionStorage.getItem("user"));
   const cartItems = useSelector((state) => state.order.items);
@@ -20,6 +19,9 @@ const OrderCheckout = () => {
   const [bill, setBill] = useState({});
   const { translateWeekdays } = useDateTranslate();
 
+  useEffect(() => {
+    handleBill();
+  }, []);
   const handleBill = () => {
     let bill = {
       customerId: user.id,
@@ -36,7 +38,6 @@ const OrderCheckout = () => {
       favouriteEmployee: cartItems[0].favouriteEmployee,
       employeeId: cartItems[0].employeeId,
     };
-    bill.day = translateWeekdays(bill.day);
     console.log(bill);
     setBill(bill);
   };
@@ -162,7 +163,8 @@ const OrderCheckout = () => {
                           </Grid>
                           <Grid>
                             <p>
-                              {item.hour} {translateWeekdays(item.day)}, {item.date}/{item.month}
+                              {item.hour} {translateWeekdays(item.day)},{" "}
+                              {item.date}/{item.month}
                               /2023
                             </p>
                           </Grid>

@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import "./UserHistory.css";
 import { useLoaderData } from "react-router";
 import Title from "../../components/Title";
-import Rating from '@mui/material/Rating';
-import Typography from '@mui/material/Typography';
+import Rating from "@mui/material/Rating";
 //edit table user history
 const UserHistory = (props) => {
   const [value, setValue] = React.useState(2);
@@ -95,19 +94,21 @@ const UserHistory = (props) => {
                   <td>
                     {service.rateValue === 0 ? (
                       <>
-                        <Rating name="size-small" defaultValue={0}
+                        <Rating
+                          name="size-small"
+                          defaultValue={0}
                           value={service.rateValue}
                           onChange={(event) =>
                             setStar(Number(event.target.value))
                           }
                           onClick={() => handleRateEmployee(service.id)}
-                          size="small" />
+                          size="small"
+                        />
                         {/* <button onClick={() => handleRateEmployee(service.id)}>
                           Gửi
                         </button> */}
                       </>
                     ) : (
-
                       <Rating
                         disabled
                         name="rate-employee"

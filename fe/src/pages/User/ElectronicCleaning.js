@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 import { orderItemAction } from "../../redux/order";
 import Button from "@mui/material/Button";
 import { BiCartAdd } from "react-icons/bi";
+import ChooseFavouriteEmployee from "../../components/User/ChooseFavouriteEmployee";
 
 const AntTabs = styled(Tabs)({});
 
@@ -57,6 +58,8 @@ export default function ElectronicCleaning() {
   const [selectedServiceId, setSelectedServiceId] = useState("");
   const [selectedFreq, setSelectedFreq] = useState("");
   const [note, setNote] = useState("");
+  const [employeeId, setEmployeeId] = useState(null);
+  const [isOn, setOn] = useState(false);
   const data = useLoaderData();
   const DATA = data
     .filter((item) => item.name === "Vệ sinh máy lạnh")
@@ -82,12 +85,17 @@ export default function ElectronicCleaning() {
       label: item.detail,
     })
   );
-
+  const handleEmloyee = (employee) => {
+    setEmployeeId(employee);
+  };
+  const handleFavourite = (isOn) => {
+    setOn(isOn);
+  };
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setShowForm(true);
     setSelectedDate(null);
-    setSelectedTime(null)
+    setSelectedTime(null);
   };
 
   useEffect(() => {
@@ -242,6 +250,19 @@ export default function ElectronicCleaning() {
                       />
                     </DemoItem>
                   </DemoContainer>
+                </Grid>
+                <Grid container flex justifyContent={"center"} marginTop={2}>
+                  <Grid item xs={4} marginLeft={2}>
+                    <p>Chọn nhân viên yêu thích</p>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <ChooseFavouriteEmployee
+                      name="Vệ sinh máy lạnh"
+                      onAddEmployee={handleEmloyee}
+                      onAddFavourite={handleFavourite}
+                      date={selectedDate}
+                    />
+                  </Grid>
                 </Grid>
                 <div className="row justify-content-center mt-5">
                   <div className="col-11">

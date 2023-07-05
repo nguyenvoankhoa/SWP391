@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import { Grid, TextField, Paper, Autocomplete } from "@mui/material";
+import { Grid, TextField, Paper } from "@mui/material";
 import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
@@ -18,6 +18,7 @@ import { useDispatch } from "react-redux";
 import { orderItemAction } from "../../redux/order";
 import Button from "@mui/material/Button";
 import { BiCartAdd } from "react-icons/bi";
+import ChooseFavouriteEmployee from "../../components/User/ChooseFavouriteEmployee";
 
 const AntTabs = styled(Tabs)({});
 
@@ -58,6 +59,8 @@ export default function FabricCleaning() {
   const [selectedFreq, setSelectedFreq] = useState("");
   const [note, setNote] = useState("");
   const data = useLoaderData();
+  const [employeeId, setEmployeeId] = useState(null);
+  const [isOn, setOn] = useState(false);
   const DATA = data
     .filter((item) => item.name === "Vệ sinh nệm, sofa, thảm")
     .map((item) => ({
@@ -89,16 +92,16 @@ export default function FabricCleaning() {
       label: item.detail,
     })
   );
-  console.log(optionalSofa);
-  
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
     setShowForm(true);
     setSelectedDate(null);
-    setSelectedTime(null)
+    setSelectedTime(null);
   };
 
   useEffect(() => {
+    setEmployeeId();
     setSelectedDate();
     setSelectedTime();
     setSelectedFreq();
@@ -108,6 +111,12 @@ export default function FabricCleaning() {
   }, [value]);
   const handleServiceChange = (event) => {
     setSelectedServiceId(() => event.target.value);
+  };
+  const handleEmloyee = (employee) => {
+    setEmployeeId(employee);
+  };
+  const handleFavourite = (isOn) => {
+    setOn(isOn);
   };
   const handleNoteChange = (event) => {
     setNote(event.target.value);
@@ -138,6 +147,8 @@ export default function FabricCleaning() {
       frequency: frequency,
       price: selectedService.price,
       type: selectedService.type,
+      favouriteEmployee: isOn,
+      employeeId: employeeId,
     };
     dispatch(orderItemAction.addItem(service));
   };
@@ -257,6 +268,19 @@ export default function FabricCleaning() {
                       />
                     </DemoItem>
                   </DemoContainer>
+                </Grid>
+                <Grid container flex justifyContent={"center"} marginTop={2}>
+                  <Grid item xs={4} marginLeft={2}>
+                    <p>Chọn nhân viên yêu thích</p>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <ChooseFavouriteEmployee
+                      name="Vệ sinh nệm, sofa, thảm"
+                      onAddEmployee={handleEmloyee}
+                      onAddFavourite={handleFavourite}
+                      date={selectedDate}
+                    />
+                  </Grid>
                 </Grid>
                 <div className="row justify-content-center mt-5">
                   <div className="col-11">

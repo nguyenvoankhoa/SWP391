@@ -1,18 +1,17 @@
-
-import Box from '@mui/material/Box';
-import Switch from '@mui/material/Switch';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import { Button } from '@mui/material';
+import Box from "@mui/material/Box";
+import Switch from "@mui/material/Switch";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import Modal from '@mui/material/Modal';
+import Modal from "@mui/material/Modal";
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
@@ -28,7 +27,7 @@ const ChooseFavouriteEmployee = (props) => {
   const handleClose = () => {
     setOpen(false);
     setUnderstood(false);
-  }
+  };
   const [data, setData] = useState(null);
   const [employeeId, setEmployeeId] = useState(null);
   const [understood, setUnderstood] = useState(false);
@@ -61,7 +60,6 @@ const ChooseFavouriteEmployee = (props) => {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setData(data);
       } else {
         console.error("Error fetching data:", response.status);
@@ -73,7 +71,6 @@ const ChooseFavouriteEmployee = (props) => {
   // const icon = (
 
   //   <Button variant="contained" onClick={handleOpen}>Chọn nhân viên</Button>
-
 
   // );
   return (
@@ -90,58 +87,61 @@ const ChooseFavouriteEmployee = (props) => {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        {
-          !understood ?
-            <Box sx={style}>
-              <h5>Bạn tự chọn người làm</h5>
-              <p>Chức năng ngày cho phép nhiều người cùng nhận công việc của bạn</p>
-              <p>Bạn được chọn 1 trong số những người này đến làm cho mình</p>
-              <p>Xin vui lòng chọn sớm để họ có thời gian chuẩn bị. Một tiếng trước khi công việc bắt đầu, nếu bạn không chọn thì hệ thống sẽ chọn hộ và vẫn mất phí</p>
-              <p style={{ color: 'red' }}>Phí : 20.000 đ</p>
-              <Button variant="contained" onClick={() => setUnderstood(true)}>Chọn nhân viên </Button>
-            </Box>
-            :
-            <Box
-              sx={style}
-            >
-              <table className="table table-bordered">
-                <thead>
-                  <tr>
-                    <th scope="col">Tên nhân viên</th>
-                    <th scope="col">Tổng điểm</th>
-                    <th scope="col">Điểm đánh giá</th>
-                    <th scope="col">Chọn</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {data &&
-                    data.map((employee) => (
-                      <tr key={employee.employeeId}>
-                        <td>{employee.employeeName}</td>
-                        <td>{employee.totalPoint}</td>
-                        <td>{employee.averaxgePoint}</td>
-                        <td>
-                          <input
-                            type="checkbox"
-                            id={employee.employeeId}
-                            value={employee.employeeId}
-                            checked={employeeId === employee.employeeId}
-                            onChange={() => handleChooseEmployee(employee.employeeId)}
-                          />
-                        </td>
-                      </tr>
-                    ))}
-                </tbody>
-              </table>
-            </Box>
-        }
-
-      </Modal >
+        {!understood ? (
+          <Box sx={style}>
+            <h5>Bạn tự chọn người làm</h5>
+            <p>
+              Chức năng ngày cho phép nhiều người cùng nhận công việc của bạn
+            </p>
+            <p>Bạn được chọn 1 trong số những người này đến làm cho mình</p>
+            <p>
+              Xin vui lòng chọn sớm để họ có thời gian chuẩn bị. Một tiếng trước
+              khi công việc bắt đầu, nếu bạn không chọn thì hệ thống sẽ chọn hộ
+              và vẫn mất phí
+            </p>
+            <p style={{ color: "red" }}>Phí : 20.000 đ</p>
+            <Button variant="contained" onClick={() => setUnderstood(true)}>
+              Chọn nhân viên{" "}
+            </Button>
+          </Box>
+        ) : (
+          <Box sx={style}>
+            <table className="table table-bordered">
+              <thead>
+                <tr>
+                  <th scope="col">Tên nhân viên</th>
+                  <th scope="col">Tổng điểm</th>
+                  <th scope="col">Điểm đánh giá</th>
+                  <th scope="col">Chọn</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data &&
+                  data.map((employee) => (
+                    <tr key={employee.employeeId}>
+                      <td>{employee.employeeName}</td>
+                      <td>{employee.totalPoint}</td>
+                      <td>{employee.averaxgePoint}</td>
+                      <td>
+                        <input
+                          type="checkbox"
+                          id={employee.employeeId}
+                          value={employee.employeeId}
+                          checked={employeeId === employee.employeeId}
+                          onChange={() =>
+                            handleChooseEmployee(employee.employeeId)
+                          }
+                        />
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </Box>
+        )}
+      </Modal>
     </>
-
-
   );
 };
-
 
 export default ChooseFavouriteEmployee;
