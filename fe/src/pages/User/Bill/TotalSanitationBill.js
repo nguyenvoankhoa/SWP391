@@ -124,12 +124,12 @@ const ActionRecord = () => {
         color="#397F77"
         fontSize="35px"
         fontWeight="1000"
-        padding="3% 0 0  0"
+        padding="1% 0 0  0"
       />
       <Paper
         className="container"
         sx={{
-          marginTop: 5,
+          marginTop: 3,
           width: "90%",
           overflow: "hidden",
           justifyContent: "center",

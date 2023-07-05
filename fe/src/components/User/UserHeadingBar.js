@@ -13,6 +13,7 @@ import {
   CssBaseline,
   Divider,
   IconButton,
+  Avatar,
 } from "@mui/material";
 import {
   List,
@@ -21,10 +22,7 @@ import {
   ListItemText,
   ListItem,
 } from "@mui/material";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 const drawerWidth = 240;
 
@@ -194,6 +192,11 @@ export default function UserHeadingBar() {
           >
             Dashboard
           </Typography>
+          <Avatar
+            alt="User Image"
+            src="/assets/images/thay Hoang.svg"
+            sx={{ marginLeft: "auto" }}
+          />
         </Toolbar>
       </AppBar>
       <Drawer
@@ -246,25 +249,21 @@ export default function UserHeadingBar() {
                   unmountOnExit
                 >
                   <List component="div" disablePadding>
-                    {subItems.map(
-                      (
-                        { text: subText, link: subLink } // destruct the link from sub-item
-                      ) => (
-                        <ListItemButton
-                          key={subText}
-                          component={NavLink}
-                          to={subLink} // use the link from the sub-item
-                          sx={{
-                            pl: 8,
-                            "&:hover": {
-                              color: "rgb(120, 120, 120)",
-                            },
-                          }}
-                        >
-                          <ListItemText primary={subText} />
-                        </ListItemButton>
-                      )
-                    )}
+                    {subItems.map(({ text: subText, link: subLink }) => (
+                      <ListItemButton
+                        key={subText}
+                        component={NavLink}
+                        to={subLink}
+                        sx={{
+                          pl: 8,
+                          "&:hover": {
+                            color: "rgb(120, 120, 120)",
+                          },
+                        }}
+                      >
+                        <ListItemText primary={subText} />
+                      </ListItemButton>
+                    ))}
                   </List>
                 </Collapse>
               )}

@@ -1,13 +1,12 @@
-  .footer {
-    background-color: #e8e8e8;
-    padding-top: 10px;
-    width: 100%;
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-    align-items: center; 
-    position: absolute;
-  }
+.footer {
+  background-color: #e8e8e8;
+  padding-top: 10px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
   .footer p {
     font-family: "Montserrat";
     margin-top: 0.5rem; 

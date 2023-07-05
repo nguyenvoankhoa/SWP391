@@ -3,6 +3,15 @@ import "./UserHistory.css";
 import { useLoaderData } from "react-router";
 import Title from "../../components/Title";
 import Rating from "@mui/material/Rating";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+} from "@mui/material";
 //edit table user history
 const UserHistory = (props) => {
   const [value, setValue] = React.useState(2);
@@ -46,7 +55,7 @@ const UserHistory = (props) => {
     { id: "staff", label: "Nhân viên", minWidth: 170 },
     { id: "transaction", label: "Giao dịch", minWidth: 170 },
     { id: "total", label: "Tổng cộng", minWidth: 170 },
-    { id: "total", label: "Tổng cộng", minWidth: 170 },
+    { id: "rate", label: "Đánh giá", minWidth: 170 },
   ];
 
   return (
@@ -56,43 +65,51 @@ const UserHistory = (props) => {
         color="#397F77"
         fontSize="35px"
         fontWeight="1000"
-        padding="3% 0 0  0"
+        padding="1% 0 0  0"
       />
       {data.length === 0 && <p className="text-center">Chưa có thông tin</p>}
       {data.length > 0 && (
-        <div className="table-responsive table-wrapper-scroll-y">
-          <table
-            className="table table-bordered table-striped text-center"
-            style={{ fontSize: "18px", fontWeight: "400" }}
-          >
-            <thead>
-              <tr>
-                <th scope="col">Dịch vụ</th>
-                <th scope="col">Loại</th>
-                <th scope="col">Ngày</th>
-                <th scope="col">Nhân viên</th>
-                <th scope="col">Giao dịch</th>
-                <th scope="col">Tổng cộng</th>
-                <th scope="col">Đánh giá</th>
-              </tr>
-            </thead>
-            <tbody>
+        <Paper
+          className="container"
+          sx={{
+            marginTop: 3,
+            width: "90%",
+            overflow: "hidden",
+            justifyContent: "center",
+            display: "flex-end",
+          }}
+        >
+          <Table>
+            <TableHead>
+              <TableRow>
+                {column.map((column) => (
+                  <TableCell key={column.id} align="left">
+                    {column.label}
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
               {data.map((service) => (
-                <tr key={service.id}>
-                  <td>{service.business.name}</td>
-                  <td>{service.business.type}</td>
-                  <td>
-                    {service.day}/{service.month}
-                  </td>
-                  {service.employee ? (
-                    <td>{service.employee.name}</td>
-                  ) : (
-                    <td>Đang chờ xử lý</td>
-                  )}
-                  <td>{service.payment}</td>
-                  <td>{service.total}</td>
-                  <td>
-                    {service.rateValue === 0 ? (
+                <TableRow key={service.id} hover role="checkbox" tabIndex={-1}>
+                  <TableCell align="left">{service.business.name}</TableCell>
+                  <TableCell align="left">{service.business.type}</TableCell>
+                  <TableCell align="left">
+                    {service.day}, {service.date}/{service.month}
+                  </TableCell>
+                  <TableCell align="left">
+                    {service.employee ? (
+                      <td>{service.employee.name}</td>
+                    ) : (
+                      <td>Đang chờ xử lý</td>
+                    )}
+                  </TableCell>
+                  <TableCell align="left">{service.payment}</TableCell>
+                  <TableCell align="left">
+                    {service.total.toLocaleString()} VNĐ
+                  </TableCell>
+                  <TableCell align="left">
+                  {service.rateValue === 0 ? (
                       <>
                         <Rating
                           name="size-small"
@@ -117,12 +134,25 @@ const UserHistory = (props) => {
                         max={5}
                       />
                     )}
-                  </td>
-                </tr>
+                  </TableCell>
+                </TableRow>
               ))}
-            </tbody>
-          </table>
-        </div>
+            </TableBody>
+          </Table>
+          <TablePagination
+          rowsPerPageOptions={[10, 15]}
+          component="div"
+          count={data.length}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          classes={{
+            selectLabel: "custom-select-label",
+            displayedRows: "custom-displayed-rows",
+          }}
+        />
+        </Paper>
       )}
     </>
   );
