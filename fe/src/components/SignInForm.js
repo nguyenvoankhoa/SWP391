@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import Card from "../UI/Card";
 import Title from "./Title";
-import Button from "../UI/Button";
 import "./SignComponent.css";
-import { TextField } from "@mui/material";
-
+import { Input, InputAdornment, Button, Alert } from "@mui/material";
+import PersonIcon from "@mui/icons-material/Person";
+import LockIcon from "@mui/icons-material/Lock";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Visibility from "@mui/icons-material/Visibility";
+import IconButton from "@mui/material/IconButton";
 import { Link, useNavigate } from "react-router-dom";
 
 const SignInForm = () => {
@@ -62,9 +64,97 @@ const SignInForm = () => {
       setPassword("");
     }
   };
+  const [showPassword, setShowPassword] = React.useState(false);
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+  const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+  };
   return (
-    <div className="container mb-5">
-      <Card>
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6">
+          <img
+            src="/assets/images/sign_in.svg"
+            alt=""
+            style={{ width: "800px", height: "100%" }}
+          />
+        </div>
+        <div className="col-3 offset-md-1 ">
+          <Title
+            color="#015450"
+            title="ĐĂNG NHẬP"
+            fontSize="25px"
+            fontWeight="600"
+          />
+          <div className="col-md-12 mt-3">
+            <Input
+              sx={{ width: "90%", marginLeft: 4 }}
+              placeholder="Email"
+              value={email}
+              onChange={emailHandler}
+              startAdornment={
+                <InputAdornment position="start">
+                  <PersonIcon />
+                </InputAdornment>
+              }
+            ></Input>
+            <Input
+              id="standard-adornment-password"
+              sx={{ width: "90%", marginLeft: 4, marginTop: 4 }}
+              placeholder="Mật khẩu"
+              onChange={passwordHandler}
+              type={showPassword ? "text" : "password"}
+              required
+              startAdornment={
+                <InputAdornment position="start">
+                  <LockIcon />
+                </InputAdornment>
+              }
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+            {error && (
+              <Alert severity="error" sx={{ marginLeft: 4 }}>
+                {error}
+              </Alert>
+            )}
+
+            <Button
+              variant="contained"
+              onClick={loginHandler}
+              sx={{
+                fontFamily: "Montserrat",
+                width: "40%",
+                height: "30%",
+                mt: 5,
+                mb: 7,
+                ml: 15,
+                backgroundColor: "#397F77",
+                color: "#ffffff",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                letterSpacing: "0.07rem",
+                "&:hover": {
+                  backgroundColor: "#397F77",
+                },
+              }}
+            >
+              Đăng nhập
+            </Button>
+          </div>
+        </div>
+      </div>
+      {/* <Card>
         <form className="px-lg-5 px-sm-0" onSubmit={loginHandler}>
           <Title
             color="#015450"
@@ -127,7 +217,7 @@ const SignInForm = () => {
             </Button>
           </div>
         </form>
-      </Card>
+      </Card> */}
     </div>
   );
 };
