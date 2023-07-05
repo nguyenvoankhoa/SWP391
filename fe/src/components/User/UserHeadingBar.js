@@ -234,7 +234,7 @@ export default function UserHeadingBar() {
               mt: 1,
             }}
           >
-            <MenuItem onClick={handleClose}>Activities</MenuItem>
+            <MenuItem onClick={handleClose}>Hi, {user.name}</MenuItem>
             <MenuItem
               onClick={handleActiveClick}
               component={Link}
