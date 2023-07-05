@@ -1,5 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import useLogout from "../../hooks/useLogout";
 import { NavLink, useNavigate } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
@@ -14,6 +15,7 @@ import {
   Divider,
   IconButton,
   Avatar,
+  Tooltip,
 } from "@mui/material";
 import {
   List,
@@ -23,7 +25,8 @@ import {
   ListItem,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 const drawerWidth = 240;
 
 const openedMixin = (theme) => ({
@@ -163,6 +166,14 @@ export default function UserHeadingBar() {
       onClick: logoutHandler,
     },
   ];
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const openSetting = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl();
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -192,11 +203,48 @@ export default function UserHeadingBar() {
           >
             Dashboard
           </Typography>
-          <Avatar
-            alt="User Image"
-            src="/assets/images/thay Hoang.svg"
-            sx={{ marginLeft: "auto" }}
-          />
+          <Tooltip title="Open settings">
+            <Avatar
+              alt="User Image"
+              src="/assets/images/thay Hoang.svg"
+              onClick={handleClick}
+              aria-controls={open ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? "true" : undefined}
+              sx={{ marginLeft: "auto" }}
+            />
+          </Tooltip>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={openSetting}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+            sx={{
+              mt: 1,
+            }}
+          >
+            <MenuItem onClick={handleClose}>Profile</MenuItem>
+            <MenuItem
+              onClick={handleActiveClick}
+              component={Link}
+              to="/account-info"
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              My account
+            </MenuItem>
+            <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+          </Menu>
         </Toolbar>
       </AppBar>
       <Drawer
