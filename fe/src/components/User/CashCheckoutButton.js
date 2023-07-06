@@ -1,14 +1,20 @@
 import React from "react";
-import { orderItemAction } from "../../redux/order";
 import { useDispatch } from "react-redux";
 import { Button, Grid } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import Snackbar from "@mui/material/Snackbar";
-import MuiAlert from "@mui/material/Alert";
-
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import { Link } from "react-router-dom";
+import Slide from '@mui/material/Slide';
+import { HiOutlineCheckBadge } from "react-icons/hi2";
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
 });
+
+
+
 const CashCheckoutButton = (props) => {
   const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
@@ -38,13 +44,37 @@ const CashCheckoutButton = (props) => {
   };
   return (
     <Grid container spacing={0} marginTop={3}>
-      <Stack spacing={2} sx={{ width: "100%" }}>
-        <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-          <Alert severity="success" sx={{ width: "100%" }}>
-            Bạn đã đặt hàng thành công
-          </Alert>
-        </Snackbar>
-      </Stack>
+
+      <Dialog
+
+        open={open}
+        TransitionComponent={Transition}
+        keepMounted
+        onClose={handleClose}
+        aria-describedby="alert-dialog-slide-description"
+      >
+
+        <DialogTitle sx={{ alignItems: 'center' }}>{"Đơn hàng đã hoàn tất"}</DialogTitle>
+        <DialogContent sx={{ alignItems: 'center' }} >
+          <DialogContentText id="alert-dialog-slide-description"
+            style={{
+              fontSize: "39px",
+              color: "green"
+            }}
+          >
+            <HiOutlineCheckBadge />
+          </DialogContentText>
+
+          <DialogContentText id="alert-dialog-slide-description">
+            Cảm ơn bạn tin tưởng và  sử dụng dịch vụ của chúng tôi
+          </DialogContentText>
+        </DialogContent>
+
+        <DialogActions>
+          <Button component={Link} to="/user">Trang chủ</Button>
+        </DialogActions>
+      </Dialog>
+
       <Grid item xs={12}>
         <p>Thanh toán sau khi nhân viên đã hoàn thành công việc</p>
       </Grid>
@@ -66,7 +96,7 @@ const CashCheckoutButton = (props) => {
           Thanh toán
         </Button>
       </Grid>
-    </Grid>
+    </Grid >
   );
 };
 
