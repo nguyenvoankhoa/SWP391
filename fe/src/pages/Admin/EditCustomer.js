@@ -61,7 +61,7 @@ const EditCustomer = () => {
   const departmentHandler = (event) => {
     const selectedDepartment = event.target.value;
     const ARRAY = data.filter(
-      (customer) => customer.departmentNumber === selectedDepartment
+      (customer) => customer.buildingNumber === selectedDepartment
     );
     setSelectedToa(ARRAY);
   };
@@ -117,7 +117,7 @@ const EditCustomer = () => {
                 <TableCell align="left">{customer.id}</TableCell>
                 <TableCell align="left">{customer.name}</TableCell>
                 <TableCell align="left">{customer.email}</TableCell>
-                <TableCell align="left">{customer.departmentNumber}</TableCell>
+                <TableCell align="left">{customer.buildingNumber}</TableCell>
                 <TableCell align="left">{customer.roomNumber}</TableCell>
                 <TableCell align="left">{customer.phone}</TableCell>
                 <TableCell align="left" style={{ padding: 0 }}>

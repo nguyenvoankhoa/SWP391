@@ -3,7 +3,6 @@ import SignUpForm from "../components/SignUpForm";
 import { useLoaderData } from "react-router-dom";
 const SignUpPage = () => {
   const data = useLoaderData();
-  console.log(data);
   return (
     <div className="container-fluid signin-bg">
       <div className="row justify-content-left align-items-left">

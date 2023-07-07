@@ -9,21 +9,20 @@ import Title from "../../components/Title";
 import CashCheckoutButton from "../../components/User/CashCheckoutButton";
 import { MdLocationOn } from "react-icons/md";
 import useDateTranslate from "../../components/DateTranslate";
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
 const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
-
 
 const OrderCheckout = () => {
   const [open, setOpen] = React.useState(false);
@@ -36,10 +35,34 @@ const OrderCheckout = () => {
   const [payment, setPayment] = useState("Tiền mặt");
   const [bill, setBill] = useState({});
   const { translateWeekdays } = useDateTranslate();
-
+  const [building, setBuilding] = useState(data.buildingNumber);
+  const [room, setRoom] = useState(data.roomNumber);
+  const [listAddress, setListAddress] = useState([]);
+  console.log(data);
   useEffect(() => {
+    addressHistory();
     handleBill();
   }, []);
+
+  const addressHistory = async () => {
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    const token = sessionStorage.getItem("jwtToken");
+    const apiUrl = process.env.REACT_APP_API_URL;
+    const id = {
+      id: user.id,
+    };
+    const res = await fetch(apiUrl + "customer/history-address", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(id),
+    });
+    const data = await res.json();
+    setListAddress(data);
+  };
+
   const handleBill = () => {
     let bill = {
       customerId: user.id,
@@ -55,8 +78,9 @@ const OrderCheckout = () => {
       businessName: cartItems[0].name,
       favouriteEmployee: cartItems[0].favouriteEmployee,
       employeeId: cartItems[0].employeeId,
+      buildingId: building,
+      roomId: room,
     };
-    console.log(bill);
     setBill(bill);
   };
 
@@ -121,8 +145,8 @@ const OrderCheckout = () => {
               <Grid item xs={10}>
                 <div>
                   <p>
-                    Tòa {data.departmentNumber}.{data.roomNumber}, Vinhomes
-                    Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.
+                    Tòa {data.buildingNumber}.{data.roomNumber}, Vinhomes Grand
+                    Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.
                   </p>
                 </div>
                 <div>
@@ -134,11 +158,16 @@ const OrderCheckout = () => {
                     aria-describedby="modal-modal-description"
                   >
                     <Box sx={style}>
-                      <Typography id="modal-modal-title" variant="h6" component="h2">
+                      <Typography
+                        id="modal-modal-title"
+                        variant="h6"
+                        component="h2"
+                      >
                         Text in a modal
                       </Typography>
                       <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+                        Duis mollis, est non commodo luctus, nisi erat porttitor
+                        ligula.
                       </Typography>
                     </Box>
                   </Modal>

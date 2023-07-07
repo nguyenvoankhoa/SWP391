@@ -79,7 +79,7 @@ const EmployeePage = () => {
                     <TableCell align="left">{bill.type}</TableCell>
                     <TableCell align="left">{bill.hour}</TableCell>
                     <TableCell align="left">{bill.customerPhone}</TableCell>
-                    <TableCell align="left">{bill.departmentNumber}</TableCell>
+                    <TableCell align="left">{bill.buildingNumber}</TableCell>
                     <TableCell align="left">{bill.roomNumber}</TableCell>
                     <TableCell align="left">
                       {bill.payStatus ? (
@@ -94,7 +94,9 @@ const EmployeePage = () => {
                       )}
                     </TableCell>
                     <TableCell align="left">{bill.note}</TableCell>
-                    <TableCell align="left">{bill.total.toLocaleString()} VNĐ</TableCell>
+                    <TableCell align="left">
+                      {bill.total.toLocaleString()} VNĐ
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

@@ -50,7 +50,7 @@ const SignUpForm = (props) => {
         email: email,
         password: password,
         phone: phone,
-        departmentId: selectedToa,
+        buildingId: selectedToa,
         roomId: selectedCanHo,
       };
       const apiUrl = process.env.REACT_APP_API_URL;

@@ -70,8 +70,8 @@ const AccountInfor = () => {
       id: user.id,
       name: name,
       phone: phone,
-      departmentNumber: selectedToa,
-      roomNumber: selectedCanHo,
+      buildingId: selectedToa,
+      roomId: selectedCanHo,
     };
     const token = sessionStorage.getItem("jwtToken");
     const apiUrl = process.env.REACT_APP_API_URL;
@@ -132,7 +132,7 @@ const AccountInfor = () => {
                   onChange={departmentHandler}
                   displayEmpty
                   required
-                  defaultValue={data.departmentNumber}
+                  defaultValue={data.buildingNumber}
                 >
                   {departs.map((option) => (
                     <MenuItem key={option.value} value={option.value}>
