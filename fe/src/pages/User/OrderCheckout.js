@@ -4,30 +4,37 @@ import Card from "../../UI/Card";
 import { useSelector } from "react-redux";
 import PaymentPicker from "../../components/User/PaymentPicker";
 import PaypalCheckoutButton from "../../components/User/PaypalCheckoutButton";
-import { Box, Container, Divider, Grid } from "@mui/material";
+import { Box, Container, Divider, FormControl, Grid, InputAdornment, InputLabel, MenuItem, Select } from "@mui/material";
 import Title from "../../components/Title";
 import CashCheckoutButton from "../../components/User/CashCheckoutButton";
 import { MdLocationOn } from "react-icons/md";
 import useDateTranslate from "../../components/DateTranslate";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 400,
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import ApartmentIcon from '@mui/icons-material/Apartment';
+import HomeIcon from '@mui/icons-material/Home';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+import Checkbox from '@mui/material/Checkbox';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const OrderCheckout = () => {
+import { useNavigate } from "react-router-dom";
+const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
+const OrderCheckout = (props) => {
+  const nav = useNavigate();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setOpen(false);
+    setUnderstood(false);
+  };
+  const token = sessionStorage.getItem("jwtToken");
+  const apiUrl = process.env.REACT_APP_API_URL;
   const data = useLoaderData();
   const user = JSON.parse(sessionStorage.getItem("user"));
   const cartItems = useSelector((state) => state.order.items);
@@ -35,15 +42,81 @@ const OrderCheckout = () => {
   const [payment, setPayment] = useState("Tiền mặt");
   const [bill, setBill] = useState({});
   const { translateWeekdays } = useDateTranslate();
-  const [building, setBuilding] = useState(data.buildingNumber);
-  const [room, setRoom] = useState(data.roomNumber);
+  const [rooms, setRooms] = useState([]);
+  const [selectedToa, setSelectedToa] = useState("");
+  const [selectedCanHo, setSelectedCanHo] = useState("");
+  const [building, setBuilding] = useState("");
+  const [departs, setDeparts] = useState([]);
+  const [room, setRoom] = useState("");
   const [listAddress, setListAddress] = useState([]);
-  console.log(data);
+  const [understood, setUnderstood] = useState(false);
+  useEffect(() => {
+    const departmentLoader = async () => {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const res = await fetch(apiUrl + "departments");
+      const data = await res.json();
+      return data;
+    };
+    const loadDepartments = async () => {
+      const result = await departmentLoader();
+      const DEPARTMENT = result.map((e) => ({
+        value: e.departmentId,
+        label: e.departmentName,
+        rooms: e.rooms,
+      }));
+      setDeparts(DEPARTMENT);
+    };
+
+    loadDepartments();
+  }, []);
+  const roomHandler = (event) => {
+    const selectedRoom = event.target.value;
+    setSelectedCanHo(selectedRoom);
+  };
+  const departmentHandler = (event) => {
+    const selectedDepartment = event.target.value;
+    setSelectedToa(selectedDepartment);
+    const roomsOption = departs.filter(
+      (department) => department.value === event.target.value
+    );
+    const opts = roomsOption[0].rooms.map((e) => ({
+      value: e.id,
+      label: e.roomName,
+    }));
+    setRooms(opts);
+  };
+  const addressHandler = async () => {
+    if (selectedCanHo === "" || selectedToa === "") {
+      alert("chọn tòa và căn hộ");
+      return;
+    }
+    const user = JSON.parse(sessionStorage.getItem("user"));
+    let newAddress = {
+      customerId: user.id,
+      buildingId: selectedToa,
+      roomId: selectedCanHo,
+    };
+    const res = await fetch(apiUrl + "customer/create-address", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(newAddress),
+    });
+  };
+
+  // địa chỉ có sẵn
+  console.log(listAddress);
+  // const DEPARTMENT = props.data.map((e) => ({
+  //   value: e.departmentId,
+  //   label: e.departmentName,
+  //   rooms: e.rooms,
+  // }));
   useEffect(() => {
     addressHistory();
     handleBill();
   }, []);
-
   const addressHistory = async () => {
     const user = JSON.parse(sessionStorage.getItem("user"));
     const token = sessionStorage.getItem("jwtToken");
@@ -87,7 +160,6 @@ const OrderCheckout = () => {
   const paymentHandler = (props) => {
     setPayment(props);
   };
-
   return (
     <>
       <Box container flex>
@@ -145,32 +217,186 @@ const OrderCheckout = () => {
               <Grid item xs={10}>
                 <div>
                   <p>
-                    Tòa {data.buildingNumber}.{data.roomNumber}, Vinhomes Grand
-                    Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.
+                    Tòa {data.departmentNumber}.{data.roomNumber}, Vinhomes
+                    Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.
                   </p>
                 </div>
                 <div>
-                  <Button onClick={handleOpen}>Thêm địa chỉ</Button>
-                  <Modal
+                  <Button variant="outlined" onClick={handleOpen}>
+                    Thay đổi
+                  </Button>
+
+                  <Dialog
                     open={open}
                     onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+
                   >
-                    <Box sx={style}>
-                      <Typography
-                        id="modal-modal-title"
-                        variant="h6"
-                        component="h2"
-                      >
-                        Text in a modal
-                      </Typography>
-                      <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        Duis mollis, est non commodo luctus, nisi erat porttitor
-                        ligula.
-                      </Typography>
-                    </Box>
-                  </Modal>
+                    {!understood ? (
+                      <Grid>
+                        <DialogTitle id="alert-dialog-title"
+                          style={{
+                            color: "#397f77",
+                          }}
+                        >
+                          Địa chỉ của tôi
+                        </DialogTitle>
+                        <Divider
+                          sx={{
+                            borderBottomWidth: 1,
+                            backgroundColor: "black",
+                          }}
+                        />
+                        <Grid item xs={12}>
+                          <DialogContent >
+                            <DialogContentText id="alert-dialog-description">
+                              <Grid container flex mr={2}>
+                                <Grid item xs={12} container flex>
+                                  <Grid item xs={1}>
+                                    <Checkbox
+                                      {...label}
+                                      icon={<RadioButtonUncheckedIcon />}
+                                      checkedIcon={<RadioButtonCheckedIcon />}
+                                    />
+                                  </Grid>
+                                  <Grid item xs={11}>
+                                    <p>
+                                      {listAddress.map(item => <p>
+                                        Tòa {item.buildingName}.{item.roomName}, Vinhomes
+                                        Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.
+                                      </p>)}
+
+                                    </p>
+                                  </Grid>
+                                  <Grid container flex>
+                                    <Grid item xs={4}>
+                                      <Button startIcon={<AddCircleOutlineIcon />} variant="outlined" onClick={() => setUnderstood(true)} >
+                                        Thêm địa chỉ
+                                      </Button>
+                                    </Grid>
+                                    <Grid item xs={3}>
+                                      <Button startIcon={<DeleteIcon />} variant="outlined"  >
+                                        Xoá
+                                      </Button>
+                                    </Grid>
+                                  </Grid>
+                                </Grid>
+
+                              </Grid>
+                            </DialogContentText>
+                          </DialogContent>
+                          <DialogActions>
+                            <Button onClick={() => setOpen(false)}>Huỷ</Button>
+                            <Button onClick={handleClose}>
+                              Xác nhận
+                            </Button>
+                          </DialogActions>
+                        </Grid>
+
+
+                      </Grid>
+                    ) : (
+
+                      <Grid>
+                        <DialogTitle id="alert-dialog-title"
+                          style={{
+                            color: "#397f77",
+                          }}
+                        >
+                          Địa chỉ mới
+                        </DialogTitle>
+                        <Divider
+                          sx={{
+                            borderBottomWidth: 1,
+                            backgroundColor: "black",
+                          }}
+                        />
+
+                        <DialogContent>
+                          <DialogContentText>
+                            <Grid container flex mr={2}>
+                              <Grid item xs={6}>
+                                <FormControl
+                                  variant="standard"
+                                  sx={{ width: "120px" }}
+                                >
+                                  <InputLabel
+                                    id="demo-simple-select-standard-label"
+                                    sx={{ justifyContent: "left" }}
+                                  >
+                                    Tòa
+                                  </InputLabel>
+                                  <Select
+                                    labelId="demo-simple-select-standard-label"
+                                    id="demo-simple-select-standard"
+                                    onChange={departmentHandler}
+                                    displayEmpty
+                                    required
+                                    defaultValue={data.buildingNumber}
+
+                                    startAdornment={
+                                      <InputAdornment position="start">
+                                        <ApartmentIcon />
+                                      </InputAdornment>
+                                    }
+                                  >
+
+                                    {departs.map((option) => (
+                                      <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                      </MenuItem>
+                                    ))}
+
+                                  </Select>
+                                </FormControl>
+                              </Grid>
+                              <Grid item xs={6}>
+                                <FormControl
+                                  variant="standard"
+                                  sx={{ width: "120px" }}
+                                >
+                                  <InputLabel
+                                    id="demo-simple-select-standard-label"
+                                    sx={{ justifyContent: "left" }}
+                                  >
+                                    Căn hộ
+                                  </InputLabel>
+                                  <Select
+                                    labelId="demo-simple-select-standard-label"
+                                    id="demo-simple-select-standard"
+                                    onChange={roomHandler}
+                                    displayEmpty
+                                    required
+                                    startAdornment={
+                                      <InputAdornment position="start">
+                                        <HomeIcon />
+                                      </InputAdornment>
+                                    }
+                                  >
+
+                                    {rooms.map((option) => (
+                                      <MenuItem key={option.value} value={option.value}>
+                                        {option.label}
+                                      </MenuItem>
+                                    ))}
+
+                                  </Select>
+                                </FormControl>
+                              </Grid>
+                            </Grid>
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={() => setUnderstood(false)} >Quay lại</Button>
+                          <Button onClick={addressHandler} autoFocus>
+                            Thêm
+                          </Button>
+                        </DialogActions>
+                      </Grid>
+
+                    )}
+                  </Dialog>
                 </div>
               </Grid>
             </Grid>
@@ -282,7 +508,7 @@ const OrderCheckout = () => {
             </Card>
           </Grid>
         </Container>
-      </Box>
+      </Box >
     </>
   );
 };
