@@ -1,11 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import {
-  MenuItem,
-  Select,
-  InputLabel,
-  FormControl,
-} from "@mui/material";
 
 const AddEmployeeForm = (props) => {
   useEffect(() => {
@@ -27,10 +21,9 @@ const AddEmployeeForm = (props) => {
 
     loadDepartments();
   }, []);
-  const [departs, setDeparts] = useState([]);
-  const [rooms, setRooms] = useState([]);
-  const nav = useNavigate();
   const data = useLoaderData();
+  const [departs, setDeparts] = useState([]);
+  const nav = useNavigate();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -76,15 +69,17 @@ const AddEmployeeForm = (props) => {
       },
       body: JSON.stringify(employee),
     });
-    if (!res.ok) {
-      throw new Error("error");
+    if (res.ok) {
+      setName("");
+      setPhone("");
+      setEmail("");
+      setPassword("");
+      setSelectedToa("");
+      nav("/admin/edit-employee");
+      alert("Employee added successfully");
+    } else {
+      alert("Error adding employee");
     }
-    setName("");
-    setPhone("");
-    setEmail("");
-    setPassword("");
-    setDeparts("");
-    nav("/admin/edit-employee");
   };
 
   return (
@@ -159,12 +154,10 @@ const AddEmployeeForm = (props) => {
               <div className="form-group">
                 <label htmlFor="phone">Số  toà</label>
                 <select class="form-select"
-                  displayEmpty
-                  required
+
                   onChange={departmentHandler}
-
                   aria-label="Default select example">
-
+                  <option selected>Chọn toà</option>
                   {departs.map((option) => (
                     <option key={option.value} value={option.value}>
                       {option.label}
@@ -174,33 +167,7 @@ const AddEmployeeForm = (props) => {
 
                 </select>
               </div>
-              {/* <FormControl
-                variant="standard"
-                sx={{ width: "120px" }}
-              >
-                <InputLabel
-                  id="demo-simple-select-standard-label"
-                  sx={{ justifyContent: "left" }}
-                >
-                  Tòa
-                </InputLabel>
-                <Select
-                  labelId="demo-simple-select-standard-label"
-                  id="demo-simple-select-standard"
-                  onChange={departmentHandler}
-                  displayEmpty
-                  required
-                  defaultValue={data.buildingNumber}
-                >
 
-                  {departs.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-
-                </Select>
-              </FormControl> */}
             </div>
           </div>
           <div className="modal-footer">

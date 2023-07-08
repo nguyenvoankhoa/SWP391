@@ -13,10 +13,32 @@ import {
   TablePagination,
   TableRow,
 } from "@mui/material";
+
 const EditEmployee = () => {
+  const [departs, setDeparts] = useState([]);
+  useEffect(() => {
+    const departmentLoader = async () => {
+      const apiUrl = process.env.REACT_APP_API_URL;
+      const res = await fetch(apiUrl + "departments");
+      const data = await res.json();
+      return data;
+    };
+    const loadDepartments = async () => {
+      const result = await departmentLoader();
+      const DEPARTMENT = result.map((e) => ({
+        departmentId: e.departmentId, // Use departmentId instead of value
+        label: e.departmentName,
+      }));
+      setDeparts(DEPARTMENT);
+    };
+
+    loadDepartments();
+  }, []);
+
   const data = useLoaderData();
   const [employee, setEmployee] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  console.log('employee data: ', filteredData)
   const param = useParams();
   const [workType, setWorkType] = useState("");
   console.log(param);
@@ -52,9 +74,11 @@ const EditEmployee = () => {
     { id: "email", label: "Email", minWidth: 170 },
     { id: "phone", label: "Số điện thoại", minWidth: 170 },
     { id: "job", label: "Công việc", minWidth: 170 },
+    { id: "building", label: "Số toà", minWidth: 170 },
     { id: "edit", label: "Chỉnh sửa", minWidth: 170 },
     { id: "delete", label: "Xóa", minWidth: 170 },
   ];
+
   return (
     <>
       <Title
@@ -113,6 +137,9 @@ const EditEmployee = () => {
                       {employee.employeeInfo.phone}
                     </TableCell>
                     <TableCell align="left">{employee.workType}</TableCell>
+                    <TableCell align="left">
+                      {departs.find((dept) => dept.departmentId === employee.buildingId)?.label}
+                    </TableCell>
                     <TableCell align="left">
                       <div className="col-md-12 offset-md-3">
                         <img
