@@ -99,3 +99,6 @@
 .css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
   background-color: "#fff0" !important;
 }
+.css-1ncwxn3-MuiButtonBase-root-MuiListItemButton-root:active{
+  color: #397F77 !important;
+}

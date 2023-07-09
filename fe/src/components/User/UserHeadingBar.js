@@ -130,14 +130,14 @@ export default function UserHeadingBar() {
 
   const menuItems = [
     {
-      text: "Trang chủ",
+      text: "Dịch vụ",
       icon: "/assets/images/house.svg",
     },
     {
-      text: "Hoạt động",
+      text: "Đơn hàng",
       icon: "/assets/images/activity.svg",
       subItems: [
-        { text: "Giúp việc theo giờ", link: "action-record" },
+        { text: "Giúp việc theo giờ", link: "action-record/hourly-help" },
         { text: "Tổng vệ sinh", link: "action-record/total-senitation" },
         { text: "Vệ sinh sofa, nệm", link: "action-record/fabric-cleaning" },
         { text: "Vệ sinh máy lạnh", link: "action-record/electronic-cleaning" },
@@ -146,7 +146,12 @@ export default function UserHeadingBar() {
     {
       text: "Lịch sử",
       icon: "/assets/images/history.svg",
-      link: "history",
+      subItems: [
+        { text: "Giúp việc theo giờ", link: "history/hourly-help" },
+        { text: "Tổng vệ sinh", link: "history/total-senitation" },
+        { text: "Vệ sinh sofa, nệm", link: "history/fabric-cleaning" },
+        { text: "Vệ sinh máy lạnh", link: "history/electronic-cleaning" },
+      ],
     },
   ];
   const { logout } = useLogout(); // Call the useLogout hook
@@ -201,7 +206,7 @@ export default function UserHeadingBar() {
               fontSize: "22px",
             }}
           >
-            Dashboard
+            Hi, {user.name}
           </Typography>
           <Tooltip title="Open settings">
             <Avatar
@@ -234,7 +239,6 @@ export default function UserHeadingBar() {
               mt: 1,
             }}
           >
-            <MenuItem onClick={handleClose}>Hi, {user.name}</MenuItem>
             <MenuItem
               onClick={handleActiveClick}
               component={Link}
@@ -305,7 +309,10 @@ export default function UserHeadingBar() {
                         sx={{
                           pl: 8,
                           "&:hover": {
-                            color: "rgb(120, 120, 120)",
+                            color: "#397F77",
+                          },
+                          "&.active": {
+                            color: "#397F77",
                           },
                         }}
                       >
