@@ -79,7 +79,33 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomeService /> },
       { path: "hourly-help", element: <HourlyHelp />, loader: UserLoader },
-      { path: "history", element: <UserHistory />, loader: historyLoader },
+      { 
+        path: "history", 
+        element: <UserHistory />, 
+        loader: historyLoader, 
+        children: [
+          {
+            path: "hourly-help",
+            element: <HourlyHelpBill />,
+            loader: UserLoader,
+        },
+            {
+                path: "total-senitation",
+                element: <TotalSanitationBill />,
+                loader: UserLoader,
+            },
+            {
+              path: "fabric-cleaning",
+              element: <FabricCleaningBill />,
+              loader: UserLoader,
+            },
+            {
+              path: "electronic-cleaning",
+              element: <ElectronicCleaningBill />,
+              loader: UserLoader,
+            },
+        ],
+    },    
       {
         path: "total-senitation",
         element: <TotalSanitation />,
@@ -101,7 +127,7 @@ const router = createBrowserRouter([
         loader: billLoader,
         children: [
           {
-            index: true,
+            path: "hourly-help",
             element: <HourlyHelpBill />,
             loader: billLoader,
           },
