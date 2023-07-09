@@ -4,7 +4,7 @@ import Card from "../../UI/Card";
 import { useSelector } from "react-redux";
 import PaymentPicker from "../../components/User/PaymentPicker";
 import PaypalCheckoutButton from "../../components/User/PaypalCheckoutButton";
-import { Box, Container, Divider, FormControl, Grid, InputAdornment, InputLabel, MenuItem, Select } from "@mui/material";
+import { Box, Container, Divider, FormControl, FormControlLabel, FormLabel, Grid, InputAdornment, InputLabel, MenuItem, Radio, RadioGroup, Select } from "@mui/material";
 import Title from "../../components/Title";
 import CashCheckoutButton from "../../components/User/CashCheckoutButton";
 import { MdLocationOn } from "react-icons/md";
@@ -50,6 +50,8 @@ const OrderCheckout = (props) => {
   const [room, setRoom] = useState("");
   const [listAddress, setListAddress] = useState([]);
   const [understood, setUnderstood] = useState(false);
+  const [selectedLocationId, setSelectedLocationId] = useState(Object.keys(listAddress).length > 0 ? listAddress[0].id : '')
+  
   useEffect(() => {
     const departmentLoader = async () => {
       const apiUrl = process.env.REACT_APP_API_URL;
@@ -85,6 +87,7 @@ const OrderCheckout = (props) => {
     }));
     setRooms(opts);
   };
+
   const addressHandler = async () => {
     if (selectedCanHo === "" || selectedToa === "") {
       alert("chọn tòa và căn hộ");
@@ -104,6 +107,7 @@ const OrderCheckout = (props) => {
       },
       body: JSON.stringify(newAddress),
     });
+    setUnderstood(false)
   };
 
   // địa chỉ có sẵn
@@ -116,7 +120,7 @@ const OrderCheckout = (props) => {
   useEffect(() => {
     addressHistory();
     handleBill();
-  }, []);
+  }, [understood]);
   const addressHistory = async () => {
     const user = JSON.parse(sessionStorage.getItem("user"));
     const token = sessionStorage.getItem("jwtToken");
@@ -132,8 +136,11 @@ const OrderCheckout = (props) => {
       },
       body: JSON.stringify(id),
     });
-    const data = await res.json();
-    setListAddress(data);
+    let data = await res.json();
+    setListAddress(data.filter(
+      (data, index, self) =>
+        self.findIndex((d) => d.buildingName === data.buildingName && d.roomName === data.roomName) === index
+    ));
   };
 
   const handleBill = () => {
@@ -253,21 +260,29 @@ const OrderCheckout = (props) => {
                             <DialogContentText id="alert-dialog-description">
                               <Grid container flex mr={2}>
                                 <Grid item xs={12} container flex>
-                                  <Grid item xs={1}>
-                                    <Checkbox
-                                      {...label}
-                                      icon={<RadioButtonUncheckedIcon />}
-                                      checkedIcon={<RadioButtonCheckedIcon />}
-                                    />
-                                  </Grid>
-                                  <Grid item xs={11}>
-                                    <p>
-                                      {listAddress.map(item => <p>
-                                        Tòa {item.buildingName}.{item.roomName}, Vinhomes
-                                        Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.
-                                      </p>)}
-
-                                    </p>
+                                  <Grid item xs={12}>
+                                    <FormControl>
+                                      <RadioGroup
+                                        defaultValue={Object.keys(listAddress).length > 0 ? listAddress[0].id : null }
+                                        name="radio-buttons-group"
+                                      >
+                                        {
+                                          listAddress.map((item) =>
+                                            <FormControlLabel
+                                              value={item.id}
+                                              control={<Radio />}
+                                              label={`Tòa ${item.buildingName}.${item.roomName}, Vinhomes
+                                              Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.`}
+                                              sx={{margin: "1vh 0"}}
+                                              onClick={() => {
+                                                setSelectedLocationId(item.id);
+                                                console.log("Selected item: ", item, " Selected id:",selectedLocationId);
+                                              }}
+                                            />
+                                          )
+                                        }
+                                      </RadioGroup>
+                                    </FormControl>
                                   </Grid>
                                   <Grid container flex>
                                     <Grid item xs={4}>
@@ -276,7 +291,7 @@ const OrderCheckout = (props) => {
                                       </Button>
                                     </Grid>
                                     <Grid item xs={3}>
-                                      <Button startIcon={<DeleteIcon />} variant="outlined"  >
+                                      <Button startIcon={<DeleteIcon />} variant="outlined" >
                                         Xoá
                                       </Button>
                                     </Grid>

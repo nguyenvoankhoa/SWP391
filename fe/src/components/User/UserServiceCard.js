@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Title from "../Title";
 const UserServiceCard = (props) => {
   return (
-    <div className="col-lg-6 col-sm-12 py-5 px-5">
+    <div className="col-lg-6 col-sm-12 py-4 px-4">
       <Card>
         <Link style={{ textDecoration: "none" }} to={props.link}>
           <div className="d-flex justify-content-center">

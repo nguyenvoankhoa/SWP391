@@ -6,27 +6,15 @@ const HomeService = () => {
     <div
       className="container"
       style={{
-        height: "auto",
+        height: "70vh !important",
       }}
     >
       <Title
         title="DỊCH VỤ VỆ SINH"
         color="#397f77"
-        fontSize="35px"
+        fontSize="34px"
         fontWeight="2000"
-        padding="3% 0 0  0"
-      />
-      <div
-        className="bg"
-        style={{
-          width: "100vw",
-          height: "100vh",
-          position: "absolute",
-          top: "0",
-          left: "0",
-          zIndex: "-1",
-          backgroundImage: "linear-gradient(180deg,#F8F5F5, #fff)",
-        }}
+        padding="0"
       />
       <div className="container">
         <div className="row">

@@ -193,7 +193,7 @@ export default function FabricCleaning() {
           color="#397f77"
           fontSize="35px"
           fontWeight="1000"
-          padding="1% 0 1% 0"
+          padding="0"
         />
         {showForm && (
           <Box
