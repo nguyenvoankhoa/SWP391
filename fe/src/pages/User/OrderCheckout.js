@@ -18,20 +18,18 @@ import DialogTitle from '@mui/material/DialogTitle';
 import ApartmentIcon from '@mui/icons-material/Apartment';
 import HomeIcon from '@mui/icons-material/Home';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
-import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
-import Checkbox from '@mui/material/Checkbox';
 import DeleteIcon from '@mui/icons-material/Delete';
-
 import { useNavigate } from "react-router-dom";
+
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const OrderCheckout = (props) => {
-  const nav = useNavigate();
+  const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
     setUnderstood(false);
+    navigate("/user/order");
   };
   const token = sessionStorage.getItem("jwtToken");
   const apiUrl = process.env.REACT_APP_API_URL;
@@ -45,12 +43,18 @@ const OrderCheckout = (props) => {
   const [rooms, setRooms] = useState([]);
   const [selectedToa, setSelectedToa] = useState("");
   const [selectedCanHo, setSelectedCanHo] = useState("");
-  const [building, setBuilding] = useState("");
   const [departs, setDeparts] = useState([]);
-  const [room, setRoom] = useState("");
-  const [listAddress, setListAddress] = useState([]);
+  const [listAddress, setListAddress] = useState([{
+    buildingId: data.buildingId,
+    buildingName: data.buildingNumber,
+    customerId: data.id,
+    id: 0,
+    roomId: data.roomId,
+    roomName: data.roomNumber,
+  }]);
   const [understood, setUnderstood] = useState(false);
-  const [selectedLocationId, setSelectedLocationId] = useState(Object.keys(listAddress).length > 0 ? listAddress[0].id : '')
+  const [selectedLocation, setSelectedLocation] = useState(Object.keys(listAddress).length > 0 ? listAddress[0] : {})
+  
   
   useEffect(() => {
     const departmentLoader = async () => {
@@ -111,7 +115,7 @@ const OrderCheckout = (props) => {
   };
 
   // địa chỉ có sẵn
-  console.log(listAddress);
+  console.log("List address: ",listAddress);
   // const DEPARTMENT = props.data.map((e) => ({
   //   value: e.departmentId,
   //   label: e.departmentName,
@@ -120,7 +124,7 @@ const OrderCheckout = (props) => {
   useEffect(() => {
     addressHistory();
     handleBill();
-  }, [understood]);
+  }, [selectedLocation, understood]);
   const addressHistory = async () => {
     const user = JSON.parse(sessionStorage.getItem("user"));
     const token = sessionStorage.getItem("jwtToken");
@@ -137,7 +141,10 @@ const OrderCheckout = (props) => {
       body: JSON.stringify(id),
     });
     let data = await res.json();
-    setListAddress(data.filter(
+    for (let i = 0; i < data.length; i++) {
+      setListAddress(listAddress.push(data[i]));
+    }
+    setListAddress(listAddress.filter(
       (data, index, self) =>
         self.findIndex((d) => d.buildingName === data.buildingName && d.roomName === data.roomName) === index
     ));
@@ -158,8 +165,8 @@ const OrderCheckout = (props) => {
       businessName: cartItems[0].name,
       favouriteEmployee: cartItems[0].favouriteEmployee,
       employeeId: cartItems[0].employeeId,
-      buildingId: building,
-      roomId: room,
+      buildingId: selectedLocation.buildingId,
+      roomId: selectedLocation.roomId,
     };
     setBill(bill);
   };
@@ -167,6 +174,8 @@ const OrderCheckout = (props) => {
   const paymentHandler = (props) => {
     setPayment(props);
   };
+
+  console.log("data: ",data);
   return (
     <>
       <Box container flex>
@@ -224,7 +233,7 @@ const OrderCheckout = (props) => {
               <Grid item xs={10}>
                 <div>
                   <p>
-                    Tòa {data.departmentNumber}.{data.roomNumber}, Vinhomes
+                    Tòa {selectedLocation.buildingName}.{selectedLocation.roomName}, Vinhomes
                     Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.
                   </p>
                 </div>
@@ -263,7 +272,7 @@ const OrderCheckout = (props) => {
                                   <Grid item xs={12}>
                                     <FormControl>
                                       <RadioGroup
-                                        defaultValue={Object.keys(listAddress).length > 0 ? listAddress[0].id : null }
+                                        defaultValue={Object.keys(selectedLocation).length > 0 ? selectedLocation.id : '1' }
                                         name="radio-buttons-group"
                                       >
                                         {
@@ -275,8 +284,7 @@ const OrderCheckout = (props) => {
                                               Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.`}
                                               sx={{margin: "1vh 0"}}
                                               onClick={() => {
-                                                setSelectedLocationId(item.id);
-                                                console.log("Selected item: ", item, " Selected id:",selectedLocationId);
+                                                setSelectedLocation(item);
                                               }}
                                             />
                                           )
