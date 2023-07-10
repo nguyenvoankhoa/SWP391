@@ -22,20 +22,20 @@ const CashCheckoutButton = (props) => {
     const token = sessionStorage.getItem("jwtToken");
     const apiUrl = process.env.REACT_APP_API_URL;
     console.log(bill);
-    // const res = await fetch(apiUrl + "customer/order", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     Authorization: `Bearer ${token}`,
-    //   },
-    //   body: JSON.stringify(bill),
-    // });
+    const res = await fetch(apiUrl + "customer/order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify(bill),
+    });
 
-    // if (res.status === 400) {
-    //   alert("Bạn đã đặt đơn hàng này");
-    // } else {
-    //   setOpen(true);
-    // }
+    if (res.status === 400) {
+      alert("Bạn đã đặt đơn hàng này");
+    } else {
+      setOpen(true);
+    }
   };
 
   const handleClose = () => {

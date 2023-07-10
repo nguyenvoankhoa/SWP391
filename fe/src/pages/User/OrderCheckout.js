@@ -4,25 +4,38 @@ import Card from "../../UI/Card";
 import { useSelector } from "react-redux";
 import PaymentPicker from "../../components/User/PaymentPicker";
 import PaypalCheckoutButton from "../../components/User/PaypalCheckoutButton";
-import { Box, Container, Divider, FormControl, FormControlLabel, FormLabel, Grid, InputAdornment, InputLabel, MenuItem, Radio, RadioGroup, Select } from "@mui/material";
+import {
+  Box,
+  Container,
+  Divider,
+  FormControl,
+  FormControlLabel,
+  FormLabel,
+  Grid,
+  InputAdornment,
+  InputLabel,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Select,
+} from "@mui/material";
 import Title from "../../components/Title";
 import CashCheckoutButton from "../../components/User/CashCheckoutButton";
 import { MdLocationOn } from "react-icons/md";
 import useDateTranslate from "../../components/DateTranslate";
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import ApartmentIcon from '@mui/icons-material/Apartment';
-import HomeIcon from '@mui/icons-material/Home';
-import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
-import DeleteIcon from '@mui/icons-material/Delete';
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import ApartmentIcon from "@mui/icons-material/Apartment";
+import HomeIcon from "@mui/icons-material/Home";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-const OrderCheckout = (props) => {
+const OrderCheckout = () => {
   const navigate = useNavigate();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -44,18 +57,21 @@ const OrderCheckout = (props) => {
   const [selectedToa, setSelectedToa] = useState("");
   const [selectedCanHo, setSelectedCanHo] = useState("");
   const [departs, setDeparts] = useState([]);
-  const [listAddress, setListAddress] = useState([{
-    buildingId: data.buildingId,
-    buildingName: data.buildingNumber,
-    customerId: data.id,
-    id: 0,
-    roomId: data.roomId,
-    roomName: data.roomNumber,
-  }]);
+  const [listAddress, setListAddress] = useState([
+    {
+      buildingId: data.buildingId,
+      buildingName: data.buildingNumber,
+      customerId: data.id,
+      id: 0,
+      roomId: data.roomId,
+      roomName: data.roomNumber,
+    },
+  ]);
   const [understood, setUnderstood] = useState(false);
-  const [selectedLocation, setSelectedLocation] = useState(Object.keys(listAddress).length > 0 ? listAddress[0] : {})
-  
-  
+  const [selectedLocation, setSelectedLocation] = useState(
+    Object.keys(listAddress).length > 0 ? listAddress[0] : {}
+  );
+
   useEffect(() => {
     const departmentLoader = async () => {
       const apiUrl = process.env.REACT_APP_API_URL;
@@ -111,16 +127,8 @@ const OrderCheckout = (props) => {
       },
       body: JSON.stringify(newAddress),
     });
-    setUnderstood(false)
+    setUnderstood(false);
   };
-
-  // địa chỉ có sẵn
-  console.log("List address: ",listAddress);
-  // const DEPARTMENT = props.data.map((e) => ({
-  //   value: e.departmentId,
-  //   label: e.departmentName,
-  //   rooms: e.rooms,
-  // }));
   useEffect(() => {
     addressHistory();
     handleBill();
@@ -144,10 +152,16 @@ const OrderCheckout = (props) => {
     for (let i = 0; i < data.length; i++) {
       setListAddress(listAddress.push(data[i]));
     }
-    setListAddress(listAddress.filter(
-      (data, index, self) =>
-        self.findIndex((d) => d.buildingName === data.buildingName && d.roomName === data.roomName) === index
-    ));
+    setListAddress(
+      listAddress.filter(
+        (data, index, self) =>
+          self.findIndex(
+            (d) =>
+              d.buildingName === data.buildingName &&
+              d.roomName === data.roomName
+          ) === index
+      )
+    );
   };
 
   const handleBill = () => {
@@ -174,8 +188,6 @@ const OrderCheckout = (props) => {
   const paymentHandler = (props) => {
     setPayment(props);
   };
-
-  console.log("data: ",data);
   return (
     <>
       <Box container flex>
@@ -233,8 +245,9 @@ const OrderCheckout = (props) => {
               <Grid item xs={10}>
                 <div>
                   <p>
-                    Tòa {selectedLocation.buildingName}.{selectedLocation.roomName}, Vinhomes
-                    Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.
+                    Tòa {selectedLocation.buildingName}.
+                    {selectedLocation.roomName}, Vinhomes Grand Park, Phường
+                    Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.
                   </p>
                 </div>
                 <div>
@@ -247,11 +260,11 @@ const OrderCheckout = (props) => {
                     onClose={handleClose}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
-
                   >
                     {!understood ? (
                       <Grid>
-                        <DialogTitle id="alert-dialog-title"
+                        <DialogTitle
+                          id="alert-dialog-title"
                           style={{
                             color: "#397f77",
                           }}
@@ -265,64 +278,69 @@ const OrderCheckout = (props) => {
                           }}
                         />
                         <Grid item xs={12}>
-                          <DialogContent >
+                          <DialogContent>
                             <DialogContentText id="alert-dialog-description">
                               <Grid container flex mr={2}>
                                 <Grid item xs={12} container flex>
                                   <Grid item xs={12}>
                                     <FormControl>
                                       <RadioGroup
-                                        defaultValue={Object.keys(selectedLocation).length > 0 ? selectedLocation.id : '1' }
+                                        defaultValue={
+                                          Object.keys(selectedLocation).length >
+                                          0
+                                            ? selectedLocation.id
+                                            : "1"
+                                        }
                                         name="radio-buttons-group"
                                       >
-                                        {
-                                          listAddress.map((item) =>
-                                            <FormControlLabel
-                                              value={item.id}
-                                              control={<Radio />}
-                                              label={`Tòa ${item.buildingName}.${item.roomName}, Vinhomes
+                                        {listAddress.map((item) => (
+                                          <FormControlLabel
+                                            value={item.id}
+                                            control={<Radio />}
+                                            label={`Tòa ${item.buildingName}.${item.roomName}, Vinhomes
                                               Grand Park, Phường Long Thạch Mỹ, Quận 9, TP.Hồ Chí Minh.`}
-                                              sx={{margin: "1vh 0"}}
-                                              onClick={() => {
-                                                setSelectedLocation(item);
-                                              }}
-                                            />
-                                          )
-                                        }
+                                            sx={{ margin: "1vh 0" }}
+                                            onClick={() => {
+                                              setSelectedLocation(item);
+                                            }}
+                                          />
+                                        ))}
                                       </RadioGroup>
                                     </FormControl>
                                   </Grid>
                                   <Grid container flex>
                                     <Grid item xs={4}>
-                                      <Button startIcon={<AddCircleOutlineIcon />} variant="outlined" onClick={() => setUnderstood(true)} >
+                                      <Button
+                                        startIcon={<AddCircleOutlineIcon />}
+                                        variant="outlined"
+                                        onClick={() => setUnderstood(true)}
+                                      >
                                         Thêm địa chỉ
                                       </Button>
                                     </Grid>
                                     <Grid item xs={3}>
-                                      <Button startIcon={<DeleteIcon />} variant="outlined" >
+                                      <Button
+                                        startIcon={<DeleteIcon />}
+                                        variant="outlined"
+                                      >
                                         Xoá
                                       </Button>
                                     </Grid>
                                   </Grid>
                                 </Grid>
-
                               </Grid>
                             </DialogContentText>
                           </DialogContent>
                           <DialogActions>
                             <Button onClick={() => setOpen(false)}>Huỷ</Button>
-                            <Button onClick={handleClose}>
-                              Xác nhận
-                            </Button>
+                            <Button onClick={handleClose}>Xác nhận</Button>
                           </DialogActions>
                         </Grid>
-
-
                       </Grid>
                     ) : (
-
                       <Grid>
-                        <DialogTitle id="alert-dialog-title"
+                        <DialogTitle
+                          id="alert-dialog-title"
                           style={{
                             color: "#397f77",
                           }}
@@ -357,20 +375,20 @@ const OrderCheckout = (props) => {
                                     displayEmpty
                                     required
                                     defaultValue={data.buildingNumber}
-
                                     startAdornment={
                                       <InputAdornment position="start">
                                         <ApartmentIcon />
                                       </InputAdornment>
                                     }
                                   >
-
                                     {departs.map((option) => (
-                                      <MenuItem key={option.value} value={option.value}>
+                                      <MenuItem
+                                        key={option.value}
+                                        value={option.value}
+                                      >
                                         {option.label}
                                       </MenuItem>
                                     ))}
-
                                   </Select>
                                 </FormControl>
                               </Grid>
@@ -397,13 +415,14 @@ const OrderCheckout = (props) => {
                                       </InputAdornment>
                                     }
                                   >
-
                                     {rooms.map((option) => (
-                                      <MenuItem key={option.value} value={option.value}>
+                                      <MenuItem
+                                        key={option.value}
+                                        value={option.value}
+                                      >
                                         {option.label}
                                       </MenuItem>
                                     ))}
-
                                   </Select>
                                 </FormControl>
                               </Grid>
@@ -411,13 +430,14 @@ const OrderCheckout = (props) => {
                           </DialogContentText>
                         </DialogContent>
                         <DialogActions>
-                          <Button onClick={() => setUnderstood(false)} >Quay lại</Button>
+                          <Button onClick={() => setUnderstood(false)}>
+                            Quay lại
+                          </Button>
                           <Button onClick={addressHandler} autoFocus>
                             Thêm
                           </Button>
                         </DialogActions>
                       </Grid>
-
                     )}
                   </Dialog>
                 </div>
@@ -531,7 +551,7 @@ const OrderCheckout = (props) => {
             </Card>
           </Grid>
         </Container>
-      </Box >
+      </Box>
     </>
   );
 };
