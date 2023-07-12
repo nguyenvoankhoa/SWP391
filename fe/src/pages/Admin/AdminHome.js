@@ -70,6 +70,7 @@ const AdminHome = () => {
   }
   const [selectedField, setSelectedField] = useState(serviceList[0]);
   const selectedData = data.filter((item) => item.name === selectedField);
+  console.log(selectedData);
 
   const handleSelect = (event, service) => {
     setSelectedField(service);
@@ -115,13 +116,13 @@ const AdminHome = () => {
 
   const dataMap = new Map();
   const daysOfWeek = [
-    "Thứ 2",
-    "Thứ 3",
-    "Thứ 4",
-    "Thứ 5",
-    "Thứ 6",
-    "Thứ 7",
-    "Chủ Nhật",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday",
   ];
   daysOfWeek.forEach((day) => {
     dataMap.set(day, { day, amount: 0 });
@@ -170,7 +171,7 @@ const AdminHome = () => {
                   <YAxis dataKey="amount" tick={<CustomYAxisTick />} />
                   {/* <Tooltip /> */}
                   <Legend />
-                  <Bar dataKey="Số lượng" fill="#8884d8" barSize={25} />
+                  <Bar dataKey="amount" fill="#8884d8" barSize={25} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
