@@ -115,13 +115,13 @@ const AdminHome = () => {
 
   const dataMap = new Map();
   const daysOfWeek = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
+    "Thứ 2",
+    "Thứ 3",
+    "Thứ 4",
+    "Thứ 5",
+    "Thứ 6",
+    "Thứ 7",
+    "Chủ Nhật",
   ];
   daysOfWeek.forEach((day) => {
     dataMap.set(day, { day, amount: 0 });
@@ -168,9 +168,9 @@ const AdminHome = () => {
                   <CartesianGrid vertical={false} strokeDasharray="3 3" />
                   <XAxis dataKey="day" />
                   <YAxis dataKey="amount" tick={<CustomYAxisTick />} />
-                  <Tooltip />
+                  {/* <Tooltip /> */}
                   <Legend />
-                  <Bar dataKey="amount" fill="#8884d8" barSize={25} />
+                  <Bar dataKey="Số lượng" fill="#8884d8" barSize={25} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

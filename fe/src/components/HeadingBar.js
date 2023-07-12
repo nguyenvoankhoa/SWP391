@@ -147,7 +147,7 @@ const HeadingBar = () => {
           >
             <Typography
               sx={{
-                color: "gray",
+                color: "#397f77",
                 letterSpacing: "0.05rem",
                 display: "inline",
                 fontWeight: "lighter",
