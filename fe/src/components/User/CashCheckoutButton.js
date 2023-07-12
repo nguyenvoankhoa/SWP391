@@ -44,30 +44,37 @@ const CashCheckoutButton = (props) => {
   return (
     <Grid container spacing={0} marginTop={3}>
       <Dialog
+
         open={open}
         TransitionComponent={Transition}
         keepMounted
         onClose={handleClose}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle sx={{ alignItems: "center" }}>
-          {"Đơn hàng đã hoàn tất"}
-        </DialogTitle>
-        <DialogContent sx={{ alignItems: "center" }}>
-          <DialogContentText
-            id="alert-dialog-slide-description"
-            style={{
-              fontSize: "39px",
-              color: "green",
-            }}
-          >
-            <HiOutlineCheckBadge />
-          </DialogContentText>
+        <Grid flex textAlign={"center"}>
+          <Grid item sx={12}>
+            <DialogTitle sx={{ alignItems: "center" }}>
+              {"Đơn hàng đã hoàn tất"}
+            </DialogTitle>
+          </Grid>
+          <Grid>
+            <DialogContent sx={{ alignItems: "center" }}>
+              <DialogContentText
+                id="alert-dialog-slide-description"
+              >
+                <img
+                  style={{
+                    width: "25%"
+                  }}
+                  src="/assets/images/order-completed.svg" />
+              </DialogContentText>
 
-          <DialogContentText id="alert-dialog-slide-description">
-            Cảm ơn bạn tin tưởng và sử dụng dịch vụ của chúng tôi
-          </DialogContentText>
-        </DialogContent>
+              <DialogContentText id="alert-dialog-slide-description" marginTop={3}>
+                Cảm ơn bạn tin tưởng và sử dụng dịch vụ của chúng tôi
+              </DialogContentText>
+            </DialogContent>
+          </Grid>
+        </Grid>
 
         <DialogActions>
           <Button component={Link} to="/user">
