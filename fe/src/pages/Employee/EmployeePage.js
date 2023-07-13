@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useLoaderData } from "react-router-dom";
 import Title from "../../components/Title";
 import {
@@ -9,6 +9,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
+  Button
 } from "@mui/material";
 const EmployeePage = () => {
   const data = useLoaderData();
@@ -36,6 +37,31 @@ const EmployeePage = () => {
     { id: "note", label: "Ghi chú", minWidth: 170 },
     { id: "total", label: "Tổng cộng", minWidth: 170 },
   ];
+  const [fullNotes, setFullNotes] = useState({});
+  const [showMore, setShowMore] = useState({});
+
+  const toggleShowMore = (id) => {
+    setShowMore((prevShowMore) => ({
+      ...prevShowMore,
+      [id]: !prevShowMore[id],
+    }));
+  };
+  const trimText = (text, maxLength) => {
+    if (text.length > maxLength) {
+      return `${text.substring(0, maxLength)}`;
+    }
+    return text;
+  };
+  useEffect(() => {
+    const notesObj = {};
+    const showMoreObj = {};
+    data.forEach((bill) => {
+      notesObj[bill.id] = trimText(bill.note, 60);
+      showMoreObj[bill.id] = false;
+    });
+    setFullNotes(notesObj);
+    setShowMore(showMoreObj);
+  }, [data]);
   return (
     <>
       <Title
@@ -61,7 +87,7 @@ const EmployeePage = () => {
               <TableHead>
                 <TableRow>
                   {column.map((column) => (
-                    <TableCell key={column.id} align="center">
+                    <TableCell key={column.id} align="left">
                       {column.label}
                     </TableCell>
                   ))}
@@ -87,13 +113,26 @@ const EmployeePage = () => {
                       ) : (
                         <th>Chưa thanh toán</th>
                       )}
+                    </TableCell>
+                    <TableCell align="left">
                       {bill.completedStatus ? (
                         <th>Đã xong</th>
                       ) : (
                         <th>Chưa xong</th>
                       )}
                     </TableCell>
-                    <TableCell align="left">{bill.note}</TableCell>
+                    <TableCell align="left">
+                      {showMore[bill.id]
+                        ? bill.note
+                        : `${fullNotes[bill.id]} ${
+                            bill.note.length > 60 ? "..." : ""
+                          }`}
+                      {bill.note.length > 60 && (
+                        <Button onClick={() => toggleShowMore(bill.id)} sx={{fontSize: "12px", paddingLeft: 1}}>
+                          {showMore[bill.id] ? " Show Less" : "Show More"}
+                        </Button>
+                      )}
+                    </TableCell>
                     <TableCell align="left">
                       {bill.total.toLocaleString()} VNĐ
                     </TableCell>

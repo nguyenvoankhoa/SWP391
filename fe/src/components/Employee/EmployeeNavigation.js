@@ -92,7 +92,7 @@ const Drawer = styled(MuiDrawer, {
 
 export default function EmployeeNavigation() {
   const [open, setOpen] = useState(true);
-
+  const user = JSON.parse(sessionStorage.getItem("user"));
   const theme = useTheme();
 
   const handleDrawerOpen = () => {
@@ -175,7 +175,7 @@ export default function EmployeeNavigation() {
               fontSize: "22px",
             }}
           >
-            Dashboard
+             Hi, {user.name}
           </Typography>
           <Tooltip title="Open settings">
             <Avatar

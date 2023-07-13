@@ -27,22 +27,9 @@ const ConfirmPayment = (props) => {
   };
   return (
     <Button
-    variant="outlined"
+    href="#text-buttons"
     onClick={paymentConfirm}
-    sx={{
-      
-      height: "35px",
-      textAlign: "justify",
-      fontSize: "12px",
-      width: "100%",
-      padding: 0,
-      borderColor: "#397F77",
-      color: "#397F77",
-      "&:hover": {
-        borderColor: "#397F77",
-        color: "#397F77",
-      },
-    }}
+    style={{ fontSize: "12px"  }}
     >
     Xác nhận
     </Button>

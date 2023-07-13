@@ -329,7 +329,7 @@ export default function AdminNavigation() {
                         sx={{
                           pl: 8,
                           "&:hover": {
-                            color: "rgb(120, 120, 120)",
+                            color: "#397F77",
                           },
                         }}
                       >

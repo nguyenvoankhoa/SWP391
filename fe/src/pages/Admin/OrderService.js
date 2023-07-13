@@ -140,7 +140,7 @@ const OrderService = () => {
                     {bill.completeStatus ? (
                       <td>
                         <Button
-                          variant="outlined"
+                          href="#text-buttons"
                           sx={{
                             padding: "7px",
                             height: "40px",

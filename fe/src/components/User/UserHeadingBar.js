@@ -309,7 +309,7 @@ export default function UserHeadingBar() {
                         sx={{
                           pl: 8,
                           "&:hover": {
-                            color: "#397F77",
+                            color: "#000000DE",
                           },
                           "&.active": {
                             color: "#397F77",
