@@ -16,14 +16,17 @@ import {
   TablePagination,
   TableRow,
 } from "@mui/material";
+import useDateTranslate from "../../components/DateTranslate";
 const OrderService = () => {
   const data = useLoaderData();
+  console.log(data);
   const [workType, setWorkType] = useState("");
   const [billId, setBillId] = useState("");
   const assignEmployee = (type, id) => {
     setWorkType(type);
     setBillId(id);
   };
+  const { translateWeekdays } = useDateTranslate();
   const [filteredData, setFilteredData] = useState([]);
   const param = useParams();
 
@@ -100,7 +103,7 @@ const OrderService = () => {
                   <TableCell align="left">{bill.business.name}</TableCell>
                   <TableCell align="left">{bill.business.type}</TableCell>
                   <TableCell align="left">
-                    {bill.day}, {bill.date}/{bill.month}
+                    {translateWeekdays(bill.day)}, {bill.date}/{bill.month}
                   </TableCell>
                   <TableCell align="left">{bill.hour}</TableCell>
                   <TableCell align="left">{bill.customer.name}</TableCell>

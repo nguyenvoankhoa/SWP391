@@ -10,6 +10,7 @@ import PeriodicTable from "../../../components/User/PeriodicTable";
 const ActionRecord = () => {
   const odd = useLoaderData();
   const [data, setData] = useState([]);
+  console.log(odd);
   const billLoader = async () => {
     const token = sessionStorage.getItem("jwtToken");
     const user = JSON.parse(sessionStorage.getItem("user"));

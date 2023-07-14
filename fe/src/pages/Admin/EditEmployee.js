@@ -29,6 +29,7 @@ const EditEmployee = () => {
         departmentId: e.departmentId, // Use departmentId instead of value
         label: e.departmentName,
       }));
+      console.log(DEPARTMENT);
       setDeparts(DEPARTMENT);
     };
 
@@ -38,10 +39,8 @@ const EditEmployee = () => {
   const data = useLoaderData();
   const [employee, setEmployee] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  console.log('employee data: ', filteredData)
   const param = useParams();
   const [workType, setWorkType] = useState("");
-  console.log(param);
   useEffect(() => {
     let array = data.filter(
       (employee) => employee.workType === param.serviceId
@@ -138,7 +137,11 @@ const EditEmployee = () => {
                     </TableCell>
                     <TableCell align="left">{employee.workType}</TableCell>
                     <TableCell align="left">
-                      {departs.find((dept) => dept.departmentId === employee.buildingId)?.label}
+                      {
+                        departs.find(
+                          (dept) => dept.departmentId === employee.buildingId
+                        )?.label
+                      }
                     </TableCell>
                     <TableCell align="left">
                       <div className="col-md-12 offset-md-3">

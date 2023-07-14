@@ -9,7 +9,7 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-  Button
+  Button,
 } from "@mui/material";
 const EmployeePage = () => {
   const data = useLoaderData();
@@ -26,12 +26,11 @@ const EmployeePage = () => {
     setPage(0);
   };
   const column = [
-    { id: "job", label: "Công việc", minWidth: 170 },
     { id: "type", label: "Loại", minWidth: 170 },
     { id: "time", label: "Thời gian", minWidth: 170 },
     { id: "phone", label: "Số điện thoại", minWidth: 170 },
     { id: "block", label: "Tòa", minWidth: 170 },
-    { id: "room", label: "Mã căn", minWidth: 170 },
+    { id: "room", label: "Căn hộ", minWidth: 170 },
     { id: "transaction", label: "Thanh toán", minWidth: 170 },
     { id: "status", label: "Trạng thái", minWidth: 170 },
     { id: "note", label: "Ghi chú", minWidth: 170 },
@@ -101,7 +100,6 @@ const EmployeePage = () => {
                     role="checkbox"
                     tabIndex={-1}
                   >
-                    <TableCell align="left">{bill.workType}</TableCell>
                     <TableCell align="left">{bill.type}</TableCell>
                     <TableCell align="left">{bill.hour}</TableCell>
                     <TableCell align="left">{bill.customerPhone}</TableCell>
@@ -116,9 +114,9 @@ const EmployeePage = () => {
                     </TableCell>
                     <TableCell align="left">
                       {bill.completedStatus ? (
-                        <th>Đã xong</th>
+                        <th>Đã làm</th>
                       ) : (
-                        <th>Chưa xong</th>
+                        <th>Chưa làm</th>
                       )}
                     </TableCell>
                     <TableCell align="left">
@@ -128,7 +126,10 @@ const EmployeePage = () => {
                             bill.note.length > 60 ? "..." : ""
                           }`}
                       {bill.note.length > 60 && (
-                        <Button onClick={() => toggleShowMore(bill.id)} sx={{fontSize: "12px", paddingLeft: 1}}>
+                        <Button
+                          onClick={() => toggleShowMore(bill.id)}
+                          sx={{ fontSize: "12px", paddingLeft: 1 }}
+                        >
                           {showMore[bill.id] ? " Show Less" : "Show More"}
                         </Button>
                       )}
